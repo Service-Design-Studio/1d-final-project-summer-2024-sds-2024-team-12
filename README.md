@@ -1,3 +1,28 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/QpCtzJAE)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=15058565&assignment_repo_type=AssignmentRepo)
-Service Design Studio - Design Workbook 2024: https://docs.google.com/document/d/1IU-US6iwsqfXO0ukgAotk7R4YCh9t5ybww31ZWOErdc/edit#heading=h.30mvr6mmd9p3 
+# Team Rubyzzz: Auto-Prompt Nagvigation System 
+### Useful Links
+#### 1. 
+#### 2. 
+#### 3.
+#### 4. 
+
+### About the project:
+How might we **leverage data** to enhance the user experience, making it **easier to access payment services** by **minimizing the number of steps** and **reducing entry barriers**.
+
+### Main Features:
+#### There are 2 primary features that has been implemented into our app:
+#### 1. Generation of Auto-prompt
+#### 2. AI Chatbot
+
+### READMEs to each segment:
+#### 1. 
+#### 2. 
+#### 3.
+#### 4. 
+
+# Contributions
+#### Wang Jingxi, Jeslyn 
+#### Nicole Cheah 
+#### Zi Hui
+#### Zi Qi
+#### Turrag Dewan
+#### Nikqil 
