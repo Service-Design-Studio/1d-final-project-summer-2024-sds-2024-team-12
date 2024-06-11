@@ -20,8 +20,13 @@ There are 2 primary features that has been implemented into our app:
 
 # Contributions
 Wang Jingxi, Jeslyn 
+
 Nicole Cheah 
+
 Zi Hui
+
 Zi Qi
+
 Turrag Dewan
+
 Nikqil 
