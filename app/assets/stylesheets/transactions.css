@@ -1,0 +1,410 @@
+/* app/assets/stylesheets/transactions.css */
+.transaction-history {
+    margin-bottom: 20px;
+  }
+  
+  .transaction-history h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Example color */
+  }
+  
+  .recenttransaction {
+    background-color: #f9f9f9;
+    padding: 10px;
+    /* border: 1px solid #ddd; */
+    max-height: 400px; /*Limit the height*/
+    /* overflow-y: auto; Enable vertical scrolling */
+  }
+  
+  
+  .transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .transactions-table th, .transactions-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .transactions-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .transactions-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .transactions-table tr:hover {
+    background-color: #e5f1fb;
+  }
+  
+  .iconButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center; 
+    text-align: center;*/
+  }
+  
+  .paynowImage {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .iconButtonText {
+    color: #333;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    text-align: center;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  /* Additional styles for buttons if needed */
+  .scheduleButton, .shortcutButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #066DAF;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .scheduleButton:hover, .shortcutButton:hover {
+    background-color: #045a8d;
+  }
+  
+  .transparent {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .transfer{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+  }
+  
+  .transparent:hover{
+    cursor: pointer;
+  }
+  
+  .transparent img {
+    transition: opacity 0.2s;
+  }
+  
+  .transparent:active img {
+    opacity: 0.5;
+    transition: none;
+  }
+  .transparent:active {
+    opacity: 0.5;
+    transition: none;
+  }
+  .alertbutton {
+    background-color: #066DAF;
+    /* display: flex;
+    justify-content: flex-end; */
+  }
+  
+  .buttonContainer {
+    background-color: #0e4668;
+    border-radius: 30px;
+    align-self: flex-end;
+    margin-right: 4vw;
+  }
+  
+  
+  .buttonText {
+    color: white;
+    font-family: 'Lato';
+    font-size: 13px;
+    font-weight: bold;
+    padding: 1vw 3vw;
+    letter-spacing: 1px;
+    margin: 0vw 0 0vw 0;
+  }
+
+  /* Ensure the carousel takes full width and has a fixed height */
+.carousel {
+  width: 100%;
+  max-width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+/* Ensure the images fit within the carousel container */
+.carousel-inner .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Center the captions and adjust their styling */
+.carousel-caption {
+  position: absolute;
+  top: 50%; /* Position from the top */
+  left: 50%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Center the caption horizontally and vertically */
+  text-align: left;
+  padding: 20px; /* Padding around text */
+  border-radius: 10px; /* Rounded corners */
+  color: #fff; /* Text color */
+  width: 80%; /* Adjust width as needed */
+  max-width: 500px; /* Maximum width of the caption */
+  margin-left: 100px;
+}
+
+
+/* Customize the controls */
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none; /* Remove default icons */
+  color: #000; /* Customize control color */
+  font-size: 30px;
+}
+
+.carousel-control.left:hover,
+.carousel-control.right:hover {
+  color: #fff; /* Change color on hover */
+}
+
+
+/*--------------------------------------------Below Might not be useful-------------------------------------------*/
+.container {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    
+  }
+  .scrollable {
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+  }
+  .bottomnav {
+    position: fixed;
+    bottom: 0;
+    height: 8vh;
+    width: 100vw;
+    background-color: #162633;
+    padding: 0;
+    margin: 0;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5vh;
+    background-color: #066DAF;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .leftcontainer,
+  .rightcontainer {
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .bell,
+  .help {
+    max-height: 3vh;
+    margin-left: 2vw;
+    margin-top: 1vh;
+    align-self: center;
+    padding: 0 2vw;
+  }
+  .eye{
+    max-height: 2vh;
+    margin-top: 1vh;
+    align-self: center;
+  
+  }
+  
+  .logoutContainer {
+    max-height: 3vh;
+    margin-left: 0vw;
+    align-self: center;
+    margin-right: 5vw;
+    border: 1.5px solid #ffffff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logoutText {
+    margin: 0;
+    padding: 1.5vw 4vw;
+    color: #ffffff;
+    text-align: center;
+    font-size: 10px;
+  }
+    
+  .alertbody {
+      padding: 1vw 4vw;
+      background-color: #066DAF;
+  }
+    
+  .textheader {
+      font-family: 'Lato';
+      font-weight: 700;
+      color: white;
+      font-size: 22px;
+      padding: 0;
+      margin: 2vh 0vw 1vh 0vw;
+    }
+    
+  .textbody {
+      font-family: 'Lato';
+      font-weight: normal;
+      color: white;
+      font-size: 15px;
+      padding: 0 20px;
+      margin: 0;
+      
+      text-align: left;
+  }
+  
+  .textbodyftd {
+    font-family: 'Lato';
+    font-weight: normal;
+    color: white;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+  }
+  .homeheader{
+    margin: 0;
+    padding: 0;
+    background-color: #066DAF;
+  }  
+ 
+    
+    .containertwo {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 3vw;
+      height: 10vw;
+      background-color: white;
+      margin-left: 5vw;
+  
+    }
+    
+    .text {
+      font-family: 'Lato';
+      font-size: 20px;
+      font-weight: bold;
+      color: #444444;
+      padding-right: 2vw;
+    }
+    
+    .setting {
+      object-fit: contain;
+      max-height: 2vh;
+    }
+    
+    .containerthree {
+      background-color: white;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    
+    
+    .iconcontainer {
+      align-items: center;
+      justify-content: center;
+      width: 20vw;
+    }
+    
+    .icons {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      padding-bottom: 1.5vw;
+    }
+    
+  .shortcut {
+    flex-shrink: 1;
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #444444;
+    padding: 0;
+    margin: 0;
+  }
+  .containerfour {
+    background-color: #EFEFEF;
+    padding: 3vw 0vw;
+    margin: 2vw 0 0 0;
+  }
+  
+  /* .recenttransaction {
+    width: 100vw;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .recenttransactiontext {
+    font-family: 'Lato';
+    font-size: 18px;
+    color: #444444;
+    font-weight: bold;
+    margin:4vw 5vw;
+  } */
+  
+  .expand {
+    object-fit: contain;
+    padding: 0vw 5vw;
+    width: 2.5vw;
+  }

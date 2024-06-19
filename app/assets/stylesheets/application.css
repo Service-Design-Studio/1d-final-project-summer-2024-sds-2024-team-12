@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+<<<<<<< Updated upstream
  */
+=======
+ *= require transactions
+ */
+
+@import "bootstrap";
+@import "slick-carousel/slick/slick";
+
+>>>>>>> Stashed changes
