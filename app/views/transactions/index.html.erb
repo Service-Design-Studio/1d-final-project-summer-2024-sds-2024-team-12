@@ -25,9 +25,13 @@
     <div class="popup" id="popup">
       <div class="popup-content">
         <span class="close" id="closePopup">&times;</span>
-        <p>Additional details about the suggestion...</p>
+        <p class='textheader'> Suggestion: </p>
+        <p>Based on your past transactions, we noticed that you sent money to 
+          <% names = @frequent_transactions.pluck(:name).join(', ') %>
+          <%= names %>
+        frequently in the past month. Do you want to set up monthly recurring payments?</p>
         <div class="buttons">
-          <%= link_to "Schedule Payment", '#', class: 'scheduleButton', id: 'scheduleButton' %>
+          <%= link_to "Schedule Payment", new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
           <%= link_to "Make a Quick Shortcut", '#', class: 'shortcutButton', id: 'shortcutButton' %>
         </div>
       </div>
@@ -72,3 +76,5 @@
     </table>
   </div>
 </div>
+
+
