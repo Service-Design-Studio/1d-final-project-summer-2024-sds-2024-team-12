@@ -1,5 +1,6 @@
 /* app/assets/stylesheets/transactions.css */
 
+
 * {
   margin: 0;
   padding: 0;
@@ -333,7 +334,7 @@
       padding: 1vw 4vw;
       background-color: #066DAF;
   }
-
+    
   .textheader {
       font-family: 'Lato';
       font-weight: 700;

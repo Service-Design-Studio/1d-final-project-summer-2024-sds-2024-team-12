@@ -36,24 +36,19 @@
             </button>
           </div>
 
-          <!-- Popup for more details -->
-          <div class="popup" id="popup">
-            <div class="popup-content">
-              <span class="close" id="closePopup">&times;</span>
-              <p class='textheader'> Suggestion: </p>
-              <p>Based on your past transactions, we noticed that you sent money to 
-                <% names = @frequent_transactions.pluck(:name).join(', ') %>
-                <%= names %>
-              frequently in the past month. Do you want to set up monthly recurring payments?</p>
-              <div class="buttons">
-                <% if @frequent_transactions.any? %>
-                  <% transaction = @frequent_transactions.first %> <!-- Assuming you want to use the first transaction for the link -->
-                  <%= link_to "Schedule Payment", new_scheduled_transaction_path(name: transaction.name, amount: transaction.amount), class: 'scheduleButton', id: 'scheduleButton' %>
-                <% end %>
-                <%= link_to "Make a Quick Shortcut", '#', class: 'shortcutButton', id: 'shortcutButton' %>
-              </div>
-            </div>
-          </div>
+    <!-- Popup for more details -->
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close" id="closePopup">&times;</span>
+        <p class='textheader'> Suggestion: </p>
+        <p>Based on your past transactions, we noticed that you sent money to 
+          <% names = @frequent_transactions.pluck(:name).join(', ') %>
+          <%= names %>
+        frequently in the past month. Do you want to set up monthly recurring payments?</p>
+        <div class="buttons">
+          <%= link_to "Schedule Payment", new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
+          <%= link_to "Make a Quick Shortcut", new_shortcut_button_path , class: 'shortcutButton', id: 'shortcutButton' %>
+
         </div>
       </div>
     <% end %>
@@ -69,27 +64,28 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-<div class='paynowbutton'>
-  <%= link_to new_transaction_path do %>
-    <div class='iconButtonContainer'>
-      <%= image_tag('paynow.png', alt: 'PayNow Image', class: 'paynowImage') %>
-      <p class='iconButtonText'>PayNow</p>
-    </div>
-  <% end %>
-</div>
-
-<% ShortcutButton.all.each do |button| %>
-  <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
-    <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
-      <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
-    <% end %>
-    <p class='iconButtonText'><%= button.name_of_widget %></p>
-    <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-      <%= form.submit 'Delete', class: 'btn btn-danger' %>
+        
+<div class ='buttons-container'>
+  <div class='paynowbutton'>
+    <%= link_to new_transaction_path do %>
+      <div class='iconButtonContainer'>
+        <%= image_tag('paynow.png', alt: 'PayNow Image', class: 'paynowImage') %>
+        <p class='iconButtonText'>PayNow</p>
+      </div>
     <% end %>
   </div>
-<% end %>
+
+  <% ShortcutButton.all.each do |button| %>
+    <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
+      <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
+        <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+      <% end %>
+      <p class='iconButtonText'><%= button.name_of_widget %></p>
+      <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+        <%= form.submit 'Delete', class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  <% end %>
 
 <div class="transaction-history">
   <h1>Transaction History</h1>

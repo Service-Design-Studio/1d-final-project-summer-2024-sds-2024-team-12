@@ -14,7 +14,10 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-
+    if params[:scheduled_transaction].present?
+      @transaction.name = params[:scheduled_transaction][:name]
+      @transaction.amount = params[:scheduled_transaction][:amount]
+    end
   end
 
   # GET /transactions/1/edit
