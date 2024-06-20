@@ -1,24 +1,19 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <% if @frequent_transactions.any? %>
       <li data-target="#myCarousel" data-slide-to="1"></li>
     <% end %>
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active">
-      <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-      <div class="carousel-caption">
-        <p class="textheader">Welcome to digibank</p>
-        <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
-      </div>
-    </div>
+    
 
     <% if @frequent_transactions.any? %>
-      <div class="item">
+      <div class="item active">
         <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
         <div class="carousel-caption">
           <p class="textheader">Suggestion:</p>
@@ -28,17 +23,27 @@
               <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
             <% end %>
           </ul>
-          <div class='alertbutton'>
+          
             <button class='transparent' id='setupButton'>
               <div class='buttonContainer'>
                 <p class='buttonText'>Set up</p>
               </div>
             </button>
           </div>
-        </div>
+        
       </div>
     <% end %>
-  </div>
+  
+
+  <div class="item">
+
+      <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+      <div class="carousel-caption">
+        <p class="textheader">Welcome to digibank</p>
+        <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
+      </div>
+    </div>
+    </div>
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
