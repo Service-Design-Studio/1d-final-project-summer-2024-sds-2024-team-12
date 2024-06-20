@@ -60,7 +60,8 @@
       </div>
     <% end %>
   </div>
-
+  
+  <% if @frequent_transactions.any? %>
   <% ShortcutButton.all.each do |button| %>
     <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
       <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
@@ -71,6 +72,7 @@
         <%= form.submit 'Delete', class: 'btn btn-danger' %>
       <% end %>
     </div>
+  <% end %>
   <% end %>
 </div>
 
@@ -100,6 +102,7 @@
 
 <!-- Popup for more details -->
 <div class="popup" id="popup">
+  <% if @frequent_transactions.any? %>
   <div class="popup-content">
     <span class="close" id="closePopup">&times;</span>
     <p class='textheader'>Suggestion:</p>
@@ -112,4 +115,5 @@
       <%= link_to "Make a Quick Shortcut", new_shortcut_button_path, class: 'shortcutButton', id: 'shortcutButton' %>
     </div>
   </div>
+  <% end %>
 </div>
