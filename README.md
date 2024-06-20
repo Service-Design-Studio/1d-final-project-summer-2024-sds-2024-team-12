@@ -100,7 +100,7 @@ root 'home#index'
 ### Cucumber Test cases
 
   ```sh
-Auto-pompt   Feature: Auto-prompt through app suggestions   
+Auto-prompt Feature: Auto-prompt through app suggestions   
 As a mother with a daughter I want to schedule payment to my daughter
 So that I can promptly send money to her monthly 
 
