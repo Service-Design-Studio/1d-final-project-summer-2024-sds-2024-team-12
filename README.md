@@ -102,7 +102,7 @@ root 'home#index'
   ```sh
 Auto-prompt Feature: Auto-prompt through app suggestions   
 As a mother with a daughter I want to schedule payment to my daughter
-So that I can promptly send money to her monthly 
+So that I can promptly send money to her weekly 
 
 Scenario 1: User makes a Paynow payment (successful, happy)
 Given I am on the home page on the DBS Digibank app
@@ -129,7 +129,7 @@ in a carousel form
 Scenario 4: User accepts the suggestion from the Auto Prompt Suggestions Carousel
 Given I am on the home page on the DBS Digibank app
 When I follow the ‘Set up’ button
-Then I should see a pop up suggesting to me to either create a smart shortcut widget to my ‘Pay and Transfer’ page 
+Then I should see a pop up suggesting to me to either create a payment shortcut widget 
 or just go straight to schedule payments
 
 
@@ -171,7 +171,7 @@ When I press the cross button
 Then I should see the pop up disappear 
 
 Sad scenario 4: User wants to remove widget
-Given I am on the Pay and Transfer page on the DBS Digibank app
+Given I am on the home page on the DBS Digibank app
 When I press the delete button
 Then I should see my widget being deleted
 
