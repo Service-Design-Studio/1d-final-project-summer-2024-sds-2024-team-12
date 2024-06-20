@@ -111,7 +111,7 @@
       <%= names %>
     frequently in the past month. Do you want to set up monthly recurring payments?</p>
     <div class="buttons">
-      <%= link_to "Schedule Payment", new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
+      <%= link_to "Schedule Payment", new_scheduled_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
       <%= link_to "Make a Quick Shortcut", new_shortcut_button_path, class: 'shortcutButton', id: 'shortcutButton' %>
     </div>
   </div>
