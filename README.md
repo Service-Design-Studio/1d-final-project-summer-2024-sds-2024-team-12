@@ -109,7 +109,7 @@ Given I am on the home page on the DBS Digibank app
 When I want to send pocket money to my daughter
 Then I should see a Paynow icon
 When I press the Paynow button
-Then I should see a new transaction page When I fill in the name text box with my daughter's name
+Then I should see a new transaction page where I fill in the name text box with my daughter's name
 And I fill in the transaction amount 
 When I submit by pressing ‘Transfer Now’
 Then I should see that the transaction I made has been successfully created
