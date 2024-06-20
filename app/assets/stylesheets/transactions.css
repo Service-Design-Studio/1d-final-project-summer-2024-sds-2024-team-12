@@ -78,7 +78,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 10000;
     justify-content: center;
     align-items: center;
   }
@@ -208,8 +208,8 @@
 .carousel {
   width: 100%;
   max-width: 100%;
-  height: 400px; /* Adjust the height as needed */
-  overflow: hidden;
+  height: 300px; /* Adjust the height as needed */
+  overflow: clip;
 }
 
 /* Ensure the images fit within the carousel container */
@@ -222,8 +222,8 @@
 /* Center the captions and adjust their styling */
 .carousel-caption {
   position: absolute;
-  top: 50%; /* Position from the top */
-  left: 50%; /* Position from the left */
+  top: 40%; /* Position from the top */
+  left: 30%; /* Position from the left */
   transform: translate(-50%, -50%); /* Center the caption horizontally and vertically */
   text-align: left;
   padding: 20px; /* Padding around text */
