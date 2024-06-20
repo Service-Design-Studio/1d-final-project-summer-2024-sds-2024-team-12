@@ -1,4 +1,4 @@
-
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 <%= form_with(model: @transaction, local: true) do |form| %>
   <% if @transaction.errors.any? %>
     <div id="error_explanation">
@@ -12,39 +12,46 @@
     </div>
   <% end %>
 
-  <div class="myaccount">
-    <div class="circle-icon">
-    <!-- Replace with your icon or SVG -->
-      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+  <div class="myaccount-container">
+    <div class="myaccount">
+      <div class="circle-icon">
+        <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+      </div>
+      <div class="myaccounttext">
+        <p style= "font-weight: 530; color:#505050; ">My Account</p>
+        <p style="font-size: 15px; font-weight: bold; padding-top: 5px; color:#a8abb0; ">271xxxxxxx0</p>
+      </div>
     </div>
-    <div class="myaccounttext">
-      <p>My Account</p>
-      <p>271xxxxxxx0</p>
+
+    <div class="arrow-and-line-container">
+      <div class="arrow-gif-container">
+        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+      </div>
+      <div class="horizontal-line"></div>
+    </div>
+
+
+    <div class="myaccount">
+      <div class="circle-icon">
+        <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+      </div>
+      <div class="recipienttext">
+        <%= form.text_field :name %>
+      </div>
     </div>
   </div>
 
-  <div class="myaccount">
-    <div class="circle-icon">
-    <!-- Replace with your icon or SVG -->
-      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
-    </div>
-    <div class="myaccounttext">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-  </div>
+  <div class="whitespace"></div>
 
   <div class="moneybody">
-    <div className='left'>
-      <p class="amtin">AMOUNT in</p>
+    <div class='left'>
+      <p class="amtin">Amount in</p>
       <p class="currency">SGD</p>
     </div>
-    <div className='right'>
+    <div class='right'>
       <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
     </div>
   </div>
-
-
 
   <div class="field">
     <%= form.label :next_payment_date %>
