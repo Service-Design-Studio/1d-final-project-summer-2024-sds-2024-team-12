@@ -14,7 +14,8 @@
  *= require_self
 
  *= require transactions
-
+ *= require scheduled_transactions
+ *= require shortcutbutton
  */
 
 

@@ -1,23 +1,47 @@
-<%= form_with(model: transaction) do |form| %>
-  <% if transaction.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+<%= form_with(model: @transaction, local: true) do |form| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
       <ul>
-        <% transaction.errors.full_messages.each do |message| %>
+        <% @transaction.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="myaccount">
+    <div class="circle-icon">
+    <!-- Replace with your icon or SVG -->
+      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+    </div>
+    <div class="myaccounttext">
+      <p>My Account</p>
+      <p>271xxxxxxx0</p>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.number_field :amount, step: "0.01" %>
+  <div class="myaccount">
+    <div class="circle-icon">
+    <!-- Replace with your icon or SVG -->
+      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+    </div>
+    <div class="myaccounttext">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+  </div>
+
+  <div class="moneybody">
+    <div className='left'>
+      <p class="amtin">AMOUNT in</p>
+      <p class="currency">SGD</p>
+    </div>
+    <div className='right'>
+      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00', step: "0.01" %>
+    </div>
   </div>
 
   <div>
