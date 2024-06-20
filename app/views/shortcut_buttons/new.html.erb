@@ -1,0 +1,14 @@
+
+<p>Widget icon:
+<%= image_tag('shortcutbutton.png', alt: 'ShortCut Image', class: 'shortcutImage') %>
+</p>
+
+<%= form_with(model: @shortcut_button, url: shortcut_buttons_path, method: :post) do |form| %>
+    <div class="field">
+      <%= form.label :name_of_widget %>
+      <%= form.text_field :name_of_widget, class: 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Create Shortcut Button', class: 'btn btn-primary' %>
+    </div>
+<% end %>

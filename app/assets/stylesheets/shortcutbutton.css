@@ -1,0 +1,26 @@
+.shortcut-button {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+  }
+  
+.shortcut-button img {
+    width: 100px;  /* Adjust the size as needed */
+    height: auto;
+    display: block;
+  }
+  
+.shortcut-button p {
+    margin: 0;
+    padding-top: 5px;
+  }
+
+.shortcut-button .btn-danger {
+    margin-top: 10px;
+}
+  
+.shortcutImage {
+  width: 100px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+

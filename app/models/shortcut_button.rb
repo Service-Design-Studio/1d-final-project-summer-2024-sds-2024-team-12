@@ -1,0 +1,2 @@
+class ShortcutButton < ApplicationRecord
+end

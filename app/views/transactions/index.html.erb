@@ -54,6 +54,22 @@
 </div>
 
 
+  <% ShortcutButton.all.each do |button| %>
+    <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
+      <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
+        <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+      <% end %>
+      <p class='iconButtonText'><%= button.name_of_widget %></p>
+      
+      <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+        <%= form.submit 'Delete', class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+
 <div class="transaction-history">
   <h1>Transaction History</h1>
 
