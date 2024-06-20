@@ -115,19 +115,19 @@ When I submit by pressing ‘Transfer Now’
 Then I should see that the transaction I made has been successfully created
 
 Scenario 2: User wants to view their past transaction history 
-Given I am on the home page on the DBS Digibank app
+Given I am on the home page on the Digibank app
 When I made a transaction
 Then I should see it updated under my Transaction history
 And I am able to see the transaction details for each transfer
 
 Scenario 3: User views the Auto Prompt Suggestions Carousel
-Given I am on the home page on the DBS Digibank app
+Given I am on the home page 
 When I try to make more weekly transactions to my daughter
 Then I should see a ‘schedule payment’ suggestions at the top of the page
 in a carousel form 
 
 Scenario 4: User accepts the suggestion from the Auto Prompt Suggestions Carousel
-Given I am on the home page on the DBS Digibank app
+Given I am on the home page 
 When I follow the ‘Set up’ button
 Then I should see a pop up suggesting to me to either create a payment shortcut widget 
 or just go straight to schedule payments
@@ -171,7 +171,7 @@ When I press the cross button
 Then I should see the pop up disappear 
 
 Sad scenario 4: User wants to remove widget
-Given I am on the home page on the DBS Digibank app
+Given I am on the home page 
 When I press the delete button
 Then I should see my widget being deleted
 
