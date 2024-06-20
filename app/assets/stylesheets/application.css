@@ -12,8 +12,17 @@
  *
  *= require_tree .
  *= require_self
+
  *= require transactions
+ *= require scheduled_transactions
+ *= require shortcutbutton
  */
+
+
+@import "bootstrap";
+@import "slick-carousel/slick/slick";
+
+
 /* Example media queries for responsiveness */
 
 @import url('//fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
