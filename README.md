@@ -97,3 +97,76 @@ root 'home#index'
 ```
 
 ---
+### Cucumber Test cases
+
+  ```sh
+Auto-pompt   Feature: Auto-prompt through app suggestions   
+As a mother with a daughter I want to schedule payment to my daughter
+So that I can promptly send money to her monthly 
+
+Scenario 1: User makes a Paynow payment (successful, happy)
+Given I am on the Pay and Transfer page on the DBS Digibank app
+When I want to send pocket money to my daughter
+Then I should see a Paynow icon
+When I follow the Paynow button
+Then I should see a new transaction page When I fill in the name text box with my name
+And I fill in the amount 
+And submit by pressing ‘Transfer Now’
+Then I should see that the transaction I made has been successfully created
+
+Scenario 2: User wants to view their past transaction history 
+Given I am on the Pay and Transfer page on the DBS Digibank app
+When I made a transaction
+Then I should see it updated under my Transaction history
+And I am able to see the transaction details for each transfer
+
+Scenario 3: User views the Auto Prompt Suggestions Carousel
+Given I am on the Pay and Transfer page on the DBS Digibank app
+When I try to make another monthly transaction to my daughter
+Then I should see a ‘schedule payment’ suggestions at the top of the page
+in a carousel form 
+
+Scenario 4: User accepts the suggestion from the Auto Prompt Suggestions Carousel
+Given I am on the Pay and Transfer page on the DBS Digibank app
+When I follow the ‘Set up’ button
+Then I should see a pop up suggesting to me to either create a smart shortcut widget to my ‘Pay and Transfer’ page 
+or just go straight to the schedule payments
+ 
+Scenario 5: User chooses the smart shortcut Given I chooses the smart shortcut option
+When I follow the ‘Make quick shortcut’ button
+Then the user should see a form to enter shortcut widget name and the icon of the widget 
+And create the widget on my ‘Pay and Transfer’ app
+
+Scenario 6: User chooses to schedule payment straight Given I choose to just schedule payment straight
+When I follow the ‘Schedule payment’ button
+Then I should see a page to fill in the name of my daughter
+And choose the date I want to schedule to her
+
+Scenario 7: Users unable to put invalid name
+Given I am on the ‘New Transactions’ page
+When I fill in the name of the recipient that is not a string
+Then I should see an input error 
+And prompts me to change it  And does not allow me transfer money
+
+Scenario 8: Users unable to put negative amounts
+Given I am on the ‘New Transactions’ page
+When I fill a negative amount
+Then I should see an input error 
+And prompts me to change the amount to a non negative number 
+And does not allow me transfer money
+
+Scenario 9: User chooses neither
+Given I don’t want to heed the suggestion When I follow the cross button
+Then I should see the pop up disappear 
+
+Scenario 10: User wants to see other suggestions in the carousel
+Given I am on the Pay and Transfer page on the DBS Digibank app
+When I press the arrow buttons on the carousel 
+Then I should see the content in the carousel changing
+
+Scenario 12: User wants to remove widget
+Given I am on the Pay and Transfer page on the DBS Digibank app
+When I press the delete button
+Then I should see my widget being deleted
+
+  ```
