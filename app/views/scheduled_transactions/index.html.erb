@@ -1,0 +1,21 @@
+<!-- app/views/scheduled_transactions/index.html.erb -->
+
+<div class='container'>
+  <h1>Scheduled Transactions</h1>
+
+  <div class="scheduled-transactions">
+    <% @scheduled_transactions.each do |transaction| %>
+      <div class="transaction-card">
+        <h3><%= transaction.name %></h3>
+        <div class='alertbody'>
+          <p><%= number_to_currency(transaction.amount) %></p>
+        </div>
+        <p>Next payment: <%= transaction.next_payment_date %></p>
+        <%= link_to "Edit", edit_scheduled_transaction_path(transaction) %>
+        <%= link_to "Delete", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" } %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "New Scheduled Transaction", new_scheduled_transaction_path %>
+</div>

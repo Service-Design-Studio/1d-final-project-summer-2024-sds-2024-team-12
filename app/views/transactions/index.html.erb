@@ -1,3 +1,4 @@
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -24,20 +25,43 @@
       <div>
       <p class="textheader"> Suggestion: </p>
       <p class="textbody"> Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
+
       <ul>
         <% @frequent_transactions.each do |transaction| %>
           <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
         <% end %>
       </ul>
 
-      <div class="buttons">
-        <%= link_to "Schedule Payment", '#', class: 'scheduleButton', id: 'scheduleButton' %>
-        <%= link_to "Make a Quick Shortcut", '#', class: 'shortcutButton', id: 'shortcutButton' %>
+    <div class='alertbutton'>
+      <button class='transparent' id='setupButton'>
+        <div class='buttonContainer'>
+          <p class='buttonText'>Set up</p>
+        </div>
+      </button>
+    </div>
+
+    <!-- Popup for more details -->
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close" id="closePopup">&times;</span>
+        <p class='textheader'> Suggestion: </p>
+        <p>Based on your past transactions, we noticed that you sent money to 
+          <% names = @frequent_transactions.pluck(:name).join(', ') %>
+          <%= names %>
+        frequently in the past month. Do you want to set up monthly recurring payments?</p>
+        <div class="buttons">
+          <% if @frequent_transactions.any? %>
+            <% transaction = @frequent_transactions.first %> <!-- Assuming you want to use the first transaction for the link -->
+            <%= link_to "Schedule Payment", new_scheduled_transaction_path(name: transaction.name, amount: transaction.amount), class: 'scheduleButton', id: 'scheduleButton' %>
+          <% end %>
+          <%= link_to "Make a Quick Shortcut", '#', class: 'shortcutButton', id: 'shortcutButton' %>
+        </div>
       </div>
     </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
+</div>
+
+  
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -60,6 +84,21 @@
   <% end %>
 </div>
 
+
+
+  <% ShortcutButton.all.each do |button| %>
+    <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
+      <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
+        <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+      <% end %>
+      <p class='iconButtonText'><%= button.name_of_widget %></p>
+      
+      <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+        <%= form.submit 'Delete', class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 
 <div class="transaction-history">

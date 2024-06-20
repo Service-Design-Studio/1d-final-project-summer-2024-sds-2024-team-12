@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: 'Lato';
+  }
+
+
+    
+  /*Scheduled transaction*/
+  .scheduledtopbar {
+    color:#19252e;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    position: sticky;
+    justify-content: flex-start;
+    display:flex;
+    border-bottom: 1px solid black;
+  }
+
+  .body-content {
+    padding-top: 10px;
+    border: none;
+  }
+
+  .topbartext {
+    font-size: 16px; /* Adjust font size */
+    flex: 1; /* Take remaining space */
+    margin-left: 20px; /* Margin between back button and text */
+    white-space: nowrap;
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333; /* Adjust color */
+    margin-right: 10px; /* Adjust color as needed */
+  }
+  
+  .back-icon {
+    fill: currentColor;
+  }
+
+  
+
+  @media (max-width: 768px) {
+    .topbartext {
+      font-size: 20px; /* Adjust font size for smaller screens */
+    }
+  
+    .back-button {
+      margin-left: 10px; /* Adjust margin for smaller screens */
+    }
+  }
+
+  .myaccount {
+    display: flex;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    align-items: center; /* Center items vertically */
+  }
+  
+  .circle-icon {
+    width: 40px; /* Adjust size of the circle */
+    height: 40px;
+    border-radius: 50%; /* Ensure it's circular */
+    border-style: solid; /* Background color of the circle */
+    border-width: 1px; 
+    border-color: #888888c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Spacing between circle and text */
+  }
+  
+  .myaccounttext {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-bottom: 1px solid ;
+    border-color: #888888c6;
+    position: relative;
+    
+  }
+
+  .myaccounttext::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Adjust the distance of the border from the text */
+    width: 100%; /* Extend the border across the entire width */
+    border-bottom: 1px solid ;
+    border-color: #888888c6; /* Border style, color, and thickness */
+  }
+  
+
+  .moneybody {
+    background-color: #162633;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+  } 
+
+  .nextbutton input[type="submit"] {
+    background-color: #ff3234;
+    color: white;
+    margin-top: auto; 
+    text-align: center;
+    border: none; /* No border */
+    padding: 15px 30px; /* Padding for the button */
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 500;
+    width: 90%;
+    padding-left: 10px;
+    padding-right:10px;
+  }
+
+  .amount-section {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .amount-label {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .left{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: transparent;
+    margin: 4vh 0 0 0;
+    padding-left: 5vw;
+  }
+  
+  .amtin{
+    color: #C3CCD3;
+    font-size: 13px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .currency{
+    color: #C3CCD3;
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 600;
+    background-color: transparent;
+    margin: 0.5vh 0 2.5vh 0;
+  }
+
+  .right{
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+    margin-right: 5vw;
+  }
+  
+  .amount-input {
+    width: 100%;
+  }
+  
+  .amount-field {
+    width: 50%; /* Adjust width as needed */
+    padding: 10px;
+    font-size: 18px;
+    background-color: #1c2834;
+    color: #aeb8c4; 
+  }
+  
+  .amount-field::placeholder {
+    color: #aeb8c4;
+  }
+  

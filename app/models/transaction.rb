@@ -1,4 +1,5 @@
 class Transaction < ApplicationRecord
+
     validates :name, presence: true
     validates :amount, numericality: { greater_than: 0 }
     validate :amount_must_have_two_decimal_places
@@ -10,4 +11,5 @@ class Transaction < ApplicationRecord
       errors.add(:amount, "must have at most two decimal places")
     end
   end
+
 end

@@ -12,13 +12,14 @@
  *
  *= require_tree .
  *= require_self
-<<<<<<< Updated upstream
- */
-=======
+
  *= require transactions
- */
+
 
 @import "bootstrap";
 @import "slick-carousel/slick/slick";
 
->>>>>>> Stashed changes
+
+/* Example media queries for responsiveness */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+

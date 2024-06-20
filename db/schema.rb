@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_19_073604) do
+
+ActiveRecord::Schema[7.0].define(version: 2024_06_20_020549) do
+  create_table "shortcut_buttons", force: :cascade do |t|
+    t.string "name_of_widget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
