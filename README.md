@@ -105,65 +105,72 @@ As a mother with a daughter I want to schedule payment to my daughter
 So that I can promptly send money to her monthly 
 
 Scenario 1: User makes a Paynow payment (successful, happy)
-Given I am on the Pay and Transfer page on the DBS Digibank app
+Given I am on the home page on the DBS Digibank app
 When I want to send pocket money to my daughter
 Then I should see a Paynow icon
 When I press the Paynow button
 Then I should see a new transaction page When I fill in the name text box with my daughter's name
-And I fill in the amount 
-And submit by pressing ‘Transfer Now’
+And I fill in the transaction amount 
+When I submit by pressing ‘Transfer Now’
 Then I should see that the transaction I made has been successfully created
 
 Scenario 2: User wants to view their past transaction history 
-Given I am on the Pay and Transfer page on the DBS Digibank app
+Given I am on the home page on the DBS Digibank app
 When I made a transaction
 Then I should see it updated under my Transaction history
 And I am able to see the transaction details for each transfer
 
 Scenario 3: User views the Auto Prompt Suggestions Carousel
-Given I am on the Pay and Transfer page on the DBS Digibank app
+Given I am on the home page on the DBS Digibank app
 When I try to make more weekly transactions to my daughter
 Then I should see a ‘schedule payment’ suggestions at the top of the page
 in a carousel form 
 
 Scenario 4: User accepts the suggestion from the Auto Prompt Suggestions Carousel
-Given I am on the Pay and Transfer page on the DBS Digibank app
+Given I am on the home page on the DBS Digibank app
 When I follow the ‘Set up’ button
 Then I should see a pop up suggesting to me to either create a smart shortcut widget to my ‘Pay and Transfer’ page 
-or just go straight to the schedule payments
- 
-Scenario 5: User chooses the smart shortcut Given I chooses the smart shortcut option
-When I follow the ‘Make quick shortcut’ button
-Then I should see a form to enter shortcut widget name and the icon of the widget 
-And create the widget on my ‘Pay and Transfer’ app
-When I tap on the widget, it should lead me to a prefilled pay and transfer page
+or just go straight to schedule payments
 
-Scenario 6: User chooses to schedule payment straight
-Given I choose to just schedule payment straight
+
+Scenario 5: User chooses to schedule payment option
+Given I choose to just schedule payment 
 When I follow the ‘Schedule payment’ button
 Then I should see a page to fill in the name of my daughter and transfer amount
-And choose the date I want to schedule to her
+And choose the date I want to schedule payment to her
+
+ 
+Scenario 6: User chooses the smart shortcut option
+Given that I pick the smart shortcut option
+When I follow the ‘Make quick shortcut’ button
+Then I should see a form to enter shortcut widget name and the icon of the widget 
+And create the widget which would be placed on my home page
+When I tap on the widget, it should lead me to a prefilled pay and transfer page
 
 
 
 
-Sad scenario 1: Users unable to put negative amounts
+
+
+
+Sad scenario 1: Users unable to leave name blank
 Given I am on the ‘New Transactions’ page
-When I fill a negative amount
+When I do not fill in the name of recipient
 Then I should see an input error 
-And prompts me to change the amount to a non negative number 
-And does not allow me transfer money
+And I am not allowed to transfer money until I fill in a name  
 
-Sad scenario 2: User chooses neither
-Given I don’t want to heed the suggestion When I follow the cross button
+Sad scenario 2: Users unable to put negative transfer amount
+Given I am on the ‘New Transactions’ page
+When I fill in a negative transfer amount
+Then I should see an input error 
+And I am not allowed to transfer money until I input a positive value
+
+Sad scenario 3: User chooses neither
+Given I don’t want to heed the suggestion
+When I press the cross button
 Then I should see the pop up disappear 
 
-Sad scenario 3: User wants to see other suggestions in the carousel
-Given I am on the Pay and Transfer page on the DBS Digibank app
-When I press the arrow buttons on the carousel 
-Then I should see the content in the carousel changing
-
-Sad scenario 5: User wants to remove widget
+Sad scenario 4: User wants to remove widget
 Given I am on the Pay and Transfer page on the DBS Digibank app
 When I press the delete button
 Then I should see my widget being deleted
