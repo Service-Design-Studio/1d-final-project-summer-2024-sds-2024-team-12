@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2024_06_20_020549) do
   create_table "shortcut_buttons", force: :cascade do |t|
     t.string "name_of_widget"

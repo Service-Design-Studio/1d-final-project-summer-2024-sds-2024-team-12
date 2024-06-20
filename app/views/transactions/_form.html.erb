@@ -4,8 +4,13 @@
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
 
       <ul>
+
+        <% transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+
         <% transaction.errors.each do |error| %>
           <li><%= error.full_message %></li>
+
         <% end %>
       </ul>
     </div>
@@ -18,10 +23,17 @@
 
   <div>
     <%= form.label :amount, style: "display: block" %>
+    <%= form.number_field :amount , step: "0.01"%>
+  </div>
+
+  <div>
+    <%= form.submit "TRANSFER NOW"%>
+
     <%= form.text_field :amount %>
   </div>
 
   <div>
     <%= form.submit %>
+
   </div>
 <% end %>
