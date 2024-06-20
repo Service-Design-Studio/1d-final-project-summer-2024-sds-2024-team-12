@@ -35,7 +35,7 @@
             <% transaction = @frequent_transactions.first %> <!-- Assuming you want to use the first transaction for the link -->
             <%= link_to "Schedule Payment", new_scheduled_transaction_path(name: transaction.name, amount: transaction.amount), class: 'scheduleButton', id: 'scheduleButton' %>
           <% end %>
-          <%= link_to "Make a Quick Shortcut", '#', class: 'shortcutButton', id: 'shortcutButton' %>
+          <%= link_to "Make a Quick Shortcut", "#" , class: 'shortcutButton', id: 'shortcutButton' %>
         </div>
       </div>
     </div>
