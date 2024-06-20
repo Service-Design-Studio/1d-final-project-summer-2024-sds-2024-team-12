@@ -1,0 +1,58 @@
+<!-- app/views/scheduled_transactions/_form.html.erb -->
+
+<%= form_with(model: @transaction, local: true) do |form| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% @transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="myaccount">
+    <div class="circle-icon">
+    <!-- Replace with your icon or SVG -->
+      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+    </div>
+    <div class="myaccounttext">
+      <p>My Account</p>
+      <p>271xxxxxxx0</p>
+    </div>
+  </div>
+
+  <div class="myaccount">
+    <div class="circle-icon">
+    <!-- Replace with your icon or SVG -->
+      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+    </div>
+    <div class="myaccounttext">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+  </div>
+
+  <div class="moneybody">
+    <div className='left'>
+      <p class="amtin">AMOUNT in</p>
+      <p class="currency">SGD</p>
+    </div>
+    <div className='right'>
+      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
+    </div>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :next_payment_date %>
+    <%= form.date_field :next_payment_date %>
+  </div>
+
+  <div class="nextbutton">
+    <%= form.submit "SAVE" %>
+  </div>
+<% end %>

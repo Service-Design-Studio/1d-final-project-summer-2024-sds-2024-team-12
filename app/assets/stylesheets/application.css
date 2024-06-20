@@ -14,3 +14,6 @@
  *= require_self
  *= require transactions
  */
+/* Example media queries for responsiveness */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
