@@ -32,7 +32,7 @@
         frequently in the past month. Do you want to set up monthly recurring payments?</p>
         <div class="buttons">
           <%= link_to "Schedule Payment", new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
-          <%= link_to "Make a Quick Shortcut", '#', class: 'shortcutButton', id: 'shortcutButton' %>
+          <%= link_to "Make a Quick Shortcut", new_shortcut_button_path , class: 'shortcutButton', id: 'shortcutButton' %>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
 
 
   
-
+<div class ='buttons-container'>
   <div class='paynowbutton'>
   <%= link_to new_transaction_path do %>
     <div class='iconButtonContainer'>
@@ -50,6 +50,22 @@
     </div>
   <% end %>
 </div>
+
+
+  <% ShortcutButton.all.each do |button| %>
+    <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
+      <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
+        <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+      <% end %>
+      <p class='iconButtonText'><%= button.name_of_widget %></p>
+      
+      <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+        <%= form.submit 'Delete', class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 
 
 <div class="transaction-history">
