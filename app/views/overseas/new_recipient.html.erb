@@ -1,0 +1,23 @@
+<h1>Recipient's Details for <%= @country %></h1>
+
+<%= form_with url: overseas_transfer_create_recipient_path, method: :post do %>
+  <div>
+    <%= label_tag :country, "Selected Country" %>
+    <%= text_field_tag :country, @country, readonly: true %>
+  </div>
+  <div>
+    <%= label_tag :account_details, "Recipient's Account Details" %>
+    <%= text_field_tag :account_details %>
+  </div>
+  <div>
+    <%= label_tag :full_name, "Recipient's Full Name" %>
+    <%= text_field_tag :full_name %>
+  </div>
+  <div>
+    <%= label_tag :registered_address, "Recipient's Registered Address" %>
+    <%= text_field_tag :registered_address %>
+  </div>
+  <div>
+    <%= submit_tag "NEXT" %>
+  </div>
+<% end %>

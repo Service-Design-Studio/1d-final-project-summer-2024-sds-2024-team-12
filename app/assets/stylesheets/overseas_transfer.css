@@ -1,0 +1,49 @@
+/* app/assets/stylesheets/overseas_transfer.css */
+.tabs {
+    margin: 20px 0;
+}
+  
+.tab-list {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.tab-list .tab {
+    display: inline;
+    margin-right: 10px;
+}
+  
+.tab-list .tab a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f0f0f0;
+}
+  
+.tab-content .tab-pane {
+    display: none;
+}
+  
+.tab-content .tab-pane.active {
+    display: block;
+}
+  
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+  
+.button:hover {
+    background-color: #0056b3;
+}
+  
+.confirmation {
+    text-align: center;
+    margin-top: 20px;
+}
+  

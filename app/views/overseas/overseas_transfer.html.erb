@@ -1,0 +1,22 @@
+<h1>Overseas Transfer</h1>
+
+<div class="tabs-container">
+  <ul class="tab-list">
+    <li class="tab"><%= link_to 'Recipients', overseas_transfer_select_location_path %></li>
+    <li class="tab"><%= link_to 'Recent', '#' %></li>
+    <li class="tab"><%= link_to 'Recurring', '#' %></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div id="recipients" class="tab-pane">
+      <%= link_to 'ADD RECIPIENT NOW', overseas_transfer_select_location_path, class: 'button' %>
+      Content for Recipients
+    </div>
+    <div id="recent" class="tab-pane">Content for Recent</div>
+    <div id="recurring" class="tab-pane">Content for Recurring</div>
+  </div>
+</div>
+
+
+
+

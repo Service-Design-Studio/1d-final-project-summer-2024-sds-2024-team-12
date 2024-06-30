@@ -65,6 +65,15 @@
       </div>
     <% end %>
   </div>
+
+  <div class='paynowbutton'>
+    <%= link_to overseas_transfer_path do %>
+      <div class='iconButtonContainer'>
+        <%= image_tag('overseas.png', alt: 'PayNow Image', class: 'paynowImage') %>
+        <p class='iconButtonText'>Overseas Transactions</p>
+      </div>
+    <% end %>
+  </div>
   
   <% if @frequent_transactions.any? %>
   <% ShortcutButton.all.each do |button| %>
