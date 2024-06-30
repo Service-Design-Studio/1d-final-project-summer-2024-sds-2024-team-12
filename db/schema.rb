@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_20_020549) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_30_100757) do
+  create_table "recipients", force: :cascade do |t|
+    t.string "country"
+    t.string "account_details"
+    t.string "full_name"
+    t.string "registered_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shortcut_buttons", force: :cascade do |t|
     t.string "name_of_widget"
     t.datetime "created_at", null: false

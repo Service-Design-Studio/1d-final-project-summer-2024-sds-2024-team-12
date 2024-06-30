@@ -12,11 +12,12 @@ class OverseasController < ApplicationController
   
     def create_recipient
       # Handle form submission and save recipient details
-      recipient = Recipient.new(recipient_params)
-      if recipient.save
+      @recipient = Recipient.new(recipient_params)
+      if @recipient.save
         redirect_to overseas_transfer_confirmation_path
       else
-        render :new_recipient
+        # Handle errors or validation failures
+        render :new_recipient # Render the new recipient form again with errors
       end
     end
   
@@ -29,7 +30,7 @@ class OverseasController < ApplicationController
     private
   
     def recipient_params
-      params.require(:account_details, :full_name, :registered_address, :country)
+      params.permit(:country, :account_details, :full_name, :registered_address)
     end
   end
   
