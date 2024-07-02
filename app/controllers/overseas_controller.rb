@@ -1,5 +1,6 @@
 class OverseasController < ApplicationController
     def overseas_transfer
+      @recipients = Recipient.all
     end
   
     def select_location

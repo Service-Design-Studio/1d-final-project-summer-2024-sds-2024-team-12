@@ -1,49 +1,64 @@
-/* app/assets/stylesheets/overseas_transfer.css */
-.tabs {
-    margin: 20px 0;
+.notification-banner {
+  background-color: lightgreen;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
 }
-  
+
+.tabs-container {
+  margin: 20px 0;
+}
+
 .tab-list {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
 }
-  
+
 .tab-list .tab {
-    display: inline;
-    margin-right: 10px;
+  flex: 1;
+  text-align: center;
 }
-  
+
 .tab-list .tab a {
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #f0f0f0;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
 }
-  
-.tab-content .tab-pane {
-    display: none;
+
+.tab-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
-  
-.tab-content .tab-pane.active {
-    display: block;
+
+.recipient-entry {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
-  
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+
+.recipient-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 10px;
 }
-  
-.button:hover {
-    background-color: #0056b3;
+
+.button.primary-button {
+  display: block;
+  width: auto;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 20px;
 }
-  
-.confirmation {
-    text-align: center;
-    margin-top: 20px;
-}
-  
