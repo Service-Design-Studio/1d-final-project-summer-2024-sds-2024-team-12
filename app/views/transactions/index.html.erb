@@ -126,15 +126,16 @@
                 </div>
               <% end %>
             </button>
-            
-              <div class='overseasbutton'>
-                <%= link_to overseas_transfer_path do %>
-                  <div class='iconButtonContainer'>
-                    <%= image_tag('overseas.png', alt: 'Overseas Image', class: 'overseasImage') %>
-                    <p class='iconButtonText'>Overseas Transactions</p>
-                  </div>
-                <% end %>
-              </div>
+
+            <button id="overseasbutton" class="transparent">
+              <%= link_to overseas_transfer_path do %>
+                <div class="iconcontainer">
+                  <%= image_tag("/assets/overseas.png", alt: 'Overseas Image', class: "icons") %>
+                  <p class="shortcut">Overseas</p>
+                  <p class="shortcut">Transactions</p>
+                </div>
+              <% end %>
+            </button>
 
 
             <button id="transfermoney" class="transparent">
@@ -191,6 +192,8 @@
             </button>
           </div>
         </div>
+        
+        
 
         <div class="containerfour">
           <button id="transaction" class="transparent">

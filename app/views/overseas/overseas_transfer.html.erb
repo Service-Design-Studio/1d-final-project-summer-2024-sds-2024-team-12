@@ -6,15 +6,15 @@
   Tap to check FX rates now.
 </div>
 
-<div class="tabs-container">
-  <ul class="tab-list">
-    <li class="tab active"><%= link_to 'Recipients', '#recipients', class: 'tab-link' %></li>
-    <li class="tab"><%= link_to 'Recent', '#recent', class: 'tab-link' %></li>
-    <li class="tab"><%= link_to 'Recurring', '#recurring', class: 'tab-link' %></li>
+<div class="tabos-container">
+  <ul class="tabos-list">
+    <li class="tabos active"><%= link_to 'Recipients', '#recipients', class: 'tabos-link' %></li>
+    <li class="tabos"><%= link_to 'Recent', '#recent', class: 'tabos-link' %></li>
+    <li class="tabos"><%= link_to 'Recurring', '#recurring', class: 'tabos-link' %></li>
   </ul>
   
-  <div class="tab-content">
-    <div id="recipients" class="tab-pane active">
+  <div class="tabos-content">
+    <div id="recipients" class="tabos-pane active">
       <%= link_to 'Add Overseas Recipient', overseas_transfer_select_location_path, class: 'button primary-button' %>
       <% if @recipients.any? %>
         <% @recipients.each do |recipient| %>
@@ -28,7 +28,6 @@
         <p>Add a recipient to transfer to 49 locations at no fees, same-day transfer.</p>
       <% end %>
     </div>
-    <div id="recent" class="tab-pane">Content for Recent</div>
-    <div id="recurring" class="tab-pane">Content for Recurring</div>
+  
   </div>
 </div>

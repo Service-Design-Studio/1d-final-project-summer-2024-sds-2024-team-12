@@ -5,11 +5,11 @@
   margin-bottom: 20px;
 }
 
-.tabs-container {
+.tabos-container {
   margin: 20px 0;
 }
 
-.tab-list {
+.tabos-list {
   list-style-type: none;
   display: flex;
   margin: 0;
@@ -17,19 +17,19 @@
   background: #f0f0f0;
 }
 
-.tab-list .tab {
+.tabos-list .tabos {
   flex: 1;
   text-align: center;
 }
 
-.tab-list .tab a {
+.tabos-list .tabos a {
   display: block;
   padding: 10px;
   text-decoration: none;
   color: black;
 }
 
-.tab-content {
+.tabos-content {
   padding: 20px;
   border: 1px solid #ccc;
   border-top: none;
