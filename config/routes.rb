@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   get 'scheduled_transactions/new'
   post 'scheduled_transactions/create'
-
-  resources :transactions
+  get 'pay_and_transfer_page/index'
+  get 'paynow/index'
   resources :shortcut_buttons, only: [:new, :create, :destroy ]
   resources :scheduled_transactions, only: [:new, :create,]
+  resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+
 
   get 'overseas_transfer', to: 'overseas#overseas_transfer'
   get 'overseas_transfer/select_location', to: 'overseas#select_location'
@@ -20,3 +23,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "transactions#index"
 end
+
+

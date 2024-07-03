@@ -1,118 +1,329 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% if @frequent_transactions.any? %>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-    <% end %>
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    
-  </ol>
+<html lang="en" class="wf-lato-n4-active wf-inter-n4-active wf-active">
+<head>
+  <style id="react-native-stylesheet"></style>
+  <meta charset="utf-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Web site created using create-react-app">
+  <link rel="apple-touch-icon" href="/logo192.png">
+  <link rel="manifest" href="/manifest.json">
+  <title>ACCOUNTS</title>
+  <%# <script defer="" src="/static/js/bundle.js"></script> %>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="" style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="container">
+      <div class="scrollable">
+        <div class="homeheader">
+          <div class="header">
+            <div class="leftcontainer">
+              <button class="transparent">
+                <img src="/assets/bellwhite.png" alt="bell" class="bell">
+              </button>
+              <button class="transparent">
+                <img src="/assets/eye.png" class="eye">
+              </button>
+            </div>
+            <div class="rightcontainer">
+              <button class="transparent">
+                <img src="/assets/help.png" class="help">
+              </button>
+              <button id="logoutButton" class="transparent">
+                <div class="logoutContainer">
+                  <p class="logoutText">LOG OUT</p>
+                </div>
+              </button>
+            </div>
+          </div>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <% if @frequent_transactions.any? %>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+              <% end %>
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            </ol>
 
-    <% if @frequent_transactions.any? %>
-      <div class="item">
-        <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-        <div class="carousel-caption">
-          <p class="textheader">Suggestion:</p>
-          <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
-          <ul>
-            <% @frequent_transactions.each do |transaction| %>
-              <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <% if @frequent_transactions.any? %>
+                <div class="item">
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
+                    <ul class="textbody">
+                      <% @frequent_transactions.each do |transaction| %>
+                        <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
+                      <% end %>
+                    </ul>
+                    <button class="transparent" id="setupButton">
+                      <div class="buttonContainer">
+                        <p class="buttonText">Set up</p>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              <% end %>
+
+              <div class="item active">
+                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                <div class="carousel-caption">
+                  <p class="textheader">Welcome to digibank</p>
+                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="containertwo">
+          <p class="text">Smart Shortcuts</p>
+          <img src="/assets/settings.png" class="setting">
+        </div>
+        <div class="containerthree">
+          <div class="&quot;scrollview">
+
+            <% if @frequent_transactions.any? %>
+              <% ShortcutButton.all.each do |button| %>
+
+
+            <div class="shortcut-button">
+                <button id="shortcut-button_<%= button.id %>" class="transparent">
+              <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
+                <div class="iconcontainer">
+                  <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+                  <p class="shortcut"><%= button.name_of_widget %></p>
+                  <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+                    <%= form.submit 'Delete', class: 'btn btn-danger' %>
+                  <% end %>
+                </div>
+              <% end %>
+            </button>
+            </div>
+
+
+              <% end %>
             <% end %>
-          </ul>
-          
-            <button class='transparent' id='setupButton'>
-              <div class='buttonContainer'>
-                <p class='buttonText'>Set up</p>
+
+            <button id="paynowbutton" class="transparent">
+              <%= link_to new_transaction_path do %>
+                <div class="iconcontainer">
+                  <%= image_tag("/assets/paynow.png", alt: 'PayNow Image', class: "icons") %>
+                  <p class="shortcut">PayNow</p>
+                </div>
+              <% end %>
+            </button>
+            
+              <div class='overseasbutton'>
+                <%= link_to overseas_transfer_path do %>
+                  <div class='iconButtonContainer'>
+                    <%= image_tag('overseas.png', alt: 'Overseas Image', class: 'overseasImage') %>
+                    <p class='iconButtonText'>Overseas Transactions</p>
+                  </div>
+                <% end %>
+              </div>
+
+
+            <button id="transfermoney" class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/local_transfer.png" class="icons">
+                <p class="shortcut">Transfer Money</p>
+              </div>
+            </button>
+            <button id="scanpay" class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/scan&amp;pay.png" class="icons">
+                <p class="shortcut">Scan &amp; Pay</p>
+              </div>
+            </button>
+            <button class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/transaction_history.png" class="icons">
+                <p class="shortcut">Transaction</p>
+                <p class="shortcut">History</p>
+              </div>
+            </button>
+            <button class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/local_transfer_limit.png" class="icons">
+                <p class="shortcut">Local Transfer</p>
+                <p class="shortcut">Limit</p>
+              </div>
+            </button>
+            <button class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/livebetter.png" class="icons">
+                <p class="shortcut">Live Better</p>
+              </div>
+            </button>
+            <button class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/bill.png" class="icons">
+                <p class="shortcut">Bills</p>
+              </div>
+            </button>
+            <button class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/setpeekbalance.png" class="icons">
+                <p class="shortcut">Set Peek</p>
+                <p class="shortcut">Balance</p>
+              </div>
+            </button>
+            <button class="transparent">
+              <div class="iconcontainer">
+                <img src="/assets/scheduletransfer.png" class="icons">
+                <p class="shortcut">Transfers</p>
+                <p class="shortcut">Scheduled</p>
               </div>
             </button>
           </div>
+        </div>
+
+        <div class="containerfour">
+          <button id="transaction" class="transparent">
+            <div class="recenttransaction">
+              <p class="recenttransactiontext">Recent Transactions</p>
+              <img src="/assets/expand.png" class="expand">
+            </div>
+          </button>
+        </div>
+
+      <div class="bottomnav">
+        <div class="bottomtabnavigatorcontainer">
+          <button class="transparent">
+            <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
+            <p class="navtextselected">Home</p>
+          </button>
+          <button class="transparent">
+            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <p class="navtext">Invest</p>
+          </button>
+          <a href="/pay_and_transfer_page/index">
+            <button class="transparent">
+              <img src="/assets/pay&amp;transfer_bottom.png" alt="pay" class="navicon">
+              <p class="navtext">Pay &amp; Transfer</p>
+            </button>
+          </a>
+          <button class="transparent">
+            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <p class="navtext">Plan</p>
+          </button>
+          <button class="transparent">
+            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <p class="navtext">More</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="tab-container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab" onclick="showTab('accounts')">ACCOUNTS</div>
+            <div class="tab" onclick="showTab('insights')">INSIGHTS</div>
+        </div>
+
+        <!-- Content for Accounts tab -->
+        <div id="tab-accounts" class="tab-content active">
+            <div class="css-view-175oi2r r-flex-13awgt0 r-overflow-1udh08x" style="width: 430px; background-color: rgb(242, 242, 242);">
+                <!-- Your ACCOUNTS content goes here -->
+                <div class="header1">
+                    <div class="blueline"></div>
+                    <p class="text">Your Net Worth</p>
+                    <img src="/assets/expand.png" class="expand2">
+                </div>
+                <div class="container2">
+                    <div class="value">Value</div>
+                    <div class="textcontainer">
+                        <p class="sgd">SGD</p>
+                        <p class="money">29891.00</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <button class="buttontransparent">
+                    <div>
+                        <div class="header1">
+                            <div class="yellowline"></div>
+                            <p class="text">Deposits</p>
+                            <img src="/assets/expand.png" class="expandrotated2">
+                        </div>
+                        <div class="container2">
+                            <div class="value">Balance</div>
+                            <p class="money">29891.00</p>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content for Insights tab -->
+        <div id="tab-insights" class="tab-content">
+            <!-- Your INSIGHTS content goes here -->
+            <div class="css-view-175oi2r r-flex-13awgt0 r-overflow-1udh08x" style="width: 430px; background-color: rgb(242, 242, 242);">
+                <div class="insightscontainer">
+                    <div class="rectangle">
+                        <p class="date2">14 JUN</p>
+                        <p class="title">Review your budget</p>
+                        <p class="body">You've maintained your monthly spending average.</p>
+                    </div>
+                    <div class="rectangle">
+                        <p class="date2">14 JUN</p>
+                        <p class="title">Resolve unexpected transactions quickly!</p>
+                        <p class="body">Here are some tips for you.</p>
+                    </div>
+                    <div class="rectangle">
+                        <p class="date2">14 JUN</p>
+                        <p class="title">Was this deposit expected?</p>
+                        <p class="body">You don't often receive money from this source.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
         
-      </div>
-    <% end %>
-  
+      </div
 
-  <div class="item active">
-
-      <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-      <div class="carousel-caption">
-        <p class="textheader">Welcome to digibank</p>
-        <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
-      </div>
     </div>
-    </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<div class='buttons-container'>
-  <div class='paynowbutton'>
-    <%= link_to new_transaction_path do %>
-      <div class='iconButtonContainer'>
-        <%= image_tag('paynow.png', alt: 'PayNow Image', class: 'paynowImage') %>
-        <p class='iconButtonText'>PayNow</p>
-      </div>
-    <% end %>
   </div>
 
-  <div class='overseasbutton'>
-    <%= link_to overseas_transfer_path do %>
-      <div class='iconButtonContainer'>
-        <%= image_tag('overseas.png', alt: 'Overseas Image', class: 'overseasImage') %>
-        <p class='iconButtonText'>Overseas Transactions</p>
-      </div>
-    <% end %>
-  </div>
-  
-  <% if @frequent_transactions.any? %>
-  <% ShortcutButton.all.each do |button| %>
-    <div class="shortcut-button" id="shortcut_button_<%= button.id %>">
-      <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
-        <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
-      <% end %>
-      <p class='iconButtonText'><%= button.name_of_widget %></p>
-      <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-        <%= form.submit 'Delete', class: 'btn btn-danger' %>
-      <% end %>
-    </div>
-  <% end %>
-  <% end %>
-</div>
+  <!-- Inline JavaScript for tab switching -->
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
 
-<div class="transaction-history">
-  <h1>Transaction History</h1>
-  <div class="recenttransaction">
-    <table class="transactions-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @transactions.each do |transaction| %>
-          <tr>
-            <td><%= transaction.name %></td>
-            <td><%= number_to_currency(transaction.amount, unit: "SGD -", precision: 2) %></td>
-            <td><%= link_to "Show", transaction %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+            // Deactivate all tabs
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            // Show the selected tab content
+            document.getElementById("tab-" + tabName).style.display = "block";
+
+            // Activate the selected tab
+            document.querySelector(".tab[data-tab='" + tabName + "']").classList.add("active");
+        }
+    </script>
+
 
 <!-- Popup for more details -->
 <div class="popup" id="popup">
@@ -131,3 +342,6 @@
   </div>
   <% end %>
 </div>
+
+</body>
+</html>

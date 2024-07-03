@@ -1,8 +1,7 @@
 class Transaction < ApplicationRecord
-
-    validates :name, presence: true
-    validates :amount, numericality: { greater_than: 0 }
-    validate :amount_must_have_two_decimal_places
+  validates :name, presence: true
+  validates :amount, numericality: { greater_than: 0 }
+  validate :amount_must_have_two_decimal_places
 
   private
 
@@ -12,4 +11,9 @@ class Transaction < ApplicationRecord
     end
   end
 
+  def self.recurring_transactions(threshold = 3)
+    group(:name, :amount)
+      .having('COUNT(*) >= ?', threshold)
+      .pluck(:name, :amount)
+  end
 end
