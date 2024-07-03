@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :scheduled_transactions, only: [:new, :create]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
-  resources :cardlimit, only: [:new, :paynow] 
+  resources :cardlimit, only: [:new, :paynow, :adjusting] 
 
     
   get '/cardlimit/paynow', to: 'cardlimit#paynow', as: 'cardlimit_paynow'
