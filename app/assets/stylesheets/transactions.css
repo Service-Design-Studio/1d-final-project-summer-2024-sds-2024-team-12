@@ -220,12 +220,18 @@ code {
     max-height: 2vh;
   }
   
+
+  .paynowImage, .overseasImage {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+
   .containerthree {
     background-color: white;
     overflow-x: auto;
     white-space: nowrap;
     display: flex; /* Make container flex */
     justify-content: flex-start; /* Align items to the start */
+
   }
   
   .iconcontainer {

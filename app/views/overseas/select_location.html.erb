@@ -1,0 +1,7 @@
+<h1>Select Location</h1>
+
+<ul>
+  <% @countries.each do |country| %>
+    <li><%= link_to country, overseas_transfer_new_recipient_path(country: country) %></li>
+  <% end %>
+</ul>

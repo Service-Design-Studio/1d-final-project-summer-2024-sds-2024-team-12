@@ -126,8 +126,16 @@
                 </div>
               <% end %>
             </button>
-
             
+              <div class='overseasbutton'>
+                <%= link_to overseas_transfer_path do %>
+                  <div class='iconButtonContainer'>
+                    <%= image_tag('overseas.png', alt: 'Overseas Image', class: 'overseasImage') %>
+                    <p class='iconButtonText'>Overseas Transactions</p>
+                  </div>
+                <% end %>
+              </div>
+
 
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
@@ -286,10 +294,10 @@
         </div>
     </div>
 
+     
         
+      </div
 
-        
-      </div>
     </div>
   </div>
 
