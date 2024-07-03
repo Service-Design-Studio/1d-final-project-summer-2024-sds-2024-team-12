@@ -1,21 +1,19 @@
 class ScheduledTransactionsController < ApplicationController
-  def new
-    @transaction = Transaction.new(name: params[:name], amount: params[:amount])
-  end
-
   def create
-    @transaction = Transaction.new(transaction_params)
+    @scheduled_transaction = ScheduledTransaction.new(scheduled_transaction_params)
 
-    if @transaction.save
-      redirect_to scheduled_transactions_path, notice: "Scheduled transaction was successfully created."
+    if @scheduled_transaction.save
+      # Handle successful save, e.g., redirect to a success page
+      redirect_to @scheduled_transaction, notice: 'Scheduled transaction was successfully created.'
     else
+      # Handle validation errors or other failure cases
       render :new
     end
   end
 
   private
 
-  def transaction_params
-    params.require(:transaction).permit(:name, :amount)
+  def scheduled_transaction_params
+    params.require(:scheduled_transaction).permit(:amount, :name)
   end
 end

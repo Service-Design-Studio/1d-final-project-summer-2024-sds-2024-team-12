@@ -1,0 +1,175 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notification {
+    background-color: #f44336;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: left; /* Align items vertically centered */
+}
+
+.search-bar input {
+    width: 100%; /* Adjust as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+main {
+    padding: 20px;
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.iconButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 22%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.iconButtonContainer img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.iconImage {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.iconButtonText {
+    font-size: 14px;
+    color: #333;
+}
+
+.recipients {
+    margin-top: 20px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: 2px solid #f44336;
+}
+
+.add-recipient {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.recipient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.recipient-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.tag {
+    background-color: #ff5252;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.info-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #757575;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    color: #f44336;
+}

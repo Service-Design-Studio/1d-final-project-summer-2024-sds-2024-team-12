@@ -255,20 +255,155 @@
     margin-top:20px;
   }
 
-/*--------------------------------------------Below Might not be useful-------------------------------------------*/
-.container {
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    
+  
+  
+  .container {
+    background-color: white;
+    width: 375px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
   }
-  .scrollable {
-    overflow-y: scroll;
+  
+  header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f0f0f0;
+    position: relative;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+  }
+  
+  h1 {
+    font-size: 18px;
     margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    
+    width: 100%;
+    text-align: center;
   }
+  
+  .account-info {
+    padding: 15px;
+  }
+  
+  .account {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .account-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .account-details {
+    flex-grow: 1;
+  }
+  
+  .account-name,
+  .account-number,
+  .account-balance {
+    display: block;
+  }
+  
+  .arrow-and-line-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .arrow-gif-container {
+    width: 50px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .horizontal-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ddd;
+  }
+  
+  .recipient {
+    display: flex;
+    align-items: center;
+  }
+  
+  .recipient-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .recipient-details {
+    flex-grow: 1;
+  }
+  
+  .amount-info {
+    padding: 15px;
+  }
+  
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #002147;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .amount .left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .amount .currency {
+    font-weight: bold;
+  }
+  
+  .amount-field {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    text-align: right;
+    width: 100%;
+    max-width: 100px;
+  }
+  
+  .terms {
+    padding: 15px;
+    font-size: 12px;
+  }
+  
+  .terms a {
+    text-decoration: none;
+    color: #0066cc;
+  }
+  
+  .next-button {
+    display: block;
+    width: calc(100% - 30px);
+    margin: 15px auto;
+    padding: 10px;
+    background-color: #002147;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
   .bottomnav {
     position: fixed;
     bottom: 0;
@@ -278,204 +413,49 @@
     padding: 0;
     margin: 0;
   }
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 5vh;
-    background-color: #066DAF;
-    margin: 0;
-    padding: 0;
-  }
   
-  .leftcontainer,
-  .rightcontainer {
-    display: flex;
-    align-items: center;
-  }
-  
-
-  .bell,
-  .help {
-    max-height: 3vh;
-    margin-left: 2vw;
-    margin-top: 1vh;
-    align-self: center;
-    padding: 0 2vw;
-  }
-  .eye{
-    max-height: 2vh;
-    margin-top: 1vh;
-    align-self: center;
-  
-  }
-  
-  .logoutContainer {
-    max-height: 3vh;
-    margin-left: 0vw;
-    align-self: center;
-    margin-right: 5vw;
-    border: 1.5px solid #ffffff;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logoutText {
-    margin: 0;
-    padding: 1.5vw 4vw;
-    color: #ffffff;
-    text-align: center;
-    font-size: 10px;
-  }
-    
-  .alertbody {
-      padding: 1vw 4vw;
-      background-color: #066DAF;
-  }
-    
-  .textheader {
-      font-family: 'Lato';
-      font-weight: 700;
-      color: white;
-      font-size: 22px;
-      padding: 0;
-      margin: 2vh 0vw 1vh 0vw;
-    }
-
-  .textheaderftd1 {
-    font-family: 'Lato';
-    font-weight: 700;
-    color: white;
-    font-size: 30px;
-    padding: 0;
-    margin: 2vh 0vw 1vh 0vw;
-  }
-  .textheaderftd2 {
-    font-family: 'Lato';
-    font-weight: 700;
-    color: #FFEB85;
-    font-size: 24px;
-    padding: 0;
-    margin: 0 0vw 1vh 0vw;
-  }
-
-    
-  .textbody {
-      font-family: 'Lato';
-      font-weight: normal;
-      color: white;
-      font-size: 15px;
-
-      padding: 0 20px;
-      margin: 0;
-      
-      text-align: left;
-
-      padding: 0;
-      margin: 0;
-
-  }
-  
-  .textbodyftd {
-    font-family: 'Lato';
-    font-weight: normal;
-    color: white;
-    font-size: 14px;
-    padding: 0;
-    margin: 0;
-  }
-  .homeheader{
-    margin: 0;
-    padding: 0;
-    background-color: #066DAF;
-  }  
- 
-    
-    .containertwo {
+  .bottomtabnavigatorcontainer {
+      width: 100vw;
+      overflow-x: hidden;
       display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: 3vw;
-      height: 10vw;
-      background-color: white;
-      margin-left: 5vw;
-  
+      justify-content: space-around;
+      align-content: center;
+      padding: 0;
+      margin: 0;
+      background-color: #162633;
     }
-    
-    .text {
-      font-family: 'Lato';
-      font-size: 20px;
+  
+    .transparent {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .navicon {
+      height: 3.5vh;
+      padding: 0;
+      margin: 1vh 0 0 0;
+    }
+  
+  
+    .navtext {
+      font-family: Lato;
+      font-size: 11px;
       font-weight: bold;
-      color: #444444;
-      padding-right: 2vw;
+      padding: 0;
+      margin: 0;
+      color: #96A5B0;
+      text-align: center;
     }
     
-    .setting {
-      object-fit: contain;
-      max-height: 2vh;
+    .navtextselected {
+      font-family: Lato;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+      color: white;
+      text-align: center;
     }
-    
-    .containerthree {
-      background-color: white;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-    
-    
-    .iconcontainer {
-      align-items: center;
-      justify-content: center;
-      width: 20vw;
-    }
-    
-    .icons {
-      width: 70%;
-      height: 70%;
-      object-fit: contain;
-      padding-bottom: 1.5vw;
-    }
-    
-  .shortcut {
-    flex-shrink: 1;
-    font-family: 'Lato';
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    color: #444444;
-    padding: 0;
-    margin: 0;
-  }
-  .containerfour {
-    background-color: #EFEFEF;
-    padding: 3vw 0vw;
-    margin: 2vw 0 0 0;
-  }
   
-  /* .recenttransaction {
-    width: 100vw;
-    height: 7vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .recenttransactiontext {
-    font-family: 'Lato';
-    font-size: 18px;
-    color: #444444;
-    font-weight: bold;
-    margin:4vw 5vw;
-  } */
-  
-  .expand {
-    object-fit: contain;
-    padding: 0vw 5vw;
-    width: 2.5vw;
-  }
+/*--------------------------------------------Below Might not be useful-------------------------------------------*/

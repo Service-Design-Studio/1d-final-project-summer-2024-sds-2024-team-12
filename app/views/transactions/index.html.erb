@@ -13,7 +13,7 @@
     
 
     <% if @frequent_transactions.any? %>
-      <div class="item active">
+      <div class="item">
         <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
         <div class="carousel-caption">
           <p class="textheader">Suggestion:</p>
@@ -35,7 +35,7 @@
     <% end %>
   
 
-  <div class="item">
+  <div class="item active">
 
       <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
       <div class="carousel-caption">
@@ -56,15 +56,6 @@
   </a>
 </div>
 
-<div class='buttons-container'>
-  <div class='paynowbutton'>
-    <%= link_to new_transaction_path do %>
-      <div class='iconButtonContainer'>
-        <%= image_tag('paynow.png', alt: 'PayNow Image', class: 'paynowImage') %>
-        <p class='iconButtonText'>PayNow</p>
-      </div>
-    <% end %>
-  </div>
   
   <% if @frequent_transactions.any? %>
   <% ShortcutButton.all.each do |button| %>
@@ -105,6 +96,7 @@
   </div>
 </div>
 
+
 <!-- Popup for more details -->
 <div class="popup" id="popup">
   <% if @frequent_transactions.any? %>
@@ -122,3 +114,32 @@
   </div>
   <% end %>
 </div>
+
+<div class="bottomnav">
+  <div class="bottomtabnavigatorcontainer">
+    <button class="transparent">
+      <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
+      <p class="navtextselected">Home</p>
+    </button>
+    <button class="transparent">
+      <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+      <p class="navtext">Invest</p>
+    </button>
+    <a href="/pay_and_transfer_page/index">
+      <button class="transparent">
+        <img src="/assets/pay&amp;transfer_bottom.png" alt="pay" class="navicon">
+        <p class="navtext">Pay &amp; Transfer</p>
+      </button>
+    </a>
+    <button class="transparent">
+      <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+      <p class="navtext">Plan</p>
+    </button>
+    <button class="transparent">
+      <img src="/assets/more_bottom.png" alt="more" class="navicon">
+      <p class="navtext">More</p>
+    </button>
+  </div>
+</div>
+
+

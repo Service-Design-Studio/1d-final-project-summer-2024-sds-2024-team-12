@@ -1,50 +1,73 @@
+<%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path) do |form| %>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
-<%= form_with(model: @transaction, local: true) do |form| %>
-  <% if @transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+  <div class="container">
+    <header>
+      <button class="back-button">&larr;</button>
+      <h1>PayNow to Mobile</h1>
+    </header>
 
-      <ul>
-        <% @transaction.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <main>
+      <div class="account-info">
+        <div class="account">
+          <span class="account-icon">
+            <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+          </span>
+          <div class="account-details">
+            <span class="account-name">DBS Multiplier Account</span>
+            <span class="account-number">271xxxxxxx0</span>
+          </div>
+          <span class="account-balance">SGD 1,776.35</span>
+        </div>
 
-  <div class="myaccount">
-    <div class="circle-icon">
-    <!-- Replace with your icon or SVG -->
-      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
-    </div>
-    <div class="myaccounttext">
-      <p>My Account</p>
-      <p>271xxxxxxx0</p>
-    </div>
-  </div>
+        <div class="arrow-and-line-container">
+          <div class="arrow-gif-container">
+            <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+          </div>
+          <div class="horizontal-line"></div>
+        </div>
 
-  <div class="myaccount">
-    <div class="circle-icon">
-    <!-- Replace with your icon or SVG -->
-      <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
-    </div>
-    <div class="myaccounttext">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-  </div>
+        <div class="recipient">
+          <span class="recipient-icon">
+            <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+          </span>
+          <div class="recipient-details">
+            <span class="recipient-name">Calvin</span>
+            <span class="recipient-number">271xxxxxxx0</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="moneybody">
-    <div className='left'>
-      <p class="amtin">AMOUNT in</p>
-      <p class="currency">SGD</p>
-    </div>
-    <div className='right'>
-      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00', step: "0.01" %>
-    </div>
-  </div>
+      <div class="amount-info">
+        <div class="amount">
+          <div class="left">
+            <span>Amount in</span>
+            <span class="currency">SGD</span>
+          </div>
+          <div class="right">
+            <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00', step: "0.01" %>
+          </div>
+        </div>
 
-  <div>
-    <%= form.submit "TRANSFER NOW" %>
+        <div class="limits">
+          <div>Authorised</div>
+          <div>SGD 5,000.00</div>
+          <div>Remaining</div>
+          <div>SGD 4,999.00</div>
+          <a href="#" class="change-limit">Change Limit</a>
+        </div>
+      </div>
+
+      <div class="transfer-details">
+        <%= form.label :comments, "Add comments for recipient" %>
+        <%= form.text_field :comments, value: "PayNow Transfer" %>
+      </div>
+
+      <div class="terms">
+        <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
+      </div>
+
+      <%= form.submit "NEXT", class: 'next-button' %>
+    </main>
   </div>
 <% end %>
