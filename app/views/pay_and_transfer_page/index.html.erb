@@ -107,10 +107,10 @@
     <footer>
         <div class="bottom-nav">
             <div class="bottomtabnavigatorcontainer">
-                <a href="/transactions/index" class="transparent">
+                <%= link_to transactions_path, class: 'transparent' do %>
                     <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
                     <p class="navtextselected">Home</p>
-                </a>
+                <% end %>
                 <button class="transparent">
                     <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
                     <p class="navtext">Invest</p>
