@@ -374,6 +374,7 @@ code {
     padding: 0;
     margin: 0;
   }
+
   
   .sgd {
     font-family: 'Lato';
@@ -3859,3 +3860,4 @@ input:focus {
 .tab-content.active {
     display: block; /* Show only the active tab content */
 }
+

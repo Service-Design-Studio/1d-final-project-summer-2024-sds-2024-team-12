@@ -1,0 +1,42 @@
+.paynow {
+    padding: 20px;
+  }
+  .paynow h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .tab {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+  }
+  .tab.active {
+    background-color: #ffc107;
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .transfer-list {
+    list-style: none;
+    padding: 0;
+  }
+  .transfer-list li {
+    margin-bottom: 10px;
+  }
+  .transfer-list a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+  }
+  
