@@ -1,0 +1,6 @@
+<h1>Welcome to DBS</h1>
+
+<% if @user %>
+    Logged in as: <%= @user.phone %>
+    <%= button_to "Logout", logout_path, method: :delete%>
+<%end%>
