@@ -224,32 +224,36 @@ code {
     background-color: white;
     overflow-x: auto;
     white-space: nowrap;
+    display: flex; /* Make container flex */
+    justify-content: flex-start; /* Align items to the start */
   }
   
-  
   .iconcontainer {
-    align-items: center;
-    justify-content: center;
+    padding-bottom: 20px; /* Optional padding if needed */
+    display: flex; /* Make iconcontainer flex */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items to the start */
     width: 20vw;
   }
   
   .icons {
-    width: 70%;
-    height: 70%;
+    width: 70%; /* Adjust width as needed */
+    height: 70%; /* Adjust height as needed */
     object-fit: contain;
-    padding-bottom: 1.5vw;
+    padding-bottom: 1.5vw; /* Optional padding if needed */
   }
   
-.shortcut {
-  flex-shrink: 1;
-  font-family: 'Lato';
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  color: #444444;
-  padding: 0;
-  margin: 0;
-}
+  .shortcut {
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #444444;
+    margin: 0;
+  }
+  
+  
 .containerfour {
   background-color: #EFEFEF;
   padding: 3vw 0vw;
@@ -3832,5 +3836,26 @@ input:focus {
   .carousel-control.right:hover {
     color: #fff; /* Change color on hover */
   }
-  
 
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-content {
+    display: none; /* Hide all tab contents initially */
+    padding: 0px;
+}
+
+.tab-content.active {
+    display: block; /* Show only the active tab content */
+}
