@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Successfully created account."
+      redirect_to sign_in_path, notice: "Successfully created account."
     else
       flash.now[:alert] = "Failed to create account. Please check the errors below."
       render :new
