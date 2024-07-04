@@ -1,8 +1,11 @@
 class MainController < ApplicationController
     def index
-        if session[:user_id]
-            @user = User.find(session[:user_id])
+        if Current.user
+            redirect_to transactions_path
+        else
+            redirect_to sign_in_path
         end
+
     end
 
 end

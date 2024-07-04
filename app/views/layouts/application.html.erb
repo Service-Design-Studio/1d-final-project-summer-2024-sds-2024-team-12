@@ -19,10 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <% if flash[:notice] %>
+     <% if flash[:notice] %>
     <div class="alert alert-success">
       <%= flash[:notice] %>
     </div>
@@ -31,6 +28,10 @@
       <%= flash[:alert] %>
     </div>
   <% end %>
+  </head>
+
+  <body>
+   
     <%= yield %>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

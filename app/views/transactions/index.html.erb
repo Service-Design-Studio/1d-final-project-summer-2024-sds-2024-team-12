@@ -1,3 +1,8 @@
+<% if Current.user %>
+    Logged in as: <%= Current.user.phone %>
+    <%= button_to "Logout", logout_path, method: :delete%>
+<%end%>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
