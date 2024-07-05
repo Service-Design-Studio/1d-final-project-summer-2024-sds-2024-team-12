@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user.present?
       if user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to root_path, notice: "Logged in successfully"
+        redirect_to root_path
       end
     else
       flash[:alert] = "Invalid Phone Number or Password"
