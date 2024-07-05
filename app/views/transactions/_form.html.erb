@@ -1,73 +1,101 @@
-<%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path) do |form| %>
+<%= form_with(model: @transaction, local: true) do |form| %>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
-  <div class="container">
     <header>
       <%= link_to '←', pay_and_transfer_page_index_path, class: 'back-button' %>
-      <h1>PayNow to Mobile</h1>
+      <h1 class = "paynow-header">PayNow to Mobile</h1>
+      <div class="whitebox"></div>
     </header>
 
-    <main>
-      <div class="account-info">
-        <div class="account">
-          <span class="account-icon">
-            <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
-          </span>
-          <div class="account-details">
-            <span class="account-name">DBS Multiplier Account</span>
-            <span class="account-number">271xxxxxxx0</span>
-          </div>
-          <span class="account-balance">SGD 1,776.35</span>
-        </div>
+  <div class="whitespace" style="background-color: #f1f2f4;"></div>
 
-        <div class="arrow-and-line-container">
-          <div class="arrow-gif-container">
-            <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
-          </div>
-          <div class="horizontal-line"></div>
-        </div>
-
-        <div class="recipient">
-          <span class="recipient-icon">
-            <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
-          </span>
-          <div class="recipient-details">
-            <span class="recipient-name">Calvin</span>
-            <span class="recipient-number">271xxxxxxx0</span>
-          </div>
-        </div>
+  
+  <div class="myaccount-container">
+  <!-- Left container -->
+  <div class="left-container", style="padding-top:12px;">
+    
+    <div class="circle-container">
+      <div class="circle-icon">
+        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
       </div>
-
-      <div class="amount-info">
-        <div class="amount">
-          <div class="left">
-            <span>Amount in</span>
-            <span class="currency">SGD</span>
-          </div>
-          <div class="right">
-            <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00', step: "0.01" %>
-          </div>
-        </div>
-
-        <div class="limits">
-          <div>Authorised</div>
-          <div>SGD 5,000.00</div>
-          <div>Remaining</div>
-          <div>SGD 4,999.00</div>
-          <a href="#" class="change-limit">Change Limit</a>
-        </div>
+    </div>
+      <div class="arrow-gif-container">
+        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
       </div>
-
-      <div class="transfer-details">
-        <%= form.label :comments, "Add comments for recipient" %>
-        <%= form.text_field :comments, value: "PayNow Transfer" %>
+      <div class="circle-container">
+      <div class="circle-icon">
+        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
       </div>
-
-      <div class="terms">
-        <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
       </div>
-
-      <%= form.submit "NEXT", class: 'next-button' %>
-    </main>
+    
+    
   </div>
+
+  <!-- Right container -->
+  <div class="right-container">
+    
+      <div class="myaccounttext">
+        <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
+        <div class="account-number">
+          <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block; padding-right: 150px;">271xxxxxxx0</p>
+          <p class="text-right">Balance</p>
+        </div>
+      </div>
+
+      
+    
+  <div class="horizontal-line"></div>
+   
+      <div class="recipienttext">
+        <%= form.text_field :name, placeholder: 'Recipient Name' %>
+      </div>
+      <!-- Add more fields for mobile etc. -->
+    </div>
+  
+</div>
+
+
+  <div class="whitespace"></div>
+
+  <div class="moneybody">
+    <div class='left'>
+      <p class="amtin">Amount in</p>
+      <p class="currency">SGD</p>
+    </div>
+    <div class='right'>
+      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
+    </div>
+  </div>
+
+<body>
+  <div class="limits">
+  <div class="group">
+    <div class='num-left'>Authorised</div>
+    <div class='num-right'>SGD 5,000.00</div>
+  </div>
+  <div class="group">
+    <div class='num-left', style='padding-bottom:15px;'>Remaining</div>
+    <div class='num-right'>SGD 4,999.00</div>
+  </div>
+    <a href="#" class="change-limit"><u>Change Limit</u></a>
+  </div>
+
+  <p>TRANSFER DETAILS</p>
+
+  <div class="transfer-details">
+    <%= form.label :comments, "Add comments for recipient" %>
+    <%= form.text_field :comments, value: "PayNow Transfer" %>
+  </div>
+
+  <div class="terms">
+    <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
+  </div>
+
+
+    <div class="nextbutton">
+      <%= form.submit "NEXT", id: "next-button" %>
+    </div>
+
+    </div>
 <% end %>
+</body>
