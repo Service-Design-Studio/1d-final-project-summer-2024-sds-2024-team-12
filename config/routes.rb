@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :shortcut_buttons, only: [:new, :create, :destroy ]
   resources :scheduled_transactions, only: [:new, :create,]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  get 'transaction_history', to: 'transactions#history'
+
 
 
 
@@ -32,5 +34,3 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "transactions#index"
 end
-
-

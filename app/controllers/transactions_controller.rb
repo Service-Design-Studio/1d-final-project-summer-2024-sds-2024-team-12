@@ -7,6 +7,11 @@ class TransactionsController < ApplicationController
     @frequent_transactions = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3)
   end
 
+  def history
+    @transactions = Transaction.all
+    @frequent_transactions = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3)
+  end
+
   # GET /transactions/1 or /transactions/1.json
   def show
   end

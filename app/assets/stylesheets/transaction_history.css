@@ -1,0 +1,36 @@
+.transaction-history{
+    background-color: rgb(238, 238, 238);
+}
+.transaction-history-header{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+
+.header1{
+    margin-top: 1px;
+    width: 100%;
+}
+
+.textcontainer1{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.transaction-name {
+    font-family: 'Lato';
+    font-size: 20px;
+    font-weight: bold;
+    color: #444444;
+    padding: 2vw;
+    text-transform: uppercase; /* Convert text to all caps */
+  }
+
+  .transaction-date {
+    padding-left: 5px;
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 10px;
+  }
+  
