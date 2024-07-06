@@ -3719,9 +3719,6 @@ input:focus {
     text-align: center; /* Center text within each tab */
 }
 
-
-
-
 .tab-content {
     display: none; /* Hide all tab contents initially */
     padding: 0px;
@@ -3729,6 +3726,7 @@ input:focus {
 
 .tab-content.active {
     display: block; /* Show only the active tab content */
+    width: 100%;
 }
 
 /*new transaction*/

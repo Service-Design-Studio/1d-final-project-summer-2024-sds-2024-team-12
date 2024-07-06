@@ -1,4 +1,5 @@
-
+<div style="padding:10px">
+  <h1>Create shortcut</h1>
 <p>Widget icon:
 <%= image_tag('shortcutbutton.png', alt: 'ShortCut Image', class: 'shortcutImage') %>
 </p>
@@ -8,7 +9,8 @@
       <%= form.label :name_of_widget %>
       <%= form.text_field :name_of_widget, class: 'form-control' %>
     </div>
-    <div class="actions">
+    <div class="actions" style="margin-top:10px">
       <%= form.submit 'Create Shortcut Button', class: 'btn btn-primary' %>
     </div>
 <% end %>
+</div>
