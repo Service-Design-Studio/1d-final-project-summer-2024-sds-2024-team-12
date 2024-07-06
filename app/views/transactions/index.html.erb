@@ -102,8 +102,9 @@
           <p class="text">Smart Shortcuts</p>
           <img src="/assets/settings.png" class="setting">
         </div>
+        
         <div class="containerthree">
-          <div class="&quot;scrollview">
+          <div class="scrollview">
 
             <% if @frequent_transactions.any? %>
               <% ShortcutButton.all.each do |button| %>
@@ -154,12 +155,14 @@
                 <p class="shortcut">Transfer Money</p>
               </div>
             </button>
+
             <button id="scanpay" class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/scan&amp;pay.png" class="icons">
                 <p class="shortcut">Scan &amp; Pay</p>
               </div>
             </button>
+
             <button class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/transaction_history.png" class="icons">
@@ -167,6 +170,7 @@
                 <p class="shortcut">History</p>
               </div>
             </button>
+
             <button class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/local_transfer_limit.png" class="icons">
@@ -174,18 +178,21 @@
                 <p class="shortcut">Limit</p>
               </div>
             </button>
+
             <button class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/livebetter.png" class="icons">
                 <p class="shortcut">Live Better</p>
               </div>
             </button>
+
             <button class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/bill.png" class="icons">
                 <p class="shortcut">Bills</p>
               </div>
             </button>
+
             <button class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/setpeekbalance.png" class="icons">
@@ -193,6 +200,7 @@
                 <p class="shortcut">Balance</p>
               </div>
             </button>
+
             <button class="transparent">
               <div class="iconcontainer">
                 <img src="/assets/scheduletransfer.png" class="icons">
@@ -200,6 +208,7 @@
                 <p class="shortcut">Scheduled</p>
               </div>
             </button>
+
           </div>
         </div>
         
@@ -213,7 +222,8 @@
             </div>
           </button>
         </div>
-        </scrollable>
+        
+    </scrollable>
 
       <div class="bottomnav">
         <div class="bottomtabnavigatorcontainer">

@@ -799,14 +799,9 @@ input:focus {
   font-weight: 500;
 }
 .scrollview {
-  flex: 1 1;
-  overflow-y: auto;
-  padding: 0;
-  margin: 0;
-  width: 100vw;
-  overflow-x: hidden;
-  margin-bottom: 8vh;
-}
+    display: inline-block;
+    
+  }
 .expand {
   object-fit: contain;
   padding: 0vw 5vw;
@@ -1025,15 +1020,7 @@ input:focus {
     color: #444444;
     text-align: center;
   }
-  .scrollview {
-    flex: 1 1;
-    overflow-y: auto;
-    padding: 0;
-    margin: 0;
-    width: 100vw;
-    overflow-x: hidden;
-    margin-bottom: 8vh;
-  }
+
 
   .date2container {
     background-color: #f6f6f6;
