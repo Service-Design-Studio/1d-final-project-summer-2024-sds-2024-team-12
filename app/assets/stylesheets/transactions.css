@@ -38,6 +38,7 @@ code {
   background-color: #162633;
   padding: 0;
   margin: 0;
+  z-index: 100;
 }
 .header {
   display: flex;

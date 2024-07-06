@@ -31,11 +31,19 @@
               <button class="transparent">
                 <img src="/assets/help.png" class="help">
               </button>
-              <button id="logoutButton" class="transparent">
-                <div class="logoutContainer">
-                  <p class="logoutText">LOG OUT</p>
+
+              <% if Current.user %>
+              <div class="logoutContainer">
+                <button id="logoutButton" class="transparent">
+                  <%= button_to logout_path, method: :delete do %>
+                      <p class="logoutText">LOG OUT</p>
+                  <% end %>
+                </button>
                 </div>
-              </button>
+              <% end %>
+
+
+
             </div>
           </div>
 
@@ -205,6 +213,7 @@
             </div>
           </button>
         </div>
+        </scrollable>
 
       <div class="bottomnav">
         <div class="bottomtabnavigatorcontainer">

@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  belongs_to :user
+
   validates :name, presence: true
   validates :amount, numericality: { greater_than: 0 }
   validate :amount_must_have_two_decimal_places
