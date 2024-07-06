@@ -1,4 +1,3 @@
-/* styles.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -41,18 +40,18 @@ main {
 }
 
 .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
+
 
 .iconButtonContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 22%;
-    margin-bottom: 20px;
     text-align: center;
+    padding: 10px;
+    
 }
 
 .iconButtonContainer img {
@@ -150,26 +149,26 @@ main {
     cursor: pointer;
 }
 
-.bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+.bottomnav {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-}
+    height: 8vh;
+    width: 100vw;
+    background-color: #2290eb;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+  }
 
-.nav-btn {
-    background: none;
-    border: none;
-    font-size: 14px;
-    color: #757575;
-    cursor: pointer;
-}
-
-.nav-btn.active {
-    color: #f44336;
-}
+  .bottomtabnavigatorcontainer {
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: #162633;
+  }
+  
