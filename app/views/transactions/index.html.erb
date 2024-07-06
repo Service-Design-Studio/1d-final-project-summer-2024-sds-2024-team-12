@@ -34,12 +34,10 @@
 
               <% if Current.user %>
               <div class="logoutContainer">
-                <button id="logoutButton" class="transparent">
-                  <%= button_to logout_path, method: :delete do %>
-                      <p class="logoutText">LOG OUT</p>
-                  <% end %>
-                </button>
-                </div>
+                <%= button_to logout_path, method: :delete, class: "transparent" do %>
+                  <p class="logoutText">LOG OUT</p>
+                <% end %>
+              </div>
               <% end %>
 
 
@@ -50,10 +48,10 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
               <% if @frequent_transactions.any? %>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
               <% end %>
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             </ol>
 
             <!-- Wrapper for slides -->
@@ -106,27 +104,20 @@
         <div class="containerthree">
           <div class="scrollview">
 
-            <% if @frequent_transactions.any? %>
+           <% if @frequent_transactions.any? %>
               <% ShortcutButton.all.each do |button| %>
-
-
-            <div class="shortcut-button">
-                <button id="shortcut-button_<%= button.id %>" class="transparent">
-              <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
-                <div class="iconcontainer">
-                  <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
-                  <p class="shortcut"><%= button.name_of_widget %></p>
-                  <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-                    <%= form.submit 'Delete', class: 'btn btn-danger' %>
-                  <% end %>
+                <div class="shortcut-button">
+                  <div class="iconcontainer">
+                    <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
+                      <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+                      <p class="shortcut"><%= button.name_of_widget %></p>
+                    <% end %>
+                    <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+                      <%= form.submit 'Delete', class: 'btn btn-danger' %>
+                    <% end %>
+                  </div>
                 </div>
               <% end %>
-            </button>
-            </div>
-
-
-              <% end %>
-
             <% end %>
 
             <button id="paynowbutton" class="transparent">
@@ -211,17 +202,7 @@
 
           </div>
         </div>
-        
-        
-
-        <div class="containerfour">
-          <button id="transaction" class="transparent">
-            <div class="recenttransaction">
-              <p class="recenttransactiontext">Recent Transactions</p>
-              <img src="/assets/expand.png" class="expand">
-            </div>
-          </button>
-        </div>
+      
         
     </scrollable>
 
@@ -255,8 +236,8 @@
       <div class="tab-container">
         <!-- Tabs -->
         <div class="tabs">
-            <div class="tab" onclick="showTab('accounts')">ACCOUNTS</div>
-            <div class="tab" onclick="showTab('insights')">INSIGHTS</div>
+            <div class="tab" onclick="showTab('accounts')">Accounts</div>
+            <div class="tab" onclick="showTab('insights')">Insights</div>
         </div>
 
         <!-- Content for Accounts tab -->
@@ -295,9 +276,7 @@
 
         <!-- Content for Insights tab -->
         <div id="tab-insights" class="tab-content">
-            <!-- Your INSIGHTS content goes here -->
-            <div class="css-view-175oi2r r-flex-13awgt0 r-overflow-1udh08x" style="width: 430px; background-color: rgb(242, 242, 242);">
-                <div class="insightscontainer">
+                <div>
                     <div class="rectangle">
                         <p class="date2">14 JUN</p>
                         <p class="title">Review your budget</p>
@@ -315,7 +294,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
      
@@ -328,24 +306,25 @@
   <!-- Inline JavaScript for tab switching -->
     <script>
         function showTab(tabName) {
-            // Hide all tab contents
-            var tabContents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].style.display = "none";
-            }
-
-            // Deactivate all tabs
-            var tabs = document.getElementsByClassName("tab");
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove("active");
-            }
-
-            // Show the selected tab content
-            document.getElementById("tab-" + tabName).style.display = "block";
-
-            // Activate the selected tab
-            document.querySelector(".tab[data-tab='" + tabName + "']").classList.add("active");
+        // Hide all tab contents
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = "none";
         }
+
+        // Deactivate all tabs
+        var tabs = document.getElementsByClassName("tab");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].classList.remove("active");
+        }
+
+        // Show the selected tab content
+        document.getElementById("tab-" + tabName).style.display = "block";
+
+        // Activate the selected tab
+        document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
+    }
+
     </script>
 
 

@@ -1,8 +1,7 @@
 <%= form_with(model: @transaction, local: true) do |form| %>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
     <header>
-      <%= link_to '←', pay_and_transfer_page_index_path, class: 'back-button' %>
+      <%= link_to '←', root_path, class: 'back-button' %>
       <h1 class = "paynow-header">PayNow to Mobile</h1>
       <div class="whitebox"></div>
     </header>
