@@ -3977,7 +3977,7 @@ input:focus {
   }
 
   .coco-icons {
-    width: 50px; /* Adjust the size as needed */
+    width:35px; /* Adjust the size as needed */
     height: auto; /* Maintain aspect ratio */
     display: inline-block; /* For inline positioning */
     vertical-align: middle; /* Aligns icons with adjacent text or controls */
@@ -3992,13 +3992,27 @@ input:focus {
   }
 
   .floating-button {
-    position: fixed; /* Or 'absolute' if within a positioned container */
-    bottom: 20px; /* Distance from bottom */
-    right: 20px; /* Distance from right */
-    z-index: 1000; /* Ensure it's above other content */
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    padding: 5px 10px; /* Smaller padding */
+    cursor: pointer;
+    margin-bottom: 10px; /* Space between buttons */
+    font-size: 1.3rem; /* Smaller font size */
   }
-  
   .floating-container {
-    position: relative; /* Ensures absolute positioning within this container, if needed */
+    position: fixed;
+    top: 80%; /* Center the container in the middle of the screen vertically */
+    right: 20px; /* Spacing from the right edge of the viewport */
+    transform: translateY(-50%); /* Offset the container by half its height for true centering */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center align items horizontally */
+    z-index: 1000;
   }
+
+  .floating-button:last-child {
+    margin-bottom: 0;
+  }
+
   
