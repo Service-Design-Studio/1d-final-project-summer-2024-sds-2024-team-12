@@ -48,6 +48,10 @@
     
 }
 
+.country-code {
+    margin-right: 5px;  /* Spacing between the country code and the input field */
+}
+
 .promptpay-logo {
     display: flex;
     justify-content: center;

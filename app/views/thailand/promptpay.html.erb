@@ -45,9 +45,13 @@
     
   <div class="horizontal-line"></div>
    
-      <div class="recipienttext">
-        <%= form.text_field :name, placeholder: 'Recipient Number' %>
+    <div class="recipienttext">
+      <div class="input-group">
+        <span class="country-code">+66 >  </span>
+        <%= form.text_field :name, placeholder: 'Recipient Number', class: 'recipient-number' %>
       </div>
+    </div>
+
       <!-- Add more fields for mobile etc. -->
     </div>
   
@@ -83,7 +87,7 @@
 
   <div class="transfer-details">
     <%= form.label :comments, "Add comments for recipient" %>
-    <%= form.text_field :comments, value: "PayNow Transfer" %>
+    <%= form.text_field :comments, value: "PromptPay Transfer" %>
   </div>
 
   <div class="terms">
