@@ -3975,3 +3975,30 @@ input:focus {
     bottom: 0;
     position:fixed;
   }
+
+  .coco-icons {
+    width: 50px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-block; /* For inline positioning */
+    vertical-align: middle; /* Aligns icons with adjacent text or controls */
+  }
+
+  .coco-transparent {
+    background: rgba(0,0,0,0.6); /* No background color */
+    border: none; /* No border */
+    color: white; /* Inherits text color from parent */
+    padding: 10px; /* Spacing inside the button */
+    cursor: pointer; /* Indicates the element is clickable */
+  }
+
+  .floating-button {
+    position: fixed; /* Or 'absolute' if within a positioned container */
+    bottom: 20px; /* Distance from bottom */
+    right: 20px; /* Distance from right */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  .floating-container {
+    position: relative; /* Ensures absolute positioning within this container, if needed */
+  }
+  
