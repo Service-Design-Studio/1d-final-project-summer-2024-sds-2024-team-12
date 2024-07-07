@@ -1,4 +1,4 @@
-<%= form_with(model: @transaction, local: true) do |form| %>
+<%= form_with(model: @transaction, local: true, url: submit_promptpay_path) do |form| %>
 
     <header>
       <%= link_to '←', root_path, class: 'back-button' %>
@@ -62,13 +62,24 @@
 
   <div class="moneybody">
     <div class='left'>
-      <p class="amtin">Amount in</p>
+      <p class="amtin">You're Sending</p>
       <p class="currency">SGD</p>
     </div>
     <div class='right'>
-      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
+      <%= form.number_field :amount, id: "sgdAmount", class: 'amount-field', placeholder: '0.00' %>
     </div>
   </div>
+
+  <div class="moneybody">
+    <div class='left'>
+      <p class="amtin">Recipient Gets</p>
+      <p class="currency">THB</p>
+    </div>
+    <div class='right'>
+      <input type="number" id="thbAmount" class='amount-field' placeholder='0.00' readonly>
+    </div>
+  </div>
+  
 
 <body>
   <div class="limits">
@@ -101,4 +112,27 @@
 
     </div>
 <% end %>
+
+
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const exchangeRate = 22.94; // Update this rate as necessary
+
+    const sgdInput = document.getElementById('sgdAmount');
+    const thbInput = document.getElementById('thbAmount');
+
+    if (sgdInput && thbInput) {
+        sgdInput.addEventListener('input', function() {
+        const sgdValue = parseFloat(this.value) || 0;
+        const thbValue = sgdValue * exchangeRate;
+        thbInput.value = thbValue.toFixed(2);
+        });
+    } else {
+        console.error('SGD or THB input fields not found.');
+    }
+  });
+
+
+</script>

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   delete '/remove_location/:country', to: 'locations#remove_country', as: 'remove_country'
   
   get 'promptpay', to:'thailand#promptpay'
+  post 'submit_promptpay', to: 'thailand#create', as: :submit_promptpay
+
 
 
   get "sign_up", to: "registrations#new"
