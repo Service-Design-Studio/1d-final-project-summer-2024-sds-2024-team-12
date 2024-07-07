@@ -3976,6 +3976,8 @@ input:focus {
     position:fixed;
   }
 
+  /* for thailand coconut section*/
+
   .coco-icons {
     width:35px; /* Adjust the size as needed */
     height: auto; /* Maintain aspect ratio */
@@ -4002,7 +4004,7 @@ input:focus {
   }
   .floating-container {
     position: fixed;
-    top: 80%; /* Center the container in the middle of the screen vertically */
+    top: 75%; /* Center the container in the middle of the screen vertically */
     right: 20px; /* Spacing from the right edge of the viewport */
     transform: translateY(-50%); /* Offset the container by half its height for true centering */
     display: flex;
@@ -4015,4 +4017,4 @@ input:focus {
     margin-bottom: 0;
   }
 
-  
+  /* thailand coconut section end*/
