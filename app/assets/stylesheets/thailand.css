@@ -265,3 +265,20 @@
     bottom: 0;
     position:fixed;
   }
+
+  /* exhange rate line */
+  .exchange-rate-container {
+    background-color: #000000;  /* Black background */
+    color: #ffffff;  /* White text */
+    text-align: center;  /* Center-align the text */
+    padding: 10px 0;  /* Padding to increase spacing */
+    font-size: 14px;  /* Smaller font size */
+  }
+  
+  .exchange-rate-text {
+    margin: 0;  /* Remove default margin */
+    font-weight: normal;  /* Normal font weight */
+    font-size: 14px;
+  }
+  
+  
