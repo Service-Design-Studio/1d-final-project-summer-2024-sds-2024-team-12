@@ -62,8 +62,16 @@
             <div class="carousel-inner">
               <% if session[:country] == 'thailand' %>
                 <div class = "item">
-                  <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                    <a href = "/promptpay" class="buttonContainer">Go Now</a>
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
+                    <button class="transparent">
+                      <div class="buttonContainer">
+                        <a href = "/promptpay" class="buttonText">Go Now</a>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               <% elsif @frequent_transactions.any? %>
                 <div class="item">
