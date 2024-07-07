@@ -1,4 +1,8 @@
 class ScheduledTransactionsController < ApplicationController
+  def new
+    @frequent_transaction = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3).first
+  end
+
   def create
     @scheduled_transaction = ScheduledTransaction.new(scheduled_transaction_params)
 
@@ -7,6 +11,7 @@ class ScheduledTransactionsController < ApplicationController
       redirect_to @scheduled_transaction, notice: 'Scheduled transaction was successfully created.'
     else
       # Handle validation errors or other failure cases
+      @frequent_transaction = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3).first
       render :new
     end
   end
