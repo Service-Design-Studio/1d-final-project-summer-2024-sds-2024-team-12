@@ -3997,14 +3997,14 @@ input:focus {
     background: rgba(0,0,0,0.6);
     border: none;
     color: white;
-    padding: 5px 10px; /* Smaller padding */
+    padding: 2px 2px; /* Smaller padding */
     cursor: pointer;
-    margin-bottom: 10px; /* Space between buttons */
-    font-size: 1.3rem; /* Smaller font size */
+    margin-bottom: 5px; /* Space between buttons */
+    font-size: 1.2rem; /* Smaller font size */
   }
   .floating-container {
     position: fixed;
-    top: 75%; /* Center the container in the middle of the screen vertically */
+    top: 72%; /* Center the container in the middle of the screen vertically */
     right: 20px; /* Spacing from the right edge of the viewport */
     transform: translateY(-50%); /* Offset the container by half its height for true centering */
     display: flex;
