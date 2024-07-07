@@ -8,6 +8,7 @@ import "controllers"
 //= require slick-carousel/slick/slick
 //= require_tree .
 
+/*
 document.addEventListener('DOMContentLoaded', (event) => {
   var setupButton = document.getElementById('setupButton');
   var popup = document.getElementById('popup');
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   }
 });
-
+*/
 
 
 
