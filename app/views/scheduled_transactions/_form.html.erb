@@ -16,7 +16,7 @@
       <div class="arrow-gif-container">
         <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
       </div>
-      <div class="horizontal-line"></div>
+
     </div>
 
     <div class="myaccount">
@@ -40,10 +40,7 @@
     </div>
   </div>
 
-  <div class="field">
-    <%= form.label :next_payment_date %>
-    <%= form.date_field :next_payment_date %>
-  </div>
+  <uwc-date-frequency-picker label="Frequency"></uwc-date-frequency-picker>
 
   <div class="nextbutton">
     <%= form.submit "SAVE" %>
