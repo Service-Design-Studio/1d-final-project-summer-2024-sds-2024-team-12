@@ -4,6 +4,9 @@
   text-align: center;
   margin-bottom: 20px;
 }
+.body{
+  background-color: white;
+}
 
 .tabos-container {
   margin: 20px 0;

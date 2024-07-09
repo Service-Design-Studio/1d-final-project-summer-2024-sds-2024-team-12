@@ -1,0 +1,44 @@
+        
+        .Dbslogin {
+            align: center;
+            margin-top:10vw;
+            margin-left : 30vw;
+           height: 4vh;
+           display: block;}
+       
+       .form_styling {
+           margin-top: 10vh;
+           display: flex;
+           flex-direction: column;
+       
+       
+       }
+       .form-control {
+           margin: 1vh 1vw 0vh 0.5vw;
+           padding: 2.2vh 4vw;
+           border-radius: 6px;
+           outline: none;
+           font-size: 16px;
+           font-family: "Lato";
+           border: none;
+           height:105%;
+       
+       }
+       .signinh1{
+         font-size:16px;
+         margin-left:1em;
+         color:white; 
+       }
+       .signinh2{
+         font-size:16px;
+         margin-left:1em;
+         color:white; 
+         margin-top: 0.5em;
+       }
+       .link-custom {
+           font-size:16px;
+       
+         color: white; /* Change to desired color */
+         text-decoration: underline; /* Optional: Removes underline */
+       }
+       
