@@ -15,7 +15,7 @@
 }
 
 
-.myaccount-container {
+.promptmyaccount-container {
   display: flex;
   background-color: white;
   justify-content: space-between; /* Space between the two containers */
@@ -129,7 +129,7 @@
     padding-bottom:15px;
   }
   
-  .moneybody {
+  .promptmoneybody {
     background-color: #162633;
     margin: 0;
     display: flex;
@@ -152,7 +152,7 @@
     margin-bottom: 10px;
   }
   
-  .left{
+  .promptleft{
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -179,7 +179,7 @@
     padding-left:10px;
   }
   
-  .right{
+  .promptright{
     display: flex;
     background-color: transparent;
     padding: 0;
