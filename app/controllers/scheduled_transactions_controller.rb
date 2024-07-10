@@ -1,7 +1,9 @@
 class ScheduledTransactionsController < ApplicationController
   def new
-    @frequent_transaction = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3).first
+    @scheduled_transaction = ScheduledTransaction.new(scheduled_transaction_params)
+    @frequent_transaction = OpenStruct.new(name: scheduled_transaction_params[:name], amount: scheduled_transaction_params[:amount])
   end
+
 
   def create
     @scheduled_transaction = ScheduledTransaction.new

@@ -129,7 +129,7 @@
   margin-bottom: 10px;
 }
 
-.left {
+.moneyleft {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -156,7 +156,7 @@
   padding-left: 10px;
 }
 
-.right {
+.schemoneyright {
   display: flex;
   background-color: transparent;
   padding: 0;
