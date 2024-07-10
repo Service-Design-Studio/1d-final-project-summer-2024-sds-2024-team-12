@@ -10,7 +10,7 @@ Feature: Scheduled Transaction
         Given that I am on the transactions page
         When I see suggestions in the carousel
         And I click the "Set up" button
-        When I click on Schedule Payment button
+        When I click on "Schedule Payment" button in the popup
         Then I should see the new Scheduled Transaction page
         When I fill in the recipient name
         And fill in the amount to be transferred in SGD

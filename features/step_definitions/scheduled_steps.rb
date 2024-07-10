@@ -33,10 +33,10 @@ And("I click the {string} button") do |button_name|
 end
 
 
-When("I click on Schedule Payment button") do
+When("I click on {string} button in the popup") do |button|
   find('#popup',  :visible => false)
   within('#popup') do
-    click_link("Schedule Payment")
+    click_link(button)
   end
 end
 
@@ -54,7 +54,7 @@ And("fill in the amount to be transferred in SGD") do
 end
 
 And("click on the calendar icon") do
-  find('.calendar-icon').click # Adjust the selector based on your UI
+  find('#button').click
 end
 
 Then("I can fill in the next date for the scheduled transaction") do
