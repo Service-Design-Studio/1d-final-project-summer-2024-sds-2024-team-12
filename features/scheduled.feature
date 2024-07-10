@@ -5,6 +5,9 @@ Feature: Scheduled Transaction
         | Nicole | 100.00 |
         | Nicole | 100.00 |
         | Nicole | 100.00 |
+    Given a user exists with phone "12345677" and password "224466"
+    And I am logged in with phone "12345677" and password "224466"
+
 
     Scenario: Set a scheduled transaction at the start of every month
         Given that I am on the transactions page
