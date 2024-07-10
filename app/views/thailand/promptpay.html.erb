@@ -48,7 +48,7 @@
     <div class="recipienttext">
       <div class="input-group">
         <span class="country-code">+66 >  </span>
-        <%= form.text_field :name, placeholder: 'Recipient Number', class: 'recipient-number' %>
+        <%= form.text_field :name, placeholder: 'Recipient Number', class: 'recipient-number', pattern: '\d{9}', title: "Phone number must be exactly 9 digits" %>
       </div>
     </div>
 
@@ -121,6 +121,20 @@
 
 </body>
 
+<!-- thai transaction 9 digit limitation -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const phoneNumberInput = document.querySelector('.recipient-number');
+
+    phoneNumberInput.addEventListener('input', function() {
+      const isValid = this.value.length === 9 && !isNaN(parseInt(this.value, 10));
+      this.setCustomValidity(isValid ? '' : 'Please enter exactly 9 digits.');
+    });
+  });
+</script>
+
+
+<!-- thai currency autoconversion -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const exchangeRate = 22.94; // Update this rate as necessary
