@@ -28,29 +28,25 @@ When("I see suggestions in the carousel") do
   end
 end
 
-
-
 And("I click the {string} button") do |button_name|
   click_on(button_name)
 end
 
-Then("I should see a popup with 2 buttons") do
-  puts page.html
-  within('.popup') do
-    expect(page).to have_selector('.button', count: 2)
+
+When("I click on Schedule Payment button") do
+  find('#popup',  :visible => false)
+  within('#popup') do
+    click_link("Schedule Payment")
   end
 end
 
-When("I click {string}") do |button_name|
-  click_on(button_name)
-end
 
 Then("I should see the new Scheduled Transaction page") do
   expect(page).to have_content('New Scheduled Transaction')
 end
 
 When("I fill in the recipient name") do
-  fill_in('recipient_name', with: 'Nicole') # Adjust the field name based on your HTML
+  fill_in('name', with: 'Nicole') # Adjust the field name based on your HTML
 end
 
 And("fill in the amount to be transferred in SGD") do
