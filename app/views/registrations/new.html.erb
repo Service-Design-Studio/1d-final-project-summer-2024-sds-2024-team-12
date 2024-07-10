@@ -1,0 +1,38 @@
+<div style="padding:10px">
+<img src="/assets/dbslogo.png" alt="DBS-Bank-logo" style="width:220px;height:70px;padding-top:10px" >
+<h1>Sign Up</h1>
+
+<%= form_with(model: @user, url: sign_up_path) do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>Please correct the following errors:</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: 'form-control', placeholder: 'Enter your phone number' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: 'form-control', placeholder: 'PIN (6 digits)' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your PIN' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Sign Up', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to "Sign In", sign_in_path %>
+</div>

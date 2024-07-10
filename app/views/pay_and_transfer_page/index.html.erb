@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <title>Pay & Transfer</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Ensure the CSS file is in the same directory -->
 </head>
 <body>
     <header>
-        <div class="notification">11</div>
+        
         <div class="search-bar">
             <input type="text" placeholder="Search for a recipient">
         </div>
     </header>
 
     <main>
+        <div class="scrollable">
         <section class="services">
             <div class="buttons-container">
                 <div class="paynowbutton">
@@ -34,6 +34,7 @@
                     <div class="iconButtonContainer">
                         <%= image_tag('exchange.png', alt: 'Exchange Image', class: 'exchangebutton') %>
                         <p class="iconButtonText">Exchange Currency</p>
+                        
                     </div>
                 </div>
                 <div class="overseasbutton">
@@ -73,17 +74,6 @@
 
             <div class="recipient">
                 <div class="recipient-info">
-                    <div class="avatar" style="background-color: #f9a825;">WB</div>
-                    <div>
-                        <p>WOORI BANK</p>
-                        <span class="tag">DBS REMIT</span>
-                    </div>
-                </div>
-                <button class="info-btn">i</button>
-            </div>
-
-            <div class="recipient">
-                <div class="recipient-info">
                     <div class="avatar" style="background-color: #ff8a80;">LT</div>
                     <div>
                         <p>Recipient Name</p>
@@ -92,43 +82,39 @@
                 <button class="info-btn">i</button>
             </div>
 
-            <div class="recipient">
-                <div class="recipient-info">
-                    <div class="avatar" style="background-color: #ba68c8;">KS</div>
-                    <div>
-                        <p>Recipient Name</p>
-                    </div>
-                </div>
-                <button class="info-btn">i</button>
-            </div>
         </section>
+        </scrollable>
     </main>
 
-    <footer>
-        <div class="bottom-nav">
-            <div class="bottomtabnavigatorcontainer">
-                <%= link_to transactions_path, class: 'transparent' do %>
-                    <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
-                    <p class="navtextselected">Home</p>
-                <% end %>
-                <button class="transparent">
-                    <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
-                    <p class="navtext">Invest</p>
-                </button>
-                <button class="transparent">
-                    <img src="/assets/pay&transfer_bottom.png" alt="pay" class="navicon">
-                    <p class="navtext">Pay & Transfer</p>
-                </button>
-                <button class="transparent">
-                    <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
-                    <p class="navtext">Plan</p>
-                </button>
-                <button class="transparent">
-                    <img src="/assets/more_bottom.png" alt="more" class="navicon">
-                    <p class="navtext">More</p>
-                </button>
-            </div>
+
+        <div class="bottomnav">
+        <div class="bottomtabnavigatorcontainer">
+        <%= link_to transactions_path do %>
+          <button class="transparent">
+            <img src="/assets/home_bottom.png" alt="home" class="navicon">
+            <p class="navtext">Home</p>
+          </button>
+          <% end %>
+          <button class="transparent">
+            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <p class="navtext">Invest</p>
+          </button>
+          
+            <button class="transparent">
+              <img src="/assets/pay&amp;transfer_bottomfilled.png" alt="pay" class="navicon">
+              <p class="navtextselected">Pay &amp; Transfer</p>
+            </button>
+          </a>
+          <button class="transparent">
+            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <p class="navtext">Plan</p>
+          </button>
+          <button class="transparent">
+            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <p class="navtext">More</p>
+          </button>
         </div>
-    </footer>
+      </div>
+
 </body>
 </html>

@@ -1,0 +1,50 @@
+<h1>Overseas Transfer</h1>
+
+
+<div class="account-details">
+  <div class="circle-icon">
+    <%= image_tag('dbslogo.png', alt: 'DBS Logo', style: 'width: 24px; height: 24px;') %>
+  </div>
+  <div class="myaccounttext">
+    <p>My Account</p>
+    <p>271xxxxxxx0</p>
+  </div>
+  
+
+
+  <div class="recipient-account">
+    <div class="circle-icon">
+      <span class="initials"><%= @recipient.initials %></span>
+    </div>
+    <div class="recipient-text">
+      <p><%= @recipient.full_name %></p>
+      <p><%= @recipient.account_details %></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="transfer-form">
+    <%= form_with model: @transaction, url: transactions_path, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :amount, "You're Sending (SGD)" %>
+      <%= form.number_field :amount, step: :any, id: "amount_sgd", class: "form-control" %>
+    </div>
+ 
+    <%= form.hidden_field :name, value: @recipient.full_name %>
+
+
+    <div class="form-group">
+      <label for="recipient_gets">Recipient Gets (THB)</label>
+      <input type="text" id="recipient_gets" class="form-control" disabled>
+    </div>
+
+
+    <div class="form-group">
+      <p>SGD 1 = THB 27.07</p>
+    </div>
+
+
+    <%= form.submit "TRANSFER NOW", class: "btn btn-primary" %>
+  <% end %>
+</div>

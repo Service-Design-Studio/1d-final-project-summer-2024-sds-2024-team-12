@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_20_020549) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_114344) do
+  create_table "recipients", force: :cascade do |t|
+    t.string "country"
+    t.string "account_details"
+    t.string "full_name"
+    t.string "registered_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scheduled_transactions", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.text "start_date", null: false
+    t.string "frequency", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shortcut_buttons", force: :cascade do |t|
     t.string "name_of_widget"
     t.datetime "created_at", null: false
@@ -20,6 +38,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_020549) do
   create_table "transactions", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "phone", null: false
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

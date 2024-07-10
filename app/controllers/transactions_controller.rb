@@ -10,6 +10,11 @@ class TransactionsController < ApplicationController
     @card_limit = CARD_LIMIT  # Pass the constant to the view
   end
 
+  def history
+    @transactions = Transaction.all
+    @frequent_transactions = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3)
+  end
+
   # GET /transactions/1 or /transactions/1.json
   def show
   end
@@ -79,10 +84,11 @@ class TransactionsController < ApplicationController
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
-  
+
     def transaction_params
       params.require(:transaction).permit(:name, :amount)
     end
+
 
   def check_transactions
 
@@ -104,3 +110,4 @@ class TransactionsController < ApplicationController
       end
     end
   end
+

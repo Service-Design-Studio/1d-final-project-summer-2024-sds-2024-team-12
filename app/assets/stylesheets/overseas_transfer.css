@@ -1,0 +1,106 @@
+.notification-banner {
+  background-color: lightgreen;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabos-container {
+  margin: 20px 0;
+}
+
+.tabos-list {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+}
+
+.tabos-list .tabos {
+  flex: 1;
+  text-align: center;
+}
+
+.tabos-list .tabos a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.tabos-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.recipient-entry {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.recipient-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 10px;
+}
+
+.button.primary-button {
+  display: block;
+  width: auto;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+/*for the make transfer page */
+.account-details {
+  display: flex;
+  flex-direction: column;  /* Align items vertically */
+  justify-content: flex-start;
+  align-items: flex-start; /* Align items to the left */
+  padding: 10px;
+  background: #f7f7f7;
+  margin-bottom: 20px;
+}
+
+
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+
+.myaccount, .recipient-account {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.btn-primary {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  width: 100%; /* Makes the button extend fully horizontally */
+  font-size: 16px; /* Adjust the font size as necessary */
+  cursor: pointer; /* Makes it clear the button is clickable */
+}
+

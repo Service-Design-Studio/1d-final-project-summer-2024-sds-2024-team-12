@@ -1,0 +1,33 @@
+<h1>Overseas Transfer</h1>
+
+<div class="notification-banner">
+  Check DBS Remit rates<br>
+  Zero fees. Zero delay.<br>
+  Tap to check FX rates now.
+</div>
+
+<div class="tabos-container">
+  <ul class="tabos-list">
+    <li class="tabos active"><%= link_to 'Recipients', '#recipients', class: 'tabos-link' %></li>
+    <li class="tabos"><%= link_to 'Recent', '#recent', class: 'tabos-link' %></li>
+    <li class="tabos"><%= link_to 'Recurring', '#recurring', class: 'tabos-link' %></li>
+  </ul>
+  
+  <div class="tabos-content">
+    <div id="recipients" class="tabos-pane active">
+      <%= link_to 'Add Overseas Recipient', overseas_transfer_select_location_path, class: 'button primary-button' %>
+      <% if @recipients.any? %>
+        <% @recipients.each do |recipient| %>
+          <div class="recipient-entry">
+            <div class="recipient-icon"><%= recipient.initials %></div>
+            <%= link_to recipient.full_name, overseas_transfer_make_transfer_path(recipient_id: recipient.id), class: 'recipient-link' %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No recipients yet</p>
+        <p>Add a recipient to transfer to 49 locations at no fees, same-day transfer.</p>
+      <% end %>
+    </div>
+  
+  </div>
+</div>

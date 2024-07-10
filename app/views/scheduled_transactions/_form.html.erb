@@ -4,10 +4,10 @@
   <div class="myaccount-container">
     <div class="myaccount">
       <div class="circle-icon">
-        <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
       </div>
       <div class="myaccounttext">
-        <%= form.text_field :account_name, class: 'account-name-field', placeholder: 'My DBS account' %>
+        <p>My DBS account</p>
         <p>271xxxxxxx0</p>
       </div>
     </div>
@@ -16,43 +16,33 @@
       <div class="arrow-gif-container">
         <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
       </div>
-      <div class="horizontal-line"></div>
+
     </div>
 
-    <div class="myaccount-container">
     <div class="myaccount">
       <div class="circle-icon">
-        <%= image_tag('dbslogo.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
       </div>
       <div class="myaccounttext">
-        <%= form.text_field :account_name, class: 'account-name-field', placeholder: 'Recipent' %>
-        <p>Carlos</p>
+        <p>Recipient</p>
+        <%= form.text_field :name, value: @frequent_transaction&.name, class: 'account-name-field', placeholder: 'Recipient' %>
       </div>
-    </div>
-
-    <div class="moneybody">
-    
-    <div class='left'>
-      <p class="amtin">Amount in</p>
-      <p class="currency">SGD</p>
-    </div>
-    <div class='right'>
-      <% if @scheduled_transaction %>
-        <% transaction = @frequent_transactions.first %>
-        <%= form.number_field :amount, value: transaction.amount, class: 'amount-field', placeholder: '0.00' %>
-      <% else %>
-        <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
-      <% end %>
     </div>
   </div>
 
-    <div class="field">
-      <%= form.label :next_payment_date %>
-      <%= form.date_field :next_payment_date %>
+  <div class="moneybody">
+    <div class="left">
+      <p class="amtin">Amount in</p>
+      <p class="currency">SGD</p>
     </div>
+    <div class="right">
+      <%= form.number_field :amount, value: @frequent_transaction&.amount, class: 'amount-field', placeholder: '0.00' %>
+    </div>
+  </div>
 
-    <div class="nextbutton">
-      <%= form.submit "SAVE" %>
-    </div>
+  <uwc-date-frequency-picker label="Frequency"></uwc-date-frequency-picker>
+
+  <div class="nextbutton">
+    <%= form.submit "SAVE" %>
   </div>
 <% end %>
