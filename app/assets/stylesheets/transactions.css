@@ -57,6 +57,18 @@
   z-index: 999;
 }
 
+.transfer-details {
+  padding: 10px;
+  background-color: white;
+}
+.transfer-details input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
 .transparent:hover{
   cursor: pointer;
 }
@@ -3739,7 +3751,7 @@ input:focus {
   }
   
 .whitebox{
-   background-color: white;
+   background-color:#f1f2f4;
    padding-right:100px;
    width: 20px; /* Same width as header */
    height: 10px; 
@@ -3971,7 +3983,7 @@ input:focus {
     margin-left: 25px;
     width:90%;
     margin-right: 30px;
-    margin-bottom:30px;
+    margin-bottom:5px;
     bottom: 0;
     position:fixed;
   }
@@ -4000,11 +4012,11 @@ input:focus {
     padding: 2px 2px; /* Smaller padding */
     cursor: pointer;
     margin-bottom: 5px; /* Space between buttons */
-    font-size: 1.2rem; /* Smaller font size */
+    font-size: 0.03rem; /* Smaller font size */
   }
   .floating-container {
     position: fixed;
-    top: 72%; /* Center the container in the middle of the screen vertically */
+    top: 86%; /* Center the container in the middle of the screen vertically */
     right: 20px; /* Spacing from the right edge of the viewport */
     transform: translateY(-50%); /* Offset the container by half its height for true centering */
     display: flex;
