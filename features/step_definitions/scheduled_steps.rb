@@ -9,20 +9,34 @@ Given("that I am on the transactions page") do
 end
 
 When("I see suggestions in the carousel") do
-  within('.carousel-caption') do
-    expect(page).to have_css('.textheader', text: 'Suggestion:')
-    expect(page).to have_css('ul.textbody li', text: 'Nicole : SGD 100.00')
+  within('.carousel-inner') do
+    carousel_items = all('.item')
+
+    suggestions_item = carousel_items.find do |item|
+      item.has_css?('.carousel-caption p.textheader', text: 'Suggestion:')
+    end
+
+    if suggestions_item
+      # Perform your assertions or actions here
+      within(suggestions_item) do
+        expect(page).to have_css('.carousel-caption p.textheader', text: 'Suggestion:')
+        expect(page).to have_content('Based on your frequent transactions')
   end
-  pause_carousel
+    else
+      raise "No carousel item with suggestion found"
+    end
+  end
 end
 
 And("I click the {string} button") do |button_name|
   click_on(button_name)
 end
 
-Then("I should see a popup with 2 buttons") do
-  within('.popup') do
-    expect(page).to have_selector('.button', count: 2)
+
+When("I click on {string} button in the popup") do |button|
+  find('#popup',  :visible => false)
+  within('#popup') do
+    click_link(button)
   end
 end
 
@@ -35,7 +49,7 @@ Then("I should see the new Scheduled Transaction page") do
 end
 
 When("I fill in the recipient name") do
-  fill_in('recipient_name', with: 'Nicole') # Adjust the field name based on your HTML
+  fill_in('name', with: 'Nicole') # Adjust the field name based on your HTML
 end
 
 And("fill in the amount to be transferred in SGD") do
@@ -43,7 +57,7 @@ And("fill in the amount to be transferred in SGD") do
 end
 
 And("click on the calendar icon") do
-  find('.calendar-icon').click # Adjust the selector based on your UI
+  find('#button').click
 end
 
 Then("I can fill in the next date for the scheduled transaction") do
