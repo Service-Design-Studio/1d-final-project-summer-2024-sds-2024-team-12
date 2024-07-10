@@ -10,15 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema[7.0].define(version: 2024_07_04_075525) do
-
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_114344) do
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
     t.string "full_name"
     t.string "registered_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scheduled_transactions", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.text "start_date", null: false
+    t.string "frequency", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +48,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_04_075525) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
 end

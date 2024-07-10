@@ -1,0 +1,65 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styling */
+  body {
+    font-family: 'Lato', sans-serif; /* Use Google Fonts Lato */
+    background-color: #f0f0f0; /* Example background color */
+  }
+  
+  /* Container styling */
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc; /* Example border bottom */
+  }
+  
+  .container h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  /* Horizontal line styling */
+  .horizontal-line {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+  }
+  
+  /* Changing container styling */
+  .changingcontainer {
+    padding: 10px 20px;
+    background-color: #fff;
+  }
+  
+  /* Select card container styling */
+  .select-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  /* Left side content styling */
+  .left {
+    flex: 1;
+  }
+  
+  .left p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Right side content styling */
+  .limitright {
+    flex: 0;
+    margin-left: 10px; /* Example margin between left and right content */
+  }
+  

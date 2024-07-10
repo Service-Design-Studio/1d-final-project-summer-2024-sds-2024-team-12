@@ -1,0 +1,88 @@
+.greentick {
+    max-width: 100%;
+    height: 5em;
+    display: block;
+    margin: auto;
+    padding: 20px;
+}
+.sucesspagebg{
+    background-color: rgb(244, 242, 242);
+}
+.amount-fieldsuccess{
+    padding: 10px;
+    font-size: 25px;
+    background-color: #1c2834;
+    color: #aeb8c4; 
+}
+.right2{
+    display: flex;
+    margin-top: 20px;
+    
+    background-color: transparent;
+    padding-left: 10px;
+    justify-content: flex-end;
+    font-size: 20px;
+}
+.moneybody2{
+background-color: #162633;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.name{
+    background-color: white;
+    padding-bottom:0.5em;
+    text-align:left ;
+    padding-left: 1em;
+    padding-top: 0.5em;
+}
+
+.red-button {
+    background-color: rgb(248, 0, 0);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center items vertically */
+    cursor: pointer;
+    margin: auto;
+    width: 90%;
+    font-size: 20px;
+    font-family: "Lato";
+
+    
+  }
+  .grey-button {
+    background-color: rgb(170, 168, 168);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center items vertically */
+    cursor: pointer;
+    margin: auto;
+    width: 90%;
+    font-size: 20px;
+    font-family: "Lato";
+
+    
+  }
+
+  .red-button:hover {
+    background-color: darkred;
+  }
+  .grey-button:hover {
+    background-color: darkred;
+  }
+
+  .button-container {
+   margin-top: 9em;
+  }

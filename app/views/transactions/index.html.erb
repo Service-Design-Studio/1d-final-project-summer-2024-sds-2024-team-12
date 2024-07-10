@@ -52,28 +52,28 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" class="active"></li>
               <% if @frequent_transactions.any? %>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel"></li>
+              <% end %>
+              <% if @close_transactions.any? %>
+                <li data-target="#myCarousel"></li>
               <% end %>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-              <% if session[:country] == 'thailand' %>
-                <div class = "item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                    <button class="transparent">
-                      <div class="buttonContainer">
-                        <a href = "/promptpay" class="buttonText">Go Now</a>
-                      </div>
-                    </button>
-                  </div>
+
+              <div class="item active">
+                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                <div class="carousel-caption">
+                  <p class="textheader">Welcome to digibank</p>
+                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
                 </div>
-              <% elsif @frequent_transactions.any? %>
+              </div>
+
+              <% if @frequent_transactions.any? %>
+            
                 <div class="item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
@@ -92,14 +92,40 @@
                   </div>
                 </div>
               <% end %>
-
-              <div class="item active">
-                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                <div class="carousel-caption">
-                  <p class="textheader">Welcome to digibank</p>
-                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
+              
+              <% if @close_transactions.any? %>
+                <div class="item">
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">Your card usage is nearing $500. Consider setting up a card limit to manage your spending:</p>
+                    <ul>
+                      <li><%= "Card Limit: $500" %></li>
+                    </ul>
+                    <button class='transparent' id='setupLimitButton'>
+                      <div class='buttonContainer'>
+                        <%= link_to 'Set up Limit', new_cardlimit_path %> 
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              <% end %>
+            
+               <% if session[:country] == 'thailand' %>
+                <div class = "item">
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
+                    <button class="transparent">
+                      <div class="buttonContainer">
+                        <a href = "/promptpay" class="buttonText">Go Now</a>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+            <% end %>
+
             </div>
 
             <!-- Left and right controls -->
@@ -322,13 +348,11 @@
                     </div>
                 </div>
             </div>
+    </div>      
     </div>
 
-     
-        
-      </div>
-
     </div>
+
   </div>
 
   <!-- Inline JavaScript for tab switching -->
@@ -367,7 +391,7 @@
       <%= names %>
     frequently in the past month. Do you want to set up monthly recurring payments?</p>
     <div class="buttons">
-      <%= link_to "Schedule Payment", new_scheduled_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
+      <%= link_to "Schedule Payment", new_scheduled_transaction_path(scheduled_transaction: { account_name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
       <%= link_to "Make a Quick Shortcut", new_shortcut_button_path, class: 'shortcutButton', id: 'shortcutButton' %>
     </div>
   </div>

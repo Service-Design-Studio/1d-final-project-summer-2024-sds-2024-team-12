@@ -2,27 +2,30 @@
   margin: 0;
   padding: 0;
   border: none;
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
   font-size: 20px;
 }
 
-
-  
-/*Scheduled transaction*/
+.mainschedule{
+  width: 100%;
+}
+/* Scheduled transaction */
 .scheduledtopbar {
-  color:#19252e;
+  color: #19252e;
   background-color: #ffffff;
   position: sticky;
   justify-content: flex-start;
-  display:flex;
+  display: flex;
   border-bottom: 1px solid black;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.body-content {
+.body-content1 {
   padding-top: 15px;
   border: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .topbartext {
@@ -44,18 +47,6 @@
   fill: currentColor;
 }
 
-
-
-@media (max-width: 768px) {
-  .topbartext {
-    font-size: 20px; /* Adjust font size for smaller screens */
-  }
-
-  .back-button {
-    margin-left: 10px; /* Adjust margin for smaller screens */
-  }
-}
-
 .myaccount {
   display: flex;
   padding-left: 20px;
@@ -67,7 +58,7 @@
   height: 40px;
   border-radius: 50%; /* Ensure it's circular */
   border-style: solid; /* Background color of the circle */
-  border-width: 1px; 
+  border-width: 1px;
   border-color: #888888c6;
   display: flex;
   justify-content: center;
@@ -92,7 +83,7 @@
 
 .arrow-gif-container {
   margin-right: 10px; /* Adjust spacing between arrow gif and line */
-  padding-left:15px;
+  padding-left: 15px;
 }
 
 .horizontal-line {
@@ -101,19 +92,19 @@
   background-color: #ccc; /* Color of the horizontal line */
 }
 
-div.recipienttext {
+.recipienttext {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
   padding-left: 10px;
   letter-spacing: 0.5px;
-  font-size:24px  !important;
+  font-size: 24px !important;
 }
 
-.whitespace{
+.whitespace {
   background-color: white;
-  padding-bottom:15px;
+  padding-bottom: 15px;
 }
 
 .moneybody {
@@ -123,10 +114,7 @@ div.recipienttext {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-
-} 
-
-
+}
 
 .amount-section {
   display: flex; /* Use flexbox for layout */
@@ -141,7 +129,7 @@ div.recipienttext {
   margin-bottom: 10px;
 }
 
-.left{
+.left {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -150,25 +138,25 @@ div.recipienttext {
   padding-left: 5vw;
 }
 
-.amtin{
+.amtin {
   color: #C3CCD3;
   font-size: 13px;
   background-color: transparent;
   margin: 0;
-  padding-left:10px;
-}  
+  padding-left: 10px;
+}
 
-.currency{
+.currency {
   color: #C3CCD3;
   font-size: 24px;
   font-family: 'Lato';
   font-weight: 600;
   background-color: transparent;
   margin: 0.5vh 0 2.5vh 0;
-  padding-left:10px;
+  padding-left: 10px;
 }
 
-.right{
+.right {
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -185,7 +173,7 @@ div.recipienttext {
   padding: 10px;
   font-size: 25px;
   background-color: #1c2834;
-  color: #aeb8c4; 
+  color: #aeb8c4;
 }
 
 .amount-field::placeholder {
@@ -195,10 +183,10 @@ div.recipienttext {
 .nextbutton input[type="submit"] {
   background-color: #ff3234;
   color: white;
-  margin-top: auto; 
+  margin-top: auto;
   text-align: center;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   display: flex;
   border: none; /* No border */
   padding: 15px 30px; /* Padding for the button */
@@ -207,10 +195,54 @@ div.recipienttext {
   font-size: 16px;
   font-family: "Lato";
   margin-left: 30px;
-  width:90%;
+  width: 90%;
   margin-right: 30px;
-  margin-bottom:30px;
+  margin-bottom: 30px;
   bottom: 0;
-  position:fixed;
+  position: fixed;
+}
+.myaccount-container{
+  flex-direction: column;
 }
 
+  .body-content1 {
+    padding-top: 10px;
+  }
+
+  .topbartext {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .back-button {
+    margin-right: 5px; /* Adjust margin for smaller screens */
+  }
+
+  .myaccount {
+    padding-left: 10px;
+  }
+
+  .circle-icon {
+    width: 30px; /* Adjust size of the circle */
+    height: 30px;
+  }
+
+  .arrow-gif-container {
+    padding-left: 10px;
+  }
+
+  .currency {
+    font-size: 20px;
+  }
+
+  .amount-field {
+    width: 70%;
+    font-size: 20px;
+  }
+
+  .nextbutton input[type="submit"] {
+    width: 80%;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
