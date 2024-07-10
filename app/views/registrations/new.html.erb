@@ -1,6 +1,8 @@
+
+<body style="background-image: url('/assets/loginbackground.png');">
 <div style="padding:10px">
-<img src="/assets/dbslogo.png" alt="DBS-Bank-logo" style="width:220px;height:70px;padding-top:10px" >
-<h1>Sign Up</h1>
+
+<img src="/assets/dbslogo.png" alt="DBS-Bank-logo"  class="Dbslogin" />
 
 <%= form_with(model: @user, url: sign_up_path) do |form| %>
   <% if @user.errors.any? %>
@@ -13,26 +15,27 @@
       </ul>
     </div>
   <% end %>
+<div class="form_styling">
 
-  <div class="form-group">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, class: 'form-control', placeholder: 'Enter your phone number' %>
-  </div>
+   <div class="form-group">
+    <%= form.text_field :phone, class: 'form-control', placeholder: 'Enter your phone number' %></div>
 
-  <div class="form-group">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: 'form-control', placeholder: 'PIN (6 digits)' %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your PIN' %>
-  </div>
+ <div class="form-group">
+    <%= form.password_field :password, class: 'form-control', placeholder: 'PIN (6 digits)' %></div>
 
-  <div class="form-group">
+
+<div class="form-group">
+    <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your PIN' %></div>
+
+
+
     <%= form.submit 'Sign Up', class: 'btn btn-primary' %>
-  </div>
 <% end %>
-
-<%= link_to "Sign In", sign_in_path %>
 </div>
+<div class="signinh2" >
+<%= link_to "Sign In", sign_in_path, class: "link-custom"  %></div>
+</div>
+</div>
+</div>
+</body>

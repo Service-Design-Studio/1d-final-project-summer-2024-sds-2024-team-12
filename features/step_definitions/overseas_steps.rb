@@ -10,10 +10,17 @@ When("I click the Add Overseas Recipient button") do
   find('.primary-button[href="/overseas_transfer/select_location"]').click
 end
 
-When("I click on Thailand") do
-  link_text = "Thailand"
-  find('a[href="/overseas_transfer/new_recipient?country=Thailand"]', text: link_text).click
+When("I click on {string}") do |tcountry|
+  find('a.country-link[data-country="Thailand"]', text: link_text, visible: true).click
+  puts page.html
 end
+
+When("I click on {string} button") do |button|
+  within('#promptPayModal') do
+    click_link(button)
+  end
+end
+
 
 And("I fill in {string} in the recipient account details") do |account_number|
   fill_in "account_details", with: account_number

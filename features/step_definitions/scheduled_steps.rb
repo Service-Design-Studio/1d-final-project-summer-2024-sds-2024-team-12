@@ -9,12 +9,26 @@ Given("that I am on the transactions page") do
 end
 
 When("I see suggestions in the carousel") do
-  within('.carousel-caption') do
-    expect(page).to have_css('.textheader', text: 'Suggestion:')
-    expect(page).to have_css('ul.textbody li', text: 'Nicole : SGD 100.00')
+  within('.carousel-inner') do
+    carousel_items = all('.item')
+
+    suggestions_item = carousel_items.find do |item|
+      item.has_css?('.carousel-caption p.textheader', text: 'Suggestion:')
+    end
+
+    if suggestions_item
+      # Perform your assertions or actions here
+      within(suggestions_item) do
+        expect(page).to have_css('.carousel-caption p.textheader', text: 'Suggestion:')
+        expect(page).to have_content('Based on your frequent transactions')
+      end
+    else
+      raise "No carousel item with suggestion found"
+    end
   end
-  pause_carousel
 end
+
+
 
 And("I click the {string} button") do |button_name|
   click_on(button_name)

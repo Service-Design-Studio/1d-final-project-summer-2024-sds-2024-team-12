@@ -2,6 +2,65 @@
 
 <ul>
   <% @countries.each do |country| %>
-    <li><%= link_to country, overseas_transfer_new_recipient_path(country: country) %></li>
+    <li>
+      <% if country == "Thailand" %>
+        <%= link_to country, '#', class: "country-link", data: { country: country } %>
+      <% else %>
+        <%= link_to country, overseas_transfer_new_recipient_path(country: country), class: "country-link" %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
+
+<!-- Modal for Thailand -->
+<div id="promptPayModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>You are sending money to Thailand, would you want to use our PromptPay feature to send money to Thailand more conveniently?</p>
+    <%= link_to 'Use PromptPay', promptpay_path, class: 'button promptpay-link' %>
+    <%= link_to 'Proceed without PromptPay', overseas_transfer_new_recipient_path(country: 'Thailand'), class: 'button proceed-link' %>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log("Script loaded");
+    var modal = document.getElementById('promptPayModal');
+    var span = document.getElementsByClassName('close')[0];
+
+    document.querySelectorAll('.country-link').forEach(link => {
+      console.log('Link setup for:', link.textContent); // Check each link setup
+      link.addEventListener('click', function(event) {
+        console.log('Clicked:', this.dataset.country); // Which country was clicked
+        if (this.dataset.country === 'Thailand') {
+          event.preventDefault();
+          console.log('Modal should show now'); // Check if condition is true
+          modal.style.display = 'block';
+        }
+      });
+    });
+
+    span.onclick = function() {
+      modal.style.display = "none";
+      console.log('Modal should close'); // Check closing functionality
+    };
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        console.log('Clicked outside modal, should close'); // Check click outside
+      }
+    }
+  });
+</script>
+
+<!-- Automatically refreshes for select location to work -->
+<script>
+  if (!sessionStorage.getItem('refreshed')) {
+    sessionStorage.setItem('refreshed', 'true');
+    window.location.reload(true); // true forces the reload to be from the server
+  } else {
+    sessionStorage.removeItem('refreshed');
+  }
+</script>

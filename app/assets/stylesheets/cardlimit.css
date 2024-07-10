@@ -58,7 +58,7 @@
   }
   
   /* Right side content styling */
-  .right {
+  .limitright {
     flex: 0;
     margin-left: 10px; /* Example margin between left and right content */
   }

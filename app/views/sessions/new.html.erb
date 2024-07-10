@@ -1,23 +1,38 @@
-<div style="padding:10px">
-<img src="/assets/dbslogo.png" alt="DBS-Bank-logo" style="width:220px;height:70px;padding-top:10px" >
-<h1>Sign In</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your HTML Document</title>
+ 
+</head>
 
+<body style="background-image: url('/assets/loginbackground.png');">
+<div className='loginbackground'>
+
+<div style="padding:10px">
+<img src="/assets/dbslogo.png" alt="DBS-Bank-logo"  class="Dbslogin" >
+
+
+<div class="form_styling">
 <%= form_with url: sign_in_path do |form|%>
     <div class="form-group">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, class: 'form-control', placeholder: 'Enter your phone number' %>
+    <%= form.text_field :phone, class: 'form-control', placeholder: 'Enter phone number' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: 'form-control', placeholder: 'PIN (6 digits)' %>
+    <%= form.password_field :password, class: 'form-control', placeholder: ' Enter PIN' %>
   </div>
 
     <div class="form-group">
     <%= form.submit 'Sign In', class: 'btn btn-primary' %>
   </div>
 <% end %>
-
-<h1>New to DBS?</h1>
-<%= link_to "Sign Up", sign_up_path %>
 </div>
+<h1 class="signinh1">New to DBS?</h1>
+<div class="signinh2">
+  <%= link_to "Sign Up", sign_up_path, class: "link-custom" %>
+</div>
+</div>
+</div>
+</body>
+</html>

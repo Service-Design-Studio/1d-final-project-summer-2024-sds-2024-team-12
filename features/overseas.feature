@@ -1,10 +1,11 @@
 Feature: Overseas Transfer
 
-  Scenario: Adding a new recipient, Jane
+  Scenario: Adding a new recipient, Jane for non-Prompt Pay transaction
     Given that I am on the transactions page in overseas steps
     When I click on Overseas Transfer button
     And I click the Add Overseas Recipient button
-    Then I click on Thailand
+    Then I click on "Thailand"
+    When I click on "Proceed without PromptPay" button
     And I fill in "123456789" in the recipient account details
     And I fill in the recipient name, "Jane Tan" 
     And I fill in "123 Sample Street, Bangkok, Thailand" in the registered address
