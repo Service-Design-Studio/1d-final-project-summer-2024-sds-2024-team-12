@@ -10,13 +10,33 @@ When("I click on Overseas Transfer button") do
   find('#overseasbutton a').click
 end
 
-And("I click {string}") do |button_text|
-  click_link button_text
+When("I click the Add Overseas Recipient button") do
+  find('.primary-button[href="/overseas_transfer/select_location"]').click
 end
 
-Then("I click on {string}") do |button_text|
-  click_button button_text
+When("I click on Thailand") do
+  link_text = "Thailand"
+  find('a[href="/overseas_transfer/new_recipient?country=Thailand"]', text: link_text).click
 end
+
+When("I fill in the recipient account details") do
+  fill_in "account_details", with: "123456789"
+end
+
+When("I fill in the recipient name and registered address") do
+  fill_in "full_name", with: "Jane Tan"
+  fill_in "registered_address", with: "123 Sample Street, Bangkok, Thailand"
+end
+
+When("I press next") do
+  click_button "NEXT"
+end
+
+Then("I should see that I have added a recipient") do
+  expect(page).to have_content("You have added a recipient")
+end
+
+
 
 When("I click on the recipient") do
   # Assuming recipient is in a list, find by specific selector
@@ -31,16 +51,7 @@ Then("I should see the overseas Transfer page") do
   expect(page).to have_content("Overseas Transfer")
 end
 
-When("I fill in the recipient account details") do
-  fill_in "account_number", with: "123456789"
-  fill_in "bank_name", with: "Sample Bank"
-  fill_in "swift_code", with: "SWIFT123"
-end
 
-When("I fill in the recipient name and registered address") do
-  fill_in "recipient_name", with: "John Doe"
-  fill_in "registered_address", with: "123 Sample Street, Bangkok, Thailand"
-end
 
 Then("I click on {string}") do |country|
   find('button', text: country).click

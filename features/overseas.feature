@@ -3,12 +3,12 @@ Feature: Overseas Transfer
   Scenario: Adding a new recipient
     Given that I am on the transactions page in overseas steps
     When I click on Overseas Transfer button
-    And I click “Add Overseas Recipient”
-    Then I click on “Thailand”
+    And I click the Add Overseas Recipient button
+    Then I click on Thailand
     And I fill in the recipient account details
     And I fill in the recipient name and registered address
-    And I press “NEXT”
-    Then I should see “You have added a recipient”
+    When I press next
+    Then I should see that I have added a recipient
     And when I click on the button “Back”
     Then I should see the new recipient I added
 
