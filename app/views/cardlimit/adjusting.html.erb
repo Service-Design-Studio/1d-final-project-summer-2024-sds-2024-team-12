@@ -1,0 +1,25 @@
+<%= form_with(model: @card_limit, local: true) do |form| %>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+    
+    <div class="container">
+      <%= link_to('<', cardlimit_paynow_path, class: 'back-button') %>
+      <h1>Set Daily Limit</h1>
+    </div>
+  
+    <div class="horizontal-line"></div>
+  
+    <%= form.text_field :daily_limit, placeholder: "Local Transfer Daily Limit" %>
+  
+    <div class="changingcontainer">
+      <div class="select-card-container">
+        <%= link_to('1,000.00', cardlimit_adjusting_path, class: 'limit-button') %>
+      </div>
+    </div>
+    
+    <div class="changingcontainer">
+      <div class="select-card-container">
+        <%= link_to('2,000.00', cardlimit_adjusting_path, class: 'limit-button') %>
+      </div>
+  
+  <% end %>
+  

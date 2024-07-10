@@ -1,4 +1,16 @@
+
 <%= form_with(model: @transaction, local: true) do |form| %>
+    <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% @transaction.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
     <header>
       <%= link_to '←', root_path, class: 'back-button' %>
@@ -64,6 +76,7 @@
     <div class='right'>
       <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
     </div>
+
   </div>
 
 <body>

@@ -1,0 +1,38 @@
+<%= form_with(model: @card_limit, local: true) do |form| %>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+    <div class="container">
+      <%= link_to('<', transactions_index_path, class: 'back-button') %>
+      <h1>Local Transfer Limit</h1>
+    </div>
+  
+    <div class="horizontal-line"></div>
+  
+    <div class="changingcontainer">
+      <div class="select-card-container">
+        <div class='left'>
+          <p>To DBS/POSB Accounts</p>
+        </div>
+        <div class='right'>
+          <%= link_to('>', transactions_index_path, class: 'next-button') %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="horizontal-line"></div>
+  
+    <div class="changingcontainer">
+      <div class="select-card-container">
+        <div class='left'>
+          <p>Paynow or Scan and Trsf</p>
+        </div>
+        <div class='right'>
+          <%= link_to('>', cardlimit_paynow_path, class: 'next-button') %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+
+
+
+

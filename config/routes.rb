@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
-
   get 'scheduled_transactions/new'
   post 'scheduled_transactions/create'
   get 'pay_and_transfer_page/index'
   get 'paynow/index'
-  resources :shortcut_buttons, only: [:new, :create, :destroy ]
-  resources :scheduled_transactions, only: [:new, :create,]
+  get 'transactions/index'
+
+  resources :shortcut_buttons, only: [:new, :create, :destroy]
+  resources :scheduled_transactions, only: [:new, :create]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   get 'transaction_history', to: 'transactions#history'
 
+  resources :cardlimit, only: [:new, :paynow, :adjusting] 
 
+    
+  get '/cardlimit/paynow', to: 'cardlimit#paynow', as: 'cardlimit_paynow'
+  get '/cardlimit/adjusting', to: 'cardlimit#adjusting', as: 'cardlimit_adjusting'
 
 
   get 'overseas_transfer', to: 'overseas#overseas_transfer'
@@ -32,5 +37,7 @@ Rails.application.routes.draw do
   root to: "main#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
+
   # root "transactions#index"
 end
+
