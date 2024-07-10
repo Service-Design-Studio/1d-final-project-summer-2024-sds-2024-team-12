@@ -1,0 +1,168 @@
+<%= form_with(model: @transaction, local: true, url: submit_promptpay_path) do |form| %>
+
+    <header>
+      <%= link_to '←', root_path, class: 'back-button' %>
+      <h1 class = "paynow-header">Transfer overseas</h1>
+      <div class="whitebox"></div>
+    </header>
+
+  <div class="whitespace" style="background-color: #f1f2f4;"></div>
+
+  
+  <div class="myaccount-container">
+  <!-- Left container -->
+  <div class="left-container", style="padding-top:12px;">
+    
+    <div class="circle-container">
+      <div class="circle-icon">
+        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+      </div>
+    </div>
+      <div class="arrow-gif-container">
+        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+      </div>
+      <div class="circle-container">
+        <div class="promptpay-logo">
+            PP
+        </div>
+      </div>
+    
+    
+  </div>
+
+  <!-- Right container -->
+  <div class="right-container">
+    
+      <div class="myaccounttext">
+        <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
+        <div class="account-number">
+          <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block; padding-right: 150px;">271xxxxxxx0</p>
+          <p class="text-right">Balance</p>
+        </div>
+      </div>
+
+      
+    
+  <div class="horizontal-line"></div>
+   
+    <div class="recipienttext">
+      <div class="input-group">
+        <span class="country-code">+66 >  </span>
+        <%= form.text_field :name, placeholder: 'Recipient Number', class: 'recipient-number', pattern: '\d{9}', title: "Phone number must be exactly 9 digits" %>
+      </div>
+    </div>
+
+      <!-- Add more fields for mobile etc. -->
+    </div>
+  
+</div>
+
+
+  <div class="whitespace"></div>
+
+  <div class="moneybody">
+    <div class='left'>
+      <p class="amtin">You're Sending</p>
+      <p class="currency">SGD</p>
+    </div>
+    <div class='right'>
+      <%= form.number_field :amount, id: "sgdAmount", class: 'amount-field', placeholder: '0.00' %>
+    </div>
+  </div>
+
+  <div class="moneybody">
+    <div class='left'>
+      <p class="amtin">Recipient Gets</p>
+      <p class="currency">THB</p>
+    </div>
+    <div class='right'>
+      <input type="number" id="thbAmount" class='amount-field' placeholder='0.00' readonly>
+    </div>
+  </div>
+
+  <div class="exchange-rate-container">
+    <p class="exchange-rate-text">Exchange Rate:  SGD 1 = THB 22.94</p>
+  </div>
+
+  
+
+<body>
+  <div class="limits">
+  <div class="group">
+    <div class='num-left'>Authorised</div>
+    <div class='num-right'>SGD 5,000.00</div>
+  </div>
+  <div class="group">
+    <div class='num-left', style='padding-bottom:15px;'>Remaining</div>
+    <div class='num-right'>SGD 4,999.00</div>
+  </div>
+    <a href="#" class="change-limit"><u>Change Limit</u></a>
+  </div>
+
+  <p>TRANSFER DETAILS</p>
+
+  <div class="transfer-details">
+    <%= form.label :comments, "Add comments for recipient" %>
+    <%= form.text_field :comments, value: "PromptPay Transfer" %>
+  </div>
+
+  <div class="terms">
+    <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
+  </div>
+
+
+    <div class="nextbutton">
+      <%= form.submit "NEXT", id: "next-button" %>
+    </div>
+
+    </div>
+<% end %>
+
+
+</body>
+
+<!-- thai transaction 9 digit limitation -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const phoneNumberInput = document.querySelector('.recipient-number');
+
+    phoneNumberInput.addEventListener('input', function() {
+      const isValid = this.value.length === 9 && !isNaN(parseInt(this.value, 10));
+      this.setCustomValidity(isValid ? '' : 'Please enter exactly 9 digits.');
+    });
+  });
+</script>
+
+
+<!-- thai currency autoconversion -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const exchangeRate = 22.94; // Update this rate as necessary
+
+    const sgdInput = document.getElementById('sgdAmount');
+    const thbInput = document.getElementById('thbAmount');
+
+    if (sgdInput && thbInput) {
+        sgdInput.addEventListener('input', function() {
+        const sgdValue = parseFloat(this.value) || 0;
+        const thbValue = sgdValue * exchangeRate;
+        thbInput.value = thbValue.toFixed(2);
+        });
+    } else {
+        console.error('SGD or THB input fields not found.');
+    }
+  });
+
+
+</script>
+
+ <!-- Automatically refreshes for conversion to work -->
+<script>
+  if (!sessionStorage.getItem('refreshed')) {
+    sessionStorage.setItem('refreshed', 'true');
+    window.location.reload(true); // true forces the reload to be from the server
+  } else {
+    sessionStorage.removeItem('refreshed');
+  }
+</script>
+

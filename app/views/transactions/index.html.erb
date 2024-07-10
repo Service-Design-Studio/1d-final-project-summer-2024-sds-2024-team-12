@@ -73,6 +73,7 @@
               </div>
 
               <% if @frequent_transactions.any? %>
+            
                 <div class="item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
@@ -109,6 +110,21 @@
                   </div>
                 </div>
               <% end %>
+            
+               <% if session[:country] == 'thailand' %>
+                <div class = "item">
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
+                    <button class="transparent">
+                      <div class="buttonContainer">
+                        <a href = "/promptpay" class="buttonText">Go Now</a>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+            <% end %>
 
             </div>
 
@@ -233,8 +249,16 @@
 
           </div>
         </div>
-      
-        
+
+        <div class="floating-container">
+          <button id="thailandButton" class="floating-button coco-transparent">
+            <%= image_tag("/assets/coconut.png", alt: "Coconut Image", class: "coco-icons") %>
+          </button>
+          <button id="removeThailand" class="floating-button">
+            not in thailand
+          </button>
+        </div>
+
     </scrollable>
 
       <div class="bottomnav">
@@ -326,6 +350,7 @@
             </div>
     </div>      
     </div>
+
     </div>
 
   </div>
@@ -373,5 +398,61 @@
   <% end %>
 </div>
 
-</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var thailandButton = document.getElementById('thailandButton');
+    if (thailandButton) {
+      thailandButton.addEventListener('click', function() {
+        const isActive = this.classList.contains('active');
+        const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
+        const method = isActive ? 'DELETE' : 'POST';
+
+        fetch(url, { 
+          method: method,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ country: 'thailand' }) // If your server expects data
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP status ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if(data.success) {
+            this.classList.toggle('active');
+            location.reload(); // Reload the page to update the carousel
+          }
+        })
+        .catch(error => console.error('Fetch error:', error));
+
+      });
+    } else {
+      console.error('Thailand button not found');
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var removeButton = document.getElementById('removeThailand');
+    var coconutButton = document.getElementById('thailandButton');
+
+    removeButton.addEventListener('click', function() {
+      fetch('/remove_location/thailand', { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => {
+          if(data.success) {
+            coconutButton.style.display = 'none'; // Hide coconut button
+            location.reload(); // Optionally reload or manually reset carousel
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  });
+
+
+
+</script>
 </html>
