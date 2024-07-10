@@ -11,11 +11,11 @@ When("I click the Add Overseas Recipient button") do
 end
 
 When("I click on {string}") do |tcountry|
-  find('a.country-link[data-country="Thailand"]', text: link_text, visible: true).click
-  puts page.html
+  find('a.country-link[data-country="Thailand"]', text: tcountry, visible: true).click
 end
 
 When("I click on {string} button") do |button|
+  find('#promptPayModal',  :visible => false)
   within('#promptPayModal') do
     click_link(button)
   end
@@ -85,4 +85,20 @@ end
 
 Then("I should be able to see that a new transaction was created") do
   expect(page).to have_content("Transaction was successfully created")
+end
+
+And("I fill in the recipient number {string}") do |number|
+  fill_in "transaction_name", with: number
+end
+
+And("I fill in the amount to be transferred in SGD {string}") do |number|
+  fill_in "sgdAmount", with: number
+end
+
+Then("I press the {string} button") do |button|
+  click_button(button)
+end
+
+Then("I should see a message saying {string}") do |success_message|
+  expect(page).to have_content(success_message)
 end

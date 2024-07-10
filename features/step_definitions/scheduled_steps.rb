@@ -35,6 +35,7 @@ And("I click the {string} button") do |button_name|
 end
 
 Then("I should see a popup with 2 buttons") do
+  puts page.html
   within('.popup') do
     expect(page).to have_selector('.button', count: 2)
   end
