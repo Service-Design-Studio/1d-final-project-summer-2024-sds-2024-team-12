@@ -9,7 +9,7 @@
   <div class="whitespace" style="background-color: #f1f2f4;"></div>
 
   
-  <div class="myaccount-container">
+  <div class="promptmyaccount-container">
   <!-- Left container -->
   <div class="left-container", style="padding-top:12px;">
     
@@ -26,8 +26,7 @@
             PP
         </div>
       </div>
-    
-    
+
   </div>
 
   <!-- Right container -->
@@ -60,22 +59,22 @@
 
   <div class="whitespace"></div>
 
-  <div class="moneybody">
-    <div class='left'>
+  <div class="promptmoneybody">
+    <div class='promptleft'>
       <p class="amtin">You're Sending</p>
       <p class="currency">SGD</p>
     </div>
-    <div class='right'>
+    <div class='promptright'>
       <%= form.number_field :amount, id: "sgdAmount", class: 'amount-field', placeholder: '0.00' %>
     </div>
   </div>
 
-  <div class="moneybody">
-    <div class='left'>
+  <div class="promptmoneybody">
+    <div class='promptleft'>
       <p class="amtin">Recipient Gets</p>
       <p class="currency">THB</p>
     </div>
-    <div class='right'>
+    <div class='promptright'>
       <input type="number" id="thbAmount" class='amount-field' placeholder='0.00' readonly>
     </div>
   </div>
