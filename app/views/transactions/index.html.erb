@@ -21,33 +21,39 @@
           <div class="header">
             <div class="leftcontainer">
               <button class="transparent">
-                <img src="/assets/bellwhite.png" alt="bell" class="bell">
+                <%= image_tag("bellwhite.png", alt: "bell", class: "bell") %>
               </button>
               <button class="transparent">
-                <img src="/assets/eye.png" class="eye">
+                <%= image_tag("eye.png", class: "eye") %>
               </button>
             </div>
             <div class="rightcontainer">
+
 
               <% if Current.user %>
               <%= Current.user.phone %>
               <% end %>
 
+
               <button class="transparent">
-                <img src="/assets/help.png" class="help">
+                <%= image_tag("help.png", class: "help") %>
               </button>
-              
+             
               <div class="logoutContainer">
                 <%= button_to logout_path, method: :delete, class: "transparent" do %>
                   <p class="logoutText">LOG OUT</p>
                 <% end %>
               </div>
-              
+             
+
+
+
 
 
 
             </div>
           </div>
+
 
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -61,8 +67,10 @@
               <% end %>
             </ol>
 
+
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
+
 
               <div class="item active">
                 <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
@@ -72,8 +80,9 @@
                 </div>
               </div>
 
+
               <% if @frequent_transactions.any? %>
-            
+           
                 <div class="item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
@@ -92,7 +101,7 @@
                   </div>
                 </div>
               <% end %>
-              
+             
               <% if @close_transactions.any? %>
                 <div class="item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
@@ -104,13 +113,13 @@
                     </ul>
                     <button class='transparent' id='setupLimitButton'>
                       <div class='buttonContainer'>
-                        <%= link_to 'Set up Limit', new_cardlimit_path %> 
+                        <%= link_to 'Set up Limit', new_cardlimit_path %>
                       </div>
                     </button>
                   </div>
                 </div>
               <% end %>
-            
+           
                <% if session[:country] == 'thailand' %>
                 <div class = "item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
@@ -126,7 +135,9 @@
                 </div>
             <% end %>
 
+
             </div>
+
 
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -141,18 +152,19 @@
         </div>
         <div class="containertwo">
           <p class="text">Smart Shortcuts</p>
-          <img src="/assets/settings.png" class="setting">
+          <%= image_tag("settings.png", class: "setting") %>
         </div>
-        
+       
         <div class="containerthree">
           <div class="scrollview">
+
 
            <% if @frequent_transactions.any? %>
               <% ShortcutButton.all.each do |button| %>
                 <div class="shortcut-button">
                   <div class="iconcontainer">
                     <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
-                      <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
+                      <%= image_tag('shortcutbutton.png', alt: button.name_of_widget) %>
                       <p class="shortcut"><%= button.name_of_widget %></p>
                     <% end %>
                     <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
@@ -163,29 +175,32 @@
               <% end %>
             <% end %>
 
+
             <button id="paynowbutton" class="transparent">
               <%= link_to new_transaction_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("/assets/paynow.png", alt: 'PayNow Image', class: "icons") %>
+                  <%= image_tag("paynow.png", alt: 'PayNow Image', class: "icons") %>
                   <p class="shortcut">PayNow</p>
                 </div>
               <% end %>
             </button>
 
+
             <button class="transparent">
               <%= link_to transaction_history_path do %>
               <div class="iconcontainer">
-                <img src="/assets/transaction_history.png" class="icons">
+                <%= image_tag("transaction_history.png",class: "icons") %>
                 <p class="shortcut">Transaction</p>
                 <p class="shortcut">History</p>
               </div>
               <% end %>
             </button>
 
+
             <button id="overseasbutton" class="transparent">
               <%= link_to overseas_transfer_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("/assets/overseas.png", alt: 'Overseas Image', class: "icons") %>
+                  <%= image_tag("overseas.png", alt: 'Overseas Image', class: "icons") %>
                   <p class="shortcut">Overseas</p>
                   <p class="shortcut">Transactions</p>
                 </div>
@@ -193,100 +208,114 @@
             </button>
 
 
+
+
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/local_transfer.png" class="icons">
+                <%= image_tag("local_transfer.png", class: "icons") %>
                 <p class="shortcut">Transfer Money</p>
               </div>
             </button>
 
+
             <button id="scanpay" class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/scan&amp;pay.png" class="icons">
+                <%= image_tag('scan&pay.png', class: 'icons') %>
                 <p class="shortcut">Scan &amp; Pay</p>
               </div>
             </button>
 
-            
+
+           
+
 
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/local_transfer_limit.png" class="icons">
+                <%= image_tag('local_transfer_limit.png', class: 'icons') %>
                 <p class="shortcut">Local Transfer</p>
                 <p class="shortcut">Limit</p>
               </div>
             </button>
 
+
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/livebetter.png" class="icons">
+                <%= image_tag('livebetter.png', class: 'icons') %>
                 <p class="shortcut">Live Better</p>
               </div>
             </button>
 
+
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/bill.png" class="icons">
+                <%= image_tag('bill.png', class: 'icons') %>
                 <p class="shortcut">Bills</p>
               </div>
             </button>
 
+
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/setpeekbalance.png" class="icons">
+                <%= image_tag('setpeekbalance.png', class: 'icons') %>
                 <p class="shortcut">Set Peek</p>
                 <p class="shortcut">Balance</p>
               </div>
             </button>
 
+
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/scheduletransfer.png" class="icons">
+                <%= image_tag('scheduletransfer.png', class: 'icons') %>
                 <p class="shortcut">Transfers</p>
                 <p class="shortcut">Scheduled</p>
               </div>
             </button>
 
+
           </div>
         </div>
 
+
         <div class="floating-container">
           <button id="thailandButton" class="floating-button coco-transparent">
-            <%= image_tag("/assets/coconut.png", alt: "Coconut Image", class: "coco-icons") %>
+            <%= image_tag("coconut.png", alt: "Coconut Image", class: "coco-icons") %>
           </button>
           <button id="removeThailand" class="floating-button">
             not in thailand
           </button>
         </div>
 
+
     </scrollable>
+
 
       <div class="bottomnav">
         <div class="bottomtabnavigatorcontainer">
           <button class="transparent">
-            <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
+            <%= image_tag("home_bottomfilled.png", alt: "home", class: "navicon") %>
             <p class="navtextselected">Home</p>
           </button>
           <button class="transparent">
-            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <%= image_tag("invest_bottom.png", alt: "invest", class: "navicon") %>
             <p class="navtext">Invest</p>
           </button>
           <a href="/pay_and_transfer_page/index">
             <button class="transparent">
-              <img src="/assets/pay&amp;transfer_bottom.png" alt="pay" class="navicon">
+              <%= image_tag("pay&transfer_bottom.png", alt: "pay", class: "navicon") %>
               <p class="navtext">Pay &amp; Transfer</p>
             </button>
           </a>
           <button class="transparent">
-            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <%= image_tag("plan_bottom.png", alt: "plan", class: "navicon") %>
             <p class="navtext">Plan</p>
           </button>
           <button class="transparent">
-            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <%= image_tag("more_bottom.png", alt: "more", class: "navicon") %>
             <p class="navtext">More</p>
           </button>
         </div>
       </div>
+
 
       <div class="tab-container">
         <!-- Tabs -->
@@ -295,13 +324,14 @@
             <div class="tab" onclick="showTab('insights')">Insights</div>
         </div>
 
+
         <!-- Content for Accounts tab -->
         <div id="tab-accounts" class="tab-content active">
                 <!-- Your ACCOUNTS content goes here -->
                 <div class="header1">
                     <div class="blueline"></div>
                     <p class="text">Your Net Worth</p>
-                    <img src="/assets/expand.png" class="expand2">
+                    <%= image_tag("expand.png", class: "expand2") %>
                 </div>
                 <div class="container2">
                     <div class="value">Value</div>
@@ -316,7 +346,7 @@
                         <div class="header1">
                             <div class="yellowline"></div>
                             <p class="text">Deposits</p>
-                            <img src="/assets/expand.png" class="expandrotated2">
+                            <%= image_tag("expand.png", class: "expandrotated2") %>
                         </div>
                         <div class="container2">
                             <div class="value">Balance</div>
@@ -325,8 +355,9 @@
                         <div class="line"></div>
                     </div>
                 </button>
-            
+           
         </div>
+
 
         <!-- Content for Insights tab -->
         <div id="tab-insights" class="tab-content">
@@ -351,9 +382,12 @@
     </div>      
     </div>
 
+
     </div>
 
+
   </div>
+
 
   <!-- Inline JavaScript for tab switching -->
     <script>
@@ -364,20 +398,26 @@
             tabContents[i].style.display = "none";
         }
 
+
         // Deactivate all tabs
         var tabs = document.getElementsByClassName("tab");
         for (var i = 0; i < tabs.length; i++) {
             tabs[i].classList.remove("active");
         }
 
+
         // Show the selected tab content
         document.getElementById("tab-" + tabName).style.display = "block";
+
 
         // Activate the selected tab
         document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
 
+
     </script>
+
+
 
 
 <!-- Popup for more details -->
@@ -386,7 +426,7 @@
   <div class="popup-content">
     <span class="close" id="closePopup">&times;</span>
     <p class='textheader'>Suggestion:</p>
-    <p>Based on your past transactions, we noticed that you sent money to 
+    <p>Based on your past transactions, we noticed that you sent money to
       <% names = @frequent_transactions.pluck(:name).join(', ') %>
       <%= names %>
     frequently in the past month. Do you want to set up monthly recurring payments?</p>
@@ -398,6 +438,7 @@
   <% end %>
 </div>
 
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var thailandButton = document.getElementById('thailandButton');
@@ -407,7 +448,8 @@
         const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
         const method = isActive ? 'DELETE' : 'POST';
 
-        fetch(url, { 
+
+        fetch(url, {
           method: method,
           headers: {
             'Content-Type': 'application/json',
@@ -429,15 +471,18 @@
         })
         .catch(error => console.error('Fetch error:', error));
 
+
       });
     } else {
       console.error('Thailand button not found');
     }
   });
 
+
   document.addEventListener('DOMContentLoaded', function() {
     var removeButton = document.getElementById('removeThailand');
     var coconutButton = document.getElementById('thailandButton');
+
 
     removeButton.addEventListener('click', function() {
       fetch('/remove_location/thailand', { method: 'DELETE' })
@@ -454,5 +499,11 @@
 
 
 
+
+
+
 </script>
 </html>
+
+
+
