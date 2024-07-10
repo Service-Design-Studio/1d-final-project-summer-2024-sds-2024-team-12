@@ -1,8 +1,8 @@
 Feature: Overseas Transfer
 
   Scenario: Adding a new recipient
-    Given that I am on the transactions page
-    When I click on “Overseas Transfer”
+    Given that I am on the transactions page in overseas steps
+    When I click on Overseas Transfer button
     And I click “Add Overseas Recipient”
     Then I click on “Thailand”
     And I fill in the recipient account details
@@ -13,7 +13,7 @@ Feature: Overseas Transfer
     Then I should see the new recipient I added
 
   Scenario: Making an overseas transfer
-    Given that I am on the transactions page
+    Given that I am on the transactions page in overseas steps
     And the recipient "Jane" exists
     When I click on “Overseas Transfer” 
     And when I click on the recipient

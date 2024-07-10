@@ -1,4 +1,4 @@
-Given("that I am on the transactions page") do
+Given("that I am on the transactions page in overseas steps") do
   visit transactions_path
 end
 
@@ -6,11 +6,15 @@ Given("that I am on the homepage") do
   visit root_path
 end
 
-When("I click on {string}") do |link_text|
-  click_link link_text
+When("I click on Overseas Transfer button") do
+  find('#overseasbutton a').click
 end
 
-When("I click {string}") do |button_text|
+And("I click {string}") do |button_text|
+  click_link button_text
+end
+
+Then("I click on {string}") do |button_text|
   click_button button_text
 end
 
