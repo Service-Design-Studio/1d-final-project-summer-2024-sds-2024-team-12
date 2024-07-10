@@ -11,7 +11,43 @@
   <link rel="manifest" href="/manifest.json">
   <title>ACCOUNTS</title>
   <%# <script defer="" src="/static/js/bundle.js"></script> %>
+  <style>
+    /* Include the updated CSS here */
+    .floating-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .floating-button {
+      background-color: #fff;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .floating-button:hover {
+      transform: scale(0.1);
+    }
+
+    .coco-transparent {
+      background-color: transparent;
+    }
+
+    .coco-icons {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
 </head>
+
 <body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="" style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
@@ -257,15 +293,6 @@
           </div>
         </div>
 
-        <div class="floating-container">
-          <button id="thailandButton" class="floating-button coco-transparent">
-            <%= image_tag("coconut.png", alt: "Coconut Image", class: "coco-icons") %>
-          </button>
-          <button id="removeThailand" class="floating-button">
-            not in thailand
-          </button>
-        </div>
-
     </scrollable>
 
       <div class="bottomnav">
@@ -355,6 +382,14 @@
                     </div>
                 </div>
             </div>
+    </div>
+    <div class="floating-container">
+          <button id="thailandButton" class="floating-button coco-transparent">
+            <%= image_tag("/assets/coconut.png", alt: "Coconut Image", class: "coco-icons") %>
+          </button>
+          <button id="removeThailand" class="floating-button">
+            not in thailand
+          </button>
     </div>      
     </div>
 
@@ -362,29 +397,76 @@
 
   </div>
 
-  <!-- Inline JavaScript for tab switching -->
-    <script>
-        function showTab(tabName) {
-        // Hide all tab contents
-        var tabContents = document.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabContents.length; i++) {
-            tabContents[i].style.display = "none";
-        }
+  <!-- Inline JavaScript for tab switching and other functionalities -->
+  <script>
+    // Include the existing JavaScript code for the functionality
+    function showTab(tabName) {
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = "none";
+      }
 
-        // Deactivate all tabs
-        var tabs = document.getElementsByClassName("tab");
-        for (var i = 0; i < tabs.length; i++) {
-            tabs[i].classList.remove("active");
-        }
+      var tabs = document.getElementsByClassName("tab");
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
 
-        // Show the selected tab content
-        document.getElementById("tab-" + tabName).style.display = "block";
-
-        // Activate the selected tab
-        document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
+      document.getElementById("tab-" + tabName).style.display = "block";
+      document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
 
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var thailandButton = document.getElementById('thailandButton');
+      if (thailandButton) {
+        thailandButton.addEventListener('click', function() {
+          const isActive = this.classList.contains('active');
+          const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
+          const method = isActive ? 'DELETE' : 'POST';
+
+          fetch(url, { 
+            method: method,
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ country: 'thailand' })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP status ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            if(data.success) {
+              this.classList.toggle('active');
+              location.reload();
+            }
+          })
+          .catch(error => console.error('Fetch error:', error));
+        });
+      } else {
+        console.error('Thailand button not found');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var removeButton = document.getElementById('removeThailand');
+      var coconutButton = document.getElementById('thailandButton');
+
+      removeButton.addEventListener('click', function() {
+        fetch('/remove_location/thailand', { method: 'DELETE' })
+          .then(response => response.json())
+          .then(data => {
+            if(data.success) {
+              coconutButton.style.display = 'none';
+              location.reload();
+            }
+          })
+          .catch(error => console.error('Error:', error));
+      });
+    });
+  </script>
 
 
 <!-- Popup for more details -->
@@ -423,63 +505,8 @@
       </div>
     </div>
   <% end %>
-<% end %>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var thailandButton = document.getElementById('thailandButton');
-    if (thailandButton) {
-      thailandButton.addEventListener('click', function() {
-        const isActive = this.classList.contains('active');
-        const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
-        const method = isActive ? 'DELETE' : 'POST';
+</div>
+</body>
 
-        fetch(url, { 
-          method: method,
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({ country: 'thailand' }) // If your server expects data
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP status ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          if(data.success) {
-            this.classList.toggle('active');
-            location.reload(); // Reload the page to update the carousel
-          }
-        })
-        .catch(error => console.error('Fetch error:', error));
-
-      });
-    } else {
-      console.error('Thailand button not found');
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var removeButton = document.getElementById('removeThailand');
-    var coconutButton = document.getElementById('thailandButton');
-
-    removeButton.addEventListener('click', function() {
-      fetch('/remove_location/thailand', { method: 'DELETE' })
-        .then(response => response.json())
-        .then(data => {
-          if(data.success) {
-            coconutButton.style.display = 'none'; // Hide coconut button
-            location.reload(); // Optionally reload or manually reset carousel
-          }
-        })
-        .catch(error => console.error('Error:', error));
-    });
-  });
-
-
-
-</script>
 </html>

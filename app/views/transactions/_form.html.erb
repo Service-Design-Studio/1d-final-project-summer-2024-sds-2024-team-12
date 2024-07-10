@@ -21,49 +21,36 @@
   <div class="whitespace" style="background-color: #f1f2f4;"></div>
 
   
-  <div class="myaccount-container">
-  <!-- Left container -->
-  <div class="left-container", style="padding-top:12px;">
-    
-    <div class="circle-container">
-      <div class="circle-icon">
-        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
-      </div>
-    </div>
-      <div class="arrow-gif-container">
-        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
-      </div>
-      <div class="circle-container">
-      <div class="circle-icon">
-        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
-      </div>
-      </div>
-    
-    
-  </div>
-
-  <!-- Right container -->
-  <div class="right-container">
-    
-      <div class="myaccounttext">
-        <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
-        <div class="account-number">
-          <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block; padding-right: 150px;">271xxxxxxx0</p>
-          <p class="text-right">Balance</p>
+  <div class="header-content">
+      <div class="left-container">
+        <div class="circle-container">
+          <div class="circle-icon">
+            <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+          </div>
+        </div>
+        <div class="arrow-gif-container">
+          <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+        </div>
+        <div class="circle-container">
+          <div class="circle-icon">
+            <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+          </div>
         </div>
       </div>
-
-      
-    
-  <div class="horizontal-line"></div>
-   
-      <div class="recipienttext">
-        <%= form.text_field :name, placeholder: 'Recipient Name' %>
+      <div class="right-container">
+        <div class="myaccounttext">
+          <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
+          <div class="account-number">
+            <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;">271xxxxxxx0</p>
+            <p class="text-right" style="margin-left: 100px;">SGD 29,891</p>
+          </div>
+        </div>
+        <div class="horizontal-line"></div>
+        <div class="recipienttext">
+          <%= form.text_field :name, placeholder: 'Recipient Name' %>
+        </div>
       </div>
-      <!-- Add more fields for mobile etc. -->
     </div>
-  
-</div>
 
 
   <div class="whitespace"></div>
@@ -95,9 +82,9 @@
   <p>TRANSFER DETAILS</p>
 
   <div class="transfer-details">
-    <%= form.label :comments, "Add comments for recipient" %>
-    <%= form.text_field :comments, value: "PayNow Transfer" %>
-  </div>
+      <%= form.label :comments, "Add comments for recipient" %>
+      <%= form.text_field :comments, value: "PayNow Transfer" %>
+    </div>
 
   <div class="terms">
     <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
