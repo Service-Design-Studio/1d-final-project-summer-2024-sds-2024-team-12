@@ -4,6 +4,8 @@ Feature: Managing Transactions
     Given a transaction exists with:
         | name     | amount    |
         | Nicole | 50.00     |
+    Given a user exists with phone "12345677" and password "224466"
+    And I am logged in with phone "12345677" and password "224466"
 
 
   Scenario: Making a PayNow transaction

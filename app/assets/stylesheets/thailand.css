@@ -1,0 +1,284 @@
+/*new transaction*/
+.paynow-header {
+    font-size: 24px; /* Adjust font size as needed */
+    font-family: 'Lato', sans-serif; /* Change font family */
+    text-align: left; /* Align text to the left */
+    align-content: left;
+    font-weight: 600;
+  }
+  
+.whitebox{
+   background-color: white;
+   padding-right:100px;
+   width: 20px; /* Same width as header */
+   height: 10px; 
+}
+
+
+.promptmyaccount-container {
+  display: flex;
+  background-color: white;
+  justify-content: space-between; /* Space between the two containers */
+  align-items: flex-start; /* Align items at the top */
+}  
+
+.left-container {
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.circle-container {
+     /* Adjust spacing between arrow gif and line */
+    padding-left:12px;
+  }
+
+.right-container {
+  flex: 1; /* Take remaining space */
+}
+  
+.circle-icon {
+    width: 40px; /* Adjust size of the circle */
+    height: 40px;
+    border-radius: 50%; /* Ensure it's circular */
+    border-style: solid; /* Background color of the circle */
+    border-width: 1px; 
+    border-color: #888888c6;
+    margin-right: 10px; /* Spacing between circle and text */
+    background-color: white;
+    
+}
+
+.country-code {
+    margin-right: 5px;  /* Spacing between the country code and the input field */
+}
+
+.promptpay-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;  /* Adjust the size as needed */
+    height: 40px;  /* Adjust the size as needed */
+    background-color: rgb(166, 0, 166);  /* Purple background */
+    color: white;  /* White text */
+    font-size: 20px;  /* Adjust font size as needed */
+    font-weight: bold;  /* Bold font */
+    border-radius: 50%;  /* Makes the div circular */
+    text-align: center;  /* Centers text horizontally */
+}
+  
+
+
+  .arrow-and-line-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .arrow-gif-container {
+    margin-right: 10px; /* Adjust spacing between arrow gif and line */
+    padding-left:5px;
+  }
+  .myaccounttext p {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    padding-left: 5px;
+    letter-spacing: 0.5px;
+    margin-bottom: 0px;
+  }
+
+  .account-number {
+    display: flex; /* Use flexbox to position items */
+    align-items: center; /* Align items vertically */
+    padding-bottom: 10px;
+  }
+
+  .text-right{
+    font-size: 15px; 
+    font-weight: bold; 
+    color: #a8abb0; 
+    text-align: right;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+   
+  .horizontal-line {
+    flex: 1; /* Take remaining space */
+    height: 1px; /* Height of the horizontal line */
+    background-color: #ccc; /* Color of the horizontal line */
+  }
+  
+  div.recipienttext {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    padding-left: 13px;
+    letter-spacing: 0.5px;
+    margin-bottom: 0px;
+    font-weight: 530; 
+    color: #505050; 
+    margin-top: 13px; 
+    margin-bottom: 2px;
+  }
+  
+  .whitespace{
+    background-color: white;
+    padding-bottom:15px;
+  }
+  
+  .promptmoneybody {
+    background-color: #162633;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  
+  } 
+  
+  .amount-section {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .amount-label {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .promptleft{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: transparent;
+    padding-top: 10px;
+    padding-left: 5vw;
+  }
+  
+  .amtin{
+    color: #C3CCD3;
+    font-size: 13px;
+    background-color: transparent;
+    margin: 0;
+    padding-left:10px;
+  }  
+  
+  .currency{
+    color: #C3CCD3;
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 600;
+    background-color: transparent;
+    margin: 0.5vh 0 2.5vh 0;
+    padding-left:10px;
+  }
+  
+  .promptright{
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+    justify-content: flex-end;
+    font-size: 20px;
+  }
+  
+  .amount-input {
+    width: 100%;
+  }
+  
+  .amount-field {
+    width: 50%; /* Adjust width as needed */
+    padding: 10px;
+    font-size: 25px;
+    background-color: #1c2834;
+    color: #aeb8c4; 
+  }
+  
+  .amount-field::placeholder {
+    color: #aeb8c4;
+  }
+  
+  .differentbackground{
+    background-color: #f1f2f4;
+  }
+
+
+
+  .group {
+    display: flex;
+
+  }
+
+  .num-left{
+    font-size: 17px; 
+    font-weight: bold; 
+    color: #999ea2;
+    padding-top: 15px;
+    padding-left: 25px;
+    
+    
+
+  }
+
+  .num-right{
+    font-size: 20px; 
+     
+    color: black; 
+    text-align: right;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding-top: 15px;
+    padding-right: 20px;
+  }
+
+  .change-limit{
+    font-size: 20px; 
+    color: black;
+    padding-top: 30px;
+    padding-left: 25px;
+  }
+  
+  .nextbutton input[type="submit"] {
+    background-color: #ff3234;
+    color: white;
+    margin-top: auto; 
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    display: flex;
+    border: none; /* No border */
+    padding: 15px 30px; /* Padding for the button */
+    font-size: 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Lato";
+    margin-left: 25px;
+    width:90%;
+    margin-right: 30px;
+    margin-bottom:30px;
+    bottom: 0;
+    position:fixed;
+  }
+
+  /* exhange rate line */
+  .exchange-rate-container {
+    background-color: #000000;  /* Black background */
+    color: #ffffff;  /* White text */
+    text-align: center;  /* Center-align the text */
+    padding: 10px 0;  /* Padding to increase spacing */
+    font-size: 14px;  /* Smaller font size */
+  }
+  
+  .exchange-rate-text {
+    margin: 0;  /* Remove default margin */
+    font-weight: normal;  /* Normal font weight */
+    font-size: 14px;
+  }
+  
+  

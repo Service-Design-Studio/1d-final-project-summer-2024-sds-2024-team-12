@@ -6,12 +6,16 @@ When("I click on Sign Up") do
   click_on("Sign Up")  # Adjust the selector as per your application's actual button
 end
 
-When('I fill in {string} with {string}') do |field, value|
-  fill_in field, with: value
+And('I fill in phone number with {string}') do |phone|
+  fill_in 'user_phone', with: phone
 end
 
-When('I fill in Phone with {string}') do |phone|
-  fill_in 'Phone', with: phone
+And('I fill in PIN with {string}') do |pin|
+  fill_in 'user_password', with: pin
+end
+
+And('I fill in confirm pin with {string}') do |cfm_pin|
+  fill_in 'user_password_confirmation', with: cfm_pin
 end
 
 When("I press Sign Up") do
@@ -22,6 +26,13 @@ Then("I should see that I successfully created an account") do
   expect(page).to have_content("Successfully created account.")
 end
 
+When("I login with my phone number {string}") do |phone|
+  fill_in 'phone', with: phone
+end
+
+And("I fill in my PIN with {string}") do |pin|
+  fill_in 'password', with: pin
+end
 
 When("I press Sign In") do
   click_button("Sign In")  # Adjust the selector as per your application's actual button

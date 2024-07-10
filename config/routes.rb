@@ -25,6 +25,14 @@ Rails.application.routes.draw do
   get 'overseas_transfer/make_transfer', to: 'overseas#make_transfer'
   # Ensure all routes are prefixed with 'overseas_transfer' and point to 'overseas#action'
 
+  #for thailand coconut
+  post '/set_location/:country', to: 'locations#set_country', as: 'set_country'
+  delete '/remove_location/:country', to: 'locations#remove_country', as: 'remove_country'
+  
+  get 'promptpay', to:'thailand#promptpay'
+  post 'submit_promptpay', to: 'thailand#create', as: :submit_promptpay
+
+
 
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"

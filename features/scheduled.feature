@@ -5,13 +5,15 @@ Feature: Scheduled Transaction
         | Nicole | 100.00 |
         | Nicole | 100.00 |
         | Nicole | 100.00 |
+    Given a user exists with phone "12345677" and password "224466"
+    And I am logged in with phone "12345677" and password "224466"
+
 
     Scenario: Set a scheduled transaction at the start of every month
         Given that I am on the transactions page
         When I see suggestions in the carousel
         And I click the "Set up" button
-        Then I should see a popup with 2 buttons
-        And when I click "Schedule Payment"
+        When I click on "Schedule Payment" button in the popup
         Then I should see the new Scheduled Transaction page
         When I fill in the recipient name
         And fill in the amount to be transferred in SGD

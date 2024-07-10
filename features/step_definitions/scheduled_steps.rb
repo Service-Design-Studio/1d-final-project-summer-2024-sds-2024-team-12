@@ -21,7 +21,7 @@ When("I see suggestions in the carousel") do
       within(suggestions_item) do
         expect(page).to have_css('.carousel-caption p.textheader', text: 'Suggestion:')
         expect(page).to have_content('Based on your frequent transactions')
-  end
+      end
     else
       raise "No carousel item with suggestion found"
     end
@@ -40,9 +40,6 @@ When("I click on {string} button in the popup") do |button|
   end
 end
 
-When("I click {string}") do |button_name|
-  click_on(button_name)
-end
 
 Then("I should see the new Scheduled Transaction page") do
   expect(page).to have_content('New Scheduled Transaction')
