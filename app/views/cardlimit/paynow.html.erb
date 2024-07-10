@@ -1,0 +1,28 @@
+<%= form_with(model: @card_limit, local: true) do |form| %>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+  
+  <div class="container">
+    <%= link_to('<', new_cardlimit_path, class: 'back-button') %>
+    <h1>Changing limit for Paynow</h1>
+  </div>
+
+  <div class="horizontal-line"></div>
+
+  <%= form.text_field :daily_limit, placeholder: "Set daily limit" %>
+
+  <div class="changingcontainer">
+    <div class="select-card-container">
+      <div class='left'>
+        <p>Set limit</p>
+        <p>SGD 1000</p> <!-- Example text, adjust as needed -->
+      </div>
+      <div class='right'>
+        <%= link_to('>', cardlimit_adjusting_path, class: 'next-button') %>
+      </div>
+    </div>
+  </div>
+
+  <p>Heads up! Local transfer limits also apply to Scan and Pay transactions - when the QR code you scan is a Paynow QR code.</p>
+
+<% end %>
+
