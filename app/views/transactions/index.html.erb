@@ -90,9 +90,14 @@
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" class="active"></li>
               <% if @frequent_transactions.any? %>
+              <% @frequent_transactions.each do |transaction| %>
                 <li data-target="#myCarousel"></li>
               <% end %>
+              <% end %>
               <% if @close_transactions.any? %>
+                <li data-target="#myCarousel"></li>
+              <% end %>
+              <% if session[:country] == 'thailand' %>
                 <li data-target="#myCarousel"></li>
               <% end %>
             </ol>
@@ -109,24 +114,25 @@
               </div>
 
               <% if @frequent_transactions.any? %>
-            
+               <% @frequent_transactions.each_with_index do |transaction, index| %>
                 <div class="item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
                     <p class="textheader">Suggestion:</p>
                     <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
                     <ul class="textbody">
-                      <% @frequent_transactions.each do |transaction| %>
+                      
                         <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
-                      <% end %>
+                      
                     </ul>
-                    <button class="transparent" id="setupButton">
+                    <button class="transparent" id="setupButton<%= index %>">
                       <div class="buttonContainer">
                         <p class="buttonText">Set up</p>
                       </div>
                     </button>
                   </div>
                 </div>
+                <% end %>
               <% end %>
               
               <% if @close_transactions.any? %>
@@ -184,20 +190,21 @@
           <div class="scrollview">
 
            <% if @frequent_transactions.any? %>
-              <% ShortcutButton.all.each do |button| %>
-                <div class="shortcut-button">
-                  <div class="iconcontainer">
-                    <%= link_to new_transaction_path(scheduled_transaction: { name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }) do %>
-                      <img src="<%= asset_path 'shortcutbutton.png' %>" alt="<%= button.name_of_widget %>">
-                      <p class="shortcut"><%= button.name_of_widget %></p>
-                    <% end %>
-                    <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-                      <%= form.submit 'Delete', class: 'btn btn-danger' %>
-                    <% end %>
-                  </div>
+            <% ShortcutButton.all.each do |button| %>
+              <div class="scshortcut-button">
+                <div class="sciconcontainer">
+                  <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
+                    <div class="scicons"><%= button.nickname %></div>
+                    
+                  <% end %>
+                  <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+                    <%= form.submit 'Delete', class: 'btn btn-danger' %>
+                  <% end %>
                 </div>
-              <% end %>
+              </div>
             <% end %>
+          <% end %>
+            
 
             <button id="paynowbutton" class="transparent">
               <%= link_to new_transaction_path do %>
@@ -285,6 +292,7 @@
 
           </div>
         </div>
+
     </scrollable>
 
       <div class="bottomnav">
@@ -462,21 +470,43 @@
 
 
 <!-- Popup for more details -->
-<div class="popup" id="popup">
-  <% if @frequent_transactions.any? %>
-  <div class="popup-content">
-    <span class="close" id="closePopup">&times;</span>
+<% if @frequent_transactions.any? %>
+  <% @frequent_transactions.each_with_index do |transaction, index| %>
+    <div class="popup" id="popup<%= index %>">
+      <div class="popup-content">
+        <span class="close" id="closePopup">&times;</span>
     <p class='textheader'>Suggestion:</p>
     <p>Based on your past transactions, we noticed that you sent money to 
-      <% names = @frequent_transactions.pluck(:name).join(', ') %>
-      <%= names %>
+      <%# <% names = @frequent_transactions.pluck(:name).join(', ') %>
+      <%# <%= names %>
+      <%= transaction.name %>
     frequently in the past month. Do you want to set up monthly recurring payments?</p>
-    <div class="buttons">
-      <%= link_to "Schedule Payment", new_scheduled_transaction_path(scheduled_transaction: { account_name: @frequent_transactions.first.name, amount: @frequent_transactions.first.amount }), class: 'scheduleButton', id: 'scheduleButton' %>
-      <%= link_to "Make a Quick Shortcut", new_shortcut_button_path, class: 'shortcutButton', id: 'shortcutButton' %>
+        <div class="buttons">
+          <%= link_to "Schedule Payment", 
+              new_scheduled_transaction_path(
+                scheduled_transaction: { 
+                  name: transaction.name, 
+                  amount: transaction.amount 
+                }
+              ), 
+              class: 'scheduleButton', 
+              id: "scheduleButton#{index}" %>
+          <%= link_to "Make a Quick Shortcut", 
+              new_shortcut_button_path(
+                shortcut_button: { 
+                  recipient_name: transaction.name,
+                  amount: transaction.amount,
+                  nickname: ""
+                }
+              ), 
+              class: 'shortcutButton', 
+              id: "shortcutButton#{index}" %>
+        </div>
+      </div>
     </div>
-  </div>
   <% end %>
+
 </div>
 </body>
+
 </html>

@@ -232,6 +232,8 @@
     justify-content: flex-start; /* Align items to the start */
     width: 20vw;
   }
+
+
   
   .icons {
     width: 70%; /* Adjust width as needed */
@@ -3706,6 +3708,8 @@ input:focus {
     background-image: none; /* Remove default icons */
     color: #000; /* Customize control color */
     font-size: 30px;
+    height: 50%
+
   }
   
   .carousel-control.left:hover,

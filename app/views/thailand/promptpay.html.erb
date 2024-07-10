@@ -9,7 +9,7 @@
   <div class="whitespace" style="background-color: #f1f2f4;"></div>
 
   
-  <div class="myaccount-container">
+  <div class="promptmyaccount-container">
   <!-- Left container -->
   <div class="left-container", style="padding-top:12px;">
     
@@ -26,8 +26,7 @@
             PP
         </div>
       </div>
-    
-    
+
   </div>
 
   <!-- Right container -->
@@ -37,7 +36,7 @@
         <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
         <div class="account-number">
           <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block; padding-right: 150px;">271xxxxxxx0</p>
-          <p class="text-right">Balance</p>
+          <p class="text-right">SGD 29,891</p>
         </div>
       </div>
 
@@ -60,22 +59,22 @@
 
   <div class="whitespace"></div>
 
-  <div class="moneybody">
-    <div class='left'>
+  <div class="promptmoneybody">
+    <div class='promptleft'>
       <p class="amtin">You're Sending</p>
       <p class="currency">SGD</p>
     </div>
-    <div class='right'>
+    <div class='promptright'>
       <%= form.number_field :amount, id: "sgdAmount", class: 'amount-field', placeholder: '0.00' %>
     </div>
   </div>
 
-  <div class="moneybody">
-    <div class='left'>
+  <div class="promptmoneybody">
+    <div class='promptleft'>
       <p class="amtin">Recipient Gets</p>
       <p class="currency">THB</p>
     </div>
-    <div class='right'>
+    <div class='promptright'>
       <input type="number" id="thbAmount" class='amount-field' placeholder='0.00' readonly>
     </div>
   </div>
@@ -124,14 +123,16 @@
 <!-- thai transaction 9 digit limitation -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const phoneNumberInput = document.querySelector('.recipient-number');
-
-    phoneNumberInput.addEventListener('input', function() {
-      const isValid = this.value.length === 9 && !isNaN(parseInt(this.value, 10));
-      this.setCustomValidity(isValid ? '' : 'Please enter exactly 9 digits.');
+    const phoneInput = document.querySelector('.recipient-number');
+   
+    phoneInput.addEventListener('input', function() {
+      const isPhoneNumber = phoneInput.placeholder === 'Recipient Number';
+      const isValid = this.value.length === 9 && /^\d+$/.test(this.value);
+      this.setCustomValidity(isPhoneNumber && !isValid ? 'Please enter exactly 9 digits.' : '');
     });
   });
 </script>
+
 
 
 <!-- thai currency autoconversion -->
