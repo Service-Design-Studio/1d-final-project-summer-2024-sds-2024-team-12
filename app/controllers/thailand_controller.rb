@@ -84,12 +84,14 @@ class ThailandController < ApplicationController
         params.require(:transaction).permit(:name, :amount)
       end
   
-      def set_transaction
-        @transaction = Transaction.find(params[:id])
+      #thailand promptpay validation
+ 
+      def promptpay_submission?(name)
+        name.present? && name.strip.length == 9 && name.to_i.to_s == name.strip
       end
-  
-      def transaction_params
-        params.require(:transaction).permit(:name, :amount)
+     
+      def valid_phone_number?(phone)
+        phone.match?(/\A\d{9}\z/)
       end
   end
   
