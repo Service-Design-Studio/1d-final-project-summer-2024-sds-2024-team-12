@@ -123,14 +123,16 @@
 <!-- thai transaction 9 digit limitation -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const phoneNumberInput = document.querySelector('.recipient-number');
-
-    phoneNumberInput.addEventListener('input', function() {
-      const isValid = this.value.length === 9 && !isNaN(parseInt(this.value, 10));
-      this.setCustomValidity(isValid ? '' : 'Please enter exactly 9 digits.');
+    const phoneInput = document.querySelector('.recipient-number');
+   
+    phoneInput.addEventListener('input', function() {
+      const isPhoneNumber = phoneInput.placeholder === 'Recipient Number';
+      const isValid = this.value.length === 9 && /^\d+$/.test(this.value);
+      this.setCustomValidity(isPhoneNumber && !isValid ? 'Please enter exactly 9 digits.' : '');
     });
   });
 </script>
+
 
 
 <!-- thai currency autoconversion -->
