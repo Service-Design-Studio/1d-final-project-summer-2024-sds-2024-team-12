@@ -91,26 +91,26 @@
         <div class="bottomtabnavigatorcontainer">
         <%= link_to transactions_path do %>
           <button class="transparent">
-            <img src="/assets/home_bottom.png" alt="home" class="navicon">
+            <%= image_tag('home_bottom.png', alt: 'home', class: 'navicon') %>
             <p class="navtext">Home</p>
           </button>
           <% end %>
           <button class="transparent">
-            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <%= image_tag('invest_bottom.png', alt: 'invest', class: 'navicon') %>
             <p class="navtext">Invest</p>
           </button>
           
             <button class="transparent">
-              <img src="/assets/pay&amp;transfer_bottomfilled.png" alt="pay" class="navicon">
+              <%= image_tag("pay&transfer_bottomfilled.png", alt: "pay", class: "navicon") %>
               <p class="navtextselected">Pay &amp; Transfer</p>
             </button>
           </a>
           <button class="transparent">
-            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <%= image_tag("plan_bottom.png", alt: "plan", class: "navicon") %>
             <p class="navtext">Plan</p>
           </button>
           <button class="transparent">
-            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <%= image_tag("more_bottom.png", alt: "more", class: "navicon") %>
             <p class="navtext">More</p>
           </button>
         </div>
