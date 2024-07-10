@@ -1,10 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<body class="sucesspagebg">
+<img src="/assets/greentick.png" alt="DBS-Bank-logo"  class="greentick" />
 
-<%= render @transaction %>
 
-<div>
-  <%= link_to "Edit this transaction", edit_transaction_path(@transaction) %> |
-  <%= link_to "Back to transactions", transactions_path %>
+  <div class="moneybody2">
+    <div class='left'>
+      <p class="amtin">Amount in</p>
+      <p class="currency">SGD</p>
+    </div>
+    <div class='right2'>
+    <div class='amount-fieldsuccess'>
+    <%= @transaction.amount %></div>
+    </div>
+  </div>
+<br>
+<div class="name">
+<p>
 
-  <%= button_to "Destroy this transaction", @transaction, method: :delete %>
+  <strong>To:</strong>
+  <%= @transaction.name %>
+</p>
 </div>
+
+<div class="name">
+<p>
+
+  <strong>Reference No:</strong>
+  12049490020
+</p>
+</div>
+
+ <br><br>
+ <div class="button-container">
+  <%= button_to "Edit this transaction", edit_transaction_path(@transaction), method: :get, class: "grey-button" %> 
+<br>
+  <%= link_to "Back to transactions", transactions_path, method: :get, class: "grey-button"%>
+<br>
+  <%= button_to "Destroy this transaction", @transaction, method: :delete,method: :get, class: "red-button" %>
+  </div>
+</body>
