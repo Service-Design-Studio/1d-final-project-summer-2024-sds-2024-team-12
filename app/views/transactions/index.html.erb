@@ -52,14 +52,26 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" class="active"></li>
               <% if @frequent_transactions.any? %>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel"></li>
+              <% end %>
+              <% if @close_transactions.any? %>
+                <li data-target="#myCarousel"></li>
               <% end %>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
+
+              <div class="item active">
+                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                <div class="carousel-caption">
+                  <p class="textheader">Welcome to digibank</p>
+                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
+                </div>
+              </div>
+
               <% if @frequent_transactions.any? %>
                 <div class="item">
                   <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
@@ -98,13 +110,6 @@
                 </div>
               <% end %>
 
-              <div class="item active">
-                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                <div class="carousel-caption">
-                  <p class="textheader">Welcome to digibank</p>
-                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
-                </div>
-              </div>
             </div>
 
             <!-- Left and right controls -->
