@@ -190,14 +190,14 @@
           <div class="scrollview">
 
            <% if @frequent_transactions.any? %>
-            <% ShortcutButton.all.each do |button| %>
+            <% Shortcut.all.each do |button| %>
               <div class="scshortcut-button">
                 <div class="sciconcontainer">
                   <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
                     <div class="scicons"><%= button.nickname %></div>
                     
                   <% end %>
-                  <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+                  <%= form_with(model: button, method: :delete, url: shortcut_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
                     <%= form.submit 'Delete', class: 'btn btn-danger' %>
                   <% end %>
                 </div>
@@ -210,7 +210,7 @@
               <%= link_to new_transaction_path do %>
                 <div class="iconcontainer">
                   <%= image_tag("paynow.png", alt: 'PayNow Image', class: "icons") %>
-                  <p class="shortcut">PayNow</p>
+                  <p class="shortcutname">PayNow</p>
                 </div>
               <% end %>
             </button>
@@ -219,8 +219,8 @@
               <%= link_to transaction_history_path do %>
               <div class="iconcontainer">
                 <%= image_tag("transaction_history.png", class: "icons") %>
-                <p class="shortcut">Transaction</p>
-                <p class="shortcut">History</p>
+                <p class="shortcutname">Transaction</p>
+                <p class="shortcutname">History</p>
               </div>
               <% end %>
             </button>
@@ -229,8 +229,8 @@
               <%= link_to overseas_transfer_path do %>
                 <div class="iconcontainer">
                   <%= image_tag("overseas.png", alt: 'Overseas Image', class: "icons") %>
-                  <p class="shortcut">Overseas</p>
-                  <p class="shortcut">Transactions</p>
+                  <p class="shortcutname">Overseas</p>
+                  <p class="shortcutname">Transactions</p>
                 </div>
               <% end %>
             </button>
@@ -239,14 +239,14 @@
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("local_transfer.png", class: "icons") %>
-                <p class="shortcut">Transfer Money</p>
+                <p class="shortcutname">Transfer Money</p>
               </div>
             </button>
 
             <button id="scanpay" class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("scan&pay.png", class: "icons") %>
-                <p class="shortcut">Scan &amp; Pay</p>
+                <p class="shortcutname">Scan &amp; Pay</p>
               </div>
             </button>
 
@@ -255,38 +255,38 @@
             <button class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("local_transfer_limit.png", class: "icons") %>
-                <p class="shortcut">Local Transfer</p>
-                <p class="shortcut">Limit</p>
+                <p class="shortcutname">Local Transfer</p>
+                <p class="shortcutname">Limit</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("livebetter.png", class: "icons") %>
-                <p class="shortcut">Live Better</p>
+                <p class="shortcutname">Live Better</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("bill.png", class: "icons") %>
-                <p class="shortcut">Bills</p>
+                <p class="shortcutname">Bills</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("setpeekbalance.png", class: "icons") %>
-                <p class="shortcut">Set Peek</p>
-                <p class="shortcut">Balance</p>
+                <p class="shortcutname">Set Peek</p>
+                <p class="shortcutname">Balance</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
                 <%= image_tag("scheduletransfer.png", class: "icons") %>
-                <p class="shortcut">Transfers</p>
-                <p class="shortcut">Scheduled</p>
+                <p class="shortcutname">Transfers</p>
+                <p class="shortcutname">Scheduled</p>
               </div>
             </button>
 
@@ -499,15 +499,15 @@
               <p> OR </p>
 
           <%= link_to "Make a Quick Shortcut", 
-              new_shortcut_button_path(
-                shortcut_button: { 
+              new_shortcut_path(
+                shortcut: { 
                   recipient_name: transaction[:name],
                   amount: transaction[:amount],
                   nickname: ""
                 }
               ), 
-              class: 'shortcutButton', 
-              id: "shortcutButton#{index}" %>
+              class: 'shortcut', 
+              id: "shortcut#{index}" %>
         </div>
       </div>
     </div>

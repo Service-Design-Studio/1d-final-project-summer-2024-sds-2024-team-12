@@ -1,21 +1,21 @@
 <div style="padding:10px">
   <h1>Create shortcut</h1>
 
-  <%= form_with(model: @shortcut_button, url: shortcut_buttons_path, method: :post) do |form| %>
+  <%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
     <div class="field">
       <%= form.label :recipient_name %>
-      <%= form.text_field :recipient_name, value: params.dig(:shortcut_button, :recipient_name), class: 'form-control', readonly: true %>
+      <%= form.text_field :recipient_name, value: params.dig(:shortcut, :recipient_name), class: 'form-control', readonly: true %>
     </div>
     <div class="field">
       <%= form.label :amount %>
-      <%= form.number_field :amount, value: params.dig(:shortcut_button, :amount), step: 0.01, class: 'form-control', readonly: true %>
+      <%= form.number_field :amount, value: params.dig(:shortcut, :amount), step: 0.01, class: 'form-control', readonly: true %>
     </div>
 
     <div class="field">
       <%= form.label :nickname, "Shortcut Name" %>
-      <%= form.text_field :nickname,
-      placeholder: "Nickname",
-                          value: params.dig(:shortcut_button, :nickname), 
+      <%= form.text_field :nickname, 
+                          value: params.dig(:shortcut, :nickname),
+                          placeholder: "Nickname",
                           class: 'form-control', 
                           maxlength: 10, 
                           oninput: "this.value = this.value.slice(0, 10); document.getElementById('char-count').textContent = this.value.length; updateWidgetIcons();" %>
@@ -24,14 +24,14 @@
 
     <div>
       <p>Widget Icon</p>
-        <label for="shortcut_button_widget_type_nickname">
+        <label for="shortcut_widget_type_nickname">
           <canvas id="nickname-icon" width="100" height="100"></canvas>
         </label>
     </div>
 
     <!-- Other form fields... -->
     <div class="actions" style="margin-top:10px">
-      <%= form.submit 'Create Shortcut Button', class: 'btn btn-primary' %>
+      <%= form.submit 'Create Shortcut', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
@@ -45,14 +45,14 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var nicknameField = document.querySelector('input[name="shortcut_button[nickname]"]');
+  var nicknameField = document.querySelector('input[name="shortcut[nickname]"]');
   var charCount = document.getElementById('char-count');
   charCount.textContent = nicknameField.value.length;
   updateWidgetIcons();
 });
 
 function updateWidgetIcons() {
-  var nickname = document.querySelector('input[name="shortcut_button[nickname]"]').value;
+  var nickname = document.querySelector('input[name="shortcut[nickname]"]').value;
 
   drawIcon('nickname-icon', nickname || 'Nickname', '#066DAF');
 }
