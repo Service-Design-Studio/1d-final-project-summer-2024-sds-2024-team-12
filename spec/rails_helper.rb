@@ -1,6 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'rails_helper'
-require 'database_cleaner/active_record'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -8,6 +7,18 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'database_cleaner/active_record'
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/' # for excluding test files
+
+  # You can add filters to ignore specific paths
+end
+
+# The rest of your file...
+
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

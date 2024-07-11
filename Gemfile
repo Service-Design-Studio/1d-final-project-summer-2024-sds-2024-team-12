@@ -70,5 +70,6 @@ group :test do
   gem "selenium-webdriver"
   gem 'rspec-rails', '~>5.0.0'
   gem 'database_cleaner-active_record'
+  gem 'simplecov', require: false
 
 end
