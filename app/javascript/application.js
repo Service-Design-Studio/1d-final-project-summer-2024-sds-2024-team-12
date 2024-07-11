@@ -10,6 +10,7 @@ import "controllers"
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  
   var setupButtons = document.querySelectorAll('[id^="setupButton"]');
 
   setupButtons.forEach((setupButton, index) => {
