@@ -9,10 +9,10 @@
           null,
           null,
           1,
-          8,
-          8,
-          8,
-          8,
+          9,
+          9,
+          9,
+          9,
           null,
           null,
           1,
@@ -124,8 +124,8 @@
           1,
           null,
           1,
-          27,
-          0,
+          35,
+          3,
           null,
           null,
           null,
@@ -305,6 +305,100 @@
           null
         ]
       },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/sessions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/registrations_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/main_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/overseas_controller.rb": {
         "lines": [
           1,
@@ -407,23 +501,6 @@
         "branches": {
         }
       },
-      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/main_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0
-        ],
-        "branches": {
-        }
-      },
       "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/pay_and_transfer_page_controller.rb": {
         "lines": [
           null,
@@ -440,41 +517,6 @@
           0,
           0,
           null
-        ],
-        "branches": {
-        }
-      },
-      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/registrations_controller.rb": {
-        "lines": [
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
         ],
         "branches": {
         }
@@ -504,35 +546,6 @@
           null,
           0,
           null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/sessions_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
           0,
           0,
           0,
@@ -675,29 +688,8 @@
         ],
         "branches": {
         }
-      },
-      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/user.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1720715605
+    "timestamp": 1720716072
   }
 }
