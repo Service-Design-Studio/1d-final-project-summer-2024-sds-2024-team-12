@@ -33,8 +33,8 @@ And("I click the {string} button") do |button_name|
 end
 
 When("I click on {string} button in the popup") do |button|
-  find('#popup',  :visible => false)
-  within('#popup') do
+  find('#popup0',  :visible => false)
+  within('#popup0') do
     click_link(button)
   end
 end

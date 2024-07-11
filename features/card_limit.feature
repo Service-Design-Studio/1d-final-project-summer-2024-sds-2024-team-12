@@ -3,7 +3,7 @@ Feature: Card Limit
     Given the following transactions exist:
         | name   | amount |
         | Nicole | 500.00 |
-        | Nicole | 500.00 |
+
 
     Given a user exists with phone "12345677" and password "224466"
     And I am logged in with phone "12345677" and password "224466"

@@ -73,11 +73,8 @@ When("I click on the transaction that says {string} and {string}") do |transacti
 end
 
 
-And("click on destroy this transaction") do
-  expect(page).to have_selector('form.button_to', text: 'Destroy this transaction')
-
-  # Click the button with the specified text
-  click_button('Destroy this transaction')
+And("click on {string}") do |button|
+  click_button(button)
 end
 
 Then("I should see a {string} message at the top") do |success_message|
