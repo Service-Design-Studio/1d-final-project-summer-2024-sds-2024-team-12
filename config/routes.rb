@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   get 'paynow/index'
   get 'transactions/index'
 
-  resources :shortcut_buttons, only: [:new, :create, :destroy]
+  resources :shortcuts, only: [:new, :create, :destroy]
   resources :scheduled_transactions, only: [:new, :create]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   get 'transaction_history', to: 'transactions#history'
 
-  resources :cardlimit, only: [:new, :paynow, :adjusting] 
+  resources :cardlimit, only: [:new, :paynow, :adjusting]
 
-    
+
   get '/cardlimit/paynow', to: 'cardlimit#paynow', as: 'cardlimit_paynow'
   get '/cardlimit/adjusting', to: 'cardlimit#adjusting', as: 'cardlimit_adjusting'
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   #for thailand coconut
   post '/set_location/:country', to: 'locations#set_country', as: 'set_country'
   delete '/remove_location/:country', to: 'locations#remove_country', as: 'remove_country'
-  
+
   get 'promptpay', to:'thailand#promptpay'
   post 'submit_promptpay', to: 'thailand#create', as: :submit_promptpay
 
@@ -48,4 +48,3 @@ Rails.application.routes.draw do
 
   # root "transactions#index"
 end
-

@@ -242,7 +242,7 @@
     padding-bottom: 1.5vw; /* Optional padding if needed */
   }
   
-  .shortcut {
+  .shortcutname {
     font-family: 'Lato';
     font-size: 12px;
     font-weight: bold;
@@ -2366,7 +2366,7 @@ input:focus {
       margin-top: 20px;
     }
    /* Additional styles for buttons if needed */
-   .scheduleButton, .shortcutButton {
+   .scheduleButton, .shortcut {
     display: inline-block;
     padding: 10px 20px;
     background-color: #066DAF;
@@ -2376,7 +2376,7 @@ input:focus {
     border-radius: 5px;
   }
   
-  .scheduleButton:hover, .shortcutButton:hover {
+  .scheduleButton:hover, .shortcut:hover {
     background-color: #045a8d;
   }  
 

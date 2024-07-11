@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_10_083353) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
@@ -29,15 +29,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_10_083353) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shortcut_buttons", force: :cascade do |t|
+  create_table "shortcuts", force: :cascade do |t|
     t.string "nickname"
     t.string "recipient_name"
     t.decimal "amount", precision: 10, scale: 2
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.string "widget_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "widget_type", default: "initials"
-    t.index ["user_id"], name: "index_shortcut_buttons_on_user_id"
+    t.index ["user_id"], name: "index_shortcuts_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -54,5 +54,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_10_083353) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "shortcut_buttons", "users"
+  add_foreign_key "shortcuts", "users"
 end
