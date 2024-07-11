@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-07-11T15:33:39+08:00">2024-07-11T15:33:39+08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-07-11T16:29:14+08:00">2024-07-11T16:29:14+08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  66.67%
+  67.12%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.13
+         2.26
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>216</b> relevant lines,
-    <span class="green"><b>144</b> lines covered</span> and
+    <b>219</b> relevant lines,
+    <span class="green"><b>147</b> lines covered</span> and
     <span class="red"><b>72</b> lines missed. </span>
     (<span class="red">
-  66.67%
+  67.12%
 </span>
 )
   </div>
@@ -149,12 +149,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#7114253c1b5c9a58a7111b5016b98ea180e172a0" class="src_link" title="app/controllers/transactions_controller.rb">app/controllers/transactions_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">58.18 %</td>
-            <td class="cell--number">113</td>
-            <td class="cell--number">55</td>
-            <td class="cell--number">32</td>
+            <td class="red strong cell--number t-file__coverage">60.34 %</td>
+            <td class="cell--number">124</td>
+            <td class="cell--number">58</td>
+            <td class="cell--number">35</td>
             <td class="cell--number">23</td>
-            <td class="cell--number">2.18</td>
+            <td class="cell--number">2.69</td>
             
           </tr>
         
@@ -3356,7 +3356,7 @@
     <h3>app/controllers/transactions_controller.rb</h3>
     <h4>
       <span class="red">
-  58.18%
+  60.34%
 </span>
 
       lines covered
@@ -3365,8 +3365,8 @@
     
 
     <div class="t-line-summary">
-      <b>55</b> relevant lines.
-      <span class="green"><b>32</b> lines covered</span> and
+      <b>58</b> relevant lines.
+      <span class="green"><b>35</b> lines covered</span> and
       <span class="red"><b>23</b> lines missed.</span>
     </div>
 
@@ -3461,29 +3461,29 @@
 
             
 
-            <code class="ruby">    @frequent_transactions = Transaction.group(:name, :amount).having(&#39;COUNT(*) &gt;= ?&#39;, 3)</code>
+            <code class="ruby">    @frequent_transactions = Transaction.group(:name, :amount)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="20" data-linenumber="9">
-            <span class="hits">20</span>
+          <li class="never" data-hits="" data-linenumber="9">
+            
             
 
             
 
-            <code class="ruby">    @close_transactions = Transaction.where(&quot;amount &gt; ? AND amount &lt;= ?&quot;, CARD_LIMIT - 50, CARD_LIMIT).to_a</code>
+            <code class="ruby">                                    .having(&#39;COUNT(*) &gt;= ?&#39;, 3)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="20" data-linenumber="10">
-            <span class="hits">20</span>
+          <li class="never" data-hits="" data-linenumber="10">
+            
             
 
             
 
-            <code class="ruby">    @card_limit = CARD_LIMIT  # Pass the constant to the view</code>
+            <code class="ruby">                                    .select(&#39;name, amount, COUNT(*) as count&#39;)</code>
           </li>
         </div>
       
@@ -3494,51 +3494,51 @@
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="20" data-linenumber="12">
+            <span class="hits">20</span>
             
 
             
 
-            <code class="ruby">  def history</code>
+            <code class="ruby">    @frequent_transactions_with_dates = @frequent_transactions.map do |transaction|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="14">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="8" data-linenumber="13">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">    @transactions = Transaction.all</code>
+            <code class="ruby">      history = Transaction.where(name: transaction.name, amount: transaction.amount).order(:created_at).pluck(:created_at)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="15">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="14">
+            
             
 
             
 
-            <code class="ruby">    @frequent_transactions = Transaction.group(:name, :amount).having(&#39;COUNT(*) &gt;= ?&#39;, 3)</code>
+            <code class="ruby">      {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="15">
+            <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">        name: transaction.name,</code>
           </li>
         </div>
       
@@ -3549,7 +3549,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">        amount: transaction.amount,</code>
           </li>
         </div>
       
@@ -3560,7 +3560,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        dates: history</code>
           </li>
         </div>
       
@@ -3571,18 +3571,18 @@
 
             
 
-            <code class="ruby">  # GET /transactions/1 or /transactions/1.json</code>
+            <code class="ruby">      }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="19">
+            
             
 
             
 
-            <code class="ruby">  def show</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -3593,51 +3593,51 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="20" data-linenumber="21">
+            <span class="hits">20</span>
+            
+
+            
+
+            <code class="ruby">    @close_transactions = Transaction.where(&quot;amount &gt; ? AND amount &lt;= ?&quot;, CARD_LIMIT - 50, CARD_LIMIT).to_a</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="20" data-linenumber="22">
+            <span class="hits">20</span>
+            
+
+            
+
+            <code class="ruby">    @card_limit = CARD_LIMIT  # Pass the constant to the view</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
+          <li class="never" data-hits="" data-linenumber="24">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-            
-
-            
-
-            <code class="ruby">  # GET /transactions/new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    @transaction = Transaction.new</code>
           </li>
         </div>
       
@@ -3648,29 +3648,29 @@
 
             
 
-            <code class="ruby">    if params[:scheduled_transaction].present?</code>
+            <code class="ruby">  def history</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="26">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">      @transaction.name = params[:scheduled_transaction][:name]</code>
+            
+
+            <code class="ruby">    @transactions = Transaction.all</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="27">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="27">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">      @transaction.amount = params[:scheduled_transaction][:amount]</code>
+            
+
+            <code class="ruby">    @frequent_transactions = Transaction.group(:name, :amount).having(&#39;COUNT(*) &gt;= ?&#39;, 3)</code>
           </li>
         </div>
       
@@ -3681,7 +3681,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -3692,7 +3692,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3703,29 +3703,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  # GET /transactions/1 or /transactions/1.json</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby">  # GET /transactions/1/edit</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def edit</code>
+            <code class="ruby">  def show</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -3736,7 +3736,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3747,18 +3747,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  # GET /transactions/new</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="35">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  # POST /transactions or /transactions.json</code>
+            
+
+            <code class="ruby">  def new</code>
           </li>
         </div>
       
@@ -3769,73 +3769,73 @@
 
             
 
-            <code class="ruby">  def create</code>
+            <code class="ruby">    @transaction = Transaction.new</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="37">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="37">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    @transaction = Transaction.new(transaction_params)</code>
+            <code class="ruby">    if params[:scheduled_transaction].present?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
+          <li class="missed" data-hits="0" data-linenumber="38">
+            
+            
+
+            
+
+            <code class="ruby">      @transaction.name = params[:scheduled_transaction][:name]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby">      @transaction.amount = params[:scheduled_transaction][:amount]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="40">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="41">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="39">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    respond_to do |format|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="40">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      if @transaction.save</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="41">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">        format.html { redirect_to transaction_url(@transaction), notice: &quot;Transaction was successfully created.&quot; }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="42">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        format.json { render :show, status: :created, location: @transaction }</code>
           </li>
         </div>
       
@@ -3846,29 +3846,29 @@
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">  # GET /transactions/1/edit</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="44">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        format.html { render :new, status: :unprocessable_entity }</code>
+            
+
+            <code class="ruby">  def edit</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="45">
             
             
 
             
 
-            <code class="ruby">        format.json { render json: @transaction.errors, status: :unprocessable_entity }</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -3879,7 +3879,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3890,29 +3890,29 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  # POST /transactions or /transactions.json</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">  def create</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="49">
+            <span class="hits">2</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    @transaction = Transaction.new(transaction_params)</code>
           </li>
         </div>
       
@@ -3923,24 +3923,13 @@
 
             
 
-            <code class="ruby">  # PATCH/PUT /transactions/1 or /transactions/1.json</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def update</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="52">
-            
+          <li class="covered" data-hits="2" data-linenumber="51">
+            <span class="hits">2</span>
             
 
             
@@ -3950,40 +3939,40 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="53">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="52">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">      if @transaction.update(transaction_params)</code>
+            
+
+            <code class="ruby">      if @transaction.save</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="54">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="53">
+            <span class="hits">4</span>
             
 
-            <code class="ruby">        format.html { redirect_to transaction_url(@transaction), notice: &quot;Transaction was successfully updated.&quot; }</code>
+            
+
+            <code class="ruby">        format.html { redirect_to transaction_url(@transaction), notice: &quot;Transaction was successfully created.&quot; }</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="55">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="54">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">        format.json { render :show, status: :ok, location: @transaction }</code>
+            
+
+            <code class="ruby">        format.json { render :show, status: :created, location: @transaction }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="56">
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -3994,18 +3983,18 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
+          <li class="missed" data-hits="0" data-linenumber="56">
             
             
 
             
 
-            <code class="ruby">        format.html { render :edit, status: :unprocessable_entity }</code>
+            <code class="ruby">        format.html { render :new, status: :unprocessable_entity }</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
+          <li class="missed" data-hits="0" data-linenumber="57">
             
             
 
@@ -4016,7 +4005,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="58">
             
             
 
@@ -4027,13 +4016,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="59">
             
             
 
             
 
             <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4044,7 +4044,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4055,56 +4055,23 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  # PATCH/PUT /transactions/1 or /transactions/1.json</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
-            
-
-            
-
-            <code class="ruby">  # DELETE /transactions/1 or /transactions/1.json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="64">
+          <li class="covered" data-hits="1" data-linenumber="63">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def destroy</code>
+            <code class="ruby">  def update</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">    @transaction.destroy</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="67">
+          <li class="missed" data-hits="0" data-linenumber="64">
             
             
 
@@ -4115,13 +4082,46 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="68">
+          <li class="missed" data-hits="0" data-linenumber="65">
             
             
 
             
 
-            <code class="ruby">      format.html { redirect_to transactions_url, notice: &quot;Transaction was successfully destroyed.&quot; }</code>
+            <code class="ruby">      if @transaction.update(transaction_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby">        format.html { redirect_to transaction_url(@transaction), notice: &quot;Transaction was successfully updated.&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">        format.json { render :show, status: :ok, location: @transaction }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
           </li>
         </div>
       
@@ -4132,18 +4132,18 @@
 
             
 
-            <code class="ruby">      format.json { head :no_content }</code>
+            <code class="ruby">        format.html { render :edit, status: :unprocessable_entity }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="70">
+          <li class="missed" data-hits="0" data-linenumber="70">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        format.json { render json: @transaction.errors, status: :unprocessable_entity }</code>
           </li>
         </div>
       
@@ -4154,7 +4154,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -4165,18 +4165,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="73">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="73">
+            
             
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4187,40 +4187,40 @@
 
             
 
-            <code class="ruby">    # Use callbacks to share common setup or constraints between actions.</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="75">
+          <li class="never" data-hits="" data-linenumber="75">
+            
+            
+
+            
+
+            <code class="ruby">  # DELETE /transactions/1 or /transactions/1.json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="76">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def set_transaction</code>
+            <code class="ruby">  def destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="76">
+          <li class="missed" data-hits="0" data-linenumber="77">
             
             
 
             
 
-            <code class="ruby">      @transaction = Transaction.find(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
+            <code class="ruby">    @transaction.destroy</code>
           </li>
         </div>
       
@@ -4236,24 +4236,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="79">
+          <li class="missed" data-hits="0" data-linenumber="79">
             
             
 
             
 
-            <code class="ruby">    # Only allow a list of trusted parameters through.</code>
+            <code class="ruby">    respond_to do |format|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="80">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="80">
+            
             
 
             
 
-            <code class="ruby">    def transaction_params</code>
+            <code class="ruby">      format.html { redirect_to transactions_url, notice: &quot;Transaction was successfully destroyed.&quot; }</code>
           </li>
         </div>
       
@@ -4264,7 +4264,7 @@
 
             
 
-            <code class="ruby">      params.require(:transaction).permit(:name, :amount)</code>
+            <code class="ruby">      format.json { head :no_content }</code>
           </li>
         </div>
       
@@ -4286,29 +4286,29 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
+          <li class="covered" data-hits="1" data-linenumber="85">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def set_transaction</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="85">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">      @transaction = Transaction.find(params[:id])</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
@@ -4319,40 +4319,40 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    # Use callbacks to share common setup or constraints between actions.</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="87">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="88">
+          <li class="covered" data-hits="1" data-linenumber="87">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def transaction_params</code>
+            <code class="ruby">    def set_transaction</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="89">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="88">
+            
             
 
             
 
-            <code class="ruby">      params.require(:transaction).permit(:name, :amount)</code>
+            <code class="ruby">      @transaction = Transaction.find(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -4363,7 +4363,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4374,29 +4374,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    # Only allow a list of trusted parameters through.</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="92">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="93">
+          <li class="covered" data-hits="1" data-linenumber="92">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def check_transactions</code>
+            <code class="ruby">    def transaction_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="93">
+            
+            
+
+            
+
+            <code class="ruby">      params.require(:transaction).permit(:name, :amount)</code>
           </li>
         </div>
       
@@ -4407,7 +4407,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -4418,29 +4418,29 @@
 
             
 
-            <code class="ruby">      # Define your card limit</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="96">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="96">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      card_limit = 500.00</code>
+            
+
+            <code class="ruby">    def set_transaction</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="97">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="97">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">      @transaction = Transaction.find(params[:id])</code>
           </li>
         </div>
       
@@ -4451,40 +4451,40 @@
 
             
 
-            <code class="ruby">      # Retrieve transactions close to the card limit</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="99">
+          <li class="never" data-hits="" data-linenumber="99">
             
             
 
             
 
-            <code class="ruby">      @close_transactions = Transaction.where(&quot;amount &gt; ? AND amount &lt;= ?&quot;, card_limit - 50, card_limit)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="100">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="100">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  </code>
+            
+
+            <code class="ruby">    def transaction_params</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="101">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="101">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">      if @close_transactions.count &gt;= 3</code>
+            
+
+            <code class="ruby">      params.require(:transaction).permit(:name, :amount)</code>
           </li>
         </div>
       
@@ -4495,40 +4495,40 @@
 
             
 
-            <code class="ruby">        # Notify or take action for transactions close to the card limit</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="103">
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 
             
 
-            <code class="ruby">        @close_transactions.each do |transaction|</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="104">
+          <li class="never" data-hits="" data-linenumber="104">
             
             
 
             
 
-            <code class="ruby">          puts &quot;#{transaction.name} is close to the card limit. Amount: #{transaction.amount}&quot;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="105">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="105">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">          # You can perform additional actions here, like sending notifications or logging</code>
+            
+
+            <code class="ruby">  def check_transactions</code>
           </li>
         </div>
       
@@ -4539,40 +4539,40 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="107">
+          <li class="never" data-hits="" data-linenumber="107">
             
             
 
             
 
-            <code class="ruby">        render plain: &quot;Notifications sent for transactions close to the card limit.&quot;</code>
+            <code class="ruby">      # Define your card limit</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="108">
+          <li class="missed" data-hits="0" data-linenumber="108">
             
             
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">      card_limit = 500.00</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="109">
+          <li class="never" data-hits="" data-linenumber="109">
             
             
 
             
 
-            <code class="ruby">        render plain: &quot;No transactions are close to the card limit.&quot;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4583,18 +4583,18 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">      # Retrieve transactions close to the card limit</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="111">
+          <li class="missed" data-hits="0" data-linenumber="111">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      @close_transactions = Transaction.where(&quot;amount &gt; ? AND amount &lt;= ?&quot;, card_limit - 50, card_limit)</code>
           </li>
         </div>
       
@@ -4605,18 +4605,139 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="113">
+          <li class="missed" data-hits="0" data-linenumber="113">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      if @close_transactions.count &gt;= 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="114">
+            
+            
+
+            
+
+            <code class="ruby">        # Notify or take action for transactions close to the card limit</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="115">
+            
+            
+
+            
+
+            <code class="ruby">        @close_transactions.each do |transaction|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="116">
+            
+            
+
+            
+
+            <code class="ruby">          puts &quot;#{transaction.name} is close to the card limit. Amount: #{transaction.amount}&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="117">
+            
+            
+
+            
+
+            <code class="ruby">          # You can perform additional actions here, like sending notifications or logging</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby">        render plain: &quot;Notifications sent for transactions close to the card limit.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="120">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="121">
+            
+            
+
+            
+
+            <code class="ruby">        render plain: &quot;No transactions are close to the card limit.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="122">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
