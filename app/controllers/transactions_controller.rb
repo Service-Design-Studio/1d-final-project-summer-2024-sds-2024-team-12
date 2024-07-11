@@ -5,7 +5,19 @@ class TransactionsController < ApplicationController
   # GET /transactions or /transactions.json
   def index
     @transactions = Transaction.all
-    @frequent_transactions = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3)
+    @frequent_transactions = Transaction.group(:name, :amount)
+                                    .having('COUNT(*) >= ?', 3)
+                                    .select('name, amount, COUNT(*) as count')
+
+    @frequent_transactions_with_dates = @frequent_transactions.map do |transaction|
+      history = Transaction.where(name: transaction.name, amount: transaction.amount).order(:created_at).pluck(:created_at)
+      {
+        name: transaction.name,
+        amount: transaction.amount,
+        dates: history
+      }
+    end
+
     @close_transactions = Transaction.where("amount > ? AND amount <= ?", CARD_LIMIT - 50, CARD_LIMIT).to_a
     @card_limit = CARD_LIMIT  # Pass the constant to the view
   end
@@ -94,10 +106,10 @@ class TransactionsController < ApplicationController
 
       # Define your card limit
       card_limit = 500.00
-  
+
       # Retrieve transactions close to the card limit
       @close_transactions = Transaction.where("amount > ? AND amount <= ?", card_limit - 50, card_limit)
-  
+
       if @close_transactions.count >= 3
         # Notify or take action for transactions close to the card limit
         @close_transactions.each do |transaction|
@@ -110,4 +122,3 @@ class TransactionsController < ApplicationController
       end
     end
   end
-

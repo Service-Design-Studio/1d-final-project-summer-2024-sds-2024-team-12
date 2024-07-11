@@ -4034,3 +4034,11 @@ input:focus {
   }
 
   /* thailand coconut section end*/
+
+  .infographic {
+    margin: 20px 0;
+  }
+
+  .transaction-details-date{
+    padding: 20px;
+  }
