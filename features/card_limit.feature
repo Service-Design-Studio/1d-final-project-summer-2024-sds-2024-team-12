@@ -12,4 +12,4 @@ Feature: Card Limit
     Scenario: Prompt to change card limit 
         Given that I am on the transactions page
         When I see suggestion to change limit in the carousel 
-        And I click the "Set up Limit" button
+        And I click the Set Up Limit button

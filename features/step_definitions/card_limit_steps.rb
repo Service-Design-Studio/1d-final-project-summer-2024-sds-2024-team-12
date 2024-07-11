@@ -17,3 +17,7 @@ When("I see suggestion to change limit in the carousel") do
     end
   end
 end
+
+And('I click the Set Up Limit button') do
+  click_button('setupLimitButton')
+end

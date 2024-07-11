@@ -42,7 +42,7 @@ Then("I should be able to see a transaction that says {string} and {string}") do
   # Find the link containing the transaction details
   within('a[href="/transactions/1"]') do  # Update the href attribute as per your specific scenario
     expect(page).to have_css('.transaction-name', text: 'Paynow to Nicole')
-    expect(page).to have_css('.money', text: amount)
+    expect(page).to have_css('.moneyhistory', text: amount)
   end
 end
 
@@ -54,16 +54,24 @@ Then("I should be able to see a list of my past transactions") do
   expect(page).to have_current_path("/transaction_history")
 end
 
+# features/step_definitions/web_steps.rb or appropriate step definition file
+
 When("I click on the transaction that says {string} and {string}") do |transaction_name, amount|
-  # Find the link containing the transaction details
-  transaction = find('a', text: transaction_name)
-  within(transaction) do
-    find('.money', text: amount).click
-  end
+  # Find the link containing the transaction details based on transaction_name
+  transaction_link = find('a', text: transaction_name)
+
+  # Click on the transaction link
+  transaction_link.click
+
+  # Optionally, you can output the HTML of the page for debugging
 end
 
+
 And("click on destroy this transaction") do
-  find('form.button_to', wait: 10).click_button('Destroy this transaction')
+  expect(page).to have_selector('form.button_to', text: 'Destroy this transaction')
+
+  # Click the button with the specified text
+  click_button('Destroy this transaction')
 end
 
 Then("I should see a {string} message at the top") do |success_message|
