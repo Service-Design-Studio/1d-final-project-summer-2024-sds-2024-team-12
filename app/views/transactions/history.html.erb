@@ -1,26 +1,27 @@
 <div class="transaction-history">
-
-  <h1 class="transaction-history-header">Transaction History</h1>
   <%= link_to '←', root_path, class: 'back-button' %>
+  <h1 class="transaction-history-header">Transaction History</h1>
   
-  <% current_date = nil %>
   
-  <% @transactions.each do |transaction| %>
+  <% @transactions.reverse_each do |transaction| %>
     <% transaction_date = transaction.created_at.to_date %>
     
-    <% if current_date != transaction_date %>
-      <% current_date = transaction_date %>
+    <% if @current_date != transaction_date %>
+      <% @current_date = transaction_date %>
       <h2 class="transaction-date"><%= transaction_date.strftime("%a, %d %b %Y") %></h2>
     <% end %>
     
     <div class="header1">
-      <%= link_to transaction do %>
+      <%= link_to transaction, style: "display: block; width: 100%;" do %>
+      <%# <div class="header1"> %>
         <p class="transaction-name">Paynow to <%= transaction.name %></p>
         <div class="textcontainer1">
-          <p class="sgd">SGD</p>
-          <p class="money"><%= number_to_currency(transaction.amount, unit: "-", precision: 2) %></p>
+          <p class="sgdhistory">SGD</p>
+          <p class="moneyhistory"><%= number_to_currency(transaction.amount, unit: "-", precision: 2) %></p>
         </div>
-      <% end %>
+      <%# </div> %>
+    <% end %>
+
     </div>
   <% end %>
 </div>

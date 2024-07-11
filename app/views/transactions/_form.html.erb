@@ -18,7 +18,7 @@
       <div class="whitebox"></div>
     </header>
 
-  <div class="whitespace" style="background-color: #f1f2f4;"></div>
+  <%# <div class="whitespace" style="background-color: #f1f2f4;"></div> %>
 
   
   <div class="header-content">
@@ -56,7 +56,7 @@
   <div class="whitespace"></div>
 
   <div class="moneybody">
-    <div class='left'>
+    <div class='moneyleft'>
       <p class="amtin">Amount in</p>
       <p class="currency">SGD</p>
     </div>
@@ -79,15 +79,17 @@
     <a href="#" class="change-limit"><u>Change Limit</u></a>
   </div>
 
+  <div class="transfer-details">
   <p>TRANSFER DETAILS</p>
 
-  <div class="transfer-details">
+  
       <%= form.label :comments, "Add comments for recipient" %>
       <%= form.text_field :comments, value: "PayNow Transfer" %>
-    </div>
+    
 
   <div class="terms">
     <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
+  </div>
   </div>
 
 

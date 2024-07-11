@@ -373,17 +373,6 @@
     margin: 0;
   }
 
-  
-  .sgd {
-    font-family: 'Lato';
-    font-size: 14px;
-    font-weight: bold;
-    color: #A3A3A3;
-    text-align: right;
-    padding-right: 1vw;
-    margin-top: 3vw;
-  }
-  
   .money {
     font-family: 'Calibri';
     font-size: 20px;
@@ -3755,7 +3744,7 @@ input:focus {
   }
   
 .whitebox{
-   background-color:#f1f2f4;
+   background-color:#ffffff;
    padding-right:100px;
    width: 20px; /* Same width as header */
    height: 10px; 
