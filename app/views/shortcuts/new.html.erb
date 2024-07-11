@@ -67,7 +67,7 @@ function updateWidgetIcons() {
   var nickname = document.querySelector('input[name="shortcut[nickname]"]').value;
   var initial = nickname.charAt(0).toUpperCase();
   
-  drawIcon('nickname-icon', initial || '$', '#066DAF');
+  drawIcon('nickname-icon', nickname || '$', '#066DAF');
 }
 
 function drawIcon(canvasId, text, color) {

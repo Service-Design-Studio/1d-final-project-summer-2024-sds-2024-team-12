@@ -188,23 +188,20 @@
         
         <div class="containerthree">
           <div class="scrollview">
-
-           <% if @frequent_transactions.any? %>
-            <% Shortcut.all.each do |button| %>
-              <div class="scshortcut-button">
-                <div class="sciconcontainer">
-                  <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
-                    <div class="scicons"><%= button.nickname %></div>
-                    
-                  <% end %>
-                  <%= form_with(model: button, method: :delete, url: shortcut_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-                    <%= form.submit 'Delete', class: 'btn btn-danger' %>
-                  <% end %>
+            <% if @frequent_transactions.any? %>
+              <% Shortcut.all.each do |button| %>
+                <div class="scshortcut-button">
+                  <div class="sciconcontainer">
+                    <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
+                      <div class="scicons"><%= button.nickname %></div>
+                    <% end %>
+                    <%= form_with(model: button, method: :delete, url: shortcut_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+                      <%= form.submit 'Delete', class: 'btn btn-danger' %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
-            
 
             <button id="paynowbutton" class="transparent">
               <%= link_to new_transaction_path do %>
@@ -217,11 +214,11 @@
 
             <button class="transparent">
               <%= link_to transaction_history_path do %>
-              <div class="iconcontainer">
-                <%= image_tag("transaction_history.png", class: "icons") %>
-                <p class="shortcutname">Transaction</p>
-                <p class="shortcutname">History</p>
-              </div>
+                <div class="iconcontainer">
+                  <%= image_tag("transaction_history.png", class: "icons") %>
+                  <p class="shortcutname">Transaction</p>
+                  <p class="shortcutname">History</p>
+                </div>
               <% end %>
             </button>
 
@@ -234,7 +231,6 @@
                 </div>
               <% end %>
             </button>
-
 
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
@@ -249,8 +245,6 @@
                 <p class="shortcutname">Scan &amp; Pay</p>
               </div>
             </button>
-
-            
 
             <button class="transparent">
               <div class="iconcontainer">
@@ -289,9 +283,9 @@
                 <p class="shortcutname">Scheduled</p>
               </div>
             </button>
-
           </div>
         </div>
+
 
     </scrollable>
 

@@ -1,13 +1,15 @@
+/* Combined CSS styles for .scshortcut-button, .iconcontainer, and .sciconcontainer */
+
 .scshortcut-button {
-    display: inline-block;
-    /* text-align: center; */
-    /* margin: 10px; */
-  }
+  display: inline-block;
+  /* text-align: center; */ /* Commented out to retain alignment from existing CSS */
+  /* margin: 10px; */ /* Commented out to retain alignment from existing CSS */
+}
 
 .scshortcut-button .btn-danger {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-  
+
 .shortcutImage {
   width: 100px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
@@ -27,11 +29,28 @@
   text-align: center; /* Center align the text */
 }
 
-.sciconcontainer {
-  
+/* Styling for .iconcontainer and .sciconcontainer */
+.iconcontainer, .sciconcontainer {
+  padding-bottom: 20px; /* Optional padding if needed */
   display: flex; /* Make iconcontainer flex */
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   justify-content: flex-start; /* Align items to the start */
-  width: 20vw;
+  width: 20vw; /* Adjust width as needed */
+}
+
+.icons {
+  width: 70%; /* Adjust width as needed */
+  height: 70%; /* Adjust height as needed */
+  object-fit: contain;
+  padding-bottom: 1.5vw; /* Optional padding if needed */
+}
+
+/* Additional styles from the second CSS file */
+.containerthree {
+  background-color: white;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex; /* Make container flex */
+  justify-content: flex-start; /* Align items to the start */
 }
