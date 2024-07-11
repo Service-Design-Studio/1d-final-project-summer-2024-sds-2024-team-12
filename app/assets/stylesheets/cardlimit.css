@@ -12,16 +12,16 @@
   }
   
   /* Container styling */
-  .container {
+  .limitcontainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ccc; /* Example border bottom */
   }
   
-  .container h1 {
+  .limitcontainer h1 {
     font-size: 24px;
     font-weight: 700;
     color: #333;

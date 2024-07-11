@@ -373,17 +373,6 @@
     margin: 0;
   }
 
-  
-  .sgd {
-    font-family: 'Lato';
-    font-size: 14px;
-    font-weight: bold;
-    color: #A3A3A3;
-    text-align: right;
-    padding-right: 1vw;
-    margin-top: 3vw;
-  }
-  
   .money {
     font-family: 'Calibri';
     font-size: 20px;
@@ -3755,7 +3744,7 @@ input:focus {
   }
   
 .whitebox{
-   background-color:#f1f2f4;
+   background-color:#ffffff;
    padding-right:100px;
    width: 20px; /* Same width as header */
    height: 10px; 
@@ -4019,13 +4008,13 @@ input:focus {
     font-size: 0.03rem; /* Smaller font size */
   }
   .floating-container {
-    position: fixed;
+    position: relative;
     top: 86%; /* Center the container in the middle of the screen vertically */
-    right: 20px; /* Spacing from the right edge of the viewport */
+    left: -240px; /* Spacing from the right edge of the viewport */
     transform: translateY(-50%); /* Offset the container by half its height for true centering */
     display: flex;
     flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center align items horizontally */
+    align-items: left; /* Center align items horizontally */
     z-index: 1000;
   }
 
@@ -4034,3 +4023,11 @@ input:focus {
   }
 
   /* thailand coconut section end*/
+
+  .infographic {
+    margin: 20px 0;
+  }
+
+  .transaction-details-date{
+    padding: 20px;
+  }

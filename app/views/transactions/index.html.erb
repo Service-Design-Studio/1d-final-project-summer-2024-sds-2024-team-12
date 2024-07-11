@@ -57,10 +57,10 @@
           <div class="header">
             <div class="leftcontainer">
               <button class="transparent">
-                <img src="/assets/bellwhite.png" alt="bell" class="bell">
+                <%= image_tag('bellwhite.png', alt: 'bell', class: 'bell') %>
               </button>
               <button class="transparent">
-                <img src="/assets/eye.png" class="eye">
+                <%= image_tag('eye.png', class: 'eye') %>
               </button>
             </div>
             <div class="rightcontainer">
@@ -70,7 +70,7 @@
               <% end %>
 
               <button class="transparent">
-                <img src="/assets/help.png" class="help">
+                <%= image_tag('help.png', class: 'help') %>
               </button>
               
               <div class="logoutContainer">
@@ -183,7 +183,7 @@
         </div>
         <div class="containertwo">
           <p class="text">Smart Shortcuts</p>
-          <img src="/assets/settings.png" class="setting">
+          <%= image_tag('settings.png', class: 'setting') %>
         </div>
         
         <div class="containerthree">
@@ -209,7 +209,7 @@
             <button id="paynowbutton" class="transparent">
               <%= link_to new_transaction_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("/assets/paynow.png", alt: 'PayNow Image', class: "icons") %>
+                  <%= image_tag("paynow.png", alt: 'PayNow Image', class: "icons") %>
                   <p class="shortcut">PayNow</p>
                 </div>
               <% end %>
@@ -218,7 +218,7 @@
             <button id = "history" class="transparent">
               <%= link_to transaction_history_path do %>
               <div class="iconcontainer">
-                <img src="/assets/transaction_history.png" class="icons">
+                <%= image_tag("transaction_history.png", class: "icons") %>
                 <p class="shortcut">Transaction</p>
                 <p class="shortcut">History</p>
               </div>
@@ -228,7 +228,7 @@
             <button id="overseasbutton" class="transparent">
               <%= link_to overseas_transfer_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("/assets/overseas.png", alt: 'Overseas Image', class: "icons") %>
+                  <%= image_tag("overseas.png", alt: 'Overseas Image', class: "icons") %>
                   <p class="shortcut">Overseas</p>
                   <p class="shortcut">Transactions</p>
                 </div>
@@ -238,14 +238,14 @@
 
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/local_transfer.png" class="icons">
+                <%= image_tag("local_transfer.png", class: "icons") %>
                 <p class="shortcut">Transfer Money</p>
               </div>
             </button>
 
             <button id="scanpay" class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/scan&amp;pay.png" class="icons">
+                <%= image_tag("scan&pay.png", class: "icons") %>
                 <p class="shortcut">Scan &amp; Pay</p>
               </div>
             </button>
@@ -254,7 +254,7 @@
 
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/local_transfer_limit.png" class="icons">
+                <%= image_tag("local_transfer_limit.png", class: "icons") %>
                 <p class="shortcut">Local Transfer</p>
                 <p class="shortcut">Limit</p>
               </div>
@@ -262,21 +262,21 @@
 
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/livebetter.png" class="icons">
+                <%= image_tag("livebetter.png", class: "icons") %>
                 <p class="shortcut">Live Better</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/bill.png" class="icons">
+                <%= image_tag("bill.png", class: "icons") %>
                 <p class="shortcut">Bills</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/setpeekbalance.png" class="icons">
+                <%= image_tag("setpeekbalance.png", class: "icons") %>
                 <p class="shortcut">Set Peek</p>
                 <p class="shortcut">Balance</p>
               </div>
@@ -284,7 +284,7 @@
 
             <button class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/scheduletransfer.png" class="icons">
+                <%= image_tag("scheduletransfer.png", class: "icons") %>
                 <p class="shortcut">Transfers</p>
                 <p class="shortcut">Scheduled</p>
               </div>
@@ -298,25 +298,25 @@
       <div class="bottomnav">
         <div class="bottomtabnavigatorcontainer">
           <button class="transparent">
-            <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
+            <%= image_tag("home_bottomfilled.png", alt: 'home', class: "navicon") %>
             <p class="navtextselected">Home</p>
           </button>
           <button class="transparent">
-            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <%= image_tag("invest_bottom.png", alt: 'invest', class: "navicon") %>
             <p class="navtext">Invest</p>
           </button>
           <a href="/pay_and_transfer_page/index">
             <button class="transparent">
-              <img src="/assets/pay&amp;transfer_bottom.png" alt="pay" class="navicon">
+              <%= image_tag("pay&transfer_bottom.png", alt: 'pay', class: "navicon") %>
               <p class="navtext">Pay &amp; Transfer</p>
             </button>
           </a>
           <button class="transparent">
-            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <%= image_tag("plan_bottom.png", alt: 'plan', class: "navicon") %>
             <p class="navtext">Plan</p>
           </button>
           <button class="transparent">
-            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <%= image_tag("more_bottom.png", alt: 'more', class: "navicon") %>
             <p class="navtext">More</p>
           </button>
         </div>
@@ -335,7 +335,7 @@
                 <div class="header1">
                     <div class="blueline"></div>
                     <p class="text">Your Net Worth</p>
-                    <img src="/assets/expand.png" class="expand2">
+                    <%= image_tag("expand.png", class: "expand2") %>
                 </div>
                 <div class="container2">
                     <div class="value">Value</div>
@@ -350,7 +350,7 @@
                         <div class="header1">
                             <div class="yellowline"></div>
                             <p class="text">Deposits</p>
-                            <img src="/assets/expand.png" class="expandrotated2">
+                            <%= image_tag("expand.png", class: "expandrotated2") %>
                         </div>
                         <div class="container2">
                             <div class="value">Balance</div>
@@ -385,7 +385,7 @@
     </div>
     <div class="floating-container">
           <button id="thailandButton" class="floating-button coco-transparent">
-            <%= image_tag("/assets/coconut.png", alt: "Coconut Image", class: "coco-icons") %>
+            <%= image_tag("coconut.png", alt: "Coconut Image", class: "coco-icons") %>
           </button>
           <button id="removeThailand" class="floating-button">
             not in thailand
@@ -470,32 +470,39 @@
 
 
 <!-- Popup for more details -->
-<% if @frequent_transactions.any? %>
-  <% @frequent_transactions.each_with_index do |transaction, index| %>
-    <div class="popup" id="popup<%= index %>">
+<% if @frequent_transactions_with_dates.any? %>
+  <% @frequent_transactions_with_dates.each_with_index do |transaction, index| %>
+    <div class="popup" id="popup<%= index %>" data-history-labels="<%= transaction[:dates].map(&:to_s).join(',') %>" data-history-values="<%= Array.new(transaction[:dates].size, transaction[:amount]).join(',') %>">
       <div class="popup-content">
-        <span class="close" id="closePopup">&times;</span>
-    <p class='textheader'>Suggestion:</p>
-    <p>Based on your past transactions, we noticed that you sent money to 
-      <%# <% names = @frequent_transactions.pluck(:name).join(', ') %>
-      <%# <%= names %>
-      <%= transaction.name %>
-    frequently in the past month. Do you want to set up monthly recurring payments?</p>
+        <span class="close" id="closePopup<%= index %>">&times;</span>
+        <p class='textheadersuggest'>Suggestion:</p>
+        <p>We noticed you paid <%= transaction[:name] %> <%= number_to_currency(transaction[:amount], unit: 'SGD ', precision: 2) %> frequently, on these dates and times:</p>
+        <ul class="transaction-details-date">
+          <% transaction[:dates].each do |date| %>
+            <li><%= "#{date.strftime('%Y-%m-%d %H:%M')}" %></li>
+          <% end %>
+        </ul>
+
+        <p>Would you like to: </p>
+        
         <div class="buttons">
           <%= link_to "Schedule Payment", 
               new_scheduled_transaction_path(
                 scheduled_transaction: { 
-                  name: transaction.name, 
-                  amount: transaction.amount 
+                  name: transaction[:name], 
+                  amount: transaction[:amount] 
                 }
               ), 
               class: 'scheduleButton', 
               id: "scheduleButton#{index}" %>
+
+              <p> OR </p>
+
           <%= link_to "Make a Quick Shortcut", 
               new_shortcut_button_path(
                 shortcut_button: { 
-                  recipient_name: transaction.name,
-                  amount: transaction.amount,
+                  recipient_name: transaction[:name],
+                  amount: transaction[:amount],
                   nickname: ""
                 }
               ), 
@@ -504,8 +511,10 @@
         </div>
       </div>
     </div>
-    <% end %>
   <% end %>
+<% end %>
+
+
 
 </div>
 </body>

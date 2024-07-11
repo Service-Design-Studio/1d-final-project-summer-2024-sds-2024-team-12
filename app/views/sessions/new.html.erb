@@ -6,11 +6,12 @@
  
 </head>
 
-<body style="background-image: url('/assets/loginbackground.png');">
+<body style="background-image: url('<%= asset_path 'loginbackground.png' %>');">
+
 <div className='loginbackground'>
 
 <div style="padding:10px">
-<img src="/assets/dbslogo.png" alt="DBS-Bank-logo"  class="Dbslogin" >
+<%= image_tag('dbslogo.png', alt: 'DBS-Bank-logo', class: 'Dbslogin') %>
 
 
 <div class="form_styling">
