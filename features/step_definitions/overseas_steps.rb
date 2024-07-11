@@ -100,3 +100,40 @@ end
 Then("I should see a message saying {string}") do |success_message|
   expect(page).to have_content(success_message)
 end
+
+Then("I should see an error message: {string}") do |error|
+  expect(page).to have_content('input:invalid[title="' + message + '"]')
+end
+
+
+When("I click on the coconut in the bottom left") do
+  find('#thailandButton').click
+end
+
+When("I should see a suggestion for the {string} in the carousel") do |suggestion_text|
+  within('.carousel-inner') do
+    # Find all items in the carousel
+    carousel_items = all('.item')
+
+    # Look for the carousel item with the specific suggestion text
+    suggestions_item = carousel_items.find do |item|
+      item.has_css?('.carousel-caption p.textheader', text: 'Suggestion:') &&
+        item.has_css?('.carousel-caption p.textbody', text: suggestion_text)
+    end
+
+    # If the suggestion item is found, perform the assertions
+    if suggestions_item
+      within(suggestions_item) do
+        expect(page).to have_css('.carousel-caption p.textheader', text: 'Suggestion:')
+        expect(page).to have_css('.carousel-caption p.textbody', text: suggestion_text)
+      end
+    else
+      raise "No carousel item with suggestion found"
+    end
+  end
+end
+
+Then("I should be on the {string} transaction page") do |pp|
+  expected_path = "/#{pp}"
+  expect(page.current_path).to eq(expected_path)
+end

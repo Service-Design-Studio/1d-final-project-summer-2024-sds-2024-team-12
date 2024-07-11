@@ -17,6 +17,14 @@ Feature: Managing Transactions
     And press the "NEXT" button
     Then I should see the message that "Transaction was successfully created"
 
+  Scenario: Did not put name when making a transaction
+    Given I am on the transactions page
+    When I click on PayNow button
+    Then I should be on the new transaction page
+    And I fill in the amount to be transferred in SGD with "50.00"
+    And press the "NEXT" button
+    Then I should see an error that says "Name can't be blank"
+
   Scenario: Checking Transaction History
     Given I am on the transactions page 
     When I click on Transaction History
@@ -29,3 +37,5 @@ Feature: Managing Transactions
     When I click on the transaction that says "Paynow to Nicole" and "-50.00"
     And click on destroy this transaction
     Then I should see a "Transaction was successfully destroyed" message at the top
+
+  

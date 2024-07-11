@@ -26,7 +26,7 @@ When("I fill in Recipient Name with {string}") do |transaction_name|
   fill_in("transaction_name", with: transaction_name)
 end
 
-And("I fill in the amount to be transferred in SGD with {string}") do |transaction_amount|
+When("I fill in the amount to be transferred in SGD with {string}") do |transaction_amount|
   fill_in("transaction_amount", with: transaction_amount)
 end
 
@@ -38,6 +38,11 @@ Then("I should see the message that {string}") do |success_message|
   expect(page).to have_content(success_message)
 end
 
+Then("I should see an error that says {string}") do |error|
+  expect(page).to have_content(error)
+end
+
+
 Then("I should be able to see a transaction that says {string} and {string}") do |transaction_name, amount|
   # Find the link containing the transaction details
   within('a[href="/transactions/1"]') do  # Update the href attribute as per your specific scenario
@@ -45,6 +50,7 @@ Then("I should be able to see a transaction that says {string} and {string}") do
     expect(page).to have_css('.moneyhistory', text: amount)
   end
 end
+
 
 When("I click on Transaction History") do
   find('#history a').click

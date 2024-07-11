@@ -49,3 +49,11 @@ Given('a user exists with phone {string} and password {string}') do |phone, pass
     user.password_confirmation = password
   end
 end
+
+When("I click the Logout button") do
+  find_button('LOG OUT').click
+end
+
+Then("I should go back to the Sign in page") do
+  expect(current_path).to eq(sign_in_path)
+end

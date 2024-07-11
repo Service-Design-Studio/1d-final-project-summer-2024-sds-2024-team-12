@@ -36,3 +36,21 @@ Feature: Overseas Transfer
     And I fill in the amount to be transferred in SGD "500"
     Then I press the "NEXT" button
     Then I should see a message saying "Transaction was successfully created."
+  
+  Scenario: Wrong number of digits for recipient from Thailand
+    Given that I am on the transactions page in overseas steps
+    When I click on Overseas Transfer button
+    And I click the Add Overseas Recipient button
+    Then I click on "Thailand"
+    When I click on "Use PromptPay" button
+    And I fill in the recipient number "02213"
+    And I fill in the amount to be transferred in SGD "500"
+    Then I press the "NEXT" button
+    Then I should see an error message: "Phone number must be exactly 9 digits."
+
+  Scenario: PromptPay suggestion when in Thailand
+    Given that I am on the transactions page in overseas steps
+    When I click on the coconut in the bottom left
+    Then I should see a suggestion for the "PromptPay feature" in the carousel
+    And I click the "Go Now" button
+    Then I should be on the "promptpay" transaction page
