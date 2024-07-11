@@ -23,6 +23,23 @@ RSpec.feature "Selecting Thailand", type: :feature, js: true do
         expect(page).to have_current_path(promptpay_path)
     end
 
+    scenario "User able to use PromptPay successfully" do
+        visit promptpay_path
+        fill_in 'Recipient Number', with: '123456789'
+        fill_in 'sgdAmount', with: '100'
+        click_button 'NEXT'
+        # Assuming the redirection URL follows the pattern /transactions/:id
+        expect(page).to have_current_path(/transactions\/\d+/, wait: 10)  # Waits up to 10 seconds  
+    end
+
+    scenario "User not able to use PromptPay successfully" do
+        visit promptpay_path
+        fill_in 'Recipient Number', with: '1234567'
+        fill_in 'sgdAmount', with: '100'
+        click_button 'NEXT'
+        expect(current_path).to eq(promptpay_path) # Assumes promptpay_path is the current path
+    end
+
     scenario "User rejects PromptPay option after selecting Thailand" do
         visit overseas_transfer_select_location_path
         click_link 'Thailand'
