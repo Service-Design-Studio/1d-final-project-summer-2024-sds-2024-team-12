@@ -4019,13 +4019,13 @@ input:focus {
     font-size: 0.03rem; /* Smaller font size */
   }
   .floating-container {
-    position: fixed;
+    position: relative;
     top: 86%; /* Center the container in the middle of the screen vertically */
-    right: 20px; /* Spacing from the right edge of the viewport */
+    left: -240px; /* Spacing from the right edge of the viewport */
     transform: translateY(-50%); /* Offset the container by half its height for true centering */
     display: flex;
     flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center align items horizontally */
+    align-items: left; /* Center align items horizontally */
     z-index: 1000;
   }
 
