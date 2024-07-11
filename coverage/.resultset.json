@@ -1,6 +1,57 @@
 {
   "Cucumber Features": {
     "coverage": {
+      "C:/Users/nicol/sds/app/models/transaction.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          20,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/nicol/sds/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "C:/Users/nicol/sds/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "C:/Users/nicol/sds/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
@@ -9,11 +60,11 @@
           null,
           null,
           1,
-          11,
-          11,
-          11,
-          11,
-          11,
+          12,
+          12,
+          12,
+          12,
+          12,
           null,
           null,
           0,
@@ -34,8 +85,8 @@
           1,
           null,
           1,
-          79,
-          54,
+          84,
+          57,
           null,
           null,
           null,
@@ -79,62 +130,18 @@
           null
         ]
       },
-      "C:/Users/nicol/sds/app/controllers/registrations_controller.rb": {
+      "C:/Users/nicol/sds/app/controllers/main_controller.rb": {
         "lines": [
           1,
+          1,
+          12,
+          12,
           null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          0,
           0,
           null,
           null,
           null,
-          1,
           null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "C:/Users/nicol/sds/app/models/user.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "C:/Users/nicol/sds/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
           null
         ]
       },
@@ -142,21 +149,6 @@
         "lines": [
           1,
           1,
-          null
-        ]
-      },
-      "C:/Users/nicol/sds/app/controllers/main_controller.rb": {
-        "lines": [
-          1,
-          1,
-          11,
-          11,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
           null
         ]
       },
@@ -168,12 +160,12 @@
           null,
           null,
           1,
-          20,
-          20,
+          22,
+          22,
           null,
           null,
           null,
-          20,
+          22,
           8,
           null,
           8,
@@ -182,8 +174,8 @@
           null,
           null,
           null,
-          20,
-          20,
+          22,
+          22,
           null,
           null,
           1,
@@ -288,27 +280,35 @@
           null
         ]
       },
-      "C:/Users/nicol/sds/app/models/transaction.rb": {
+      "C:/Users/nicol/sds/app/controllers/registrations_controller.rb": {
         "lines": [
           1,
           null,
           null,
           1,
           1,
+          null,
+          null,
+          1,
           1,
           null,
           1,
-          null,
           1,
-          18,
+          1,
+          null,
+          0,
           0,
           null,
           null,
           null,
           1,
-          0,
           null,
           null,
+          null,
+          null,
+          null,
+          1,
+          1,
           null,
           null
         ]
@@ -529,6 +529,6 @@
         ]
       }
     },
-    "timestamp": 1720686554
+    "timestamp": 1720691956
   }
 }

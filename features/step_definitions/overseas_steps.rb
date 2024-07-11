@@ -21,7 +21,6 @@ When("I click on {string} button") do |button|
   end
 end
 
-
 And("I fill in {string} in the recipient account details") do |account_number|
   fill_in "account_details", with: account_number
 end
@@ -77,7 +76,6 @@ end
 When("I fill in the amount to be transferred with {string}") do |money|
   fill_in "amount_sgd", with: money  # Adjust the selector ("amount_sgd") based on your actual HTML structure
 end
-
 
 And("click on {string} button below") do |button_name|
   click_button button_name

@@ -18,11 +18,9 @@ When("I click on PayNow button") do
   find('#paynowbutton a').click
 end
 
-
 Then("I should be on the new transaction page") do
   expect(page.current_path).to eq(new_transaction_path)
 end
-
 
 When("I fill in Recipient Name with {string}") do |transaction_name|
   fill_in("transaction_name", with: transaction_name)
@@ -48,7 +46,6 @@ Then("I should be able to see a transaction that says {string} and {string}") do
   end
 end
 
-
 When("I click on Transaction History") do
   find('#history a').click
 end
@@ -64,7 +61,6 @@ When("I click on the transaction that says {string} and {string}") do |transacti
     find('.money', text: amount).click
   end
 end
-
 
 And("click on destroy this transaction") do
   find('form.button_to', wait: 10).click_button('Destroy this transaction')

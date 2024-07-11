@@ -29,5 +29,3 @@ Feature: Managing Transactions
     When I click on the transaction that says "Paynow to Nicole" and "-50.00"
     And click on destroy this transaction
     Then I should see a "Transaction was successfully destroyed" message at the top
-
-

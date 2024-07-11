@@ -32,14 +32,12 @@ And("I click the {string} button") do |button_name|
   click_on(button_name)
 end
 
-
 When("I click on {string} button in the popup") do |button|
   find('#popup',  :visible => false)
   within('#popup') do
     click_link(button)
   end
 end
-
 
 Then("I should see the new Scheduled Transaction page") do
   expect(page).to have_content('New Scheduled Transaction')
@@ -72,7 +70,6 @@ end
 Then('I click the button "Save" at the bottom') do
   click_on('Save') # Adjust based on your UI
 end
-
 
 def pause_carousel
   # Execute JavaScript to stop the carousel rotation
