@@ -1,8 +1,8 @@
 
-<body style="background-image: url('/assets/loginbackground.png');">
+<body style="background-image: url('<%= asset_path 'loginbackground.png' %>');">
 <div style="padding:10px">
 
-<img src="/assets/dbslogo.png" alt="DBS-Bank-logo"  class="Dbslogin" />
+<%= image_tag('dbslogo.png', alt: 'DBS-Bank-logo', class: 'Dbslogin') %>
 
 <%= form_with(model: @user, url: sign_up_path) do |form| %>
   <% if @user.errors.any? %>
