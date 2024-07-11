@@ -13,8 +13,9 @@
 
     <div class="field">
       <%= form.label :nickname, "Shortcut Name" %>
-      <%= form.text_field :nickname, 
-                          value: params.dig(:shortcut, :nickname), 
+      <%= form.text_field :nickname,
+      placeholder: "Nickname",
+                          value: params.dig(:shortcut_button, :nickname), 
                           class: 'form-control', 
                           maxlength: 10, 
                           oninput: "this.value = this.value.slice(0, 10); document.getElementById('char-count').textContent = this.value.length; updateWidgetIcons();" %>
