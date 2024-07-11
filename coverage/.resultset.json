@@ -1,0 +1,703 @@
+{
+  "RSpec": {
+    "coverage": {
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/transactions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          4,
+          4,
+          4,
+          4,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          21,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/transaction.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/current.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/locations_controller.rb": {
+        "lines": [
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/overseas_controller.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          8,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/thailand_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          3,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          2,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/channels/application_cable/channel.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/channels/application_cable/connection.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/cardlimit_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/main_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/pay_and_transfer_page_controller.rb": {
+        "lines": [
+          null,
+          0,
+          null,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/paynow_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/registrations_controller.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/scheduled_transactions_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/sessions_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/shortcut_buttons_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/helpers/application_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/helpers/carousel_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/helpers/scheduled_transactions_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/helpers/shortcut_buttons_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/helpers/transactions_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/recipient.rb": {
+        "lines": [
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/scheduled_transaction.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/shortcut_button.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1720678780
+  }
+}
