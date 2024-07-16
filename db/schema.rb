@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_16_072929) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_16_093741) do
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
@@ -39,6 +39,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_072929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shortcuts_on_user_id"
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.string "type"
+    t.text "content"
+    t.string "link_url"
+    t.boolean "user_dismissed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
