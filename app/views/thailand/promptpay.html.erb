@@ -1,7 +1,7 @@
 <%= form_with(model: @transaction, local: true, url: submit_promptpay_path) do |form| %>
 
     <header>
-      <%= link_to '←', request.referer || root_path, class: 'back-button' %>
+      <%= link_to '←', back_button_path, class: 'back-button' %>
       <h1 class = "paynow-header">Transfer overseas</h1>
       <div class="whitebox"></div>
     </header>

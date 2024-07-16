@@ -36,8 +36,10 @@
 <br>
   <%= link_to "Back to Home", transactions_path, method: :get, class: "grey-button"%>
 <br>
-  <%= button_to "Destroy this transaction", @transaction, method: :delete,method: :get, class: "red-button" %>
+  <%= button_to "Destroy this transaction", transaction_path(@transaction), method: :delete, data: { confirm: "Are you sure?" }, class: "red-button" %>
+
   <br>
   <%= link_to "Check transaction history", transaction_history_path, method: :get, class: "grey-button"%>
   </div>
 </body>
+

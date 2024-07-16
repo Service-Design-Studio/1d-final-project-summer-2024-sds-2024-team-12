@@ -1,5 +1,7 @@
 <div class="scheduled-transactions">
-  <%= link_to '←', request.referer || root_path, class: 'back-button' %>
+  <%= link_to '←', back_button_path, class: 'back-button' %>
+
+
   
   <h1 class="scheduled-transactions-header">Scheduled Transactions</h1>
   <%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path(
@@ -17,7 +19,11 @@
           <p>Amount: <%= number_to_currency(transaction.amount, unit: "SGD ", precision: 2) %></p>
           <p>Start Date: <%= transaction.start_date %></p>
           <p>Frequency: <%= transaction.frequency.capitalize %></p>
+          <%= button_to "Terminate", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: "red-button" %>
+
+
         </div>
+        
       <% end %>
     <% else %>
       <p>No scheduled transactions found.</p>
