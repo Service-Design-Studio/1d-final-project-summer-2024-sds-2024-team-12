@@ -5,7 +5,7 @@
 # password_confirmation: int virtual
 
 class User < ApplicationRecord
-    has_many :transactions
+    has_many :transactions, dependent: :destroy
     has_many :shortcuts
     has_secure_password
 

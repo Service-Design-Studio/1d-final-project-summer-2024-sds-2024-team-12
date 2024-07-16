@@ -180,7 +180,7 @@
 
 .buttonText {
     color: white;
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
     font-size: 13px;
     font-weight: bold;
     padding: 2.5vw 4vw;
@@ -201,7 +201,7 @@
   }
   
   .text {
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
     font-size: 20px;
     font-weight: bold;
     color: #444444;
@@ -483,7 +483,7 @@
     }
     
 .sgd {
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
     font-size: 14px;
     font-weight: bold;
     color: #A3A3A3;

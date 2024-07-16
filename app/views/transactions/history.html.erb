@@ -1,5 +1,5 @@
 <div class="transaction-history">
-  <%= link_to '←', root_path, class: 'back-button' %>
+  <%= link_to '←', request.referer || root_path, class: 'back-button' %>
   <h1 class="transaction-history-header">Transaction History</h1>
   
   

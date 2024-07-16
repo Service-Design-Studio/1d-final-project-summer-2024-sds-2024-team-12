@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_16_050006) do
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

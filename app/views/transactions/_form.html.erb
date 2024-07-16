@@ -13,7 +13,7 @@
   <% end %>
 
     <header>
-      <%= link_to '←', root_path, class: 'back-button' %>
+      <%= link_to '←', request.referer || root_path, class: 'back-button' %>
       <h1 class = "paynow-header">PayNow to Mobile</h1>
       <div class="whitebox"></div>
     </header>

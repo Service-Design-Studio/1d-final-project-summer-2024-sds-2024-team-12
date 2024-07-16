@@ -40,7 +40,17 @@
     </div>
   </div>
 
-  <uwc-date-frequency-picker label="Frequency"></uwc-date-frequency-picker>
+  <div class="schedule-details">
+    <div class="start-date">
+      <%= form.label :start_date, 'Start Date' %>
+      <%= form.date_field :start_date, class: 'start-date-field' %>
+    </div>
+    <div class="frequency">
+      <%= form.label :frequency, 'Frequency' %>
+      <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field' %>
+    </div>
+  </div>
+
 
   <div class="nextbutton">
     <%= form.submit "SAVE" %>
