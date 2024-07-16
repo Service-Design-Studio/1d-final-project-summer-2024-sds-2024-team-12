@@ -1,6 +1,5 @@
 <body class="sucesspagebg">
-<%= image_tag('greentick.png', alt: 'DBS-Bank-logo', class: 'greentick') %>
-
+  <%= image_tag('greentick.png', alt: 'DBS-Bank-logo', class: 'greentick') %>
 
   <div class="moneybody2">
     <div class='moneyleft'>
@@ -8,36 +7,48 @@
       <p class="currency">SGD</p>
     </div>
     <div class='right2'>
-    <div class='amount-fieldsuccess'>
-    <%= sprintf('%.2f', @transaction.amount) %>
+      <div class='amount-fieldsuccess'>
+        <%= sprintf('%.2f', @transaction.amount) %>
       </div>
     </div>
   </div>
-<br>
-<div class="name">
-<p>
-
-  <strong>To:</strong>
-  <%= @transaction.name %>
-</p>
-</div>
-
-<div class="name">
-<p>
-
-  <strong>Datetime:</strong>
-  <%= "#{@transaction.created_at}" %>
-</p>
-</div>
-
- <br><br>
- <div class="button-container">
-  <%= button_to "Edit this transaction", edit_transaction_path(@transaction), method: :get, class: "grey-button" %> 
-<br>
-  <%= link_to "Back to Home", transactions_path, method: :get, class: "grey-button"%>
-<br>
-  <%= button_to "Destroy this transaction", @transaction, method: :delete,method: :get, class: "red-button" %>
   <br>
-  <%= link_to "Check transaction history", transaction_history_path, method: :get, class: "grey-button"%>
+  <div class="name">
+    <p>
+      <strong>To:</strong>
+      <%= @transaction.name %>
+    </p>
   </div>
+
+  <div class="name">
+    <p>
+      <strong>Datetime:</strong>
+      <%= "#{@transaction.created_at}" %>
+    </p>
+  </div>
+
+  <br>
+  <div class="button-container">
+    <button id="shareDetailsButton" class="red-button">Share transfer details</button>
+    <div id="hiddenButtons" style="display: none;">
+      <%= button_to "Edit this transaction", edit_transaction_path(@transaction), method: :get, class: "grey-button" %> 
+      <br>
+      <%= button_to "Destroy this transaction", @transaction, method: :delete, class: "red-button" %>
+      <br>
+      <%= link_to "Check transaction history", transaction_history_path, method: :get, class: "grey-button" %>
+    </div>
+  </div>
+  <br>
+  <%= link_to "Back to Home", transactions_path, method: :get, class: "grey-button separate-home-button" %>
+
+  <script>
+    document.getElementById('shareDetailsButton').addEventListener('click', function() {
+      var hiddenButtons = document.getElementById('hiddenButtons');
+      if (hiddenButtons.style.display === 'none') {
+        hiddenButtons.style.display = 'block';
+      } else {
+        hiddenButtons.style.display = 'none';
+      }
+    });
+  </script>
 </body>
