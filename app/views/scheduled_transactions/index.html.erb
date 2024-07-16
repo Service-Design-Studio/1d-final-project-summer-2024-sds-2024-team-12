@@ -2,7 +2,12 @@
   <%= link_to '←', request.referer || root_path, class: 'back-button' %>
   
   <h1 class="scheduled-transactions-header">Scheduled Transactions</h1>
-  <%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path %>
+  <%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path(
+                scheduled_transaction: { 
+                  name: "", 
+                  amount: ""
+                }
+              ) %>
 
   <div>
     <% if @scheduled_transactions.any? %>

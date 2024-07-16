@@ -59,7 +59,7 @@
                %>
             </button>
             
-            <% Shortcut.all.each do |button| %>
+            <% @shortcut.each do |button| %>
             <div class="recipient">
                 <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
                 <div class="recipient-info">

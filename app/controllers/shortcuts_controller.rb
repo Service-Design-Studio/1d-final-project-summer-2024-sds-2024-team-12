@@ -1,12 +1,12 @@
 class ShortcutsController < ApplicationController
+  before_action :set_current_user
+  before_action :check_if_user
   def new
-    @shortcut = Shortcut.new
+    @shortcut = Current.user.shortcuts.new
   end
 
   def create
-    @shortcut = Shortcut.new(shortcut_params)
-    @shortcut.user = Current.user  # If you're using user authentication
-    # @transaction = Current.user.transactions.new(transaction_params)
+    @shortcut = Current.user.shortcuts.new(shortcut_params)
 
     if @shortcut.save
       redirect_to pay_and_transfer_page_index_path, notice: 'Shortcut button was successfully created.'

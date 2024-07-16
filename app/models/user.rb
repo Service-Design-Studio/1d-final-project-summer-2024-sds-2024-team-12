@@ -6,7 +6,9 @@
 
 class User < ApplicationRecord
     has_many :transactions, dependent: :destroy
+    has_many :scheduled_transactions
     has_many :shortcuts
+
     has_secure_password
 
     validates :phone, presence: true, uniqueness: true
