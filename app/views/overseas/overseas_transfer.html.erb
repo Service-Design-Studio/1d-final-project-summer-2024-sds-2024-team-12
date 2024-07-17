@@ -1,13 +1,17 @@
   <% back_path = request.referer == request.original_url ? root_path : request.referer %>
     <%= link_to '←', back_path, class: 'back-button' %>
-<h1>Overseas Transfer</h1>
+    <div class="ovrstransfer1">
+<div class="topboxovrtrnsfr1">
+<h1>
+Overseas Transfer </h1>
+
 
 <div class="notification-banner">
-  Check DBS Remit rates<br>
-  Zero fees. Zero delay.<br>
+ Check DBS Remit rates<br>
+ Zero fees. Zero delay.<br>
   Tap to check FX rates now.
 </div>
-
+</div>
 <div class="tabos-container">
   <ul class="tabos-list">
     <li class="tabos active"><%= link_to 'Recipients', '#recipients', class: 'tabos-link' %></li>
@@ -32,4 +36,5 @@
     </div>
   
   </div>
+</div>
 </div>
