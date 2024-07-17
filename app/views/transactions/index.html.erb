@@ -1,5 +1,5 @@
 
-<html lang="en" class="wf-lato-n4-active wf-inter-n4-active wf-active">
+<html lang="en">
 <head>
   <style id="react-native-stylesheet"></style>
   <meta charset="utf-8">
@@ -48,8 +48,7 @@
   </style>
 </head>
 
-<body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="" style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+<body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="">
   <div id="root">
     <div class="container">
       <div class="scrollable">
@@ -188,20 +187,7 @@
         
         <div class="containerthree">
           <div class="scrollview">
-            <% if @frequent_transactions.any? %>
-              <% Shortcut.all.each do |button| %>
-                <div class="scshortcut-button">
-                  <div class="sciconcontainer">
-                    <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
-                      <div class="scicons"><%= button.nickname %></div>
-                    <% end %>
-                    <%= form_with(model: button, method: :delete, url: shortcut_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-                      <%= form.submit 'Delete', class: 'btn btn-danger' %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+            
 
             <button id="paynowbutton" class="transparent">
               <%= link_to new_transaction_path do %>
@@ -229,6 +215,16 @@
                   <p class="shortcutname">Overseas</p>
                   <p class="shortcutname">Transactions</p>
                 </div>
+              <% end %>
+            </button>
+
+            <button class="transparent">
+              <%= link_to scheduled_transactions_path do %>
+              <div class="iconcontainer">
+                <%= image_tag("scheduletransfer.png", class: "icons") %>
+                <p class="shortcutname">Transfers</p>
+                <p class="shortcutname">Scheduled</p>
+              </div>
               <% end %>
             </button>
 
@@ -276,13 +272,7 @@
               </div>
             </button>
 
-            <button class="transparent">
-              <div class="iconcontainer">
-                <%= image_tag("scheduletransfer.png", class: "icons") %>
-                <p class="shortcutname">Transfers</p>
-                <p class="shortcutname">Scheduled</p>
-              </div>
-            </button>
+            
           </div>
         </div>
 

@@ -4,18 +4,18 @@
   <%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
     <div class="field">
       <%= form.label :recipient_name %>
-      <%= form.text_field :recipient_name, value: params.dig(:shortcut, :recipient_name), class: 'form-control grey-textbox', readonly: true %>
+      <%= form.text_field :recipient_name, value: params.dig(:shortcut, :recipient_name), class: 'form-control grey-textbox' %>
     </div>
     <div class="field">
       <%= form.label :amount %>
-      <%= form.number_field :amount, value: params.dig(:shortcut, :amount), step: 0.01, class: 'form-control grey-textbox', readonly: true %>
+      <%= form.number_field :amount, value: params.dig(:shortcut, :amount), step: 0.01, class: 'form-control grey-textbox'%>
     </div>
 
     <div class="field">
       <%= form.label :nickname, "Shortcut Name" %>
       <%= form.text_field :nickname, 
                           value: params.dig(:shortcut, :nickname), 
-                          class: 'form-control grey-textbox', 
+                          class: 'form-control white-textbox', 
                           maxlength: 10, 
                           oninput: "this.value = this.value.slice(0, 10); document.getElementById('char-count').textContent = this.value.length; updateWidgetIcons();" %>
       <span id="char-count" class="small-text" style="font-size: 12px;">0</span><span class="small-text" style="font-size: 12px;">/10 characters</span>

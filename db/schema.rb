@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
     t.string "frequency", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "shortcuts", force: :cascade do |t|
@@ -40,11 +41,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
     t.index ["user_id"], name: "index_shortcuts_on_user_id"
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.string "type"
+    t.text "content"
+    t.string "link_url"
+    t.boolean "user_dismissed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,5 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_072911) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "scheduled_transactions", "users"
+  add_foreign_key "scheduled_transactions", "users"
   add_foreign_key "shortcuts", "users"
 end
