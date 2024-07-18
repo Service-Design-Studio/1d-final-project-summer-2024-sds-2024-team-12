@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'transactions/index'
 
   resources :shortcuts, only: [:new, :create, :destroy]
-  resources :scheduled_transactions, only: [:new, :create]
+  resources :scheduled_transactions, only: [:new, :create, :index, :destroy]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   get 'transaction_history', to: 'transactions#history'
 

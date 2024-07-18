@@ -32,7 +32,7 @@ steps:
 substitutions:
   _REGION: 'asia-southeast1'
   _SERVICE_NAME: 'rubyzzz-service'
-  _INSTANCE_NAME: 'blessrubyzzzsprint1'
+  _INSTANCE_NAME: 'blesssprint2'
 
 images:
   - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"

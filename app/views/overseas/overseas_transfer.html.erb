@@ -1,3 +1,5 @@
+  <% back_path = request.referer == request.original_url ? root_path : request.referer %>
+    <%= link_to '←', back_path, class: 'back-button' %>
 <h1>Overseas Transfer</h1>
 
 <div class="notification-banner">
