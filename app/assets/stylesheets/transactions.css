@@ -4012,6 +4012,48 @@ input:focus {
     position:fixed;
   }
 
+  /* for thailand coconut section*/
+
+  .coco-icons {
+    width:35px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: inline-block; /* For inline positioning */
+    vertical-align: middle; /* Aligns icons with adjacent text or controls */
+  }
+
+  .coco-transparent {
+    background: rgba(0,0,0,0.6); /* No background color */
+    border: none; /* No border */
+    color: white; /* Inherits text color from parent */
+    padding: 10px; /* Spacing inside the button */
+    cursor: pointer; /* Indicates the element is clickable */
+  }
+
+  .floating-button {
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    padding: 2px 2px; /* Smaller padding */
+    cursor: pointer;
+    margin-bottom: 5px; /* Space between buttons */
+    font-size: 0.03rem; /* Smaller font size */
+  }
+  .floating-container {
+    position: relative;
+    top: 86%; /* Center the container in the middle of the screen vertically */
+    left: -240px; /* Spacing from the right edge of the viewport */
+    transform: translateY(-50%); /* Offset the container by half its height for true centering */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: left; /* Center align items horizontally */
+    z-index: 1000;
+  }
+
+  .floating-button:last-child {
+    margin-bottom: 0;
+  }
+
+  /* thailand coconut section end*/
 
   .infographic {
     margin: 20px 0;
@@ -4019,14 +4061,4 @@ input:focus {
 
   .transaction-details-date{
     padding: 20px;
-  }
-
-/*for new transaction show page */
-  .red-button {
-    background-color: red;
-    color: white;
-  }
-  .grey-button {
-    background-color: grey;
-    color: white;
   }
