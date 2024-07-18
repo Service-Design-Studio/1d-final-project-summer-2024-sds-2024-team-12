@@ -23,6 +23,7 @@ class TransactionsController < ApplicationController
 
     @close_transactions = Current.user.transactions.where("amount > ? AND amount <= ?", CARD_LIMIT - 50, CARD_LIMIT).to_a
     @card_limit = CARD_LIMIT  # Pass the constant to the view
+    @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
   end
 
   def history

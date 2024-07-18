@@ -87,85 +87,42 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" class="active"></li>
-              <% if @frequent_transactions.any? %>
-              <% @frequent_transactions.each do |transaction| %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% end %>
-              <% if @close_transactions.any? %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% if session[:country] == 'thailand' %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
+              <% if @suggestions.any? %>
+                <% @suggestions.each_with_index do |suggestion, index| %>
+                  <li data-target="#myCarousel" <%= 'class = "active"' if index == 0 %>></li>
+                <% end %>
+                <% end %>
+                <li data-target="#myCarousel" <%= 'class = "active"' if @suggestions.size == 0 %>></li>
+              
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
 
-              <div class="item active">
+              <% if @suggestions.any? %>
+                <% @suggestions.each_with_index do |suggestion, index| %>
+                  <div class="item <%= 'active' if index == 0 %>">
+                    <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                    <div class="carousel-caption">
+                      <p class="textheader">Suggestion!</p>
+                      <p class="textbody"><%= suggestion.content %></p>
+                        <button class="transparent">
+                          <div class="buttonContainer">
+                            <%= link_to 'Learn More', suggestion.link_url, class: 'buttonText' %>
+                          </div>
+                        </button>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+
+              <div class="item <%= 'active' if @suggestions.size == 0 %>">
                 <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
                   <p class="textheader">Welcome to digibank</p>
                   <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
                 </div>
               </div>
-
-              <% if @frequent_transactions.any? %>
-               <% @frequent_transactions.each_with_index do |transaction, index| %>
-                <div class="item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
-                    <ul class="textbody">
-                      
-                        <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
-                      
-                    </ul>
-                    <button class="transparent" id="setupButton<%= index %>">
-                      <div class="buttonContainer">
-                        <p class="buttonText">Set up</p>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-                <% end %>
-              <% end %>
-              
-              <% if @close_transactions.any? %>
-                <div class="item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">Your card usage is nearing $500. Consider setting up a card limit to manage your spending:</p>
-                    <ul>
-                      <li><%= "Card Limit: $500" %></li>
-                    </ul>
-                    <button class='transparent' id='setupLimitButton'>
-                      <div class='buttonContainer'>
-                        <%= link_to 'Set up Limit', new_cardlimit_path %> 
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              <% end %>
-            
-               <% if session[:country] == 'thailand' %>
-                <div class = "item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                    <button class="transparent">
-                      <div class="buttonContainer">
-                        <a href = "/promptpay" class="buttonText">Go Now</a>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-            <% end %>
 
             </div>
 

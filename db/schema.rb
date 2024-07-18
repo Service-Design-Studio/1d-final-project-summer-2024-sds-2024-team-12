@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_152008) do
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
   end
 
   create_table "suggestions", force: :cascade do |t|
-    t.string "type"
+    t.string "suggestion_type"
     t.text "content"
     t.string "link_url"
     t.boolean "user_dismissed", default: false
