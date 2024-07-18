@@ -152,21 +152,18 @@
                 </div>
               <% end %>
             
-               <% if session[:country] == 'thailand' %>
-                <div class = "item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                    <button class="transparent">
-                      <div class="buttonContainer">
-                        <a href = "/promptpay" class="buttonText">Go Now</a>
-                      </div>
-                    </button>
-                  </div>
+              <div class = "item">
+                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                <div class="carousel-caption">
+                  <p class="textheader">Suggestion:</p>
+                  <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
+                  <button class="transparent">
+                    <div class="buttonContainer">
+                      <a href = "/promptpay" class="buttonText">Go Now</a>
+                    </div>
+                  </button>
                 </div>
-            <% end %>
-
+              </div>
             </div>
 
             <!-- Left and right controls -->
@@ -366,15 +363,7 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="floating-container">
-          <button id="thailandButton" class="floating-button coco-transparent">
-            <%= image_tag("coconut.png", alt: "Coconut Image", class: "coco-icons") %>
-          </button>
-          <button id="removeThailand" class="floating-button">
-            not in thailand
-          </button>
-    </div>      
+    </div>     
     </div>
 
     </div>
@@ -398,41 +387,6 @@
       document.getElementById("tab-" + tabName).style.display = "block";
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var thailandButton = document.getElementById('thailandButton');
-      if (thailandButton) {
-        thailandButton.addEventListener('click', function() {
-          const isActive = this.classList.contains('active');
-          const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
-          const method = isActive ? 'DELETE' : 'POST';
-
-          fetch(url, { 
-            method: method,
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ country: 'thailand' })
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP status ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(data => {
-            if(data.success) {
-              this.classList.toggle('active');
-              location.reload();
-            }
-          })
-          .catch(error => console.error('Fetch error:', error));
-        });
-      } else {
-        console.error('Thailand button not found');
-      }
-    });
 
     document.addEventListener('DOMContentLoaded', function() {
       var removeButton = document.getElementById('removeThailand');
