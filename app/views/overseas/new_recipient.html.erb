@@ -1,5 +1,5 @@
-<h1>Recipient's Details for <%= @country %></h1>
-
+<div class= "topboxovrtrnsfr2"><h1>Recipient's Details for <%= @country %></h1></div>
+<div class="bodyoverstrsnfnewrecepient">
 <%= form_with url: overseas_transfer_create_recipient_path, method: :post do %>
   <div>
     <%= label_tag :country, "Selected Country" %>
@@ -21,3 +21,4 @@
     <%= submit_tag "NEXT" %>
   </div>
 <% end %>
+</div>
