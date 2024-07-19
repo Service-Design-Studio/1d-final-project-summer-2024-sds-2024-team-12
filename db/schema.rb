@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_19_022644) do
+  create_table "promptpays", force: :cascade do |t|
+    t.string "phone_number"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
