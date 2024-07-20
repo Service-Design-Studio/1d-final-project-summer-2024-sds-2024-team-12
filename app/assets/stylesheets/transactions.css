@@ -3772,6 +3772,7 @@ input:focus {
     text-align: left; /* Align text to the left */
     align-content: left;
     font-weight: 600;
+    white-space: nowrap;
   }
   
 .whitebox{

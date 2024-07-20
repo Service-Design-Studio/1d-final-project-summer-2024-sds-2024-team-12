@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get 'paynow/index'
   get 'transactions/index'
 
+  get 'transactions/enter', to: 'transactions#enter', as: :enter_transaction
   resources :shortcuts, only: [:new, :create, :destroy]
   resources :scheduled_transactions, only: [:new, :create, :index, :destroy]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   get 'transaction_history', to: 'transactions#history'
+
 
   resources :cardlimit, only: [:new, :paynow, :adjusting]
 
