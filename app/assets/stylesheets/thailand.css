@@ -1,3 +1,18 @@
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main.content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 60px; /* Space for the fixed button */
+}
+
 /*new transaction*/
 .paynow-header {
     font-size: 24px; /* Adjust font size as needed */
@@ -25,6 +40,7 @@
 .left-container {
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
+  padding-top: 40px;
 }
 
 .circle-container {
@@ -279,6 +295,26 @@
     margin: 0;  /* Remove default margin */
     font-weight: normal;  /* Normal font weight */
     font-size: 14px;
+  }
+
+
+  /*for phonebook*/
+  .phonebook-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: none;
+    border: none;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .phonebook-button img {
+    width: 30px;
+    height: 30px;
   }
   
   
