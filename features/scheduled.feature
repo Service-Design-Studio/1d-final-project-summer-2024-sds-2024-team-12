@@ -1,4 +1,8 @@
 Feature: Scheduled Transaction
+    As a mother who pays monthly allowance to her children
+    I want to set up monthly scheduled payments to my children at the start of the month
+    So that I no longer need to manually create a transaction every month
+
     Background:
     Given the following transactions exist:
         | name   | amount |

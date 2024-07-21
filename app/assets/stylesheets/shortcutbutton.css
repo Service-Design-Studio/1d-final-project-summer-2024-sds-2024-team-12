@@ -35,3 +35,45 @@
   justify-content: flex-start; /* Align items to the start */
   width: 20vw;
 }
+
+.custom-label {
+  font-family: 'Lato', sans-serif;
+  margin-top: 5px;
+  font-size: 24px;
+  padding-left: 20px;
+}
+
+.form-control{
+  margin-right: 30px;
+  letter-spacing: 0.5px;
+  color: #505050;
+  font-weight: 530;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+}
+
+.count{
+  padding-left: 10px;
+}
+
+.widget{
+  display: flex;
+  justify-content: center;
+}
+
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center child elements horizontally */
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Ensure the container has a height to center within */
+}
+
+#nickname-icon {
+  border-radius: 15px; /* Apply border-radius */
+}

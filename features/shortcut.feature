@@ -1,4 +1,9 @@
 Feature: Quick Shortcut
+    As a mother who pays monthly allowance to her children
+    I want to set up quick shortcuts to pay my children their allowance  
+    So that I can save time and avoid manually entering the user and amount every month
+
+
     Background:
     Given the following transactions exist:
         | name   | amount |
@@ -30,5 +35,7 @@ Feature: Quick Shortcut
         And I have an existing quick shortcut with the name "Nic100"
         Then I click the "Delete" button
         And I should not see a shortcut button "Nic100"
+        Then I should see a message saying "Shortcut button was successfully deleted."
+
 
 
