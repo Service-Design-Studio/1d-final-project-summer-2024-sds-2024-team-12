@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: space-between;
   height: 5vh;
-  background-color: #066DAF;
+  background-color:rgb(177, 4, 4);
   margin: 0;
   padding: 0;
 }
@@ -162,30 +162,34 @@
 .homeheader{
   margin: 0;
   padding: 0;
-  background-color: #066DAF;
+  background-color: white;
 }  
 .alertbutton {
-    background-color: #066DAF;
+    background-color: white;
     display: flex;
     justify-content: flex-end;
 }
   
 .buttonContainer {
-    background-color: #444444;
+    background-color: white;
     border-radius: 20px;
     align-self: flex-end;
     margin-right: 5vw;
+    font-size: small !important;
 }
   
 
 .buttonText {
-    color: white;
+    color: rgb(62, 62, 62) !important;
     /* font-family: 'Lato'; */
-    font-size: 13px;
+    font-size: 15px !important;
     font-weight: bold;
     padding: 2.5vw 4vw;
     letter-spacing: 1px;
     margin: 2vw 0 5vw 0;
+}
+.cardlim{
+  font-size: 15px;
 }
   
   .containertwo {
@@ -193,7 +197,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 3vw;
+    margin-top: 15vw;
     height: 10vw;
     background-color: white;
     margin-left: 5vw;
@@ -211,6 +215,7 @@
   .setting {
     object-fit: contain;
     max-height: 2vh;
+  margin-top: -10px;
   }
   
 
@@ -257,10 +262,11 @@
 }
 
 .icons {
-  width: 70%; /* Adjust width as needed */
-  height: 70%; /* Adjust height as needed */
+  width: 80%; /* Adjust width as needed */
+  height: 80%; /* Adjust height as needed */
   object-fit: contain;
   padding-bottom: 0.2vw; /* Optional padding if needed */
+
 }
 
 /* Additional styles from the second CSS file */

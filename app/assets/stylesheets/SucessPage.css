@@ -4,6 +4,48 @@
     display: block;
     margin: auto;
     padding: 20px;
+    margin-top: 10vw;
+}
+.top-right-image {
+  position: fixed; /* Position the image fixed to the viewport */
+  top: 10px; /* Adjust the distance from the top */
+  right: 10px; /* Adjust the distance from the right */
+  width: 30px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  padding-right: 5px;
+  padding-top: 5px;
+}
+.succes{
+  text-align: center;
+}
+
+.bigT {
+  text-align: center;
+  font-weight: bold;
+}
+.bigT2{
+  text-align: center;
+  font-size: medium;
+}
+.Share {
+  display: inline-flex; /* Flexbox to align text and icon inline */
+  align-items: center; /* Center items vertically */
+  padding: 5px 10px; /* Adjust padding to control the size of the box */
+  border: 2px solid #3b3b3b; /* Black border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: small !important; /* Font size */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center text inside the box */
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: white; /* Background color */
+  color: #3b3b3b; /* Text color */
+  margin: 10px;
+}
+
+.ShareIcon {
+  width: 12px; /* Adjust the size of the icon */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 5px; /* Space between icon and text */
 }
 .sucesspagebg{
     background-color: rgb(244, 242, 242);
@@ -21,7 +63,7 @@
     background-color: transparent;
     padding-left: 10px;
     justify-content: flex-end;
-    font-size: 20px;
+    font-size: 10px;
 }
 .moneybody2{
 background-color: #162633;
@@ -52,7 +94,7 @@ background-color: #162633;
     cursor: pointer;
     margin: auto;
     width: 90%;
-    font-size: 20px;
+    font-size: small;
     font-family: "Lato";
 
     
@@ -84,5 +126,33 @@ background-color: #162633;
   }
 
   .button-container {
-   margin-top: 9em;
+   margin-top: 5em;
+   background-color: white;
+   font-size: small;
+   position : fixed;
+   bottom:0;
+   display: inline;
+   width: 100%;
+   left:0;
+   padding: 10px;
+   padding-bottom: 40px;
+   padding-top: 20px;
   }
+  .RedText{
+    font-size: small;
+    color: red;
+    padding-left: 25px;
+  }
+  .button-container p{
+    font-size: small;
+   
+  }
+.displaysucc{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+.smallT{
+  color: #525252;
+  font-size: small !important;
+}

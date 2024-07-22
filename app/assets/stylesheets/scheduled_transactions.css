@@ -41,6 +41,8 @@
   text-decoration: none;
   color: #333; /* Adjust color */
   margin-right: 10px; /* Adjust color as needed */
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .back-icon {
