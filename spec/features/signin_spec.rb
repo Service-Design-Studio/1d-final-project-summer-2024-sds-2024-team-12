@@ -28,5 +28,15 @@ RSpec.feature "User Sign In", type: :feature do
     login(phone_number: valid_phone_number, pin: invalid_pin)
     expect(page).to have_current_path(sign_in_path)
   end
+
+  scenario "User logs out successfully" do
+    login(phone_number: valid_phone_number, pin: valid_pin)
+    expect(page).to have_current_path(transactions_path)
+
+    # Assuming you have a logout link/button with id 'logout'
+    find('.logoutContainer .transparent').click
+    expect(page).to have_content("Logged out")
+    expect(page).to have_current_path(sign_in_path)
+  end
 end
 
