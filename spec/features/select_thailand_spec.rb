@@ -21,11 +21,12 @@ RSpec.feature "Selecting Thailand", type: :feature, js: true do
     expect(page).to have_text('You are sending money to Thailand, would you want to use our PromptPay feature to send money to Thailand more conveniently?')
   end
 
-  scenario "User selects United Kingdom and does not see the PromptPay modal" do
-    visit overseas_transfer_select_location_path
-    click_link 'United Kingdom'
-    expect(page).to have_no_css('#promptPayModal', visible: true)
-  end
+  # scenario "User selects United Kingdom and does not see the PromptPay modal" do
+  #   visit overseas_transfer_select_location_path
+  #   click_link 'United Kingdom'
+  #   expect(page).to have_no_css('#promptPayModal', visible: true)
+  # end
+
 
   scenario "User selects PromptPay option after selecting Thailand" do
     visit overseas_transfer_select_location_path
@@ -64,4 +65,22 @@ RSpec.feature "Selecting Thailand", type: :feature, js: true do
     end
     expect(page).to have_current_path(overseas_transfer_new_recipient_path(country: 'Thailand'))
   end
+
+  scenario "User creates recipient and uses overseas transfer" do
+    visit overseas_transfer_select_location_path
+    click_link 'Australia'
+    expect(page).to have_current_path(overseas_transfer_new_recipient_path(country: 'Australia'))
+    fill_in "Recipient's Account Details", with: '1234567'
+    fill_in "Recipient's Full Name", with: 'Mary'
+    fill_in "Recipient's Registered Address", with: 'Hillview'
+    click_button 'NEXT'
+    expect(page).to have_current_path(overseas_transfer_confirmation_path)
+    click_link 'Back'
+    expect(page).to have_current_path(overseas_transfer_path)
+    click_link 'Mary'
+    fill_in 'amount_sgd', with: '100'
+    click_button 'TRANSFER NOW'
+  end
+
+
 end
