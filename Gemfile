@@ -75,3 +75,7 @@ group :test do
   gem 'simplecov', require:false
   gem 'rspec-rails', '~>5.0.0'
 end
+
+group :production do
+  gem 'pg'
+end

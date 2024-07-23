@@ -1,16 +1,19 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: %i[ show edit update destroy ]
+  before_action :set_current_user
+  before_action :check_if_user
+
+  before_action :set_transaction, only: %i[show edit update destroy]
   CARD_LIMIT = 500
 
   # GET /transactions or /transactions.json
   def index
-    @transactions = Transaction.all
-    @frequent_transactions = Transaction.group(:name, :amount)
+    @transactions = Current.user.transactions
+    @frequent_transactions = Current.user.transactions.group(:name, :amount)
                                     .having('COUNT(*) >= ?', 3)
                                     .select('name, amount, COUNT(*) as count')
 
     @frequent_transactions_with_dates = @frequent_transactions.map do |transaction|
-      history = Transaction.where(name: transaction.name, amount: transaction.amount).order(:created_at).pluck(:created_at)
+      history = Current.user.transactions.where(name: transaction.name, amount: transaction.amount).order(:created_at).pluck(:created_at)
       {
         name: transaction.name,
         amount: transaction.amount,
@@ -18,13 +21,13 @@ class TransactionsController < ApplicationController
       }
     end
 
-    @close_transactions = Transaction.where("amount > ? AND amount <= ?", CARD_LIMIT - 50, CARD_LIMIT).to_a
+    @close_transactions = Current.user.transactions.where("amount > ? AND amount <= ?", CARD_LIMIT - 50, CARD_LIMIT).to_a
     @card_limit = CARD_LIMIT  # Pass the constant to the view
   end
 
   def history
-    @transactions = Transaction.all
-    @frequent_transactions = Transaction.group(:name, :amount).having('COUNT(*) >= ?', 3)
+    @transactions = Current.user.transactions
+    @frequent_transactions = Current.user.transactions.group(:name, :amount).having('COUNT(*) >= ?', 3)
   end
 
   # GET /transactions/1 or /transactions/1.json
@@ -33,7 +36,8 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
-    @transaction = Transaction.new
+    @transaction = Current.user.transactions.new
+    @transaction.name = params[:mobile_number] if params[:mobile_number].present?
     if params[:scheduled_transaction].present?
       @transaction.name = params[:scheduled_transaction][:name]
       @transaction.amount = params[:scheduled_transaction][:amount]
@@ -46,7 +50,7 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = Current.user.transactions.new(transaction_params)
 
     respond_to do |format|
       if @transaction.save
@@ -82,43 +86,39 @@ class TransactionsController < ApplicationController
     end
   end
 
+  # GET /transactions/enter
+  def enter
+    # This action will just render the form
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def transaction_params
-      params.require(:transaction).permit(:name, :amount)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transaction
+    @transaction = Current.user.transactions.find(params[:id])
+  end
 
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
-
-    def transaction_params
-      params.require(:transaction).permit(:name, :amount)
-    end
-
+  # Only allow a list of trusted parameters through.
+  def transaction_params
+    params.require(:transaction).permit(:name, :amount)
+  end
 
   def check_transactions
+    # Define your card limit
+    card_limit = 500.00
 
-      # Define your card limit
-      card_limit = 500.00
+    # Retrieve transactions close to the card limit
+    @close_transactions = Current.user.transactions.where("amount > ? AND amount <= ?", card_limit - 50, card_limit)
 
-      # Retrieve transactions close to the card limit
-      @close_transactions = Transaction.where("amount > ? AND amount <= ?", card_limit - 50, card_limit)
-
-      if @close_transactions.count >= 3
-        # Notify or take action for transactions close to the card limit
-        @close_transactions.each do |transaction|
-          puts "#{transaction.name} is close to the card limit. Amount: #{transaction.amount}"
-          # You can perform additional actions here, like sending notifications or logging
-        end
-        render plain: "Notifications sent for transactions close to the card limit."
-      else
-        render plain: "No transactions are close to the card limit."
+    if @close_transactions.count >= 3
+      # Notify or take action for transactions close to the card limit
+      @close_transactions.each do |transaction|
+        puts "#{transaction.name} is close to the card limit. Amount: #{transaction.amount}"
+        # You can perform additional actions here, like sending notifications or logging
       end
+      render plain: "Notifications sent for transactions close to the card limit."
+    else
+      render plain: "No transactions are close to the card limit."
     end
   end
+end

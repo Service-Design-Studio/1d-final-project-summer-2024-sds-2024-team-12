@@ -1,23 +1,34 @@
-<h1>Recipient's Details for <%= @country %></h1>
+<body>
 
+<% back_path = request.referer == request.original_url ? root_path : request.referer %>
+<%= link_to '←', back_path, class: 'back-button' %>
+
+<div class= "topboxovrtrnsfr2"><h1>Enter Recepient's Details</h1></div>
 <%= form_with url: overseas_transfer_create_recipient_path, method: :post do %>
-  <div>
-    <%= label_tag :country, "Selected Country" %>
-    <%= text_field_tag :country, @country, readonly: true %>
+    <%= label_tag :account_details, "RECEPIENT'S ACCOUNT DETAILS", class:'newrep1' %>
+    <%= text_field_tag :account_details, "Select recipient's bank", class: 'newrep2', onclick: "this.value=''" %>
+      <%= text_field_tag :account_details, "Enter account no.", class: 'newrep2', onclick: "this.value=''" %>
+
+    <%= label_tag :full_name, "RECEPIENT'S DETAILS", class:'newrep1' %>
+    <div class="newrep2">
+        <%= text_field_tag :full_name, "Full Name", class: 'newrep2', onclick: "this.value=''" %>
+        <p>Must match records</p>
   </div>
-  <div>
-    <%= label_tag :account_details, "Recipient's Account Details" %>
-    <%= text_field_tag :account_details %>
-  </div>
-  <div>
-    <%= label_tag :full_name, "Recipient's Full Name" %>
-    <%= text_field_tag :full_name %>
-  </div>
-  <div>
-    <%= label_tag :registered_address, "Recipient's Registered Address" %>
-    <%= text_field_tag :registered_address %>
-  </div>
-  <div>
-    <%= submit_tag "NEXT" %>
-  </div>
+  
+    <%= label_tag :country, "RECEPIENT'S REGISTERED ADDRESS", class:'newrep1' %>
+      <div class="newrep2">
+    <p>Located in</p>
+    <%= text_field_tag :country, @country, readonly: true %> </div>
+        <%= text_field_tag :registered_address,'Full Address',class: 'newrep2', onclick: "this.value=''" %>
+
+
+    <%= label_tag :registered_address, "Remaining characters",class:'newrep3' %>
+  
+      <%= text_field_tag :account_details, "In The City Of", class: 'newrep2', onclick: "this.value=''" %>
+
+    <input type="submit" value="NEXT" class="buttonsubmitred" />
+
+
 <% end %>
+  </div>
+</body>

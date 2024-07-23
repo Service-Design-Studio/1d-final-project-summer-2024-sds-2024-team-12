@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: space-between;
   height: 5vh;
-  background-color: #066DAF;
+  background-color:rgb(177, 4, 4);
   margin: 0;
   padding: 0;
 }
@@ -162,30 +162,34 @@
 .homeheader{
   margin: 0;
   padding: 0;
-  background-color: #066DAF;
+  background-color: white;
 }  
 .alertbutton {
-    background-color: #066DAF;
+    background-color: white;
     display: flex;
     justify-content: flex-end;
 }
   
 .buttonContainer {
-    background-color: #444444;
+    background-color: white;
     border-radius: 20px;
     align-self: flex-end;
     margin-right: 5vw;
+    font-size: small !important;
 }
   
 
 .buttonText {
-    color: white;
-    font-family: 'Lato';
-    font-size: 13px;
+    color: rgb(62, 62, 62) !important;
+    /* font-family: 'Lato'; */
+    font-size: 15px !important;
     font-weight: bold;
     padding: 2.5vw 4vw;
     letter-spacing: 1px;
     margin: 2vw 0 5vw 0;
+}
+.cardlim{
+  font-size: 15px;
 }
   
   .containertwo {
@@ -193,7 +197,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 3vw;
+    margin-top: 15vw;
     height: 10vw;
     background-color: white;
     margin-left: 5vw;
@@ -201,7 +205,7 @@
   }
   
   .text {
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
     font-size: 20px;
     font-weight: bold;
     color: #444444;
@@ -211,38 +215,71 @@
   .setting {
     object-fit: contain;
     max-height: 2vh;
+  margin-top: -10px;
   }
   
 
 
-  .containerthree {
-    background-color: white;
-    overflow-x: auto;
-    white-space: nowrap;
-    display: flex; /* Make container flex */
-    justify-content: flex-start; /* Align items to the start */
+  /* Combined CSS styles for .scshortcut-button, .iconcontainer, and .sciconcontainer */
 
-  }
-  
-  .iconcontainer {
-    padding-bottom: 20px; /* Optional padding if needed */
-    display: flex; /* Make iconcontainer flex */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align items to the start */
-    width: 20vw;
-  }
+.scshortcut-button {
+  display: inline-block;
+  /* text-align: center; */ /* Commented out to retain alignment from existing CSS */
+  /* margin: 10px; */ /* Commented out to retain alignment from existing CSS */
+}
 
+.scshortcut-button .btn-danger {
+  margin-top: 10px;
+}
+
+.shortcutImage {
+  width: 100px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.scicons {
+  width: 60px; /* Adjust the width as needed */
+  height: 60px; /* Ensure the height is the same as width to make it a square */
+  background-color: #066DAF; /* Adjust the background color as needed */
+  color: white; /* Text color */
+  display: flex; /* Use flexbox to center the text */
+  align-items: center; /* Center the text vertically */
+  justify-content: center; /* Center the text horizontally */
+  border-radius: 15px; /* Adjust the radius for rounded edges */
+  font-size: 12px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center align the text */
+}
+
+/* Styling for .iconcontainer and .sciconcontainer */
+.iconcontainer, .sciconcontainer {
+  padding-bottom: 20px; /* Optional padding if needed */
+  display: flex; /* Make iconcontainer flex */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the start */
+  width: 20vw; /* Adjust width as needed */
+}
+
+.icons {
+  width: 80%; /* Adjust width as needed */
+  height: 80%; /* Adjust height as needed */
+  object-fit: contain;
+  padding-bottom: 0.2vw; /* Optional padding if needed */
+
+}
+
+/* Additional styles from the second CSS file */
+.containerthree {
+  background-color: white;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex; /* Make container flex */
+  justify-content: flex-start; /* Align items to the start */
+}
 
   
-  .icons {
-    width: 70%; /* Adjust width as needed */
-    height: 70%; /* Adjust height as needed */
-    object-fit: contain;
-    padding-bottom: 1.5vw; /* Optional padding if needed */
-  }
-  
-  .shortcut {
+  .shortcutname {
     font-family: 'Lato';
     font-size: 12px;
     font-weight: bold;
@@ -452,7 +489,7 @@
     }
     
 .sgd {
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
     font-size: 14px;
     font-weight: bold;
     color: #A3A3A3;
@@ -2366,7 +2403,7 @@ input:focus {
       margin-top: 20px;
     }
    /* Additional styles for buttons if needed */
-   .scheduleButton, .shortcutButton {
+   .scheduleButton, .shortcut {
     display: inline-block;
     padding: 10px 20px;
     background-color: #066DAF;
@@ -2376,7 +2413,7 @@ input:focus {
     border-radius: 5px;
   }
   
-  .scheduleButton:hover, .shortcutButton:hover {
+  .scheduleButton:hover, .shortcut:hover {
     background-color: #045a8d;
   }  
 
@@ -3741,6 +3778,7 @@ input:focus {
     text-align: left; /* Align text to the left */
     align-content: left;
     font-weight: 600;
+    white-space: nowrap;
   }
   
 .whitebox{
@@ -3981,48 +4019,6 @@ input:focus {
     position:fixed;
   }
 
-  /* for thailand coconut section*/
-
-  .coco-icons {
-    width:35px; /* Adjust the size as needed */
-    height: auto; /* Maintain aspect ratio */
-    display: inline-block; /* For inline positioning */
-    vertical-align: middle; /* Aligns icons with adjacent text or controls */
-  }
-
-  .coco-transparent {
-    background: rgba(0,0,0,0.6); /* No background color */
-    border: none; /* No border */
-    color: white; /* Inherits text color from parent */
-    padding: 10px; /* Spacing inside the button */
-    cursor: pointer; /* Indicates the element is clickable */
-  }
-
-  .floating-button {
-    background: rgba(0,0,0,0.6);
-    border: none;
-    color: white;
-    padding: 2px 2px; /* Smaller padding */
-    cursor: pointer;
-    margin-bottom: 5px; /* Space between buttons */
-    font-size: 0.03rem; /* Smaller font size */
-  }
-  .floating-container {
-    position: relative;
-    top: 86%; /* Center the container in the middle of the screen vertically */
-    left: -240px; /* Spacing from the right edge of the viewport */
-    transform: translateY(-50%); /* Offset the container by half its height for true centering */
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: left; /* Center align items horizontally */
-    z-index: 1000;
-  }
-
-  .floating-button:last-child {
-    margin-bottom: 0;
-  }
-
-  /* thailand coconut section end*/
 
   .infographic {
     margin: 20px 0;
@@ -4030,4 +4026,14 @@ input:focus {
 
   .transaction-details-date{
     padding: 20px;
+  }
+
+/*for new transaction show page */
+  .red-button {
+    background-color: red;
+    color: white;
+  }
+  .grey-button {
+    background-color: grey;
+    color: white;
   }

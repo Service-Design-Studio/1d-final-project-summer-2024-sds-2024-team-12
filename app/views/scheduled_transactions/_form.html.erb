@@ -1,5 +1,4 @@
 <%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path) do |form| %>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
   
   <div class="myaccount-container">
     <div class="myaccount">
@@ -40,7 +39,17 @@
     </div>
   </div>
 
-  <uwc-date-frequency-picker label="Frequency"></uwc-date-frequency-picker>
+  <div class="schedule-details">
+    <div class="start-date">
+      <%= form.label :start_date, 'Start Date' %>
+      <%= form.date_field :start_date, class: 'start-date-field' %>
+    </div>
+    <div class="frequency">
+      <%= form.label :frequency, 'Frequency' %>
+      <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field' %>
+    </div>
+  </div>
+
 
   <div class="nextbutton">
     <%= form.submit "SAVE" %>

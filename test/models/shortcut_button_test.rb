@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ShortcutButtonTest < ActiveSupport::TestCase
+class ShortcutTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

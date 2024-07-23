@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ShortcutButtonsControllerTest < ActionDispatch::IntegrationTest
+class ShortcutsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

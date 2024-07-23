@@ -1,33 +1,55 @@
-<h1>Overseas Transfer</h1>
-
-<div class="notification-banner">
-  Check DBS Remit rates<br>
-  Zero fees. Zero delay.<br>
-  Tap to check FX rates now.
-</div>
-
-<div class="tabos-container">
-  <ul class="tabos-list">
-    <li class="tabos active"><%= link_to 'Recipients', '#recipients', class: 'tabos-link' %></li>
-    <li class="tabos"><%= link_to 'Recent', '#recent', class: 'tabos-link' %></li>
-    <li class="tabos"><%= link_to 'Recurring', '#recurring', class: 'tabos-link' %></li>
-  </ul>
-  
-  <div class="tabos-content">
-    <div id="recipients" class="tabos-pane active">
-      <%= link_to 'Add Overseas Recipient', overseas_transfer_select_location_path, class: 'button primary-button' %>
-      <% if @recipients.any? %>
-        <% @recipients.each do |recipient| %>
-          <div class="recipient-entry">
-            <div class="recipient-icon"><%= recipient.initials %></div>
-            <%= link_to recipient.full_name, overseas_transfer_make_transfer_path(recipient_id: recipient.id), class: 'recipient-link' %>
-          </div>
-        <% end %>
-      <% else %>
-        <p>No recipients yet</p>
-        <p>Add a recipient to transfer to 49 locations at no fees, same-day transfer.</p>
-      <% end %>
-    </div>
-  
+<% back_path = request.referer == request.original_url ? root_path : request.referer %>
+<%= link_to '←', back_path, class: 'back-button' %>
+<div class="ovrstransfer1">
+    <div class="topboxovrtrnsfr1">
+        <h1>Overseas Transfer</h1>
+        <div class="notification-banner">
+  <div class="text-content">
+    Check DBS Remit rates<br>
+    Zero fees. Zero delay.<br>
+    Tap to check FX rates now.
   </div>
+  <div class="icon-container">
+    <img src="<%= asset_path('globee.png') %>" alt="Green Circle" class="greencircle-icon" />
+  </div>
+</div>
+    </div> 
+    <div class="tabos-container">
+        <ul class="tabos-list">
+            <li class="tabos active"><%= link_to 'Recipients', '#recipients', class: 'tabos-link' %></li>
+            <li class="tabos"><%= link_to 'Recent', '#recent', class: 'tabos-link' %></li>
+            <li class="tabos"><%= link_to 'Recurring', '#recurring', class: 'tabos-link' %>
+        </ul>
+
+        <div class="tabos-content">
+            <div id="recipients" class="tabos-pane active">
+<%= link_to overseas_transfer_select_location_path, class: 'button primary-button' do %>
+    <img src="<%= asset_path('plus.png') %>" alt="Add Icon" class="plus-icon" />
+    ADD OVERSEAS RECIPIENTS
+  <% end %>
+                <% if @recipients.any? %>
+                    <% @recipients.each do |recipient| %>
+                        <div class="recipient-entry">
+                            <div class="recipient-icon"><%= recipient.initials %></div>
+                            <%= link_to recipient.full_name, overseas_transfer_make_transfer_path(recipient_id: recipient.id), class: 'recipient-link' %>
+                        
+                        </div>
+                    <% end %>
+                <% else %>
+                    <div class="no-recipients">
+                        <div class="no-recipients-icon">
+                            
+                        </div>
+                        <div class="no-recipients-text">No recipients yet</div>
+                        <div class="no-recipients-subtext">
+                            Add a recipient to transfer to 49 locations at no fees, same-day transfer.
+                        </div>
+                               <!--         <%= link_to 'Add Overseas Recipient', overseas_transfer_select_location_path, class: 'button primary-button' %>
+-->
+
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
