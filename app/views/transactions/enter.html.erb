@@ -15,16 +15,15 @@
   <div class="content-container">
     <%= form_with(url: new_transaction_path, method: :get, local: true) do |form| %>
       <div class="input-container">
-        <label for="mobile_number" class="input-label">Enter Mobile No.</label>
+        <div class="input-label-mobile">ENTER MOBILE NO.</div>
         <div class="mobile-input">
-          <span class="country-code">+65></span>
+          <span class="country-code">+65</span>
           <%= form.text_field :mobile_number, id: "mobile_number", maxlength: "8", placeholder: "Recipient's Mobile No.", class: "mobile-number-input" %>
-          <%= image_tag 'phonebook-icon.png', class: 'phonebook-icon' %>
           <span class="hint-text">Enter name or mobile no.</span>
         </div>
       </div>
       <div class="next-button-container">
-        <%= form.submit "NEXT", class: "next-button" %>
+        <%= form.submit "NEXT", class: "next-button-recipient" %>
       </div>
     <% end %>
   </div>
