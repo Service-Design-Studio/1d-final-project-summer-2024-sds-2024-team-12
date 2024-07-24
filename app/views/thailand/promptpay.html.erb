@@ -11,7 +11,7 @@
   <main class="content">
     <div class="promptmyaccount-container">
     <!-- Left container -->
-    <div class="left-container"">
+    <div class="promptleft-container"">
       
       <div class="circle-container">
         <div class="circle-icon">
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Right container -->
-    <div class="right-container">
+    <div class="promptright-container">
       
         <div class="myaccounttext">
           <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
@@ -88,7 +88,7 @@
 
     
 
-  <body>
+  <body class="thaibody">
     <div class="limits">
     <div class="group">
       <div class='num-left'>Authorised</div>
@@ -111,13 +111,12 @@
     <div class="terms">
       <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
     </div>
-  </main>
 
-    <div class="nextbutton">
+    <div class="promptnextbutton">
       <%= form.submit "NEXT", id: "next-button" %>
     </div>
-
-    </div>
+  </main>
+  </div>
 <% end %>
 
 
