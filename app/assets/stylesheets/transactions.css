@@ -2407,7 +2407,7 @@ input:focus {
    .scheduleButton, .shortcut {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #066DAF;
+    background-color: rgb(205, 0, 0);
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
@@ -2415,7 +2415,7 @@ input:focus {
   }
   
   .scheduleButton:hover, .shortcut:hover {
-    background-color: #045a8d;
+    background-color: rgb(177, 4, 4);
   }  
 
 .txdpopbuttontext{
