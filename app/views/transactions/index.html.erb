@@ -373,30 +373,32 @@
   <div class="fab-container">
       <div class="fab shadow">
         <div class="fab-content">
-          <span class="material-icons">FAB</span>
+          <span class="material-icons">+</span>
         </div>
       </div>
-      <div class="sub-button shadow">
-        <a href="google.com" target="_blank">
-          <span class="material-icons">Suggestions</span>
-        </a>
+      <div class="sub-button shadow" id="suggestionButton">
+        <%= link_to transaction_suggestions_path do %>
+                  <span class="material-icons">S</span>
+              <% end %>
+          
       </div>
       <div class="sub-button shadow">
-        <a href="google.com" target="_blank">
-          <span class="material-icons">Frequent1</span>
-        </a>
+              <%= link_to new_transaction_path do %>
+                  <%= image_tag("paynowwhite.png", alt: 'PayNow Image', class: "material-img-icons") %>
+              <% end %>
       </div>
       <div class="sub-button shadow">
-        <a href="google.com" target="_blank">
-          <span class="material-icons">Frequent2</span>
-        </a>
+        <%= link_to transaction_history_path do %>
+          <%= image_tag("transaction_historywhite.png", class: "material-img-icons") %>
+        <% end %>
       </div>
       <div class="sub-button shadow">
-        <a href="google.com" target="_blank">
-          <span class="material-icons">Frequent3</span>
-        </a>
+        <%= link_to overseas_transfer_path do %>
+          <%= image_tag("overseaswhite.png", alt: 'Overseas Image', class: "material-img-icons") %>
+        <% end %>
       </div>
     </div>
+
 
   
 

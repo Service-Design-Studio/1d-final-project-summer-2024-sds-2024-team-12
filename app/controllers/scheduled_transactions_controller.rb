@@ -4,8 +4,8 @@ class ScheduledTransactionsController < ApplicationController
   before_action :set_scheduled_transaction, only: [:destroy]
 
   def new
-    @scheduled_transaction = Current.user.scheduled_transactions.new
-    @frequent_transaction = OpenStruct.new(name: params[:name], amount: params[:amount]) # Autofill based on params, adjust as needed
+    @scheduled_transaction = Current.user.scheduled_transactions.new(scheduled_transaction_params)
+    @frequent_transaction = OpenStruct.new(name: scheduled_transaction_params[:name], amount: scheduled_transaction_params[:amount])
   end
 
   def create

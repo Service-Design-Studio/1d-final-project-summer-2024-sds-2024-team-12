@@ -103,6 +103,26 @@ function getInitials(name) {
   return name.split(' ').map(n => n[0]).join('').toUpperCase();
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  const suggestionButton = document.getElementById('suggestionButton');
+  const suggestionPopup = document.getElementById('suggestionPopup');
+  const closeButton = suggestionPopup.querySelector('.close');
+
+  suggestionButton.addEventListener('click', function() {
+    suggestionPopup.classList.remove('hidden');
+  });
+
+  closeButton.addEventListener('click', function() {
+    suggestionPopup.classList.add('hidden');
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target == suggestionPopup) {
+      suggestionPopup.classList.add('hidden');
+    }
+  });
+});
+
 
 
 

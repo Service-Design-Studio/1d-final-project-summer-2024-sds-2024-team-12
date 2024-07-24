@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_014945) do
+  create_table "promptpays", force: :cascade do |t|
+    t.string "phone_number"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"
@@ -42,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
   end
 
   create_table "suggestions", force: :cascade do |t|
-    t.string "type"
+    t.string "suggestion_type"
     t.text "content"
     t.string "link_url"
     t.boolean "user_dismissed", default: false
@@ -59,6 +66,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
     t.integer "user_id"
   end
 
+  create_table "user_actions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "action"
+    t.integer "count"
+    t.string "controller"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_actions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer "phone", null: false
     t.string "password_digest"
@@ -69,4 +86,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_102031) do
   add_foreign_key "scheduled_transactions", "users"
   add_foreign_key "scheduled_transactions", "users"
   add_foreign_key "shortcuts", "users"
+  add_foreign_key "user_actions", "users"
 end

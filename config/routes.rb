@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :scheduled_transactions, only: [:new, :create, :index, :destroy]
   resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   get 'transaction_history', to: 'transactions#history'
+  get 'transaction_suggestions', to: 'transactions#suggestions'
 
   resources :cardlimit, only: [:new, :paynow, :adjusting]
 
