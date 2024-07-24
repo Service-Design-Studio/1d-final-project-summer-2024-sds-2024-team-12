@@ -4,8 +4,7 @@ Feature: Overseas Transfer
   So that I can transfer money quickly using their phone number
 
   Background:
-  Given a user exists with phone "12345677" and password "224466"
-  And I am logged in with phone "12345677" and password "224466"
+  Given I am logged into user with phone "12345678" and password "224466"
 
   Scenario: Adding a new recipient, Jane for non-Prompt Pay transaction
     Given that I am on the transactions page in overseas steps

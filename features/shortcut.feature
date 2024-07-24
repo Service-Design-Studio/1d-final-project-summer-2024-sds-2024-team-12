@@ -3,15 +3,16 @@ Feature: Quick Shortcut
     I want to set up quick shortcuts to pay my children their allowance  
     So that I can save time and avoid manually entering the user and amount every month
 
-
     Background:
-    Given the following transactions exist:
-        | name   | amount |
-        | Nicole | 100.00 |
-        | Nicole | 100.00 |
-        | Nicole | 100.00 |
-    Given a user exists with phone "12345677" and password "224466"
-    And I am logged in with phone "12345677" and password "224466"
+    Given the following transactions exists:
+        | name     | amount |
+        | 12345678 | 20.00 |
+        | 12345678 | 20.00 |
+        | 12345678 | 20.00 |
+
+    Given the following shortcut exists:
+        |  nickname  | recipient_name |amount | 
+        | Nic100     |  12345678      | 20.00 |
 
     Scenario: Create a Quick Shortcut
         Given that I am on the transactions page
@@ -21,19 +22,17 @@ Feature: Quick Shortcut
         And I fill in the widget name as "Nic100"
         And I press the "Create Shortcut Button" button
         Then I should see a message saying "Shortcut button was successfully created."
-        And when I navigate to the Pay & Transfer page
+        When I navigate to the "Pay & Transfer" page
         Then I should see a shortcut button called "Nic100" 
 
     Scenario: Using the Quick Shortcut
         Given that I am on the pay & transfer page
-        And I have an existing quick shortcut with the name "Nic100"
         When I click on the quick shortcut I made called "Nic100"
         And press the "NEXT" button
         Then I should see the message that "Transaction was successfully created"
 
     Scenario: Deleting the Quick Shortcut    
         Given that I am on the pay & transfer page
-        And I have an existing quick shortcut with the name "Nic100"
         Then I click the "Delete" button
         And I should not see a shortcut button "Nic100"
         Then I should see a message saying "Shortcut was successfully deleted."

@@ -1,6 +1,6 @@
 Feature: Card Limit
     Background:
-    Given the following transactions exist:
+    Given the following transaction exists:
         |   name   | amount |
         | 12345678 | 500.00 |
 

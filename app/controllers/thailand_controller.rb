@@ -2,7 +2,8 @@ class ThailandController < ApplicationController
   before_action :set_promptpay, only: %i[ show edit update destroy ]
 
   def promptpay
-      @promptpay = Promptpay.new
+    @promptpay = Promptpay.new
+    render :new
   end
 
   # GET /promptpays or /promptpays.json
@@ -30,7 +31,7 @@ class ThailandController < ApplicationController
   # POST /promptpays or /promptpays.json
   def create
     @promptpay = Promptpay.new(promptpay_params)
-    
+
     respond_to do |format|
       if @promptpay.save
         format.html { redirect_to root_path, notice: "Transaction was successfully created."}
@@ -41,8 +42,8 @@ class ThailandController < ApplicationController
       end
     end
   end
-  
-  
+
+
 
   # PATCH/PUT /promptpays/1 or /promptpays/1.json
   def update

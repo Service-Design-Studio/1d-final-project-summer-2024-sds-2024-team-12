@@ -1,8 +1,51 @@
-Given("the following transactions exist:") do |table|
-  table.hashes.each do |hash|
-    Transaction.create(hash)
+Given("the following transactions exists:") do |table|
+  phone = '12345678' # Replace with the actual phone number for the user
+  password = '224466' # Replace with the actual password for the user
+
+  visit sign_up_path
+  fill_in 'user_phone', with: phone
+  fill_in 'user_password', with: password
+  fill_in 'user_password_confirmation', with:password
+  click_button 'Sign Up'
+
+  transaction_data = table.hashes.first
+  user = User.find_by(phone: phone)
+
+  table.hashes.each do |transaction_data|
+    Transaction.create!(
+      name: transaction_data['name'],
+      amount: transaction_data['amount'].to_d,
+      created_at: Time.current,
+      updated_at: Time.current,
+      user_id: user.id
+    )
   end
 end
+
+Given("the following scheduled transaction exists:") do |table|
+  phone = '12345678' # Replace with the actual phone number for the user
+  password = '224466' # Replace with the actual password for the user
+
+  visit sign_up_path
+  fill_in 'user_phone', with: phone
+  fill_in 'user_password', with: password
+  fill_in 'user_password_confirmation', with:password
+  click_button 'Sign Up'
+
+  scheduled_transaction_data = table.hashes.first
+  user = User.find_by(phone: phone)
+
+  ScheduledTransaction.create!(
+    name: scheduled_transaction_data['name'],
+    amount: scheduled_transaction_data['amount'].to_d,
+    start_date: scheduled_transaction_data['start_date'],
+    frequency: scheduled_transaction_data['frequency'],
+    created_at: Time.current,
+    updated_at: Time.current,
+    user_id: user.id
+  )
+end
+
 
 Given("that I am on the transactions page") do
   visit transactions_path
@@ -28,6 +71,14 @@ When("I see suggestions in the carousel") do
   end
 end
 
+When("I click on the suggestion button 0") do
+  # Click on the parent span class container first
+  find('.fab-container .fab-content .material-icons').click
+
+  # Then click on the suggestion button 0
+  find('#suggestionButton0').click
+end
+
 And("I click the {string} button") do |button_name|
   click_on(button_name)
 end
@@ -39,39 +90,35 @@ When("I click on {string} button in the popup") do |button|
   end
 end
 
-Then("I should see the new Scheduled Transaction page") do
-  expect(page).to have_content('New Scheduled Transaction')
+Then("I should see the new {string} page") do |pay|
+  expect(page).to have_content(pay)
 end
 
 When("I fill in the recipient name") do
-  fill_in('name', with: 'Nicole') # Adjust the field name based on your HTML
+  fill_in('scheduled_transaction_name', with: '12345678') # Adjust the field name based on your HTML
 end
 
 And("fill in the amount to be transferred in SGD") do
-  fill_in('amount', with: '100') # Adjust the field name based on your HTML
+  fill_in('scheduled_transaction_amount', with: '100') # Adjust the field name based on your HTML
 end
 
-And("click on the calendar icon") do
-  find('#button').click
+And("I fill in the start date with {string}") do |date|
+  fill_in 'scheduled_transaction_start_date', with: date
 end
 
-Then("I can fill in the next date for the scheduled transaction") do
-  fill_in('next_date', with: '2024-08-01') # Adjust based on your calendar component
-end
 
-And("I can choose the frequency of the scheduled transaction by selecting {string}") do |frequency|
-  select(frequency, from: 'frequency') # Adjust the select field based on your UI
-end
-
-And('click the option "Every 1 Month on Day 1" to send money on the 1st of every month') do
-  choose('every_month_on_day_1') # Adjust based on your radio button or checkbox
+And("I can choose the frequency of the scheduled transaction to be {string}") do |option|
+  select(option, from: 'scheduled_transaction_frequency')
 end
 
 Then('I click the button "Save" at the bottom') do
-  click_on('Save') # Adjust based on your UI
+  click_on('SAVE') # Adjust based on your UI
 end
 
-def pause_carousel
-  # Execute JavaScript to stop the carousel rotation
-  page.execute_script("$('.carousel').carousel('pause');")
+When("I click on transfers scheduled button") do
+  find('button.transparent a[href="/scheduled_transactions"]').click
+end
+
+Then("I should see the scheduled payment that I made with the correct name {string}") do |expected_name|
+  expect(page).to have_content("Name: #{expected_name}")
 end

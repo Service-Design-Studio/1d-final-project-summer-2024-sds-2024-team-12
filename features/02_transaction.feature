@@ -1,7 +1,7 @@
 Feature: Managing Transactions
 
   Background:
-  Given the following transactions exists:
+  Given the following transaction exists:
       | name     | amount    |
       | 12345678 | 50.00     |
   

@@ -1,7 +1,7 @@
 # features/step_definitions/transaction_steps.rb
 
 # features/step_definitions/transaction_steps.rb
-Given("the following transactions exists:") do |table|
+Given("the following transaction exists:") do |table|
   phone = '12345678' # Replace with the actual phone number for the user
   password = '224466' # Replace with the actual password for the user
 
