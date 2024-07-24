@@ -72,27 +72,27 @@ class TransactionsController < ApplicationController
   end
 
   # PATCH/PUT /transactions/1 or /transactions/1.json
-  def update
-    respond_to do |format|
-      if @transaction.update(transaction_params)
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully updated." }
-        format.json { render :show, status: :ok, location: @transaction }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @transaction.update(transaction_params)
+  #       format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @transaction }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @transaction.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /transactions/1 or /transactions/1.json
-  def destroy
-    @transaction.destroy
+  # def destroy
+  #   @transaction.destroy
 
-    respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   # GET /transactions/enter
   def enter

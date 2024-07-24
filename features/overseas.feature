@@ -54,7 +54,7 @@ Feature: Overseas Transfer
     Then I should see an error message: "Phone number must be exactly 9 digits."
 
   Scenario: PromptPay suggestion when in Thailand
-    Given that I am on the transactions page and I am in Thailand
-    Then I should see a suggestion for the "PromptPay feature" in the carousel
-    And I click the "Go Now" button
+    Given that I am on the transactions page
+    Then I should see a suggestion for the "PromptPay feature" in the quick action
+    And I click a button that says "Go Now" 
     Then I should be on the "promptpay" transaction page

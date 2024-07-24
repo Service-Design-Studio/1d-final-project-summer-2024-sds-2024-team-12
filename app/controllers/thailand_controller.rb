@@ -46,27 +46,27 @@ class ThailandController < ApplicationController
 
 
   # PATCH/PUT /promptpays/1 or /promptpays/1.json
-  def update
-    respond_to do |format|
-      if @promptpay.update(promptpay_params)
-        format.html { redirect_to promptpay_url(@promptpay), notice: "Promptpay transaction was successfully updated." }
-        format.json { render :show, status: :ok, location: @promptpay }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @promptpay.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @promptpay.update(promptpay_params)
+  #       format.html { redirect_to promptpay_url(@promptpay), notice: "Promptpay transaction was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @promptpay }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @promptpay.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /promptpays/1 or /promptpays/1.json
-  def destroy
-    @promptpay.destroy
+  # # DELETE /promptpays/1 or /promptpays/1.json
+  # def destroy
+  #   @promptpay.destroy
 
-    respond_to do |format|
-      format.html { redirect_to promptpays_url, notice: "Promptpay transaction was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to promptpays_url, notice: "Promptpay transaction was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

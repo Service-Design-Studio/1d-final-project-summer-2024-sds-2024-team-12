@@ -127,7 +127,7 @@ When("I click on the coconut in the bottom left") do
   find('#thailandButton').click
 end
 
-When("I should see a suggestion for the {string} in the carousel") do |suggestion_text|
+When("I should see a suggestion for the {string} in the quick action") do |suggestion_text|
   within('.carousel-inner') do
     # Find all items in the carousel
     carousel_items = all('.item')
@@ -153,4 +153,8 @@ end
 Then("I should be on the {string} transaction page") do |pp|
   expected_path = "/#{pp}"
   expect(page.current_path).to eq(expected_path)
+end
+
+And("I click a button that says {string}") do |go|
+  first(:button, go).click
 end
