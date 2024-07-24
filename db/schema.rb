@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema[7.0].define(version: 2024_07_24_014945) do
-
   create_table "promptpays", force: :cascade do |t|
     t.string "phone_number"
     t.decimal "amount"
