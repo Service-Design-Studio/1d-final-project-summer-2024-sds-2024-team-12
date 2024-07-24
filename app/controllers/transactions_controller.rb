@@ -23,11 +23,16 @@ class TransactionsController < ApplicationController
 
     @close_transactions = Current.user.transactions.where("amount > ? AND amount <= ?", CARD_LIMIT - 50, CARD_LIMIT).to_a
     @card_limit = CARD_LIMIT  # Pass the constant to the view
+    @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
   end
 
   def history
     @transactions = Current.user.transactions
     @frequent_transactions = Current.user.transactions.group(:name, :amount).having('COUNT(*) >= ?', 3)
+  end
+
+  def suggestions
+    @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
   end
 
   # GET /transactions/1 or /transactions/1.json
@@ -54,6 +59,9 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+        if create_suggestion_if_frequent(@transaction)
+          flash[:suggestion_created] = true
+        end
         format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
@@ -121,4 +129,41 @@ class TransactionsController < ApplicationController
       render plain: "No transactions are close to the card limit."
     end
   end
+
+  def create_suggestion_if_frequent(transaction)
+    @frequent_transactions = Current.user.transactions
+                                    .where(name: transaction.name, amount: transaction.amount)
+                                    .group(:name, :amount)
+                                    .having('COUNT(*) >= ?', 3)
+                                    .select('name, amount, COUNT(*) as count')
+
+    suggestion_created = false
+    @frequent_transactions.each do |frequent_transaction|
+      unless Current.user.suggestions.exists?(suggestion_type: "FrequentTransaction", content: transaction_content(frequent_transaction))
+        Suggestion.create(
+          suggestion_type: "FrequentTransaction",
+          content: transaction_content(frequent_transaction),
+          link_url: schedule_payment_url(frequent_transaction),
+          user_dismissed: false,
+          user: Current.user
+        )
+        suggestion_created = true
+      end
+    end
+    suggestion_created
+  end
+
+  def transaction_content(transaction)
+    "We noticed you frequently paid #{transaction.name} #{transaction.amount}. Would you like to schedule this payment?"
+  end
+
+  def schedule_payment_url(transaction)
+    new_scheduled_transaction_url(
+      scheduled_transaction: {
+        name: transaction.name,
+        amount: transaction.amount
+      }
+    )
+  end
+
 end
