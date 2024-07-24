@@ -372,6 +372,13 @@
           <span class="material-icons">+</span>
         </div>
       </div>
+
+      <div class="sub-button shadow">
+        <a href = "/promptpay">
+          <span class="material-icons">P</span>
+        </a>
+      </div>
+
       <% if @suggestions.any? %>
         <% @suggestions.each_with_index do |suggestion, index| %>
           <div class="sub-button shadow" id="suggestionButton<%= index %>">
