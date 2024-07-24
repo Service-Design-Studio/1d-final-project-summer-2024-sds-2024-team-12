@@ -27,6 +27,7 @@
   font-size: 12px; /* Adjust the font size as needed */
   font-weight: bold; /* Make the text bold */
   text-align: center; /* Center align the text */
+  margin-right: 10px;
 }
 
 /* Styling for .iconcontainer and .sciconcontainer */
@@ -53,4 +54,6 @@
   white-space: nowrap;
   display: flex; /* Make container flex */
   justify-content: flex-start; /* Align items to the start */
+  margin-left: 20px;
+  margin-top: 20px;
 }
