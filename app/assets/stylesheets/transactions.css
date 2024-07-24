@@ -63,7 +63,7 @@
 .transfer-details input {
   width: 90%;
   padding-left: 10px;
-  margin: 10px 0;
+  margin: 10px 5px;
   border: 1px solid lightgray;
   border-radius: 5px;
   transform: translateX(10px); /* Move the field 10px to the left */
@@ -3774,12 +3774,13 @@ input:focus {
 
 /*new transaction*/
 .paynow-header {
-    font-size: 24px; /* Adjust font size as needed */
-    font-family: 'Lato', sans-serif; /* Change font family */
-    text-align: center; /* Align text to the left */
-    align-content: center;
-    font-weight: 600;
-  }
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  text-align: center; /* Center text */
+  flex-grow: 1; /* Allows header to take available space */
+}
+
   
 
 .myaccount-container {
@@ -3878,11 +3879,11 @@ input:focus {
   
   .moneybody {
     background-color: #162633;
-    margin: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    padding-bottom: -30px;
   
   } 
   
@@ -3923,7 +3924,7 @@ input:focus {
     font-weight: 600;
     background-color: transparent;
     margin: 0.5vh 0 2.5vh 0;
-    padding-left:10px;
+    padding-left: 10px;
   }
   
   .moneyright{
@@ -3939,11 +3940,12 @@ input:focus {
   }
   
   .amount-field {
-    width: 50%; /* Adjust width as needed */
-    padding: 10px;
-    font-size: 25px;
-    background-color: #1c2834;
+    width: 25%; /* Adjust width as needed */
+    font-size: 30px;
+    background-color: transparent;
     color: #aeb8c4; 
+    margin-left: 300px;
+    margin-top: 5px;
   }
   
   .amount-field::placeholder {
@@ -3965,7 +3967,7 @@ input:focus {
     font-weight: bold; 
     color: #999ea2;
     padding-top: 15px;
-    padding-left: 10px;
+    padding-left: 20px;
   }
 
   .num-right{
@@ -3985,7 +3987,7 @@ input:focus {
     color: rgb(123, 123, 123);
     font-weight: bold;
     padding-top: 10px;
-    padding-left: 10px;
+    padding-left: 20px;
   }
   
   .nextbutton input[type="submit"] {
@@ -4032,7 +4034,7 @@ input:focus {
   .grey-box {
     background-color: #f2f9fc; /* Light grey background */
     width: 100%; /* Adjust width as needed */
-    max-width: 600px; /* Optional: max width */
+    padding-bottom: 130px;
   }
 
 
@@ -4040,7 +4042,6 @@ input:focus {
   .transfer-details {
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 10px;
     width: 100%;
   }
 
@@ -4049,7 +4050,8 @@ input:focus {
     width: 90%;
     font-size: 15px;/* Pixel value */
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-top: 40px; /* Adjust the value as needed */
   }
   
   #next-button {
@@ -4060,10 +4062,9 @@ input:focus {
     font-size: 18px;
     width: 90%;
     max-width: 600px;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    text-align: center;
-    margin-bottom: 10px;
+    justify-content: bottom;
     margin-left: 17px;
   }
 

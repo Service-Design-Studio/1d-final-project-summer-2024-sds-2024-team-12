@@ -14,7 +14,7 @@
     <header>
       <%= link_to '<', enter_transaction_path, class: 'back-button' %>
       <h1 class = "paynow-header">PayNow to Mobile</h1>
-      <div class="whitebox"></div>
+
     </header>
 
   <%# <div class="whitespace" style="background-color: #f1f2f4;"></div> %>
@@ -55,11 +55,11 @@
   <div class="whitespace"></div>
 
   <div class="moneybody">
-    <div class='moneyleft'>
+    <div class='num-left'>
       <p class="amtin">Amount in</p>
       <p class="currency">SGD</p>
     </div>
-    <div class='moneyright'>
+    <div class='num-right'>
       <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
     </div>
 

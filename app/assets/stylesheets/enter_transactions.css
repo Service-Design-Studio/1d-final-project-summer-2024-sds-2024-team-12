@@ -13,6 +13,7 @@ body.enter {
   padding: 15px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
+  font-family: 'Lato', sans-serif;
 }
 
 .enter .back-button {
