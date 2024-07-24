@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
   end
 
   def suggestions
-    @suggestions = Current.user.transactions
+    @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
   end
 
   # GET /transactions/1 or /transactions/1.json
