@@ -43,27 +43,49 @@
   </div>
 </div>
 
-
 <div class="grey-box">
-  <div class="schedule-details" style="margin-left: 15px;">
-    <div class="start-date" style="margin-bottom: 40px;"> <!-- Added margin-bottom -->
-      <%= form.label :start_date, 'Start Date', style: 'font-size: 25px;' %>
-      <br>
-      <%= form.date_field :start_date, class: 'start-date-field' %>
+    <div class="group">
+      <div class='num-left'>Authorised</div>
+      <div class='num-right'>SGD 5,000.00</div>
     </div>
-    <div class="frequency">
-      <%= form.label :frequency, 'Frequency', style: 'font-size: 25px;' %>
-      <br>
-      <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field' %>
+    <div class="group">
+      <div class='num-left' style="font-size: 17px; padding-bottom: 15px;">Remaining</div>
+      <div class='num-right'>SGD 4,999.00</div>
+    </div>
+    <a href="#" class="change-limit"><u>Change Limit</u></a>
+    <div class="transfer-details">
+    <div class="schedule-details" style="margin-left: 15px;">
+      <div class="start-date" style="display: flex; align-items: center; margin-left: 9px; margin-bottom: 10px;"> <!-- Reduced margin-bottom -->
+        <%= form.label :start_date, 'Start Date', style: 'font-size: 19px; margin-right: 10px; margin-top: 10px;' %>
+        <%= form.date_field :start_date, class: 'start-date-field', style: 'width: 170px; margin-left: 75px;' %>
+      </div>
+      
+      <!-- Horizontal Line -->
+      <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 10px 10px 0;"> <!-- Adjusted margin -->
+    
+      <div class="frequency" style="display: flex; align-items: center; margin-left: 9px; margin-bottom: 20px;">
+        <%= form.label :frequency, 'Frequency', style: 'font-size: 20px; margin-right: 10px; margin-top: 10px;' %>
+        <div style="flex: 1;"></div> <!-- Spacer div -->
+        <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field', style: 'width: 170px;' %> <!-- Adjust margin-left as needed -->
+      </div>
+    </div>
+
+    <!-- Horizontal Line -->
+    <hr style="border: 0; border-top: 1px solid #ccc; width: 100%; margin: -10px 10px 10px 0;"> <!-- Negative margin-top -->
+      
+    
+
+    <div class='num-left' style='font-size: 18px; margin-top: -20px;'>Add comments for Recipient</div>
+      <%= form.text_field :comments, placeholder: "PayNow Transfer" %>
+    </div>
+    <div class="terms" style='margin-top: -5px;'>
+      By tapping "Save", you agree to be bound by the Terms and Conditions.
+    </div>
+    <div class="next-button">
+      <%= form.submit "SAVE", id: "next-button" %>
     </div>
   </div>
-</div>
+<%end%>
+</body>
 
 
-
-
-  <div class="nextbutton">
-    <%= form.submit "SAVE" %>
-  </div>
-</div>
-<% end %>
