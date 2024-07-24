@@ -21,3 +21,7 @@ end
 And('I click the Set Up Limit button') do
   click_button('setupLimitButton')
 end
+
+Then('I should see a page that says {string}') do |text|
+  expect(page).to have_content(text)
+end

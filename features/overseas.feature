@@ -13,10 +13,10 @@ Feature: Overseas Transfer
     And I click the Add Overseas Recipient button
     Then I click on "Thailand"
     When I click on "Proceed without PromptPay" button
-    Then I should see a page to enter recipient's details
-    When I fill in "bank" in the recipient account details
-    And I fill in the account number "123456"
-    And I fill in the recipient name "Jane" 
+    Then I should see a page to "Enter Recepient's Details"
+    When I fill in "bank" under recipient's bank
+    Then I fill in the recipient's account number "123456"
+    And I fill in the recipient's name "Jane" 
     And I fill in "123 Sample Street, Bangkok" in the registered address
     And I fill in "Bangkok" under city
     When I press next
@@ -38,7 +38,7 @@ Feature: Overseas Transfer
     And I click the Add Overseas Recipient button
     Then I click on "Thailand"
     When I click on "Use PromptPay" button
-    And I fill in the recipient number "02-2134567"
+    And I fill in the recipient number "123456789"
     And I fill in the amount to be transferred in SGD "500"
     Then I press the "NEXT" button
     Then I should see a message saying "Transaction was successfully created."

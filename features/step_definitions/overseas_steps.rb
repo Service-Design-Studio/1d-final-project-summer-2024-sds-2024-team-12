@@ -21,17 +21,34 @@ When("I click on {string} button") do |button|
   end
 end
 
-And("I fill in {string} in the recipient account details") do |account_number|
-  fill_in "account_details", with: account_number
+Then("I should see a page to {string}") do |enter|
+  expect(page).to have_content(enter)
 end
 
-And("I fill in the recipient name, {string}") do |full_name|
-  fill_in "full_name", with: full_name
+When("I fill in {string} under recipient's bank") do |bank|
+  all('input#account_details')[0].set(bank)
+end
+
+Then("I fill in the recipient's account number {string}") do |account_number|
+  # There are two input fields with the same ID in the HTML, which is not ideal.
+  # This will target the second input field with the id 'account_details'.
+  all('input#account_details')[1].set(account_number)
+end
+
+And("I fill in the recipient's name {string}") do |full_name|
+  fill_in 'full_name', with: full_name
 end
 
 And("I fill in {string} in the registered address") do |address|
-  fill_in "registered_address", with: address
+  fill_in 'registered_address', with: address
 end
+
+And("I fill in {string} under city") do |city|
+  # Assuming the city is to be filled in one of the fields with id 'account_details'
+  # Ensure this is the correct field by context or additional checks
+  all('input#account_details')[2].set("In The City Of #{city}")
+end
+
 
 When("I press next") do
   click_button "NEXT"
@@ -86,7 +103,7 @@ Then("I should be able to see that a new transaction was created") do
 end
 
 And("I fill in the recipient number {string}") do |number|
-  fill_in "transaction_name", with: number
+  fill_in "promptpay_phone_number", with: number
 end
 
 And("I fill in the amount to be transferred in SGD {string}") do |number|
