@@ -43,20 +43,9 @@
   <div class="button-container">
   <p>  <span class="RedText"> Log Out</span> if you're done </p>
   <%= link_to "MAKE ANOTHER TRANSFER", transactions_path, method: :get, class: "red-button" %>
+  </div>
 
-  <script>
-    document.getElementById('shareDetailsButton').addEventListener('click', function() {
-      var hiddenButtons = document.getElementById('hiddenButtons');
-      if (hiddenButtons.style.display === 'none') {
-        hiddenButtons.style.display = 'block';
-      } else {
-        hiddenButtons.style.display = 'none';
-      }
-    });
-  </script>
-</body>
-
-<% if flash[:suggestion_created] %>
+  <% if flash[:suggestion_created] %>
   <div class="popupshow" id="popupshow">
   <div class="popup-content">
     <span class="close" id="closePopupshow">&times;</span>
@@ -114,5 +103,19 @@
 </script>
 
 <% end %>
+
+  <script>
+    document.getElementById('shareDetailsButton').addEventListener('click', function() {
+      var hiddenButtons = document.getElementById('hiddenButtons');
+      if (hiddenButtons.style.display === 'none') {
+        hiddenButtons.style.display = 'block';
+      } else {
+        hiddenButtons.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+
 
 
