@@ -102,8 +102,8 @@
               <div class="item active">
                 <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
-                  <p class="textheader">Welcome to digibank</p>
-                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
+                  <p class="textheader">Welcome to DBS Digibank</p>
+                  <p class="textbody">Enjoy the faster and convenient way to bank on the go</p>
                 </div>
               </div>
               
@@ -331,7 +331,10 @@
                         </div>
                         <div class="container2">
                             <div class="value">Balance</div>
-                            <p class="money">29891.00</p>
+                            <div class="textcontainer">
+                              <p class="sgd">SGD</p>
+                              <p class="money">29891.00</p>
+                            </div>
                         </div>
                         <div class="line"></div>
                     </div>
@@ -468,7 +471,7 @@
 </html>
 
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', (event) => {
   // Function to show the popup
   const showPopup = (index) => {
     const popup = document.getElementById(`popup${index}`);
@@ -503,5 +506,38 @@
       });
     }
   <% end %>
+
+  // Function to handle tab switching
+  window.showTab = function(tabName) {
+    // Get all tabs
+    var tabs = document.querySelectorAll('.tab');
+    
+    // Loop through tabs to remove the 'active' class
+    tabs.forEach(function(tab) {
+      tab.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked tab
+    var activeTab = document.querySelector(`.tab[onclick="showTab('${tabName}')"]`);
+    if (activeTab) {
+      activeTab.classList.add('active');
+    }
+
+    // Hide all tab contents
+    var tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(function(content) {
+      content.style.display = 'none';
+    });
+
+    // Show the selected tab content
+    var selectedContent = document.getElementById(`tab-${tabName}`);
+    if (selectedContent) {
+      selectedContent.style.display = 'block';
+    }
+  };
+
+  // Initialize with the first tab's content visible (optional)
+  showTab('accounts'); // Replace 'accounts' with the default tab name if different
 });
+
 </script>

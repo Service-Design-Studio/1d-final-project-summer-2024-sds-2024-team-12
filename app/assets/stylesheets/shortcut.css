@@ -54,6 +54,5 @@
   white-space: nowrap;
   display: flex; /* Make container flex */
   justify-content: flex-start; /* Align items to the start */
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 5px;
 }

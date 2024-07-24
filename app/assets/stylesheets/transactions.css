@@ -90,13 +90,12 @@
 .help {
   max-height: 3vh;
   margin-left: 2vw;
-  margin-top: 1vh;
   align-self: center;
   padding: 0 2vw;
 }
 .eye{
   max-height: 2vh;
-  margin-top: 1vh;
+
   align-self: center;
 
 }
@@ -114,10 +113,8 @@
 }
 
 .logoutText {
-  margin: 0;
-  padding: 1.5vw 4vw;
+  padding: 0.5vw 4vw;
   color: #ffffff;
-  text-align: center;
   font-size: 10px;
 }
   
@@ -127,13 +124,14 @@
 }
   
 .textheader {
-    font-family: 'Lato';
+    font-family: Arial, sans-serif;
     font-weight: 700;
     color: white;
     font-size: 22px;
     padding: 0;
-    margin: 2vh 0vw 1vh 0vw;
+    margin: 2vh 10vw 1vh;
   }
+
 .textheaderftd1 {
   font-family: 'Lato';
   font-weight: 700;
@@ -152,12 +150,11 @@
 }
   
 .textbody {
-    font-family: 'Lato';
+    font-family: Arial, sans-serif;
     font-weight: normal;
     color: white;
     font-size: 15px;
-    padding: 0;
-    margin: 0;
+    margin: 2vh 10vw 1vh;
 }
 
 .homeheader{
@@ -174,8 +171,7 @@
 .buttonContainer {
     background-color: white;
     border-radius: 20px;
-    align-self: flex-end;
-    margin-right: 5vw;
+    margin-left: 40px;
     font-size: small !important;
 }
   
@@ -274,9 +270,9 @@
 .containerthree {
   background-color: white;
   overflow-x: auto;
-  white-space: nowrap;
   display: flex; /* Make container flex */
   justify-content: flex-start; /* Align items to the start */
+  margin-left: 5vm;
 }
 
   
@@ -810,7 +806,6 @@ input:focus {
 }
 .scrollview {
     display: inline-block;
-    
   }
 .expand {
   object-fit: contain;
@@ -3749,7 +3744,6 @@ input:focus {
     justify-content: center; /* Centering the tabs container horizontally */
     background-color: white;
     border-radius: 0; /* No rounded edges */
-    padding: 10px 0;
 }
 
 .tab {
@@ -3760,6 +3754,16 @@ input:focus {
     background-color: white;
     flex-grow: 1; /* Make each tab take up equal space */
     text-align: center; /* Center text within each tab */
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red;
 }
 
 .tab-content {
