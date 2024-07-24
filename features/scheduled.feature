@@ -24,4 +24,19 @@ Feature: Scheduled Transaction
         And click on the calendar icon
         Then I can fill in the next date for the scheduled transaction
         And I can choose the frequency of the scheduled transaction by selecting "Monthly"
-        Then I click the button "Save" at the bottom
+        And I click the button "Save" at the bottom
+        Then I should see the message that "Scheduled transaction was successfully created."
+
+
+    Scenario: Checking for scheduled transactions under Scheduled Transacations
+        Given that I am on the transactions page and I have a scheduled transaction saved
+        When I click on transfers scheduled button
+        Then I should see the scheduled payment that I made
+
+    Scenario: Checking for scheduled transactions under Scheduled Transacations
+        Given that I am on the transactions page and I have a scheduled transaction saved
+        When I click on transfers scheduled button
+        Then I should see the scheduled payment that I made
+        And I click the "Terminate" button
+        Then I should see the message that "Scheduled transaction was successfully destroyed."
+

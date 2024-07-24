@@ -13,17 +13,20 @@ Feature: Overseas Transfer
     And I click the Add Overseas Recipient button
     Then I click on "Thailand"
     When I click on "Proceed without PromptPay" button
-    And I fill in "123456789" in the recipient account details
-    And I fill in the recipient name, "Jane Tan" 
-    And I fill in "123 Sample Street, Bangkok, Thailand" in the registered address
+    Then I should see a page to enter recipient's details
+    When I fill in "bank" in the recipient account details
+    And I fill in the account number "123456"
+    And I fill in the recipient name "Jane" 
+    And I fill in "123 Sample Street, Bangkok" in the registered address
+    And I fill in "Bangkok" under city
     When I press next
     Then I should see that I have added a recipient
     When I click on the back button
-    Then I should see the new recipient "Jane Tan" that I added
+    Then I should see the new recipient "Jane" that I added
 
   Scenario: Transferring $500 to Jane
-    Given that I am on the overseas transfer page with a recipient "Jane Tan"
-    When I click on the recipient "Jane Tan"
+    Given that I am on the overseas transfer page with a recipient "Jane"
+    When I click on the recipient "Jane"
     Then I should see the overseas Transfer page
     And I fill in the amount to be transferred with "500"
     And click on "TRANSFER NOW" button below
@@ -52,8 +55,7 @@ Feature: Overseas Transfer
     Then I should see an error message: "Phone number must be exactly 9 digits."
 
   Scenario: PromptPay suggestion when in Thailand
-    Given that I am on the transactions page in overseas steps
-    When I click on the coconut in the bottom left
+    Given that I am on the transactions page and I am in Thailand
     Then I should see a suggestion for the "PromptPay feature" in the carousel
     And I click the "Go Now" button
     Then I should be on the "promptpay" transaction page

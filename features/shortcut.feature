@@ -19,23 +19,24 @@ Feature: Quick Shortcut
         And I click the "Set up" button
         When I click on "Make a Quick Shortcut" button in the popup
         And I fill in the widget name as "Nic100"
-        Then I press the "Create Shortcut Button" button
+        And I press the "Create Shortcut Button" button
         Then I should see a message saying "Shortcut button was successfully created."
-        And I should see a shortcut button called "Nic100" 
+        And when I navigate to the Pay & Transfer page
+        Then I should see a shortcut button called "Nic100" 
 
     Scenario: Using the Quick Shortcut
-        Given that I am on the transactions page
+        Given that I am on the pay & transfer page
         And I have an existing quick shortcut with the name "Nic100"
         When I click on the quick shortcut I made called "Nic100"
         And press the "NEXT" button
         Then I should see the message that "Transaction was successfully created"
 
     Scenario: Deleting the Quick Shortcut    
-        Given that I am on the transactions page
+        Given that I am on the pay & transfer page
         And I have an existing quick shortcut with the name "Nic100"
         Then I click the "Delete" button
         And I should not see a shortcut button "Nic100"
-        Then I should see a message saying "Shortcut button was successfully deleted."
+        Then I should see a message saying "Shortcut was successfully deleted."
 
 
 

@@ -50,6 +50,18 @@ Given('a user exists with phone {string} and password {string}') do |phone, pass
   end
 end
 
+Given('I am logged into user with phone {string} and password {string}') do |phone, password|
+  # Create the user if it doesn't already exist
+  User.find_or_create_by(phone: phone) do |user|
+    user.password = password
+    user.password_confirmation = password
+  end
+  visit sign_in_path
+  fill_in 'phone', with: phone
+  fill_in 'password', with: password
+  click_button 'Sign In'
+end
+
 When("I click the Logout button") do
   find_button('LOG OUT').click
 end
