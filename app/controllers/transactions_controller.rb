@@ -58,8 +58,9 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        create_suggestion_if_frequent(@transaction)
-
+        if create_suggestion_if_frequent(@transaction)
+          flash[:suggestion_created] = true
+        end
         format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
@@ -130,6 +131,7 @@ class TransactionsController < ApplicationController
                                     .having('COUNT(*) >= ?', 3)
                                     .select('name, amount, COUNT(*) as count')
 
+    suggestion_created = false
     @frequent_transactions.each do |frequent_transaction|
       unless Current.user.suggestions.exists?(suggestion_type: "FrequentTransaction", content: transaction_content(frequent_transaction))
         Suggestion.create(
@@ -139,8 +141,10 @@ class TransactionsController < ApplicationController
           user_dismissed: false,
           user: Current.user
         )
+        suggestion_created = true
       end
     end
+    suggestion_created
   end
 
   def transaction_content(transaction)

@@ -42,7 +42,25 @@
 
     <!-- Additional JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (<%= flash[:suggestion_created] ? 'true' : 'false' %>) {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
 
+        var closeBtn = document.getElementById("closePopup");
+        closeBtn.onclick = function() {
+          popup.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+          if (event.target == popup) {
+            popup.style.display = "none";
+          }
+        };
+      }
+    });
+  </script>
     
   </body>
 </html>
