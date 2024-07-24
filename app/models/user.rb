@@ -8,7 +8,9 @@ class User < ApplicationRecord
     has_many :transactions, dependent: :destroy
     has_many :scheduled_transactions
     has_many :shortcuts
+    has_many :suggestions
     has_many :user_actions
+
 
     has_secure_password
 

@@ -87,18 +87,13 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" class="active"></li>
-              <% if @frequent_transactions.any? %>
-              <% @frequent_transactions.each do |transaction| %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% end %>
-              <% if @close_transactions.any? %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% if session[:country] == 'thailand' %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
+              <% if @suggestions.any? %>
+                <% @suggestions.each_with_index do |suggestion, index| %>
+                  <li data-target="#myCarousel" <%= 'class = "active"' if index == 0 %>></li>
+                <% end %>
+                <% end %>
+                <li data-target="#myCarousel" <%= 'class = "active"' if @suggestions.size == 0 %>></li>
+              
             </ol>
 
             <!-- Wrapper for slides -->
@@ -111,7 +106,7 @@
                   <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
                 </div>
               </div>
-
+              
               <% if @frequent_transactions.any? %>
                <% @frequent_transactions.each_with_index do |transaction, index| %>
                 <div class="item">
@@ -152,18 +147,7 @@
                 </div>
               <% end %>
             
-              <div class = "item">
-                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                <div class="carousel-caption">
-                  <p class="textheader">Suggestion:</p>
-                  <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                  <button class="transparent">
-                    <div class="buttonContainer">
-                      <a href = "/promptpay" class="buttonText">Go Now</a>
-                    </div>
-                  </button>
-                </div>
-              </div>
+
             </div>
 
             <!-- Left and right controls -->
