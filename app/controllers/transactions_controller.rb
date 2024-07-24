@@ -58,6 +58,8 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+        create_suggestion_if_frequent(@transaction)
+
         format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
@@ -120,4 +122,38 @@ class TransactionsController < ApplicationController
       render plain: "No transactions are close to the card limit."
     end
   end
+
+  def create_suggestion_if_frequent(transaction)
+    @frequent_transactions = Current.user.transactions
+                                    .where(name: transaction.name, amount: transaction.amount)
+                                    .group(:name, :amount)
+                                    .having('COUNT(*) >= ?', 3)
+                                    .select('name, amount, COUNT(*) as count')
+
+    @frequent_transactions.each do |frequent_transaction|
+      unless Current.user.suggestions.exists?(suggestion_type: "FrequentTransaction", content: transaction_content(frequent_transaction))
+        Suggestion.create(
+          suggestion_type: "FrequentTransaction",
+          content: transaction_content(frequent_transaction),
+          link_url: schedule_payment_url(frequent_transaction),
+          user_dismissed: false,
+          user: Current.user
+        )
+      end
+    end
+  end
+
+  def transaction_content(transaction)
+    "We noticed you frequently paid #{transaction.name} #{transaction.amount}. Would you like to schedule this payment?"
+  end
+
+  def schedule_payment_url(transaction)
+    new_scheduled_transaction_url(
+      scheduled_transaction: {
+        name: transaction.name,
+        amount: transaction.amount
+      }
+    )
+  end
+
 end

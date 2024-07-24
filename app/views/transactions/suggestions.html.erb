@@ -8,11 +8,10 @@
     <% if @suggestions.any? %>
       <% @suggestions.each_with_index do |suggestion, index| %>
 
-            <p class="textheader">Suggestion!</p>
-            <p class="textbody"><%= suggestion.content %></p>
+            <p><%= suggestion.content %></p>
               <button class="transparent">
                 <div class="buttonContainer">
-                  <%= link_to 'Learn More', suggestion.link_url, class: 'buttonText' %>
+                  <%= link_to 'Set up', suggestion.link_url, class: 'buttonText' %>
                 </div>
               </button>
 
