@@ -1,6 +1,8 @@
-<div class="topboxovrtrnsfr2">
-  <h1>Select Location</h1>
-</div>
+<header>
+  <% back_path = request.referer == request.original_url ? root_path : request.referer %>
+  <%= link_to '<', back_path, class: 'back-button' %>
+  <h1 class = "paynow-header">Select location</h1>
+</header>
 
 <div class="search-container01">
   <input type="text" placeholder="Search..." id="search-barovertrnsfr">
