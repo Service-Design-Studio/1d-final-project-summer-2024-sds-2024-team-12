@@ -2,19 +2,9 @@
 body.enter {
   font-family: Arial, sans-serif;
   background-color: #f1f2f4;  /* Light grey background */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  width: 100%;
 }
 
-.enter *,
-.enter *:before,
-.enter *:after {
-  box-sizing: inherit;
-}
 
 /* Header styles */
 .enter header {
@@ -23,6 +13,7 @@ body.enter {
   padding: 15px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
+  font-family: 'Lato', sans-serif;
 }
 
 .enter .back-button {
@@ -35,23 +26,15 @@ body.enter {
 .enter .paynow-header {
   font-size: 24px; /* Adjust font size as needed */
   font-family: 'Lato', sans-serif; /* Change font family */
-  text-align: left; /* Align text to the left */
-  align-content: left;
+  text-align: center; /* Align text to the left */
   font-weight: 600;
-  white-space: nowrap
+  flex-grow: 1; /* Allows header text to grow and take up available space */
 }
 
 /* Content container */
 .enter .content-container {
-  flex: 1;  /* Allow content to grow and take available space */
-  padding: 0px;
-  max-width: 600px;
   width: 100%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
   justify-content: top;
-
 }
 
 /* Form styles */
@@ -122,7 +105,7 @@ body.enter {
   font-size: 18px;
   width: 90%;
   max-width: 600px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   justify-content: bottom;
 }
@@ -131,9 +114,3 @@ body.enter {
   background-color: darkred;
 }
 
-
-.enter .phonebook-icon {
-  width: 30px; /* Adjust icon size */
-  height: 30px; /* Adjust icon size */
-  margin-left: 10px; /* Add space to the left of the icon */
-}

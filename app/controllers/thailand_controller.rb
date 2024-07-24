@@ -33,7 +33,7 @@ class ThailandController < ApplicationController
     
     respond_to do |format|
       if @promptpay.save
-        format.html { redirect_to root_path}
+        format.html { redirect_to root_path, notice: "Transaction was successfully created."}
         format.json { render :show, status: :created, location: @promptpay }
       else
         format.html { render :new, status: :unprocessable_entity }
