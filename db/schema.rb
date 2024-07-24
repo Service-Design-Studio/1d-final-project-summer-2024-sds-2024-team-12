@@ -12,13 +12,14 @@
 
 
 ActiveRecord::Schema[7.0].define(version: 2024_07_24_014945) do
+
   create_table "promptpays", force: :cascade do |t|
     t.string "phone_number"
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
   create_table "recipients", force: :cascade do |t|
     t.string "country"
     t.string "account_details"

@@ -3,7 +3,10 @@
 }
 .transaction-history-header{
     background-color: rgb(255, 255, 255);
-    padding: 10px;
+    font-size:18px;
+    margin-left: 18px;
+    align-items: center;
+    justify-content: center;
 }
 
 

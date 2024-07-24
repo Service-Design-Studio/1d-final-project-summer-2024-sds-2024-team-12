@@ -1,7 +1,19 @@
+<% back_path = request.referer == request.original_url ? root_path : request.referer %>
+<%= link_to '←', back_path, class: 'back-button' %>
 <body class="sucesspagebg">
+ <img src="/assets/blackeye.png" alt="Eye Icon" class="top-right-image">
   <%= image_tag('greentick.png', alt: 'DBS-Bank-logo', class: 'greentick') %>
+<div class="succes">
+<p class="bigT"> Successful </p>
+<span class="bigT2"><%= @transaction.created_at.strftime("%d %b %Y %H:%M") %></span> 
+<br> <button class="Share">
+<img src="/assets/share.png" alt="Share Icon" class="ShareIcon">
+<span class="Share2"> Share </span></button >
+</div> 
+<div class="displaysucc">
+ <div class="moneybody2">
 
-  <div class="moneybody2">
+
     <div class='moneyleft'>
       <p class="amtin">Amount in</p>
       <p class="currency">SGD</p>
@@ -12,35 +24,25 @@
       </div>
     </div>
   </div>
-  <br>
   <div class="name">
     <p>
-      <strong>To:</strong>
-      <%= @transaction.name %>
+      <span class="smallT">From</strong><br></span>
+      <%= @transaction.name %><br>
+    <span class="smallT">  <%= @transaction.name %></span>
     </p>
   </div>
 
-  <div class="name">
+ <div class="name">
     <p>
-      <strong>Datetime:</strong>
-      <%= "#{@transaction.created_at}" %>
+      <span class="smallT">To</strong><br></span>
+      <%= @transaction.name %><br>
+    <span class="smallT">  <%= @transaction.name %></span>
     </p>
   </div>
-
-
   <br>
   <div class="button-container">
-    <button id="shareDetailsButton" class="red-button">Share transfer details</button>
-    <div id="hiddenButtons" style="display: none;">
-      <%= button_to "Edit this transaction", edit_transaction_path(@transaction), method: :get, class: "grey-button" %> 
-      <br>
-      <%= button_to "Destroy this transaction", @transaction, method: :delete, class: "red-button" %>
-      <br>
-      <%= link_to "Check transaction history", transaction_history_path, method: :get, class: "grey-button" %>
-    </div>
-  </div>
-  <br>
-  <%= link_to "Back to Home", transactions_path, method: :get, class: "grey-button separate-home-button" %>
+  <p>  <span class="RedText"> Log Out</span> if you're done </p>
+  <%= link_to "MAKE ANOTHER TRANSFER", transactions_path, method: :get, class: "red-button" %>
 
   <script>
     document.getElementById('shareDetailsButton').addEventListener('click', function() {

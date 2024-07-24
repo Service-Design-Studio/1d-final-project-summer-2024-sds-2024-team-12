@@ -100,7 +100,7 @@
             <div class="carousel-inner">
 
               <div class="item active">
-                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
                   <p class="textheader">Welcome to digibank</p>
                   <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
@@ -110,7 +110,7 @@
               <% if @frequent_transactions.any? %>
                <% @frequent_transactions.each_with_index do |transaction, index| %>
                 <div class="item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
                     <p class="textheader">Suggestion:</p>
                     <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
@@ -131,22 +131,34 @@
               
               <% if @close_transactions.any? %>
                 <div class="item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
                     <p class="textheader">Suggestion:</p>
                     <p class="textbody">Your card usage is nearing $500. Consider setting up a card limit to manage your spending:</p>
                     <ul>
-                      <li><%= "Card Limit: $500" %></li>
+                      <li  class="cardlim" ><%= "Card Limit: $500" %></li>
                     </ul>
                     <button class='transparent' id='setupLimitButton'>
                       <div class='buttonContainer'>
-                        <%= link_to 'Set up Limit', new_cardlimit_path %> 
-                      </div>
+<%= link_to 'Set up Limit', new_cardlimit_path, class: "buttonText" %>                     
+ </div>
                     </button>
                   </div>
                 </div>
               <% end %>
-            
+
+              <div class = "item">
+                <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
+                <div class="carousel-caption">
+                  <p class="textheader">Suggestion:</p>
+                  <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
+                  <button class="transparent">
+                    <div class="buttonContainer">
+                      <a href = "/promptpay" class="buttonText">Go Now</a>
+                    </div>
+                  </button>
+                </div>
+              </div>
 
             </div>
 
@@ -163,7 +175,7 @@
         </div>
         <div class="containertwo">
           <p class="text">Smart Shortcuts</p>
-          <%= image_tag('settings.png', class: 'setting') %>
+          <%= image_tag('settingicon.jpg', class: 'setting') %>
         </div>
         
         <div class="containerthree">
@@ -171,9 +183,9 @@
             
 
             <button id="paynowbutton" class="transparent">
-              <%= link_to new_transaction_path do %>
+              <%= link_to enter_transaction_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("paynow.png", alt: 'PayNow Image', class: "icons") %>
+                  <%= image_tag("paynow2.jpg", alt: 'PayNow Image', class: "icons") %>
                   <p class="shortcutname">PayNow</p>
                 </div>
               <% end %>
@@ -182,7 +194,7 @@
             <button class="transparent">
               <%= link_to transaction_history_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("transaction_history.png", class: "icons") %>
+                  <%= image_tag("thistory.jpg", class: "icons") %>
                   <p class="shortcutname">Transaction</p>
                   <p class="shortcutname">History</p>
                 </div>
@@ -192,7 +204,7 @@
             <button id="overseasbutton" class="transparent">
               <%= link_to overseas_transfer_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("overseas.png", alt: 'Overseas Image', class: "icons") %>
+                  <%= image_tag("overseas2.jpg", alt: 'Overseas Image', class: "icons") %>
                   <p class="shortcutname">Overseas</p>
                   <p class="shortcutname">Transactions</p>
                 </div>
@@ -202,7 +214,7 @@
             <button class="transparent">
               <%= link_to scheduled_transactions_path do %>
               <div class="iconcontainer">
-                <%= image_tag("scheduletransfer.png", class: "icons") %>
+                <%= image_tag("scheduled.jpg", class: "icons") %>
                 <p class="shortcutname">Transfers</p>
                 <p class="shortcutname">Scheduled</p>
               </div>
@@ -211,21 +223,21 @@
 
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
-                <%= image_tag("local_transfer.png", class: "icons") %>
+                <%= image_tag("trnsfr.jpg", class: "icons") %>
                 <p class="shortcutname">Transfer Money</p>
               </div>
             </button>
 
             <button id="scanpay" class="transparent">
               <div class="iconcontainer">
-                <%= image_tag("scan&pay.png", class: "icons") %>
+                <%= image_tag("Scan2.jpg", class: "icons") %>
                 <p class="shortcutname">Scan &amp; Pay</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
-                <%= image_tag("local_transfer_limit.png", class: "icons") %>
+                <%= image_tag("localtransfer2.jpg", class: "icons") %>
                 <p class="shortcutname">Local Transfer</p>
                 <p class="shortcutname">Limit</p>
               </div>
@@ -233,21 +245,21 @@
 
             <button class="transparent">
               <div class="iconcontainer">
-                <%= image_tag("livebetter.png", class: "icons") %>
+                <%= image_tag("livebetter.jpg", class: "icons") %>
                 <p class="shortcutname">Live Better</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
-                <%= image_tag("bill.png", class: "icons") %>
+                <%= image_tag("bills2.jpg", class: "icons") %>
                 <p class="shortcutname">Bills</p>
               </div>
             </button>
 
             <button class="transparent">
               <div class="iconcontainer">
-                <%= image_tag("setpeekbalance.png", class: "icons") %>
+                <%= image_tag("peekhome.jpg", class: "icons") %>
                 <p class="shortcutname">Set Peek</p>
                 <p class="shortcutname">Balance</p>
               </div>

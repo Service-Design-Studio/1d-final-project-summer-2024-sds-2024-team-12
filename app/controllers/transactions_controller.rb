@@ -42,6 +42,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Current.user.transactions.new
+    @transaction.name = params[:mobile_number] if params[:mobile_number].present?
     if params[:scheduled_transaction].present?
       @transaction.name = params[:scheduled_transaction][:name]
       @transaction.amount = params[:scheduled_transaction][:amount]
@@ -91,6 +92,11 @@ class TransactionsController < ApplicationController
       format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  # GET /transactions/enter
+  def enter
+    # This action will just render the form
   end
 
   private

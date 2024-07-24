@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: space-between;
   height: 5vh;
-  background-color: #066DAF;
+  background-color:rgb(177, 4, 4);
   margin: 0;
   padding: 0;
 }
@@ -58,16 +58,17 @@
 }
 
 .transfer-details {
-  padding: 10px;
   background-color: white;
 }
 .transfer-details input {
-  width: 100%;
-  padding: 10px;
+  width: 90%;
+  padding-left: 10px;
   margin: 10px 0;
   border: 1px solid lightgray;
   border-radius: 5px;
+  transform: translateX(10px); /* Move the field 10px to the left */
 }
+
 
 .transparent:hover{
   cursor: pointer;
@@ -162,30 +163,34 @@
 .homeheader{
   margin: 0;
   padding: 0;
-  background-color: #066DAF;
+  background-color: white;
 }  
 .alertbutton {
-    background-color: #066DAF;
+    background-color: white;
     display: flex;
     justify-content: flex-end;
 }
   
 .buttonContainer {
-    background-color: #444444;
+    background-color: white;
     border-radius: 20px;
     align-self: flex-end;
     margin-right: 5vw;
+    font-size: small !important;
 }
   
 
 .buttonText {
-    color: white;
+    color: rgb(62, 62, 62) !important;
     /* font-family: 'Lato'; */
-    font-size: 13px;
+    font-size: 15px !important;
     font-weight: bold;
     padding: 2.5vw 4vw;
     letter-spacing: 1px;
     margin: 2vw 0 5vw 0;
+}
+.cardlim{
+  font-size: 15px;
 }
   
   .containertwo {
@@ -193,7 +198,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 3vw;
+    margin-top: 15vw;
     height: 10vw;
     background-color: white;
     margin-left: 5vw;
@@ -211,6 +216,7 @@
   .setting {
     object-fit: contain;
     max-height: 2vh;
+  margin-top: -10px;
   }
   
 
@@ -257,10 +263,11 @@
 }
 
 .icons {
-  width: 70%; /* Adjust width as needed */
-  height: 70%; /* Adjust height as needed */
+  width: 80%; /* Adjust width as needed */
+  height: 80%; /* Adjust height as needed */
   object-fit: contain;
   padding-bottom: 0.2vw; /* Optional padding if needed */
+
 }
 
 /* Additional styles from the second CSS file */
@@ -3769,8 +3776,8 @@ input:focus {
 .paynow-header {
     font-size: 24px; /* Adjust font size as needed */
     font-family: 'Lato', sans-serif; /* Change font family */
-    text-align: left; /* Align text to the left */
-    align-content: left;
+    text-align: center; /* Align text to the left */
+    align-content: center;
     font-weight: 600;
   }
   
@@ -3812,6 +3819,7 @@ input:focus {
     border-color: #888888c6;
     margin-right: 10px; /* Spacing between circle and text */
     background-color: white;
+    
     
   }
   .arrow-and-line-container {
@@ -3957,24 +3965,20 @@ input:focus {
 
   .group {
     display: flex;
-
+    padding-top: 1px;
   }
 
   .num-left{
-    font-size: 17px; 
     font-weight: bold; 
     color: #999ea2;
     padding-top: 15px;
-    padding-left: 25px;
-    
-    
-
+    padding-left: 10px;
   }
 
   .num-right{
-    font-size: 20px; 
-     
-    color: black; 
+    font-size: 17px; 
+    font-weight: bold;
+    color: rgb(98, 97, 97); 
     text-align: right;
     display: inline-block;
     position: absolute;
@@ -3984,10 +3988,11 @@ input:focus {
   }
 
   .change-limit{
-    font-size: 20px; 
-    color: black;
-    padding-top: 30px;
-    padding-left: 25px;
+    font-size: 2px; 
+    color: rgb(123, 123, 123);
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 10px;
   }
   
   .nextbutton input[type="submit"] {
@@ -4030,3 +4035,67 @@ input:focus {
     background-color: grey;
     color: white;
   }
+
+  .grey-box {
+    background-color: #f2f9fc; /* Light grey background */
+    width: 100%; /* Adjust width as needed */
+    max-width: 600px; /* Optional: max width */
+  }
+
+
+
+  .transfer-details {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .terms {
+    color: #999;
+    width: 90%;
+    font-size: 15px;/* Pixel value */
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  
+  #next-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 1000px;
+    margin-left: 17px;
+  }
+
+  #next-button:hover {
+    background-color: darkred;
+  }
+
+  .input-label-mobile {
+    font-size: 13px; /* Adjust the value as needed */
+    margin-left: 20px;
+    padding-top: 10px;
+    color: #999;
+  }
+
+  .next-button-recipient {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 18px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      margin-left: 18px;
+    }
+
