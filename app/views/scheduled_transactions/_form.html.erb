@@ -1,57 +1,69 @@
 <%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path) do |form| %>
   
-  <div class="myaccount-container">
-    <div class="myaccount">
-      <div class="circle-icon">
-        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
+  <div class="header-content">
+      <div class="left-container">
+        <div class="circle-container">
+          <div class="circle-icon">
+            <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+          </div>
+        </div>
+        <div class="arrow-gif-container">
+          <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+        </div>
+        <div class="circle-container">
+          <div class="circle-icon">
+            <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+          </div>
+        </div>
       </div>
-      <div class="myaccounttext">
-        <p>My DBS account</p>
-        <p>271xxxxxxx0</p>
+      <div class="right-container">
+        <div class="myaccounttext">
+          <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
+          <div class="account-number">
+            <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;">271xxxxxxx0</p>
+            <p class="text-right" style="margin-left: 100px;">SGD 29,891</p>
+          </div>
+        </div>
+        <div class="horizontal-line"></div>
+        <div class="recipienttext">
+          <p style="font-weight: 530; color: #505050; margin-bottom: 2px;">Recipient</p>
+          <%= form.text_field :name, value: @frequent_transaction&.name, class: 'account-name-field', placeholder: 'Recipient' %>
+        </div>
       </div>
     </div>
+ <div class="whitespace"></div>
 
-    <div class="arrow-and-line-container">
-      <div class="arrow-gif-container">
-        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
-      </div>
-
-    </div>
-
-    <div class="myaccount">
-      <div class="circle-icon">
-        <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 24px; height: 24px;') %>
-      </div>
-      <div class="myaccounttext">
-        <p>Recipient</p>
-        <%= form.text_field :name, value: @frequent_transaction&.name, class: 'account-name-field', placeholder: 'Recipient' %>
-      </div>
-    </div>
+ <div class="moneybody">
+  <div class='num-left'>
+    <p class="amtin">Amount in</p>
+    <p class="currency">SGD</p>
   </div>
-
-  <div class="moneybody">
-    <div class="moneyleft">
-      <p class="amtin">Amount in</p>
-      <p class="currency">SGD</p>
-    </div>
-    <div class="schemoneyright">
-      <%= form.number_field :amount, value: @frequent_transaction&.amount, class: 'amount-field', placeholder: '0.00' %>
-    </div>
+  <div class='num-right'>
+    <%= form.number_field :amount, value: @frequent_transaction&.amount, class: 'amount-field', style: "margin-left: 50px;", placeholder: '0.00' %>
   </div>
+</div>
 
-  <div class="schedule-details">
-    <div class="start-date">
-      <%= form.label :start_date, 'Start Date' %>
+
+<div class="grey-box">
+  <div class="schedule-details" style="margin-left: 15px;">
+    <div class="start-date" style="margin-bottom: 40px;"> <!-- Added margin-bottom -->
+      <%= form.label :start_date, 'Start Date', style: 'font-size: 25px;' %>
+      <br>
       <%= form.date_field :start_date, class: 'start-date-field' %>
     </div>
     <div class="frequency">
-      <%= form.label :frequency, 'Frequency' %>
+      <%= form.label :frequency, 'Frequency', style: 'font-size: 25px;' %>
+      <br>
       <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field' %>
     </div>
   </div>
+</div>
+
+
 
 
   <div class="nextbutton">
     <%= form.submit "SAVE" %>
   </div>
+</div>
 <% end %>
