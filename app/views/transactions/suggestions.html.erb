@@ -6,10 +6,18 @@
 
   <div>
     <% if @suggestions.any? %>
-      <% @suggestions.each do |suggestion| %>
-        <p>hi</p>
-        
+      <% @suggestions.each_with_index do |suggestion, index| %>
+
+            <p class="textheader">Suggestion!</p>
+            <p class="textbody"><%= suggestion.content %></p>
+              <button class="transparent">
+                <div class="buttonContainer">
+                  <%= link_to 'Learn More', suggestion.link_url, class: 'buttonText' %>
+                </div>
+              </button>
+
       <% end %>
+
     <% else %>
       <p>No Suggestions!</p>
     <% end %>
