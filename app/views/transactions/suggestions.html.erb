@@ -1,0 +1,25 @@
+<div class="suggestions">
+  <%= link_to '←', back_button_path, class: 'back-button' %>
+
+  <h1 class="suggestions-header">Suggestions</h1>
+
+
+  <div>
+    <% if @suggestions.any? %>
+      <% @suggestions.each_with_index do |suggestion, index| %>
+
+            <p class="textheader">Suggestion!</p>
+            <p class="textbody"><%= suggestion.content %></p>
+              <button class="transparent">
+                <div class="buttonContainer">
+                  <%= link_to 'Learn More', suggestion.link_url, class: 'buttonText' %>
+                </div>
+              </button>
+
+      <% end %>
+
+    <% else %>
+      <p>No Suggestions!</p>
+    <% end %>
+  </div>
+</div>

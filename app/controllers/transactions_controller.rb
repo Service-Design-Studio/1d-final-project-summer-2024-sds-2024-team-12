@@ -31,6 +31,10 @@ class TransactionsController < ApplicationController
     @frequent_transactions = Current.user.transactions.group(:name, :amount).having('COUNT(*) >= ?', 3)
   end
 
+  def suggestions
+    @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
+  end
+
   # GET /transactions/1 or /transactions/1.json
   def show
   end

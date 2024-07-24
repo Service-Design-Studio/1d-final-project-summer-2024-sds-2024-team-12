@@ -99,30 +99,54 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
 
-              <% if @suggestions.any? %>
-                <% @suggestions.each_with_index do |suggestion, index| %>
-                  <div class="item <%= 'active' if index == 0 %>">
-                    <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                    <div class="carousel-caption">
-                      <p class="textheader">Suggestion!</p>
-                      <p class="textbody"><%= suggestion.content %></p>
-                        <button class="transparent">
-                          <div class="buttonContainer">
-                            <%= link_to 'Learn More', suggestion.link_url, class: 'buttonText' %>
-                          </div>
-                        </button>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-
-              <div class="item <%= 'active' if @suggestions.size == 0 %>">
+              <div class="item active">
                 <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
                   <p class="textheader">Welcome to digibank</p>
                   <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
                 </div>
               </div>
+              
+              <% if @frequent_transactions.any? %>
+               <% @frequent_transactions.each_with_index do |transaction, index| %>
+                <div class="item">
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
+                    <ul class="textbody">
+                      
+                        <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
+                      
+                    </ul>
+                    <button class="transparent" id="setupButton<%= index %>">
+                      <div class="buttonContainer">
+                        <p class="buttonText">Set up</p>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+              
+              <% if @close_transactions.any? %>
+                <div class="item">
+                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <div class="carousel-caption">
+                    <p class="textheader">Suggestion:</p>
+                    <p class="textbody">Your card usage is nearing $500. Consider setting up a card limit to manage your spending:</p>
+                    <ul>
+                      <li><%= "Card Limit: $500" %></li>
+                    </ul>
+                    <button class='transparent' id='setupLimitButton'>
+                      <div class='buttonContainer'>
+                        <%= link_to 'Set up Limit', new_cardlimit_path %> 
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              <% end %>
+            
 
             </div>
 
@@ -323,20 +347,44 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="floating-container">
-          <button id="thailandButton" class="floating-button coco-transparent">
-            <%= image_tag("coconut.png", alt: "Coconut Image", class: "coco-icons") %>
-          </button>
-          <button id="removeThailand" class="floating-button">
-            not in thailand
-          </button>
-    </div>      
+    </div>     
     </div>
 
     </div>
 
   </div>
+
+  <div class="fab-container">
+      <div class="fab shadow">
+        <div class="fab-content">
+          <span class="material-icons">+</span>
+        </div>
+      </div>
+      <div class="sub-button shadow" id="suggestionButton">
+        <%= link_to transaction_suggestions_path do %>
+                  <span class="material-icons">S</span>
+              <% end %>
+          
+      </div>
+      <div class="sub-button shadow">
+              <%= link_to new_transaction_path do %>
+                  <%= image_tag("paynowwhite.png", alt: 'PayNow Image', class: "material-img-icons") %>
+              <% end %>
+      </div>
+      <div class="sub-button shadow">
+        <%= link_to transaction_history_path do %>
+          <%= image_tag("transaction_historywhite.png", class: "material-img-icons") %>
+        <% end %>
+      </div>
+      <div class="sub-button shadow">
+        <%= link_to overseas_transfer_path do %>
+          <%= image_tag("overseaswhite.png", alt: 'Overseas Image', class: "material-img-icons") %>
+        <% end %>
+      </div>
+    </div>
+
+
+  
 
   <!-- Inline JavaScript for tab switching and other functionalities -->
   <script>
@@ -356,57 +404,6 @@
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var thailandButton = document.getElementById('thailandButton');
-      if (thailandButton) {
-        thailandButton.addEventListener('click', function() {
-          const isActive = this.classList.contains('active');
-          const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
-          const method = isActive ? 'DELETE' : 'POST';
-
-          fetch(url, { 
-            method: method,
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ country: 'thailand' })
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP status ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(data => {
-            if(data.success) {
-              this.classList.toggle('active');
-              location.reload();
-            }
-          })
-          .catch(error => console.error('Fetch error:', error));
-        });
-      } else {
-        console.error('Thailand button not found');
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var removeButton = document.getElementById('removeThailand');
-      var coconutButton = document.getElementById('thailandButton');
-
-      removeButton.addEventListener('click', function() {
-        fetch('/remove_location/thailand', { method: 'DELETE' })
-          .then(response => response.json())
-          .then(data => {
-            if(data.success) {
-              coconutButton.style.display = 'none';
-              location.reload();
-            }
-          })
-          .catch(error => console.error('Error:', error));
-      });
-    });
   </script>
 
 
