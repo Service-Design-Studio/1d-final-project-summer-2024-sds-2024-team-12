@@ -1,138 +1,139 @@
 /* General styles */
 body.enter {
-    font-family: Arial, sans-serif;
-    background-color: #f1f2f4;  /* Light grey background */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .enter *,
-  .enter *:before,
-  .enter *:after {
-    box-sizing: inherit;
-  }
-  
-  /* Header styles */
-  .enter header {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .enter .back-button {
-    text-decoration: none;
-    color: #000;
-    font-size: 24px;
-    margin-right: 15px;
-  }
-  
-  .enter .paynow-header {
-    font-size: 24px; /* Adjust font size as needed */
-    font-family: 'Lato', sans-serif; /* Change font family */
-    text-align: left; /* Align text to the left */
-    align-content: left;
-    font-weight: 600;
-    white-space: nowrap
-  }
-  
-  /* Content container */
-  .enter .content-container {
-    flex: 1;  /* Allow content to grow and take available space */
-    padding: 0px;
-    max-width: 600px;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
+  font-family: Arial, sans-serif;
+  background-color: #f1f2f4;  /* Light grey background */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  }
-  
-  /* Form styles */
-  .enter .input-container {
-    margin-bottom: 20px;
-    font-size: 16px;
-    width: 100%;
-    position: relative;
-  }
-  
-  .enter .mobile-input {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px; /* Increase padding for a bigger field */
-    margin-top: 10px;
-    width: 100%; /* Make the input field full width */
-    position: relative;  /* To position the hint text */
-    }
-  
-  .enter .country-code {
-    padding: 10px 15px;
-    background-color: transparent;  /* Make background transparent */
-    border-right: none;  /* Remove border */
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .enter .mobile-number-input {
-    flex: 1;
-    border: none;
-    padding-left: 10px;
-    font-size: 16px;
+.enter *,
+.enter *:before,
+.enter *:after {
+  box-sizing: inherit;
+}
+
+/* Header styles */
+.enter header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.enter .back-button {
+  text-decoration: none;
+  color: #000;
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.enter .paynow-header {
+  font-size: 24px; /* Adjust font size as needed */
+  font-family: 'Lato', sans-serif; /* Change font family */
+  text-align: left; /* Align text to the left */
+  align-content: left;
+  font-weight: 600;
+  white-space: nowrap
+}
+
+/* Content container */
+.enter .content-container {
+  flex: 1;  /* Allow content to grow and take available space */
+  padding: 0px;
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+
+}
+
+/* Form styles */
+.enter .input-container {
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 100%;
+  position: relative;
+}
+
+.enter .mobile-input {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px; /* Increase padding for a bigger field */
+  margin-top: 10px;
+  width: 100%; /* Make the input field full width */
+  position: relative;  /* To position the hint text */
   }
 
-  .enter .mobile-number-input::placeholder {
-    color: #999;  /* Light grey placeholder */
-    opacity: 1;  /* Ensure full opacity */
-  }
+.enter .country-code {
+  padding: 10px 15px;
+  background-color: transparent;  /* Make background transparent */
+  border-right: none;  /* Remove border */
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
 
-  .enter .hint-text {
-    position: absolute;
-    top: -0.3px;
-    left: 15px;
-    font-size: 14px;
-    color: #999;
-    background-color: #fff;
-    padding: 0 5px;
-  }
-  
-  /* NEXT button styles */
-  .enter .next-button-container {
-    margin-top: 500px;  /* Push the button to the bottom */
-    padding-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: bottom;
-  }
-  
-  .enter .next-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 15px;
-    font-size: 18px;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .enter .next-button:hover {
-    background-color: darkred;
-  }
+.enter .mobile-number-input {
+  flex: 1;
+  border: none;
+  padding-left: 10px;
+  font-size: 16px;
+}
 
-  
+.enter .mobile-number-input::placeholder {
+  color: #999;  /* Light grey placeholder */
+  opacity: 1;  /* Ensure full opacity */
+}
+
+.enter .hint-text {
+  position: absolute;
+  top: -0.3px;
+  left: 15px;
+  font-size: 14px;
+  color: #999;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+/* NEXT button styles */
+.enter .next-button-container {
+  margin-top: 500px;  /* Push the button to the bottom */
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: bottom;
+}
+
+.enter .next-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: bottom;
+}
+
+.enter .next-button:hover {
+  background-color: darkred;
+}
+
+
 .enter .phonebook-icon {
-    width: 30px; /* Adjust icon size */
-    height: 30px; /* Adjust icon size */
-    margin-left: 10px; /* Add space to the left of the icon */
-  }
+  width: 30px; /* Adjust icon size */
+  height: 30px; /* Adjust icon size */
+  margin-left: 10px; /* Add space to the left of the icon */
+}

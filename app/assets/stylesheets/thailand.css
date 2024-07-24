@@ -1,10 +1,9 @@
-body {
+.thaibody {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 main.content {
@@ -37,18 +36,18 @@ main.content {
   align-items: flex-start; /* Align items at the top */
 }  
 
-.left-container {
+.promptleft-container {
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   padding-top: 40px;
 }
 
-.circle-container {
+.promptcircle-container {
      /* Adjust spacing between arrow gif and line */
     padding-left:12px;
   }
 
-.right-container {
+.promptright-container {
   flex: 1; /* Take remaining space */
 }
   

@@ -1,4 +1,3 @@
-
 <%= form_with(model: @transaction, local: true) do |form| %>
     <% if @transaction.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +12,7 @@
   <% end %>
 
     <header>
-      <%= link_to '←', back_button_path, class: 'back-button' %>
+      <%= link_to '<', enter_transaction_path, class: 'back-button' %>
       <h1 class = "paynow-header">PayNow to Mobile</h1>
       <div class="whitebox"></div>
     </header>
@@ -66,37 +65,30 @@
 
   </div>
 
-<body>
-  <div class="limits">
-  <div class="group">
-    <div class='num-left'>Authorised</div>
-    <div class='num-right'>SGD 5,000.00</div>
-  </div>
-  <div class="group">
-    <div class='num-left', style='padding-bottom:15px;'>Remaining</div>
-    <div class='num-right'>SGD 4,999.00</div>
-  </div>
+  <body>
+  <div class="grey-box">
+    <div class="group">
+      <div class='num-left'>Authorised</div>
+      <div class='num-right'>SGD 5,000.00</div>
+    </div>
+    <div class="group">
+      <div class='num-left' style="font-size: 17px; padding-bottom: 15px;">Remaining</div>
+      <div class='num-right'>SGD 4,999.00</div>
+    </div>
     <a href="#" class="change-limit"><u>Change Limit</u></a>
-  </div>
-
-  <div class="transfer-details">
-  <p>TRANSFER DETAILS</p>
-
-  
-      <%= form.label :comments, "Add comments for recipient" %>
-      <%= form.text_field :comments, value: "PayNow Transfer" %>
-    
-
-  <div class="terms">
-    <p>By tapping “Next”, you agree to be bound by the <a href="#">Terms and Conditions</a>.</p>
-  </div>
-  </div>
-
-
-    <div class="nextbutton">
+    <div class="group">
+      <div class='num-left' style='font-size: 15px; padding-bottom:15px;'>TRANSFER DETAILS</div>
+    </div>
+    <div class="transfer-details">
+    <div class='num-left' style='font-size: 18px;'>Add comments for Recipient</div>
+      <%= form.text_field :comments, placeholder: "PayNow Transfer" %>
+    </div>
+    <div class="terms">
+      By tapping “Next”, you agree to be bound by the Terms and Conditions.
+    </div>
+    <div class="next-button">
       <%= form.submit "NEXT", id: "next-button" %>
     </div>
-
-    </div>
-<% end %>
+  </div>
+<%end%>
 </body>

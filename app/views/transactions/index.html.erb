@@ -87,18 +87,13 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" class="active"></li>
-              <% if @frequent_transactions.any? %>
-              <% @frequent_transactions.each do |transaction| %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% end %>
-              <% if @close_transactions.any? %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% if session[:country] == 'thailand' %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
+              <% if @suggestions.any? %>
+                <% @suggestions.each_with_index do |suggestion, index| %>
+                  <li data-target="#myCarousel" <%= 'class = "active"' if index == 0 %>></li>
+                <% end %>
+                <% end %>
+                <li data-target="#myCarousel" <%= 'class = "active"' if @suggestions.size == 0 %>></li>
+              
             </ol>
 
             <!-- Wrapper for slides -->
@@ -111,7 +106,7 @@
                   <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
                 </div>
               </div>
-
+              
               <% if @frequent_transactions.any? %>
                <% @frequent_transactions.each_with_index do |transaction, index| %>
                 <div class="item">
@@ -151,7 +146,7 @@
                   </div>
                 </div>
               <% end %>
-            
+
               <div class = "item">
                 <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
@@ -164,6 +159,7 @@
                   </button>
                 </div>
               </div>
+
             </div>
 
             <!-- Left and right controls -->
@@ -370,6 +366,38 @@
 
   </div>
 
+  <div class="fab-container">
+      <div class="fab shadow">
+        <div class="fab-content">
+          <span class="material-icons">+</span>
+        </div>
+      </div>
+      <div class="sub-button shadow" id="suggestionButton">
+        <%= link_to transaction_suggestions_path do %>
+                  <span class="material-icons">S</span>
+              <% end %>
+          
+      </div>
+      <div class="sub-button shadow">
+              <%= link_to new_transaction_path do %>
+                  <%= image_tag("paynowwhite.png", alt: 'PayNow Image', class: "material-img-icons") %>
+              <% end %>
+      </div>
+      <div class="sub-button shadow">
+        <%= link_to transaction_history_path do %>
+          <%= image_tag("transaction_historywhite.png", class: "material-img-icons") %>
+        <% end %>
+      </div>
+      <div class="sub-button shadow">
+        <%= link_to overseas_transfer_path do %>
+          <%= image_tag("overseaswhite.png", alt: 'Overseas Image', class: "material-img-icons") %>
+        <% end %>
+      </div>
+    </div>
+
+
+  
+
   <!-- Inline JavaScript for tab switching and other functionalities -->
   <script>
     // Include the existing JavaScript code for the functionality
@@ -388,22 +416,6 @@
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var removeButton = document.getElementById('removeThailand');
-      var coconutButton = document.getElementById('thailandButton');
-
-      removeButton.addEventListener('click', function() {
-        fetch('/remove_location/thailand', { method: 'DELETE' })
-          .then(response => response.json())
-          .then(data => {
-            if(data.success) {
-              coconutButton.style.display = 'none';
-              location.reload();
-            }
-          })
-          .catch(error => console.error('Error:', error));
-      });
-    });
   </script>
 
 

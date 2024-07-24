@@ -1,6 +1,10 @@
-<div style="padding:10px">
-  <h1>Create shortcut</h1>
+<header>
+  <%= link_to '<', back_button_path, class: 'back-button' %>
+  <h1 class = "paynow-header">Create shortcut</h1>
+  <div class="whitebox"></div>
+</header>
 
+<div class="containerthree">
   <%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
     <div class="field">
       <%= form.label :recipient_name %>

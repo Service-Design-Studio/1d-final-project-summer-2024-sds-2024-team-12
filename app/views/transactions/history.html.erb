@@ -1,7 +1,8 @@
-<div class="transaction-history">
-  <%= link_to '←', back_button_path, class: 'back-button' %>
+
+<header>
+  <%= link_to '<', back_button_path, class: 'back-button' %>
   <h1 class="transaction-history-header">Transaction History</h1>
-  
+</header>
   
   <% @transactions.reverse_each do |transaction| %>
     <% transaction_date = transaction.created_at.to_date %>

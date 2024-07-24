@@ -1,7 +1,7 @@
 <body>
 
 <% back_path = request.referer == request.original_url ? root_path : request.referer %>
-<%= link_to '←', back_path, class: 'back-button' %>
+<%= link_to '<', back_path, class: 'back-button' %>
 
 <div class= "topboxovrtrnsfr2"><h1>Enter Recepient's Details</h1></div>
 <%= form_with url: overseas_transfer_create_recipient_path, method: :post do %>
