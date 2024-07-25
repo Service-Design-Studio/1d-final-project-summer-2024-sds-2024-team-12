@@ -70,9 +70,14 @@ RSpec.feature "Selecting Thailand", type: :feature, js: true do
     visit overseas_transfer_select_location_path
     click_link 'Australia'
     expect(page).to have_current_path(overseas_transfer_new_recipient_path(country: 'Australia'))
-    fill_in "Recipient's Account Details", with: '1234567'
-    fill_in "Recipient's Full Name", with: 'Mary'
-    fill_in "Recipient's Registered Address", with: 'Hillview'
+
+    # Use precise CSS selectors to find the input fields
+    find('input.newrep2[placeholder="Select recipient\'s bank"]').set('Greenview bank')
+    find('input.newrep2[placeholder="Enter account no."]').set('1234567')
+    find('input.newrep2[placeholder="Full Name"]').set('Mary')
+    find('input.newrep2[placeholder="Full Address"]').set('Hillview')
+    find('input.newrep2[placeholder="In The City Of"]').set('Sydney')
+
     click_button 'NEXT'
     expect(page).to have_current_path(overseas_transfer_confirmation_path)
     click_link 'Back'
