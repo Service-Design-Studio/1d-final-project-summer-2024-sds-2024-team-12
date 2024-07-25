@@ -53,6 +53,13 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
             select 'Daily', from: 'Frequency'
 
             click_button 'SAVE'
+            expect(page).to have_text('Scheduled transaction was successfully created.')
+            visit scheduled_transactions_path
+            expect(page).to have_content('Name: 123456')
+            expect(page).to have_content('Amount: SGD 100.00')
+            expect(page).to have_content('Start Date: 2024-08-01')
+            expect(page).to have_content('Frequency: Daily')
+
           elsif option == 'shortcut'
             find('.shortcut').click
             expect(page).to have_current_path(%r{/shortcuts/new}, wait: 10)
