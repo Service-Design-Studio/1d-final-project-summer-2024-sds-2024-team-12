@@ -1,5 +1,5 @@
 <% back_path = request.referer == request.original_url ? root_path : request.referer %>
-<%= link_to '←', back_path, class: 'back-button' %>
+<%= link_to '<', back_path, class: 'back-button' %>
 <body class="sucesspagebg">
  <img src="/assets/blackeye.png" alt="Eye Icon" class="top-right-image">
   <%= image_tag('greentick.png', alt: 'DBS-Bank-logo', class: 'greentick') %>
