@@ -18,7 +18,7 @@ class OverseasController < ApplicationController
         redirect_to overseas_transfer_confirmation_path
       else
         # Handle errors or validation failures
-        render :new_recipient # Render the new recipient form again with errors
+        # render :new_recipient # Render the new recipient form again with errors
       end
     end
   

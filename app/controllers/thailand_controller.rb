@@ -36,8 +36,8 @@ class ThailandController < ApplicationController
         format.html { redirect_to root_path, notice: "Transaction was successfully created."}
         format.json { render :show, status: :created, location: @promptpay }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @promptpay.errors, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
+        # format.json { render json: @promptpay.errors, status: :unprocessable_entity }
       end
     end
   end

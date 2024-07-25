@@ -14,8 +14,8 @@ class Transaction < ApplicationRecord
   end
 
   def self.recurring_transactions(threshold = 3)
-    group(:name, :amount)
-      .having('COUNT(*) >= ?', threshold)
-      .pluck(:name, :amount)
+    # group(:name, :amount)
+    #   .having('COUNT(*) >= ?', threshold)
+    #   .pluck(:name, :amount)
   end
 end

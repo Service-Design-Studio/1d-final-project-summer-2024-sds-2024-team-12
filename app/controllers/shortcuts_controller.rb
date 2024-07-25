@@ -11,7 +11,7 @@ class ShortcutsController < ApplicationController
     if @shortcut.save
       redirect_to pay_and_transfer_page_index_path, notice: 'Shortcut button was successfully created.'
     else
-      render :new
+      # render :new
     end
   end
 

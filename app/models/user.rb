@@ -19,6 +19,6 @@ class User < ApplicationRecord
     # validates :password_confirmation, presence: true
 
     def most_frequent_actions(limit = 3)
-        user_actions.order(count: :desc).limit(limit)
+        # user_actions.order(count: :desc).limit(limit)
       end
 end
