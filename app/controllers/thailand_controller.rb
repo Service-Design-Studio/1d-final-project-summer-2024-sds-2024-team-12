@@ -69,9 +69,9 @@ class ThailandController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_promptpay
-      @promptpay = Promptpay.find(params[:id])
-    end
+    # def set_promptpay
+    #   @promptpay = Promptpay.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def promptpay_params
@@ -79,7 +79,7 @@ class ThailandController < ApplicationController
     end
 
     # Validations or additional helper methods (adjust as needed)
-    def valid_phone_number?(phone)
-      phone.match?(/\A\d{9}\z/)
-    end
+    # def valid_phone_number?(phone)
+    #   phone.match?(/\A\d{9}\z/)
+    # end
 end

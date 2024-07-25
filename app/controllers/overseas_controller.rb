@@ -30,15 +30,15 @@ class OverseasController < ApplicationController
       @transaction = Transaction.new
     end
 
-    def create_transfer
-      @transaction = Transaction.new(transaction_params)
-      if @transaction.save
-        redirect_to success_path, notice: 'Transfer was successfully made.'
-      else
-        @recipient = Recipient.find(params[:transaction][:recipient_id])
-        render :make_transfer, status: :unprocessable_entity
-      end
-    end
+    # def create_transfer
+    #   @transaction = Transaction.new(transaction_params)
+    #   if @transaction.save
+    #     redirect_to success_path, notice: 'Transfer was successfully made.'
+    #   else
+    #     @recipient = Recipient.find(params[:transaction][:recipient_id])
+    #     render :make_transfer, status: :unprocessable_entity
+    #   end
+    # end
   
     private
   
@@ -46,8 +46,8 @@ class OverseasController < ApplicationController
       params.permit(:country, :account_details, :full_name, :registered_address)
     end
 
-    def transaction_params
-      params.require(:transaction).permit(:name, :amount)
-    end
+    # def transaction_params
+    #   params.require(:transaction).permit(:name, :amount)
+    # end
   end
   

@@ -86,7 +86,7 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
   end
 
 
-  scenario "choose shortcuts option" do
+  scenario "Make 3 transactions and show suggestion on carousel" do
     3.times do |i|
       visit root_path
       find('button#paynowbutton').click
@@ -110,6 +110,58 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
     within('.carousel-inner') do
       expect(page).to have_text('Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:', wait: 20)
     end
+
+  end
+
+  scenario "Make shortcut directly and delete" do
+    visit pay_and_transfer_page_index_path
+    #css style for adding shortcut link
+    find('button.add-recipient').click
+    expect(page).to have_current_path(%r{/shortcuts/new}, wait: 10)
+    page.evaluate_script('window.location.reload()') # Refresh the page
+    fill_in 'shortcut_recipient', with: '123456'
+    fill_in 'ShortcutAmount', with: '100.0'
+    fill_in 'Shortcut Name', with: 'Amy'
+    click_button 'Create Quick Shortcut'
+    expect(page).to have_current_path(pay_and_transfer_page_index_path, wait: 10)
+    expect(page).to have_text('Amy', wait: 20)
+    click_button 'Delete', match: :first
+    # Verify that the shortcut has been deleted
+    expect(page).to_not have_text('Amy', wait: 20)
+  end
+
+
+  scenario "Make scheduled payment directly and delete" do
+    visit scheduled_transactions_path
+    click_link 'Add a Scheduled Payment'
+    fill_in 'Recipient', with: '123456'
+    fill_in 'ScheduledAmount', with: '100.0'
+    # Filling in the start date and frequency
+    fill_in 'Start Date', with: '01/08/2024'
+    select 'Daily', from: 'Frequency'
+
+    click_button 'SAVE'
+    expect(page).to have_text('Scheduled transaction was successfully created.')
+    visit scheduled_transactions_path
+    expect(page).to have_text('Name: 123456', wait: 20)
+    expect(page).to have_text('Amount: SGD 100.00', wait: 20)
+    expect(page).to have_text('Start Date: 2024-08-01', wait: 20)
+    expect(page).to have_text('Frequency: Daily', wait: 20)
+
+    # Refresh the page to ensure the button is interactable
+    page.execute_script("window.location.reload()")
+    sleep 2
+
+    # Locate and click the delete button again to avoid stale element reference
+    within(:css, 'div.transaction') do
+      find_button('Delete Scheduled Payment', wait: 10).click
+    end
+    expect(page).to_not have_content('Name: 123456')
+    expect(page).to_not have_content('Amount: SGD 100.00')
+    expect(page).to_not have_content('Start Date: 2024-08-01')
+    expect(page).to_not have_content('Frequency: Daily')
+
+
 
   end
 
