@@ -52,6 +52,7 @@
             <%= image_tag('phonebook-icon.png', alt: 'Phonebook') %>
           </button>
         </div>
+        <div class="error-message" style="color: red; display: none;">Phone number must be exactly 9 digits.</div>
       </div>
 
         <!-- Add more fields for mobile etc. -->
@@ -126,11 +127,20 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const phoneInput = document.querySelector('.recipient-number');
+  const errorMessage = document.querySelector('.error-message');
+  
   phoneInput.addEventListener('input', function() {
     const isValid = this.value.length === 9 && /^\d+$/.test(this.value);
-    this.setCustomValidity(!isValid ? 'Please enter exactly 9 digits.' : '');
+    if (!isValid) {
+      errorMessage.style.display = 'block';
+      this.setCustomValidity('Please enter exactly 9 digits.');
+    } else {
+      errorMessage.style.display = 'none';
+      this.setCustomValidity('');
+    }
   });
 });
+
 </script>
 
 
