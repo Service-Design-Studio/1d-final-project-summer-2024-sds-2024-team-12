@@ -63,6 +63,14 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
           elsif option == 'shortcut'
             find('.shortcut').click
             expect(page).to have_current_path(%r{/shortcuts/new}, wait: 10)
+            page.evaluate_script('window.location.reload()') # Refresh the page
+            expect(find_field('shortcut_recipient').value).to eq('123456')
+            amount_field = find('#ShortcutAmount')
+            expect(amount_field.value).to eq('100.0')
+            fill_in 'Shortcut Name', with: 'Amy'
+            click_button 'Create Quick Shortcut'
+            expect(page).to have_current_path(pay_and_transfer_page_index_path, wait: 10)
+
           end
         end
       end

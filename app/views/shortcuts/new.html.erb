@@ -32,7 +32,7 @@
     <div class="horizontal-line"></div>
     <%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
       <div class="recipienttext">
-        <%= form.text_field :recipient_name, value: params.dig(:shortcut, :recipient_name), class: 'form-control grey-textbox' %>
+        <%= form.text_field :recipient_name, id: 'shortcut_recipient', value: params.dig(:shortcut, :recipient_name), class: 'form-control grey-textbox' %>
       </div>
   </div>
 </div>
@@ -45,7 +45,7 @@
     <p class="currency">SGD</p>
   </div>
   <div class='num-right'>
-    <%= form.number_field :amount, value: params.dig(:shortcut, :amount), step: 0.01, class: 'amount-field' %>
+    <%= form.number_field :amount, id:'ShortcutAmount', value: params.dig(:shortcut, :amount), step: 0.01, class: 'amount-field' %>
   </div>
 </div>
 
