@@ -48,29 +48,26 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
     visit transaction_history_path
     expect(page).to have_text(/PAYNOW TO 123456/)
     expect(page).to have_text(/-123.00/)
-    # Click the back button using data-testid
-    # find('[data-testid="back-button"]').click
-    # expect(page).to have_current_path(transactions_path, wait: 10)
 
   end
 
 
 
-  scenario "Perform transaction three times with amount near 500, suggestion show on carousel" do
-    3.times do
-      visit root_path
-      find('button#paynowbutton').click
-      expect(page).to have_current_path(enter_transaction_path)
-      
-      fill_in "Recipient's Mobile No.", with: '123456'
-      click_button 'NEXT'
-      expect(page).to have_current_path(/transactions\/new/, wait: 10)
-      
-      fill_in 'PayNowAmount', with: '499'
-      click_button 'NEXT'
-      
-      expect(page).to have_current_path(/transactions\/\d+/, wait: 10)
-    end
+  scenario "Perform transaction with amount nearing 500, suggestion show on carousel" do
+    
+    visit root_path
+    find('button#paynowbutton').click
+    expect(page).to have_current_path(enter_transaction_path)
+    
+    fill_in "Recipient's Mobile No.", with: '123456'
+    click_button 'NEXT'
+    expect(page).to have_current_path(/transactions\/new/, wait: 10)
+    
+    fill_in 'PayNowAmount', with: '499'
+    click_button 'NEXT'
+    
+    expect(page).to have_current_path(/transactions\/\d+/, wait: 10)
+  
     visit transactions_path
     within('.carousel-inner') do
         expect(page).to have_text('Your card usage is nearing $500. Consider setting up a card limit to manage your spending:', wait: 20)

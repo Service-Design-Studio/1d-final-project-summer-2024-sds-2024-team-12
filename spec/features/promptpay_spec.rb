@@ -21,13 +21,6 @@ RSpec.feature "Selecting Thailand", type: :feature, js: true do
     expect(page).to have_text("Would you like to use our PromptPay feature to send money to the recipient’s phone number directly ?")
   end
 
-  # scenario "User selects United Kingdom and does not see the PromptPay modal" do
-  #   visit overseas_transfer_select_location_path
-  #   click_link 'United Kingdom'
-  #   expect(page).to have_no_css('#promptPayModal', visible: true)
-  # end
-
-
   scenario "User selects PromptPay option after selecting Thailand" do
     visit overseas_transfer_select_location_path
     click_link 'Thailand'

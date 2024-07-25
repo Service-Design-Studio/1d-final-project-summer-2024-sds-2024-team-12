@@ -152,7 +152,7 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
     page.execute_script("window.location.reload()")
     sleep 2
 
-    # Locate and click the delete button again to avoid stale element reference
+    # Locate and click the delete button e
     within(:css, 'div.transaction') do
       find_button('Delete Scheduled Payment', wait: 10).click
     end
