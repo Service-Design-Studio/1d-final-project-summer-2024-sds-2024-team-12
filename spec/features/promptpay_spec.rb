@@ -87,5 +87,16 @@ RSpec.feature "Selecting Thailand", type: :feature, js: true do
     click_button 'TRANSFER NOW'
   end
 
+  scenario "User sees promptpay suggestion in carousel" do  
+    visit transactions_path
+    within('.carousel-inner') do
+       expect(page).to have_text('You are in Thailand now, do you want to try our PromptPay feature?', wait: 20)
+    end
+    click_button 'Go Now'
+    expect(page).to have_current_path(promptpay_path)
+
+
+  end
+
 
 end
