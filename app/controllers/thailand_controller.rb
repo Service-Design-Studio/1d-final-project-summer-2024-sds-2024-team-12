@@ -3,7 +3,6 @@ class ThailandController < ApplicationController
 
   def promptpay
     @promptpay = Promptpay.new
-    render :new
   end
 
   # GET /promptpays or /promptpays.json
@@ -37,7 +36,7 @@ class ThailandController < ApplicationController
         format.html { redirect_to root_path, notice: "Transaction was successfully created."}
         format.json { render :show, status: :created, location: @promptpay }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :promptpay, status: :unprocessable_entity }
         format.json { render json: @promptpay.errors, status: :unprocessable_entity }
       end
     end

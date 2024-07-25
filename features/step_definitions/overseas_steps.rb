@@ -10,8 +10,8 @@ When("I click the Add Overseas Recipient button") do
   find('.primary-button[href="/overseas_transfer/select_location"]').click
 end
 
-When("I click on {string}") do |tcountry|
-  find('a.country-link[data-country="Thailand"]', text: tcountry, visible: true).click
+Then("I click on {string}") do |tcountry|
+  click_link(tcountry)
 end
 
 When("I click on {string} button") do |button|
@@ -26,13 +26,11 @@ Then("I should see a page to {string}") do |enter|
 end
 
 When("I fill in {string} under recipient's bank") do |bank|
-  all('input#account_details')[0].set(bank)
+  fill_in 'bank_name', with: bank
 end
 
 Then("I fill in the recipient's account number {string}") do |account_number|
-  # There are two input fields with the same ID in the HTML, which is not ideal.
-  # This will target the second input field with the id 'account_details'.
-  all('input#account_details')[1].set(account_number)
+  fill_in 'account_details', with: account_number
 end
 
 And("I fill in the recipient's name {string}") do |full_name|
@@ -46,7 +44,7 @@ end
 And("I fill in {string} under city") do |city|
   # Assuming the city is to be filled in one of the fields with id 'account_details'
   # Ensure this is the correct field by context or additional checks
-  all('input#account_details')[2].set("In The City Of #{city}")
+  fill_in 'city_name', with: city
 end
 
 
@@ -118,14 +116,12 @@ Then("I should see a message saying {string}") do |success_message|
   expect(page).to have_content(success_message)
 end
 
-Then("I should see an error message: {string}") do |error|
-  expect(page).to have_content('input:invalid[title="' + message + '"]')
+Then("I should see an error message: {string}") do |message|
+  puts page.html
+  expect(page).to have_content(message)
 end
 
 
-When("I click on the coconut in the bottom left") do
-  find('#thailandButton').click
-end
 
 When("I should see a suggestion for the {string} in the quick action") do |suggestion_text|
   within('.carousel-inner') do
@@ -156,5 +152,5 @@ Then("I should be on the {string} transaction page") do |pp|
 end
 
 And("I click a button that says {string}") do |go|
-  first(:button, go).click
+  click_link(go)
 end

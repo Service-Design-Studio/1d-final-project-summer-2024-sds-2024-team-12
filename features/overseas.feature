@@ -12,7 +12,7 @@ Feature: Overseas Transfer
     And I click the Add Overseas Recipient button
     Then I click on "Thailand"
     When I click on "Proceed without PromptPay" button
-    Then I should see a page to "Enter Recepient's Details"
+    Then I should see a page to "Enter Recipient's Details"
     When I fill in "bank" under recipient's bank
     Then I fill in the recipient's account number "123456"
     And I fill in the recipient's name "Jane" 
