@@ -117,7 +117,7 @@ Then("I should see a message saying {string}") do |success_message|
 end
 
 Then("I should see an error message: {string}") do |message|
-  puts page.html
+  # puts page.html
   expect(page).to have_content(message)
 end
 
