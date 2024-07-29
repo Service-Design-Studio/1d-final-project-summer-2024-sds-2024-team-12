@@ -1,5 +1,32 @@
-<h1>You have added a recipient</h1>
+<% back_path = request.referer == request.original_url ? root_path : request.referer %>
+<%= link_to '<', back_path, class: 'back-button' %>
+<body class="remit-confirmpagebg">
+ <img src="/assets/blackeye.png" alt="Eye Icon" class="top-right-image">
+  <%= image_tag('greentick.png', alt: 'DBS-Bank-logo', class: 'greentick') %>
+<div class="succes">
+<p class="bigT"> You have added a recipient </p>
+<div class="displaysucc">
+  <div class="name">
+      <p>
+        <span class="smallT">Location</strong><br></span>
+        <%= @country %><br>
+      </p>
+    </div>
 
-<div class="confirmation">
-  <%= link_to 'Back', overseas_transfer_path, class: 'btn-primary' %>
+  <div class="name">
+    <p>
+      <span class="smallT">Recipient's Bank</strong><br></span>
+      <%= @bank_name %><br>
+    </p>
+  </div>
+  <div class="name">
+    <p>
+      <span class="smallT">Recipient's Account No.</strong><br></span>
+      <%= @account_details %><br>
+    </p>
+  </div>
+</div>
+
+<div class="button-container">
+<%= link_to "BACK", overseas_transfer_path, method: :get, class: "red-button" %>
 </div>
