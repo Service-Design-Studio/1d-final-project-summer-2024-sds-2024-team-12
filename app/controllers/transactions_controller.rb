@@ -99,20 +99,33 @@ class TransactionsController < ApplicationController
     # This action will just render the form
   end
 
-  def search
-    query = params[:query]
+  # def search
+  #   query = params[:query]
+  #   path = params[:path]
+
+  #   if path.present?
+  #     case path
+  #     when 'Change Limit'
+  #       redirect_to cardlimit_paynow_path
+  #     # Add more cases for different paths
+  #     else
+  #       redirect_to root_path, alert: "Invalid path"
+  #     end
+  #   else
+  #     redirect_to root_path, alert: "Query or path missing"
+  #   end
+  # end
+
+  def search_suggestions
+    # No need for query handling here
+    # Just handle routing based on the input value
     path = params[:path]
 
-    if path.present?
-      case path
-      when 'cardlimit_paynow'
-        redirect_to cardlimit_paynow_path
-      # Add more cases for different paths
-      else
-        redirect_to root_path, alert: "Invalid path"
-      end
+    case path
+    when 'Local Transfer Limit'
+      redirect_to cardlimit_paynow_path
     else
-      redirect_to root_path, alert: "Query or path missing"
+      redirect_to root_path, alert: "Invalid path"
     end
   end
 

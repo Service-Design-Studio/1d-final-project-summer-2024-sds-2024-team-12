@@ -103,6 +103,43 @@ function getInitials(name) {
   return name.split(' ').map(n => n[0]).join('').toUpperCase();
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const pathInput = document.querySelector('input[name="path"]');
+  const suggestionsContainer = document.getElementById('suggestions-container');
+  
+  const paths = [
+    { name: 'Local Transfer Limit', value: 'Local Transfer Limit' },
+    // { name: 'Change Limit', value: 'change_limit' }
+    // Add more paths as needed
+  ];
+
+  pathInput.addEventListener('input', () => {
+    const query = pathInput.value.toLowerCase();
+    suggestionsContainer.innerHTML = '';
+
+    paths.forEach(path => {
+      if (path.name.toLowerCase().includes(query)) {
+        const div = document.createElement('div');
+        div.textContent = path.name;
+        div.classList.add('suggestion-item');
+        div.addEventListener('click', () => {
+          pathInput.value = path.value;
+          suggestionsContainer.innerHTML = '';
+        });
+        suggestionsContainer.appendChild(div);
+      }
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchIcon = document.getElementById('search-icon');
+  const searchForm = document.getElementById('search-form');
+  
+  searchIcon.addEventListener('click', () => {
+    searchForm.submit();
+  });
+});
 
 
 
