@@ -83,4 +83,21 @@
     height: 50px;
   }
 
+/* Define the keyframe animation */
+@keyframes shiny {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Apply the animation to the shiny class */
+.fab-content.shiny {
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 200% 100%;
+  animation: shiny 1.5s linear infinite;
+}
+
   
