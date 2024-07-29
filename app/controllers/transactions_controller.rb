@@ -123,7 +123,7 @@ class TransactionsController < ApplicationController
 
     case path
     when 'Local Transfer Limit'
-      redirect_to cardlimit_paynow_path
+      redirect_to new_cardlimit_path
     else
       redirect_to root_path, alert: "Invalid path"
     end
