@@ -64,9 +64,14 @@
             </div>
             <div class="rightcontainer">
 
-              <% if Current.user %>
-              <%= Current.user.phone %>
+              <%= form_with url: search_suggestions_path, method: :get, local: true do |form| %>
+                <%= form.text_field :path, placeholder: "Search...", value: params[:path] %>
+                <%# <%= form.hidden_field :path, value: 'card_limit/paynow' %> <!-- Set path here -->
+                <%= form.submit "Search" %>
               <% end %>
+
+
+
 
               <button class="transparent">
                 <%= image_tag('help.png', class: 'help') %>

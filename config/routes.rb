@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'transaction_history', to: 'transactions#history'
   get 'transaction_suggestions', to: 'transactions#suggestions'
 
+  get 'search_suggestions', to: 'transactions#search'
+
 
   resources :cardlimit, only: [:new, :paynow, :adjusting]
 

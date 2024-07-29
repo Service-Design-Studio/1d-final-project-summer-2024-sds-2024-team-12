@@ -99,6 +99,23 @@ class TransactionsController < ApplicationController
     # This action will just render the form
   end
 
+  def search
+    query = params[:query]
+    path = params[:path]
+
+    if path.present?
+      case path
+      when 'cardlimit_paynow'
+        redirect_to cardlimit_paynow_path
+      # Add more cases for different paths
+      else
+        redirect_to root_path, alert: "Invalid path"
+      end
+    else
+      redirect_to root_path, alert: "Query or path missing"
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
