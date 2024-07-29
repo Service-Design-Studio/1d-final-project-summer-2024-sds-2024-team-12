@@ -100,7 +100,7 @@
 
 <!-- thai transaction 9 digit limitation -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   const phoneInput = document.querySelector('.recipient-number');
   phoneInput.addEventListener('input', function() {
     const isValid = this.value.length === 9 && /^\d+$/.test(this.value);
