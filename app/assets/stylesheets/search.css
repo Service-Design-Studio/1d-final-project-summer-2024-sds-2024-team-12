@@ -29,6 +29,15 @@
     transform: translateY(-50%);
     cursor: pointer;
   }
+
+  .voice-icon {
+    position: absolute;
+    right: 35px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
   
   .suggestions-container {
     position: absolute;

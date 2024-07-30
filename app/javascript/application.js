@@ -73,7 +73,33 @@ document.addEventListener("turbo:load", () => {
 
 document.addEventListener("turbo:load", () => {
   const searchIcon = document.getElementById('search-icon');
-  const searchForm = document.getElementById('search-form');
+  const searchInput = document.getElementById('search-input');
+  const voiceButton = document.getElementById('voice-button');
+
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    voiceButton.addEventListener('click', () => {
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      if (transcript){
+      searchInput.value = transcript;
+    }
+      // processSearchQuery(transcript);
+    };
+
+    recognition.onerror = (event) => {
+      console.error(event.error);
+    };
+  } else {
+    console.warn('Speech recognition not supported in this browser.');
+  }
   
   searchIcon.addEventListener('click', () => {
     searchForm.submit();
