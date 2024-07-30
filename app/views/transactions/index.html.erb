@@ -67,7 +67,7 @@
               <div class="search_bar_home">
               <%= form_with url: search_suggestions_path, method: :get, local: true, id: 'search-form' do |form| %>
                 <div class="search-container">
-                  <%= form.text_field :path, placeholder: "Search for...", value: params[:path], class: 'search-input' %>
+                  <%= form.text_field :path, placeholder: "Search for...", value: params[:path], class: 'search-input', id: 'search-input'  %>
                   <%= image_tag 'voice.png', class: 'voice-icon', id: 'voice-button' %>
                   <%= image_tag 'search.png', class: 'search-icon', id: 'search-icon' %>
                 </div>

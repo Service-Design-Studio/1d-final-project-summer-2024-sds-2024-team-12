@@ -88,9 +88,9 @@ document.addEventListener("turbo:load", () => {
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
-      if (transcript){
+
       searchInput.value = transcript;
-    }
+    
       // processSearchQuery(transcript);
     };
 
@@ -105,6 +105,7 @@ document.addEventListener("turbo:load", () => {
     searchForm.submit();
   });
 });
+
 
 
 
