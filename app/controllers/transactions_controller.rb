@@ -116,18 +116,28 @@ class TransactionsController < ApplicationController
   #   end
   # end
 
-  def search_suggestions
-    # No need for query handling here
-    # Just handle routing based on the input value
-    path = params[:path]
+  # app/controllers/transactions_controller.rb
 
-    case path
-    when 'Local Transfer Limit'
-      redirect_to new_cardlimit_path
-    else
-      redirect_to root_path, alert: "Invalid path"
+# app/controllers/transactions_controller.rb
+def search_suggestions
+  path = params[:path].strip.downcase
+
+  case path
+  when /local transfer limit|change limit|update limit|modify limit/
+    redirect_to new_cardlimit_path
+  else
+    vertex_ai = VertexAIService.new
+    @results = vertex_ai.predict(path, ENV['VERTEX_AI_ENDPOINT_ID'])
+
+    respond_to do |format|
+      format.js { render partial: 'transactions/suggestions', locals: { results: @results } }
+      format.html { redirect_to root_path, alert: "Handled in HTML request" }
     end
   end
+end
+
+
+
 
   private
 

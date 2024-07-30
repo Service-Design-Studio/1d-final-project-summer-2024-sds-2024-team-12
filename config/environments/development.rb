@@ -67,4 +67,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+
+  ENV["GOOGLE_CLOUD_KEYFILE_JSON"] = Rails.root.join('config', 'secrets', 'aisearchbar-8aee39a29591.json').to_s
+
+
+
 end
