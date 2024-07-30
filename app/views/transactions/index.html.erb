@@ -64,15 +64,16 @@
             </div>
             <div class="rightcontainer">
 
-              <div class="search_bar_home">
+              <div class="search-bar-home">
               <%= form_with url: search_suggestions_path, method: :get, local: true, id: 'search-form' do |form| %>
-                <div class="search-container">
+                <div class="search-container" id="search-container">
                   <%= form.text_field :path, placeholder: "Search for...", value: params[:path], class: 'search-input', id: 'search-input'  %>
                   <%= image_tag 'voice.png', class: 'voice-icon', id: 'voice-button' %>
                   <%= image_tag 'search.png', class: 'search-icon', id: 'search-icon' %>
                 </div>
               <% end %>
               <div id="suggestions-container" class="suggestions-container"></div>
+              <div class="dark-overlay" id="dark-overlay"></div>
             </div>
 
 

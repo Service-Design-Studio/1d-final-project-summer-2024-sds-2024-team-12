@@ -73,8 +73,29 @@ document.addEventListener("turbo:load", () => {
 
 document.addEventListener("turbo:load", () => {
   const searchIcon = document.getElementById('search-icon');
+  const searchForm = document.getElementById('search-form');
   const searchInput = document.getElementById('search-input');
   const voiceButton = document.getElementById('voice-button');
+
+  const darkOverlay = document.getElementById('dark-overlay');
+  const searchContainer = document.querySelector('.search-container');
+
+  function expandSearchBar() {
+    searchContainer.classList.add('search-bar-expanded');
+    darkOverlay.classList.add('active');
+  }
+
+  function collapseSearchBar() {
+    searchContainer.classList.remove('search-bar-expanded');
+    darkOverlay.classList.remove('active');
+  }
+
+  // Event listeners to expand and collapse the search bar
+  searchInput.addEventListener('focus', expandSearchBar);
+  searchInput.addEventListener('blur', collapseSearchBar);
+
+  // If you want to collapse the search bar when clicking outside of it
+  // darkOverlay.addEventListener('click', collapseSearchBar);
 
   if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
@@ -84,18 +105,18 @@ document.addEventListener("turbo:load", () => {
 
     voiceButton.addEventListener('click', () => {
       recognition.start();
+      voiceButton.classList.add('recording');
     });
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
-
       searchInput.value = transcript;
-    
-      // processSearchQuery(transcript);
+      voiceButton.classList.remove('recording');
     };
 
     recognition.onerror = (event) => {
       console.error(event.error);
+      voiceButton.classList.remove('recording');
     };
   } else {
     console.warn('Speech recognition not supported in this browser.');
