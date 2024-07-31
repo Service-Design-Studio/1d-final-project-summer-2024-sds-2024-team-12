@@ -69,7 +69,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rspec-rails', '~>5.0.0'
+  gem 'database_cleaner-active_record'
+  gem 'simplecov', require: false
   gem 'rspec-expectations'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
+end
+
+group :production do
+  gem 'pg'
 end

@@ -1,0 +1,58 @@
+/* Combined CSS styles for .scshortcut-button, .iconcontainer, and .sciconcontainer */
+
+.scshortcut-button {
+  display: inline-block;
+  /* text-align: center; */ /* Commented out to retain alignment from existing CSS */
+  /* margin: 10px; */ /* Commented out to retain alignment from existing CSS */
+}
+
+.scshortcut-button .btn-danger {
+  margin-top: 10px;
+}
+
+.shortcutImage {
+  width: 100px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.scicons {
+  width: 60px; /* Adjust the width as needed */
+  height: 60px; /* Ensure the height is the same as width to make it a square */
+  background-color: #066DAF; /* Adjust the background color as needed */
+  color: white; /* Text color */
+  display: flex; /* Use flexbox to center the text */
+  align-items: center; /* Center the text vertically */
+  justify-content: center; /* Center the text horizontally */
+  border-radius: 15px; /* Adjust the radius for rounded edges */
+  font-size: 12px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center align the text */
+  margin-right: 10px;
+}
+
+/* Styling for .iconcontainer and .sciconcontainer */
+.iconcontainer, .sciconcontainer {
+  padding-bottom: 20px; /* Optional padding if needed */
+  display: flex; /* Make iconcontainer flex */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the start */
+  width: 20vw; /* Adjust width as needed */
+}
+
+.icons {
+  width: 70%; /* Adjust width as needed */
+  height: 70%; /* Adjust height as needed */
+  object-fit: contain;
+  padding-bottom: 1.5vw; /* Optional padding if needed */
+}
+
+/* Additional styles from the second CSS file */
+.containerthree {
+  background-color: white;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex; /* Make container flex */
+  justify-content: flex-start; /* Align items to the start */
+  margin-left: 5px;
+}

@@ -1,5 +1,5 @@
 
-<html lang="en" class="wf-lato-n4-active wf-inter-n4-active wf-active">
+<html lang="en">
 <head>
   <style id="react-native-stylesheet"></style>
   <meta charset="utf-8">
@@ -48,8 +48,7 @@
   </style>
 </head>
 
-<body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="" style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+<body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="">
   <div id="root">
     <div class="container">
       <div class="scrollable">
@@ -57,10 +56,10 @@
           <div class="header">
             <div class="leftcontainer">
               <button class="transparent">
-                <img src="/assets/bellwhite.png" alt="bell" class="bell">
+                <%= image_tag('bellwhite.png', alt: 'bell', class: 'bell') %>
               </button>
               <button class="transparent">
-                <img src="/assets/eye.png" class="eye">
+                <%= image_tag('eye.png', class: 'eye') %>
               </button>
             </div>
             <div class="rightcontainer">
@@ -70,7 +69,7 @@
               <% end %>
 
               <button class="transparent">
-                <img src="/assets/help.png" class="help">
+                <%= image_tag('help.png', class: 'help') %>
               </button>
               
               <div class="logoutContainer">
@@ -88,35 +87,30 @@
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#myCarousel" class="active"></li>
-              <% if @frequent_transactions.any? %>
-              <% @frequent_transactions.each do |transaction| %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% end %>
-              <% if @close_transactions.any? %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
-              <% if session[:country] == 'thailand' %>
-                <li data-target="#myCarousel"></li>
-              <% end %>
+              <% if @suggestions.any? %>
+                <% @suggestions.each_with_index do |suggestion, index| %>
+                  <li data-target="#myCarousel" <%= 'class = "active"' if index == 0 %>></li>
+                <% end %>
+                <% end %>
+                <li data-target="#myCarousel" <%= 'class = "active"' if @suggestions.size == 0 %>></li>
+              
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
 
               <div class="item active">
-                <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
-                  <p class="textheader">Welcome to digibank</p>
-                  <p class="textbody">Enjoy the faster and more convenient way to bank on the go</p>
+                  <p class="textheader">Welcome to DBS Digibank</p>
+                  <p class="textbody">Enjoy the faster and convenient way to bank on the go</p>
                 </div>
               </div>
-
+              
               <% if @frequent_transactions.any? %>
                <% @frequent_transactions.each_with_index do |transaction, index| %>
                 <div class="item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
                     <p class="textheader">Suggestion:</p>
                     <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
@@ -137,36 +131,34 @@
               
               <% if @close_transactions.any? %>
                 <div class="item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
+                  <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                   <div class="carousel-caption">
                     <p class="textheader">Suggestion:</p>
                     <p class="textbody">Your card usage is nearing $500. Consider setting up a card limit to manage your spending:</p>
                     <ul>
-                      <li><%= "Card Limit: $500" %></li>
+                      <li  class="cardlim" ><%= "Card Limit: $500" %></li>
                     </ul>
                     <button class='transparent' id='setupLimitButton'>
                       <div class='buttonContainer'>
-                        <%= link_to 'Set up Limit', new_cardlimit_path %> 
-                      </div>
+<%= link_to 'Set up Limit', new_cardlimit_path, class: "buttonText" %>                     
+ </div>
                     </button>
                   </div>
                 </div>
               <% end %>
-            
-               <% if session[:country] == 'thailand' %>
-                <div class = "item">
-                  <%= image_tag('dbsbackground.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                    <button class="transparent">
-                      <div class="buttonContainer">
-                        <a href = "/promptpay" class="buttonText">Go Now</a>
-                      </div>
-                    </button>
-                  </div>
+
+              <div class = "item">
+                <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
+                <div class="carousel-caption">
+                  <p class="textheader">Suggestion:</p>
+                  <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
+                  <button class="transparent">
+                    <div class="buttonContainer">
+                      <a href = "/promptpay" class="buttonText">Go Now</a>
+                    </div>
+                  </button>
                 </div>
-            <% end %>
+              </div>
 
             </div>
 
@@ -183,140 +175,125 @@
         </div>
         <div class="containertwo">
           <p class="text">Smart Shortcuts</p>
-          <img src="/assets/settings.png" class="setting">
+          <%= image_tag('settingicon.jpg', class: 'setting') %>
         </div>
         
         <div class="containerthree">
           <div class="scrollview">
-
-           <% if @frequent_transactions.any? %>
-            <% ShortcutButton.all.each do |button| %>
-              <div class="scshortcut-button">
-                <div class="sciconcontainer">
-                  <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
-                    <div class="scicons"><%= button.nickname %></div>
-                    
-                  <% end %>
-                  <%= form_with(model: button, method: :delete, url: shortcut_button_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
-                    <%= form.submit 'Delete', class: 'btn btn-danger' %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
             
 
             <button id="paynowbutton" class="transparent">
-              <%= link_to new_transaction_path do %>
+              <%= link_to enter_transaction_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("/assets/paynow.png", alt: 'PayNow Image', class: "icons") %>
-                  <p class="shortcut">PayNow</p>
+                  <%= image_tag("paynow2.jpg", alt: 'PayNow Image', class: "icons") %>
+                  <p class="shortcutname">PayNow</p>
                 </div>
               <% end %>
             </button>
 
             <button id = "history" class="transparent">
               <%= link_to transaction_history_path do %>
-              <div class="iconcontainer">
-                <img src="/assets/transaction_history.png" class="icons">
-                <p class="shortcut">Transaction</p>
-                <p class="shortcut">History</p>
-              </div>
+                <div class="iconcontainer">
+                  <%= image_tag("thistory.jpg", class: "icons") %>
+                  <p class="shortcutname">Transaction</p>
+                  <p class="shortcutname">History</p>
+                </div>
               <% end %>
             </button>
 
             <button id="overseasbutton" class="transparent">
               <%= link_to overseas_transfer_path do %>
                 <div class="iconcontainer">
-                  <%= image_tag("/assets/overseas.png", alt: 'Overseas Image', class: "icons") %>
-                  <p class="shortcut">Overseas</p>
-                  <p class="shortcut">Transactions</p>
+                  <%= image_tag("overseas2.jpg", alt: 'Overseas Image', class: "icons") %>
+                  <p class="shortcutname">Overseas</p>
+                  <p class="shortcutname">Transactions</p>
                 </div>
               <% end %>
             </button>
 
+            <button class="transparent">
+              <%= link_to scheduled_transactions_path do %>
+              <div class="iconcontainer">
+                <%= image_tag("scheduled.jpg", class: "icons") %>
+                <p class="shortcutname">Transfers</p>
+                <p class="shortcutname">Scheduled</p>
+              </div>
+              <% end %>
+            </button>
 
             <button id="transfermoney" class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/local_transfer.png" class="icons">
-                <p class="shortcut">Transfer Money</p>
+                <%= image_tag("trnsfr.jpg", class: "icons") %>
+                <p class="shortcutname">Transfer Money</p>
               </div>
             </button>
 
             <button id="scanpay" class="transparent">
               <div class="iconcontainer">
-                <img src="/assets/scan&amp;pay.png" class="icons">
-                <p class="shortcut">Scan &amp; Pay</p>
+                <%= image_tag("Scan2.jpg", class: "icons") %>
+                <p class="shortcutname">Scan &amp; Pay</p>
+              </div>
+            </button>
+
+            <button class="transparent">
+              <div class="iconcontainer">
+                <%= image_tag("localtransfer2.jpg", class: "icons") %>
+                <p class="shortcutname">Local Transfer</p>
+                <p class="shortcutname">Limit</p>
+              </div>
+            </button>
+
+            <button class="transparent">
+              <div class="iconcontainer">
+                <%= image_tag("livebetter.jpg", class: "icons") %>
+                <p class="shortcutname">Live Better</p>
+              </div>
+            </button>
+
+            <button class="transparent">
+              <div class="iconcontainer">
+                <%= image_tag("bills2.jpg", class: "icons") %>
+                <p class="shortcutname">Bills</p>
+              </div>
+            </button>
+
+            <button class="transparent">
+              <div class="iconcontainer">
+                <%= image_tag("peekhome.jpg", class: "icons") %>
+                <p class="shortcutname">Set Peek</p>
+                <p class="shortcutname">Balance</p>
               </div>
             </button>
 
             
-
-            <button class="transparent">
-              <div class="iconcontainer">
-                <img src="/assets/local_transfer_limit.png" class="icons">
-                <p class="shortcut">Local Transfer</p>
-                <p class="shortcut">Limit</p>
-              </div>
-            </button>
-
-            <button class="transparent">
-              <div class="iconcontainer">
-                <img src="/assets/livebetter.png" class="icons">
-                <p class="shortcut">Live Better</p>
-              </div>
-            </button>
-
-            <button class="transparent">
-              <div class="iconcontainer">
-                <img src="/assets/bill.png" class="icons">
-                <p class="shortcut">Bills</p>
-              </div>
-            </button>
-
-            <button class="transparent">
-              <div class="iconcontainer">
-                <img src="/assets/setpeekbalance.png" class="icons">
-                <p class="shortcut">Set Peek</p>
-                <p class="shortcut">Balance</p>
-              </div>
-            </button>
-
-            <button class="transparent">
-              <div class="iconcontainer">
-                <img src="/assets/scheduletransfer.png" class="icons">
-                <p class="shortcut">Transfers</p>
-                <p class="shortcut">Scheduled</p>
-              </div>
-            </button>
-
           </div>
         </div>
+
 
     </scrollable>
 
       <div class="bottomnav">
         <div class="bottomtabnavigatorcontainer">
           <button class="transparent">
-            <img src="/assets/home_bottomfilled.png" alt="home" class="navicon">
+            <%= image_tag("home_bottomfilled.png", alt: 'home', class: "navicon") %>
             <p class="navtextselected">Home</p>
           </button>
           <button class="transparent">
-            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <%= image_tag("invest_bottom.png", alt: 'invest', class: "navicon") %>
             <p class="navtext">Invest</p>
           </button>
           <a href="/pay_and_transfer_page/index">
             <button class="transparent">
-              <img src="/assets/pay&amp;transfer_bottom.png" alt="pay" class="navicon">
+              <%= image_tag("pay&transfer_bottom.png", alt: 'pay', class: "navicon") %>
               <p class="navtext">Pay &amp; Transfer</p>
             </button>
           </a>
           <button class="transparent">
-            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <%= image_tag("plan_bottom.png", alt: 'plan', class: "navicon") %>
             <p class="navtext">Plan</p>
           </button>
           <button class="transparent">
-            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <%= image_tag("more_bottom.png", alt: 'more', class: "navicon") %>
             <p class="navtext">More</p>
           </button>
         </div>
@@ -335,7 +312,7 @@
                 <div class="header1">
                     <div class="blueline"></div>
                     <p class="text">Your Net Worth</p>
-                    <img src="/assets/expand.png" class="expand2">
+                    <%= image_tag("expand.png", class: "expand2") %>
                 </div>
                 <div class="container2">
                     <div class="value">Value</div>
@@ -350,11 +327,14 @@
                         <div class="header1">
                             <div class="yellowline"></div>
                             <p class="text">Deposits</p>
-                            <img src="/assets/expand.png" class="expandrotated2">
+                            <%= image_tag("expand.png", class: "expandrotated2") %>
                         </div>
                         <div class="container2">
                             <div class="value">Balance</div>
-                            <p class="money">29891.00</p>
+                            <div class="textcontainer">
+                              <p class="sgd">SGD</p>
+                              <p class="money">29891.00</p>
+                            </div>
                         </div>
                         <div class="line"></div>
                     </div>
@@ -382,20 +362,39 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="floating-container">
-          <button id="thailandButton" class="floating-button coco-transparent">
-            <%= image_tag("/assets/coconut.png", alt: "Coconut Image", class: "coco-icons") %>
-          </button>
-          <button id="removeThailand" class="floating-button">
-            not in thailand
-          </button>
-    </div>      
+    </div>     
     </div>
 
     </div>
 
   </div>
+
+  <div class="fab-container">
+      <div class="fab shadow">
+        <div class="fab-content">
+          <span class="material-icons">+</span>
+        </div>
+      </div>
+
+      <div class="sub-button shadow">
+        <a href = "/promptpay">
+          <span class="material-icons">P</span>
+        </a>
+      </div>
+
+      <% if @suggestions.any? %>
+        <% @suggestions.each_with_index do |suggestion, index| %>
+          <div class="sub-button shadow" id="suggestionButton<%= index %>">
+              <span class="material-icons">S</span>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+    
+
+
+  
 
   <!-- Inline JavaScript for tab switching and other functionalities -->
   <script>
@@ -415,99 +414,130 @@
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var thailandButton = document.getElementById('thailandButton');
-      if (thailandButton) {
-        thailandButton.addEventListener('click', function() {
-          const isActive = this.classList.contains('active');
-          const url = isActive ? '/remove_location/thailand' : '/set_location/thailand';
-          const method = isActive ? 'DELETE' : 'POST';
-
-          fetch(url, { 
-            method: method,
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ country: 'thailand' })
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP status ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(data => {
-            if(data.success) {
-              this.classList.toggle('active');
-              location.reload();
-            }
-          })
-          .catch(error => console.error('Fetch error:', error));
-        });
-      } else {
-        console.error('Thailand button not found');
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var removeButton = document.getElementById('removeThailand');
-      var coconutButton = document.getElementById('thailandButton');
-
-      removeButton.addEventListener('click', function() {
-        fetch('/remove_location/thailand', { method: 'DELETE' })
-          .then(response => response.json())
-          .then(data => {
-            if(data.success) {
-              coconutButton.style.display = 'none';
-              location.reload();
-            }
-          })
-          .catch(error => console.error('Error:', error));
-      });
-    });
   </script>
 
 
 <!-- Popup for more details -->
-<% if @frequent_transactions.any? %>
-  <% @frequent_transactions.each_with_index do |transaction, index| %>
-    <div class="popup" id="popup<%= index %>">
+<% if @frequent_transactions_with_dates.any? %>
+  <% @frequent_transactions_with_dates.each_with_index do |transaction, index| %>
+    <div class="popup" id="popup<%= index %>" data-history-labels="<%= transaction[:dates].map(&:to_s).join(',') %>" data-history-values="<%= Array.new(transaction[:dates].size, transaction[:amount]).join(',') %>">
       <div class="popup-content">
-        <span class="close" id="closePopup">&times;</span>
-    <p class='textheader'>Suggestion:</p>
-    <p>Based on your past transactions, we noticed that you sent money to 
-      <%# <% names = @frequent_transactions.pluck(:name).join(', ') %>
-      <%# <%= names %>
-      <%= transaction.name %>
-    frequently in the past month. Do you want to set up monthly recurring payments?</p>
+        <span class="close" id="closePopup<%= index %>">&times;</span>
+        <p class='textheadersuggest'>Suggestion:</p>
+        <p>We noticed you paid <%= transaction[:name] %> <%= number_to_currency(transaction[:amount], unit: 'SGD ', precision: 2) %> frequently, on these dates and times:</p>
+        <ul class="transaction-details-date">
+          <% transaction[:dates].each do |date| %>
+            <li><%= "#{date.strftime('%Y-%m-%d %H:%M')}" %></li>
+          <% end %>
+        </ul>
+
+        <p>Would you like to: </p>
+        
         <div class="buttons">
           <%= link_to "Schedule Payment", 
               new_scheduled_transaction_path(
                 scheduled_transaction: { 
-                  name: transaction.name, 
-                  amount: transaction.amount 
+                  name: transaction[:name], 
+                  amount: transaction[:amount] 
                 }
               ), 
               class: 'scheduleButton', 
               id: "scheduleButton#{index}" %>
+
+              <p> OR </p>
+
           <%= link_to "Make a Quick Shortcut", 
-              new_shortcut_button_path(
-                shortcut_button: { 
-                  recipient_name: transaction.name,
-                  amount: transaction.amount,
+              new_shortcut_path(
+                shortcut: { 
+                  recipient_name: transaction[:name],
+                  amount: transaction[:amount],
                   nickname: ""
                 }
               ), 
-              class: 'shortcutButton', 
-              id: "shortcutButton#{index}" %>
+              class: 'shortcut', 
+              id: "shortcut#{index}" %>
         </div>
       </div>
     </div>
-    <% end %>
   <% end %>
+<% end %>
+
+
+
 
 </div>
 </body>
 
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Function to show the popup
+  const showPopup = (index) => {
+    const popup = document.getElementById(`popup${index}`);
+    if (popup) {
+      popup.style.display = 'block';
+    }
+  };
+
+  // Function to hide the popup
+  const hidePopup = (index) => {
+    const popup = document.getElementById(`popup${index}`);
+    if (popup) {
+      popup.style.display = 'none';
+    }
+  };
+
+  // Attach click event to suggestion buttons
+  <% @suggestions.each_with_index do |suggestion, index| %>
+    const suggestionButton<%= index %> = document.getElementById('suggestionButton<%= index %>');
+    if (suggestionButton<%= index %>) {
+      suggestionButton<%= index %>.addEventListener('click', (event) => {
+        event.preventDefault();
+        showPopup(<%= index %>);
+      });
+    }
+
+    const closePopup<%= index %> = document.getElementById('closePopup<%= index %>');
+    if (closePopup<%= index %>) {
+      closePopup<%= index %>.addEventListener('click', (event) => {
+        event.preventDefault();
+        hidePopup(<%= index %>);
+      });
+    }
+  <% end %>
+
+  // Function to handle tab switching
+  window.showTab = function(tabName) {
+    // Get all tabs
+    var tabs = document.querySelectorAll('.tab');
+    
+    // Loop through tabs to remove the 'active' class
+    tabs.forEach(function(tab) {
+      tab.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked tab
+    var activeTab = document.querySelector(`.tab[onclick="showTab('${tabName}')"]`);
+    if (activeTab) {
+      activeTab.classList.add('active');
+    }
+
+    // Hide all tab contents
+    var tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(function(content) {
+      content.style.display = 'none';
+    });
+
+    // Show the selected tab content
+    var selectedContent = document.getElementById(`tab-${tabName}`);
+    if (selectedContent) {
+      selectedContent.style.display = 'block';
+    }
+  };
+
+  // Initialize with the first tab's content visible (optional)
+  showTab('accounts'); // Replace 'accounts' with the default tab name if different
+});
+
+</script>

@@ -16,7 +16,7 @@
         <section class="services">
             <div class="buttons-container">
                 <div class="paynowbutton">
-                    <%= link_to new_transaction_path do %>
+                    <%= link_to enter_transaction_path do %>
                         <div class="iconButtonContainer">
                             <%= image_tag('paynow.png', alt: 'PayNow Image', class: 'iconImage') %>
                             <p class="iconButtonText">PayNow</p>
@@ -30,57 +30,55 @@
                         <p class="iconButtonText">Local</p>
                     </div>
                 </div>
-                <div class="exchangebutton">
-                    <div class="iconButtonContainer">
-                        <%= image_tag('exchange.png', alt: 'Exchange Image', class: 'exchangebutton') %>
-                        <p class="iconButtonText">Exchange Currency</p>
-                        
-                    </div>
-                </div>
+                
                 <div class="overseasbutton">
                     <div class="iconButtonContainer">
                         <%= image_tag('overseas.png', alt: 'Overseas Image', class: 'overseasbutton') %>
                         <p class="iconButtonText">Overseas</p>
                     </div>
                 </div>
-                <div class="billsbutton">
-                    <div class="iconButtonContainer">
-                        <%= image_tag('bills.png', alt: 'Bills Image', class: 'billsbutton') %>
-                        <p class="iconButtonText">Bills</p>
-                    </div>
-                </div>
-                <div class="cardsbutton">
-                    <div class="iconButtonContainer">
-                        <%= image_tag('cards.png', alt: 'Cards Image', class: 'cardsbutton') %>
-                        <p class="iconButtonText">Cards</p>
-                    </div>
-                </div>
-                <div class="topupbutton">
-                    <div class="iconButtonContainer">
-                        <%= image_tag('topup.png', alt: 'Topup Image', class: 'topupbutton') %>
-                        <p class="iconButtonText">Top up</p>
-                    </div>
-                </div>
+                
             </div>
         </section>
 
         <section class="recipients">
             <div class="tabs">
-                <button class="tab active">Recent</button>
+                <button class="tab active">Shortcuts</button>
+                <button class="tab">Recent</button>
                 <button class="tab">All</button>
-                <button class="tab">Favourites</button>
+                
             </div>
-            <button class="add-recipient">Add Local Recipient</button>
-
+            <button class="add-recipient">
+                <%= link_to "Make a Quick Shortcut", 
+                    new_shortcut_path(
+                        shortcut: { 
+                        nickname: ""
+                        }
+                    )
+              
+               %>
+            </button>
+            
+            <% @shortcut.each do |button| %>
             <div class="recipient">
+                <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
                 <div class="recipient-info">
-                    <div class="avatar" style="background-color: #ff8a80;">LT</div>
+                    <div class="avatar" style="background-color: #ff8a80;"><%= button.nickname %></div>
                     <div>
-                        <p>Recipient Name</p>
+                        <p><%= button.nickname %></p>
                     </div>
                 </div>
-                <button class="info-btn">i</button>
+                <% end %>
+                
+                <%= form_with(model: button, method: :delete, url: shortcut_path(button), data: { confirm: 'Are you sure?' }) do |form| %>
+                      <%= form.submit 'Delete', class: 'btn btn-danger' %>
+                    <% end %>
             </div>
+            <% end %>
+            
+            
+              
+            
 
         </section>
         </scrollable>
@@ -91,26 +89,26 @@
         <div class="bottomtabnavigatorcontainer">
         <%= link_to transactions_path do %>
           <button class="transparent">
-            <img src="/assets/home_bottom.png" alt="home" class="navicon">
+            <%= image_tag('home_bottom.png', alt: 'home', class: 'navicon') %>
             <p class="navtext">Home</p>
           </button>
           <% end %>
           <button class="transparent">
-            <img src="/assets/invest_bottom.png" alt="invest" class="navicon">
+            <%= image_tag('invest_bottom.png', alt: 'invest', class: 'navicon') %>
             <p class="navtext">Invest</p>
           </button>
           
             <button class="transparent">
-              <img src="/assets/pay&amp;transfer_bottomfilled.png" alt="pay" class="navicon">
+              <%= image_tag('pay&transfer_bottomfilled.png', alt: 'pay', class: 'navicon') %>
               <p class="navtextselected">Pay &amp; Transfer</p>
             </button>
           </a>
           <button class="transparent">
-            <img src="/assets/plan_bottom.png" alt="plan" class="navicon">
+            <%= image_tag('plan_bottom.png', alt: 'plan', class: 'navicon') %>
             <p class="navtext">Plan</p>
           </button>
           <button class="transparent">
-            <img src="/assets/more_bottom.png" alt="more" class="navicon">
+            <%= image_tag('more_bottom.png', alt: 'more', class: 'navicon') %>
             <p class="navtext">More</p>
           </button>
         </div>

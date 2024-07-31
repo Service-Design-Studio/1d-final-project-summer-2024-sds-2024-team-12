@@ -1,7 +1,7 @@
 <%= form_with(model: @card_limit, local: true) do |form| %>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
     
-    <div class="container">
+    <div class="limitcontainer">
       <%= link_to('<', cardlimit_paynow_path, class: 'back-button') %>
       <h1>Set Daily Limit</h1>
     </div>
@@ -22,4 +22,6 @@
       </div>
   
   <% end %>
+
+  <%= link_to "Back to Home", transactions_path, method: :get, class: "grey-button"%>
   

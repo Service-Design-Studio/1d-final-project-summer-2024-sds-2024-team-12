@@ -1,0 +1,31 @@
+<header>
+  <%= link_to '<', root_path, class: 'back-button' %>
+  <h1 class="paynow-header">Scheduled Transactions</h1>
+</header>
+  
+
+  <% if @scheduled_transactions.any? %>
+    <% @scheduled_transactions.each do |transaction| %>
+      <div class="transaction" style="position: relative; padding-right: 100px;"> <!-- Add padding-right as needed -->
+        <div style="margin-left: 20px; margin-top: 15px;">
+          <p>Name: <%= transaction.name %></p>
+          <p>Amount: <%= number_to_currency(transaction.amount, unit: "SGD ", precision: 2) %></p>
+          <p>Start Date: <%= transaction.start_date %></p>
+          <p>Frequency: <%= transaction.frequency.capitalize %></p>
+        </div>
+        <%= button_to "Delete Scheduled Payment", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, id:"next-button", style: "position: absolute; right: 20px; top: 600px;" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No scheduled transactions found.</p>
+  <% end %>
+</div>
+
+<div class="whitespace"></div>
+
+<%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path(
+            scheduled_transaction: { 
+              name: "", 
+              amount: ""
+            }
+          ), style: 'margin-left: 80px;' %>

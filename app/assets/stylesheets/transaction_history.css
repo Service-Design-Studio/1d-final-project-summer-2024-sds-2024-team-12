@@ -3,7 +3,10 @@
 }
 .transaction-history-header{
     background-color: rgb(255, 255, 255);
-    padding: 10px;
+    font-size:18px;
+    margin-left: 18px;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -12,10 +15,13 @@
     width: 100%;
 }
 
-.textcontainer1{
+.textcontainer1 {
     display: flex;
     justify-content: flex-end;
-}
+    width: 100%; /* Ensure it takes full width */
+    /* box-sizing: border-box; Include padding and border in the width */
+  }
+  
 
 
 .transaction-name {
@@ -34,3 +40,20 @@
     margin-bottom: 10px;
   }
   
+  .sgdhistory {
+    font-family: 'Lato';
+    font-size: 14px;
+    font-weight: bold;
+    color: #A3A3A3;
+    text-align: right;
+    padding-right: 1vw;
+    }
+    
+.moneyhistory {
+    font-family: 'Lato';
+    font-size: 20px;
+    font-weight: bold;
+    color: #444444;
+    text-align: right;
+    padding-right: 5vw;
+    }
