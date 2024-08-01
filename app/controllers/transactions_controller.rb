@@ -1,3 +1,4 @@
+require_dependency 'vertex_ai_service'
 class TransactionsController < ApplicationController
   before_action :set_current_user
   before_action :check_if_user
@@ -123,11 +124,12 @@ def search_suggestions
   path = params[:path].strip.downcase
 
   case path
-  when /local transfer limit|change limit|update limit|modify limit/
+  when /local transfer limit|change limit|update limit|modify limit|limit/
     redirect_to new_cardlimit_path
   else
-    vertex_ai = VertexAIService.new
-    @results = vertex_ai.predict(path, ENV['VERTEX_AI_ENDPOINT_ID'])
+    vertex_ai = VertexAiService.new
+    predictions = vertex_ai.predict(path, ENV['VERTEX_AI_ENDPOINT_ID'])
+    @results = predictions[:results]
 
     respond_to do |format|
       format.js { render partial: 'transactions/suggestions', locals: { results: @results } }
