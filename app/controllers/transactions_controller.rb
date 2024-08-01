@@ -1,3 +1,4 @@
+require_dependency 'openai_service'
 class TransactionsController < ApplicationController
   before_action :set_current_user
   before_action :check_if_user
@@ -119,17 +120,69 @@ class TransactionsController < ApplicationController
   def search_suggestions
     # No need for query handling here
     # Just handle routing based on the input value
+    # path = params[:path]
+
+    # case path
+    # when 'Local Transfer Limit'
+    #   redirect_to new_cardlimit_path
+    # else
+    #   process_nlp_command(path)
+    # end
+
     path = params[:path]
 
-    case path
-    when 'Local Transfer Limit'
+    if path.downcase.include?('local transfer limit')
       redirect_to new_cardlimit_path
     else
-      redirect_to root_path, alert: "Invalid path"
+      process_nlp_command(path)
     end
+
   end
 
   private
+
+  def process_nlp_command(query)
+    openai_service = OpenaiService.new
+    response = openai_service.generate_response("Extract name and amount from: #{query}")
+    
+    Rails.logger.info("Response from OpenAI: #{response}")
+
+    if response
+      name, amount = parse_response(response)
+      Rails.logger.info("Parsed name: #{name}, Parsed amount: #{amount}")
+
+      if name && amount
+        contact = Contact.find_by(name: name.strip)
+        Rails.logger.info("Contact found: #{contact.inspect}")
+
+        if contact
+          redirect_to new_transaction_path(name: contact.phone_number, amount: amount.strip)
+        else
+          Rails.logger.error("Contact not found for name: #{name.strip}")
+          redirect_to root_path, alert: "Contact not found"
+        end
+      else
+        Rails.logger.error("Failed to parse name and amount from response: #{response}")
+        redirect_to root_path, alert: "Failed to process the command"
+      end
+    else
+      Rails.logger.error("Failed to process the command: #{query}")
+      redirect_to root_path, alert: "Failed to process the command"
+    end
+  end
+
+
+  def parse_response(response)
+    # Improved regex to capture name and amount
+    match = response.match(/Name:\s*(\w+)\s*Amount:\s*(\d+)/i)
+    if match
+      [match[1], match[2]]
+    else
+      Rails.logger.error("Unexpected response format: #{response}")
+      [nil, nil]
+    end
+  end
+  
 
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction

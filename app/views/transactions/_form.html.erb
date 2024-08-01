@@ -45,7 +45,7 @@
         </div>
         <div class="horizontal-line"></div>
         <div class="recipienttext">
-          <%= form.text_field :name, placeholder: 'Recipient Name' %>
+          <%= form.text_field :name, placeholder: 'Recipient Name', value: params[:name] %>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
       <p class="currency">SGD</p>
     </div>
     <div class='num-right'>
-      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
+      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00', value: params[:amount] %>
     </div>
 
   </div>

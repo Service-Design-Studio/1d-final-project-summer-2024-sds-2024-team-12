@@ -48,7 +48,6 @@ document.addEventListener("turbo:load", () => {
   
   const paths = [
     { name: 'Local Transfer Limit', value: 'Local Transfer Limit' },
-    // { name: 'Change Limit', value: 'change_limit' }
     // Add more paths as needed
   ];
 
@@ -90,12 +89,8 @@ document.addEventListener("turbo:load", () => {
     darkOverlay.classList.remove('active');
   }
 
-  // Event listeners to expand and collapse the search bar
   searchInput.addEventListener('focus', expandSearchBar);
   searchInput.addEventListener('blur', collapseSearchBar);
-
-  // If you want to collapse the search bar when clicking outside of it
-  // darkOverlay.addEventListener('click', collapseSearchBar);
 
   if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
@@ -126,7 +121,3 @@ document.addEventListener("turbo:load", () => {
     searchForm.submit();
   });
 });
-
-
-
-
