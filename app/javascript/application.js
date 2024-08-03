@@ -118,11 +118,22 @@ document.addEventListener("turbo:load", () => {
     event.preventDefault();
     const query = searchInput.value;
     console.log('Query:', query);
-    const match = query.match(/(\w+)\s(\w+)\s(\d+)/i); // Capture any command format like "pay Nicole 100" or "give Nicole 100"
-    if (match) {
-      const action = match[1];
-      const name = match[2];
-      const amount = match[3];
+
+    const match1 = query.match(/(\w+)\s(\w+)\s(\d+)/i); // Match format like "pay Nicole 100"
+    const match2 = query.match(/(\w+)\s(\d+)\s(to|for)\s(\w+)/i); // Match format like "give 100 to Nicole"
+
+    let action, name, amount;
+    if (match1) {
+      action = match1[1];
+      name = match1[2];
+      amount = match1[3];
+    } else if (match2) {
+      action = match2[1];
+      amount = match2[2];
+      name = match2[4];
+    }
+
+    if (action && name && amount) {
       console.log('Action:', action, 'Name:', name, 'Amount:', amount);
       confirmationMessage.textContent = `This action will bring you to the paynow page. Are you sure you want to paynow ${name} ${amount} dollars?`;
       modal.style.display = 'block';
