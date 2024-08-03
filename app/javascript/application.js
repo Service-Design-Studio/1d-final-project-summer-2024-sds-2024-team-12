@@ -81,8 +81,23 @@ document.addEventListener("turbo:load", () => {
   const modal = document.getElementById('confirmation-modal');
   const closeButton = document.querySelector('.close-button');
 
+  const darkOverlay = document.getElementById('dark-overlay');
   const searchContainer = document.querySelector('.search-container');
 
+  let redirectPath = '';
+
+  function expandSearchBar() {
+    searchContainer.classList.add('search-bar-expanded');
+    darkOverlay.classList.add('active');
+  }
+
+  function collapseSearchBar() {
+    searchContainer.classList.remove('search-bar-expanded');
+    darkOverlay.classList.remove('active');
+  }
+
+  searchInput.addEventListener('focus', expandSearchBar);
+  searchInput.addEventListener('blur', collapseSearchBar);
 
   if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
@@ -135,11 +150,27 @@ document.addEventListener("turbo:load", () => {
 
     if (action && name && amount) {
       console.log('Action:', action, 'Name:', name, 'Amount:', amount);
-      confirmationMessage.textContent = `This action will bring you to the paynow page. Are you sure you want to paynow ${name} ${amount} dollars?`;
-      modal.style.display = 'block';
-      darkOverlay.style.display = 'block';
-      console.log('Modal displayed');
-      console.log('Overlay displayed');
+      
+      // Check if the contact exists in the database
+      fetch(`/check_contact?name=${name}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.exists) {
+            confirmationMessage.textContent = `This action will bring you to the paynow page. Are you sure you want to paynow ${name} ${amount} dollars?`;
+            redirectPath = `/search_suggestions?path=${encodeURIComponent(query)}`;
+          } else {
+            confirmationMessage.textContent = `This person is not within your existing paynow recipients, would you like to add a new recipient?`;
+            redirectPath = '/transactions/enter';
+          }
+          modal.style.display = 'block';
+          darkOverlay.style.display = 'block';
+          console.log('Modal displayed');
+          console.log('Overlay displayed');
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          searchForm.submit();
+        });
     } else {
       searchForm.submit();
     }
@@ -164,7 +195,6 @@ document.addEventListener("turbo:load", () => {
   // Confirm button click event
   confirmButton.addEventListener('click', () => {
     console.log('Confirm button clicked');
-    const query = searchInput.value;
-    window.location.href = `/search_suggestions?path=${encodeURIComponent(query)}`;
+    window.location.href = redirectPath;
   });
 });

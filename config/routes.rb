@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :cardlimit, only: [:new, :paynow, :adjusting]
   get 'search_suggestions', to: 'transactions#search_suggestions'
+  get 'check_contact', to: 'contacts#check'
 
 
   get '/cardlimit/paynow', to: 'cardlimit#paynow', as: 'cardlimit_paynow'
