@@ -118,25 +118,14 @@ class TransactionsController < ApplicationController
   # end
 
   def search_suggestions
-    # No need for query handling here
-    # Just handle routing based on the input value
-    # path = params[:path]
-
-    # case path
-    # when 'Local Transfer Limit'
-    #   redirect_to new_cardlimit_path
-    # else
-    #   process_nlp_command(path)
-    # end
-
     path = params[:path]
 
-    if path.downcase.include?('local transfer limit')
+    case path
+    when /limit/
       redirect_to new_cardlimit_path
     else
       process_nlp_command(path)
     end
-
   end
 
   private
