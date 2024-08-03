@@ -93,3 +93,33 @@
 .delete-tab:hover {
   color: #ff0000;
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: center; /* Center the .buttons container horizontally */
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  justify-content: space-between; /* Distributes space between the buttons and "OR" text */
+  width: 100%; /* Ensure the container takes full width */
+  max-width: 600px; /* Optionally set a maximum width to prevent it from stretching too wide */
+}
+
+.buttons .scheduleButton,
+.buttons .shortcut {
+  flex: 1; /* Allow both buttons to grow equally */
+  min-width: 120px; /* Set a minimum width for the buttons */
+  font-size: 14px; /* Font size for the button text */
+  text-align: center; /* Center text inside the buttons */
+  padding: 10px; /* Add padding inside the buttons */
+  margin: 0 10px; /* Space between the buttons and the "OR" text */
+}
+
+.buttons p {
+  margin: 0; /* Removes default margin for better alignment */
+  font-size: 12px; /* Font size for the "OR" text */
+  white-space: nowrap; /* Prevents the text from wrapping */
+}
