@@ -373,6 +373,9 @@
     }
     
     document.addEventListener("DOMContentLoaded", function () {
+      // Set to keep track of displayed tabs
+      const displayedTabs = new Set();
+      
       // Function to toggle the visibility of suggestion tabs
       function toggleSuggestionTabs() {
         const container = document.getElementById('suggestionTabContainer');
@@ -380,23 +383,23 @@
           container.classList.toggle('show');
         }
       }
-    
+      
       // Function to open a specific suggestion tab
       function openSuggestionTab(event, suggestionName) {
         // Hide all tab contents
         const tabContents = document.querySelectorAll('.suggestion-tabcontent');
         tabContents.forEach(content => content.classList.remove('active'));
-    
+      
         // Remove active class from all tab links
         const tabLinks = document.querySelectorAll('.suggestion-tablinks');
         tabLinks.forEach(link => link.classList.remove('active'));
-    
+      
         // Show the selected tab content and add active class to the clicked tab
         const selectedTab = document.getElementById(suggestionName);
         if (selectedTab) {
           selectedTab.classList.add('active');
         }
-    
+      
         if (event) {
           event.currentTarget.classList.add('active');
         } else {
@@ -406,42 +409,61 @@
             tabLink.classList.add('active');
           }
         }
-        // Reorder tabs so that the default suggestion tab is always on the right
-        reorderTabs();
+    
+        // Trigger the FAB button animation if the tab is new
+        if (!displayedTabs.has(suggestionName)) {
+          displayedTabs.add(suggestionName);
+          triggerFabAnimation();
+        }
+        
+        // Ensure visibility is updated
+        updateTabVisibility();
       }
-
+      
+      function triggerFabAnimation() {
+        const fabButton = document.querySelector('.fab');
+        if (fabButton) {
+          console.log('Triggering FAB animation'); // Debugging line
+          fabButton.classList.add('blink-and-shake');
+          setTimeout(() => {
+            fabButton.classList.remove('blink-and-shake');
+          }, 3000); // Duration for the animations
+        }
+      }
+      
+      // Handle FAB button click
+      function handleFabClick() {
+        toggleSuggestionTabs();
+        
+        // Reorder tabs to move the default tab (suggestion2) to the right
+        reorderTabs();
+        
+        // Show the leftmost tab after reordering
+        const firstTabLink = document.querySelector('.suggestion-tablinks:not([style*="display: none"])');
+        if (firstTabLink) {
+          const suggestionName = firstTabLink.getAttribute('data-tab');
+          openSuggestionTab(null, suggestionName);
+        }
+      }
+      
       // Function to reorder tabs, pushing the default tab (suggestion2) to the right
       function reorderTabs() {
         const defaultTabId = 'suggestion2';
         const tabsContainer = document.querySelector('.suggestion-tabs');
-    
-      // Find the default tab link and move it to the end
-      const defaultTabLink = document.querySelector(`.suggestion-tablinks[data-tab="${defaultTabId}"]`);
-      if (defaultTabLink) {
-        tabsContainer.appendChild(defaultTabLink);
+        
+        // Find the default tab link and move it to the end
+        const defaultTabLink = document.querySelector(`.suggestion-tablinks[data-tab="${defaultTabId}"]`);
+        if (defaultTabLink) {
+          tabsContainer.appendChild(defaultTabLink);
+        }
       }
-    }
-
-    
-      // Handle FAB button click
-      function handleFabClick() {
-      toggleSuggestionTabs();
-      // Reorder tabs to move the default tab (suggestion2) to the right
-      reorderTabs();
-      // Show the leftmost tab after reordering
-      const firstTabLink = document.querySelector('.suggestion-tablinks');
-      if (firstTabLink) {
-        const suggestionName = firstTabLink.getAttribute('data-tab');
-        openSuggestionTab(null, suggestionName);
-      }
-    }
-    
+      
       // Attach event listener to the FAB button
       const fabButton = document.querySelector('.fab');
       if (fabButton) {
         fabButton.addEventListener('click', handleFabClick);
       }
-    
+      
       // Handle click on suggestion tab links
       const tabLinks = document.querySelectorAll('.suggestion-tablinks');
       tabLinks.forEach(link => {
@@ -450,7 +472,7 @@
           openSuggestionTab(event, suggestionName);
         });
       });
-    
+      
       // Update visibility of tabs based on data-visible attribute
       function updateTabVisibility() {
         const suggestionTabs = document.querySelectorAll('.suggestion-tablinks');
@@ -462,7 +484,7 @@
           }
         });
       }
-    
+      
       // Initialize by updating tab visibility and showing the default tab
       updateTabVisibility();
       // Show the default tab, if any
@@ -471,6 +493,7 @@
         openSuggestionTab(null, 'suggestion2');
       }
     });
+    
     
     </script>
     
