@@ -174,7 +174,7 @@ class TransactionsController < ApplicationController
 
   def parse_response(response)
     # Improved regex to capture name and amount
-    match = response.match(/Name:\s*(\w+)\s*Amount:\s*(\d+)/i)
+    match = response.match(/Name: (\w+)\s+Amount: ([\d\.]+)/i)
     if match
       [match[1], match[2]]
     else

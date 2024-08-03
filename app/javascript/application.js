@@ -131,11 +131,15 @@ document.addEventListener("turbo:load", () => {
 
   searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const query = searchInput.value;
-    console.log('Query:', query);
+    let query = searchInput.value.trim();
+    console.log('Original Query:', query);
 
-    const match1 = query.match(/(\w+)\s(\w+)\s(\d+)/i); // Match format like "pay Nicole 100"
-    const match2 = query.match(/(\w+)\s(\d+)\s(to|for)\s(\w+)/i); // Match format like "give 100 to Nicole"
+    // Preprocess the query to strip dollar signs and handle decimals
+    query = query.replace(/\$/g, '').replace(/,/g, '');
+    console.log('Normalized Query:', query);
+
+    const match1 = query.match(/(\w+)\s(\w+)\s(\d+(\.\d+)?)/i); // Match format like "pay Nicole 100" or "pay Nicole 100.50"
+    const match2 = query.match(/(\w+)\s(\d+(\.\d+)?)\s(to|for)\s(\w+)/i); // Match format like "give 100 to Nicole" or "give 100.50 to Nicole"
 
     let action, name, amount;
     if (match1) {
@@ -147,7 +151,7 @@ document.addEventListener("turbo:load", () => {
       amount = match2[2];
       name = match2[4];
     }
-
+    
     if (action && name && amount) {
       console.log('Action:', action, 'Name:', name, 'Amount:', amount);
       
