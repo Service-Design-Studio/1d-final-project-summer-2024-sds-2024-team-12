@@ -20,7 +20,8 @@
 }
 
 .tab .tablinks.active, .suggestion-tab-container .suggestion-tablinks.active {
-  background-color: #ccc;
+  background-color: #e1e1e1;
+  border-bottom: 2px solid #ec3434; /* Horizontal line */
 }
 
 /* Tab Content Styles */
