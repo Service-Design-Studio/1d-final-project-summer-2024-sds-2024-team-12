@@ -75,3 +75,21 @@
 .suggestion-tabs {
   display: flex;
 }
+
+.suggestion-tab {
+  display: flex;
+  align-items: center;
+}
+
+.delete-tab {
+  background-color: transparent;
+  border: none;
+  color: #ec3434;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-tab:hover {
+  color: #ff0000;
+}

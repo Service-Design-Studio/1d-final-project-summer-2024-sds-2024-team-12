@@ -270,66 +270,74 @@
           <button class="suggestion-tablinks" onclick="openSuggestionTab(event, 'suggestion3')"><%= image_tag("lightbulbred.png", alt: 'lightbulbred', style: "width: 30px; height: 30px;") %></button>
         </div>
     
-        <div id="suggestion1" class="suggestion-tabcontent">
-        <!-- Suggestion 1 Content -->
-        <div class="suggestion-content">
-          <% if @frequent_transactions_with_dates.any? %>
-            <% @frequent_transactions_with_dates.each_with_index do |transaction, index| %>
-              <h3>Hello! We have a suggestion for you:</h3>
-              <p>We noticed you paid <%= transaction[:name] %> <%= number_to_currency(transaction[:amount], unit: 'SGD ', precision: 2) %> on these dates and times:</p>
-              <ul class="transaction-details-date">
-                <% transaction[:dates].each do |date| %>
-                  <li><%= date.strftime('%Y-%m-%d %H:%M') %></li>
-                <% end %>
-              </ul>
-              <div class="buttons">
-                <%= link_to "Schedule Payment", 
-                    new_scheduled_transaction_path(
-                      scheduled_transaction: { 
-                        name: transaction[:name], 
-                        amount: transaction[:amount] 
-                      }
-                    ), 
-                    class: 'scheduleButton', 
-                    id: "scheduleButton#{index}" %>
-      
-                <p> OR </p>
-      
-                <%= link_to "Make a Quick Shortcut", 
-                    new_shortcut_path(
-                      shortcut: { 
-                        recipient_name: transaction[:name],
-                        amount: transaction[:amount],
-                        nickname: ""
-                      }
-                    ), 
-                    class: 'shortcut', 
-                    id: "shortcut#{index}" %>
-              </div>
-            <% end %>
+     <div id="suggestion1" class="suggestion-tabcontent">
+      <!-- Suggestion 1 Content -->
+      <div class="suggestion-content" style="text-align: center;">
+        <% if @frequent_transactions_with_dates.any? %>
+          <% @frequent_transactions_with_dates.each_with_index do |transaction, index| %>
+            <h3 style="font-size: 25px;">Hello!</h3>
+            <p style="font-size: 20px;">
+              We noticed you paid 
+              <br>
+              <span style="font-size: 23px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;"><%= transaction[:name] %></span>
+              <span style="font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px;"><%= number_to_currency(transaction[:amount], unit: 'SGD ', precision: 2) %></span>
+              <br>
+              <p>on these dates and times:</p>
+            </p>
+            <ul class="transaction-details-date" style="font-size: 10px;">
+              <% transaction[:dates].each do |date| %>
+                <li><%= date.strftime('%Y-%m-%d %H:%M') %></li>
+              <% end %>
+            </ul>
+            <div class="buttons">
+              <%= link_to "Schedule Payment", 
+                  new_scheduled_transaction_path(
+                    scheduled_transaction: { 
+                      name: transaction[:name], 
+                      amount: transaction[:amount] 
+                    }
+                  ), 
+                  class: 'scheduleButton', 
+                  id: "scheduleButton#{index}" %>
+
+              <p style="font-size: 12px;"> OR </p>
+
+              <%= link_to "Make a Quick Shortcut", 
+                  new_shortcut_path(
+                    shortcut: { 
+                      recipient_name: transaction[:name],
+                      amount: transaction[:amount],
+                      nickname: ""
+                    }
+                  ), 
+                  class: 'shortcut', 
+                  id: "shortcut#{index}" %>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
-      
-      <div id="suggestion2" class="suggestion-tabcontent">
-        <h3>Hello! We have a suggestion for you:</h3>
-        <p>We noticed that you are in Thailand!</p>
-        <p>Consider using Promptpay for mobile payments to Thai numbers today:</p>
-        <div class="buttons">
-          <a href="/promptpay" class="scheduleButton">Proceed to Promptpay</a>
-        </div>
+    </div>
+
+    <div id="suggestion2" class="suggestion-tabcontent">
+      <h3 style="font-size: 14px;">Hello! We have a suggestion for you:</h3>
+      <p style="font-size: 12px;">We noticed that you are in Thailand!</p>
+      <p style="font-size: 12px;">Consider using Promptpay for mobile payments to Thai numbers today:</p>
+      <div class="buttons">
+        <a href="/promptpay" class="scheduleButton" style="font-size: 12px;">Proceed to Promptpay</a>
       </div>
-      
-      <div id="suggestion3" class="suggestion-tabcontent">
+    </div>
+
+    <div id="suggestion3" class="suggestion-tabcontent">
       <% if @close_transactions.any? %>
-        <h3>Hello! We have a suggestion for you:</h3>
-        <p>We notice you have been making payments nearing your card limit of SGD 500.</p>
-        <p>Consider increasing your card limit to manage your spending:</p>
+        <h3 style="font-size: 14px;">Hello! We have a suggestion for you:</h3>
+        <p style="font-size: 12px;">We notice you have been making payments nearing your card limit of SGD 500.</p>
+        <p style="font-size: 12px;">Consider increasing your card limit to manage your spending:</p>
         <div class='buttons'>
-          <a href="/cardlimit/new" class="scheduleButton">Change my card limit</a>
+          <a href="/cardlimit/new" class="scheduleButton" style="font-size: 12px;">Change my card limit</a>
         </div>
       <% end %>
     </div>
+
     
       
       
@@ -378,6 +386,17 @@
       document.getElementById(suggestionId).style.display = 'block';
       evt.currentTarget.classList.add('active');
     }
+
+    function deleteSuggestion(suggestionId) {
+    var suggestionTab = document.getElementById(suggestionId);
+    if (suggestionTab) {
+      suggestionTab.remove();
+    }
+    var suggestionLink = document.querySelector(`[onclick="openSuggestionTab(event, '${suggestionId}')"]`).parentElement;
+    if (suggestionLink) {
+      suggestionLink.remove();
+    }
+  }
   
     // Initialize with the first tab's content visible
     document.addEventListener('DOMContentLoaded', function() {
