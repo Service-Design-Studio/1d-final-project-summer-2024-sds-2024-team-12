@@ -351,32 +351,38 @@
     
     function toggleSuggestionTabs() {
       var suggestionTabContainer = document.getElementById("suggestionTabContainer");
-      suggestionTabContainer.style.display = (suggestionTabContainer.style.display === "block") ? "none" : "block";
+      var suggestionTabLinks = document.querySelectorAll('.suggestion-tablinks');
+  
+      if (suggestionTabContainer.style.display === "block") {
+        suggestionTabContainer.style.display = "none";
+      } else {
+        suggestionTabContainer.style.display = "block";
+        if (suggestionTabLinks.length > 0) {
+          openSuggestionTab({ currentTarget: suggestionTabLinks[0] }, 'suggestion1');
+        }
+      }
     }
-    
+  
     function openSuggestionTab(evt, suggestionId) {
       var suggestionContents = document.querySelectorAll('.suggestion-tabcontent');
       var suggestionLinks = document.querySelectorAll('.suggestion-tablinks');
-
+  
       suggestionContents.forEach(function(content) {
         content.style.display = 'none';
       });
-
+  
       suggestionLinks.forEach(function(link) {
         link.classList.remove('active');
       });
-
+  
       document.getElementById(suggestionId).style.display = 'block';
       evt.currentTarget.classList.add('active');
     }
-
-    
+  
     // Initialize with the first tab's content visible
     document.addEventListener('DOMContentLoaded', function() {
-      showTab('accounts'); // Adjusted to match the IDs used in the HTML
       openSuggestionTab({ currentTarget: document.querySelector('.suggestion-tablinks') }, 'suggestion1');
     });
-    
 
     </script>
     
