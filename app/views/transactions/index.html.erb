@@ -406,7 +406,22 @@
             tabLink.classList.add('active');
           }
         }
+        // Reorder tabs so that the default suggestion tab is always on the right
+        reorderTabs();
       }
+
+      // Function to reorder tabs, pushing the default tab (suggestion2) to the right
+      function reorderTabs() {
+        const defaultTabId = 'suggestion2';
+        const tabsContainer = document.querySelector('.suggestion-tabs');
+    
+      // Find the default tab link and move it to the end
+      const defaultTabLink = document.querySelector(`.suggestion-tablinks[data-tab="${defaultTabId}"]`);
+      if (defaultTabLink) {
+        tabsContainer.appendChild(defaultTabLink);
+      }
+    }
+
     
       // Handle FAB button click
       function handleFabClick() {
