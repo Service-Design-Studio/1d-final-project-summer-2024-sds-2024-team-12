@@ -321,27 +321,32 @@
       </div>
     </div>
 
-    <div id="suggestion2" class="suggestion-tabcontent" style="text-align: center;>
-      <h3 style="font-size: 25px;">Hello!</h3>
-      <p style="font-size: 20px;">We noticed that you are in</p>
-      <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">Thailand</p>
-      <p style="font-size: 20px;">Consider using</p>
-      <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">Promptpay</p>
-      <p style="font-size: 20px;">for mobile payments to Thai numbers today:</p>
-      <div class="buttons">
-        <a href="/promptpay" class="scheduleButton" style="font-size: 20px; margin-bottom: 20px;">Proceed to Promptpay</a>
+    <div id="suggestion2" class="suggestion-tabcontent">
+      <div class="suggestion-content" style="text-align: center;">
+        <h3 style="font-size: 25px;">Hello!</h3>
+        <p style="font-size: 20px;">We noticed that you are in</p>
+        <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">Thailand</p>
+        <p style="font-size: 20px;">Consider using</p>
+        <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">Promptpay</p>
+        <p style="font-size: 20px;">for mobile payments to Thai numbers today:</p>
+        <div class="buttons">
+          <a href="/promptpay" class="scheduleButton" style="font-size: 20px; margin-bottom: 20px;">Proceed to Promptpay</a>
+        </div>
       </div>
     </div>
     
     <div id="suggestion3" class="suggestion-tabcontent">
-      <% if @close_transactions.any? %>
-        <h3 style="font-size: 14px;">Hello! We have a suggestion for you:</h3>
-        <p style="font-size: 12px;">We notice you have been making payments nearing your card limit of SGD 500.</p>
-        <p style="font-size: 12px;">Consider increasing your card limit to manage your spending:</p>
-        <div class='buttons'>
-          <a href="/cardlimit/new" class="scheduleButton" style="font-size: 12px;">Change my card limit</a>
-        </div>
-      <% end %>
+      <div class="suggestion-content" style="text-align: center;">
+        <% if @close_transactions.any? %>
+          <h3 style="font-size: 25px;">Hello!</h3>
+          <p style="font-size: 18px;">You have been making payments nearing your card limit of</p>
+          <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">SGD 500</p>
+          <p style="font-size: 18px;">Consider increasing your card limit to manage your spending:</p>
+          <div class='buttons'>
+            <a href="/cardlimit/new" class="scheduleButton" style="font-size: 20px; margin-bottom: 20px;">Change my card limit</a>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     
