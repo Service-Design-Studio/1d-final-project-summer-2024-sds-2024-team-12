@@ -76,21 +76,13 @@ document.addEventListener("turbo:load", () => {
   const searchInput = document.getElementById('search-input');
   const voiceButton = document.getElementById('voice-button');
 
-  const darkOverlay = document.getElementById('dark-overlay');
+  const confirmButton = document.getElementById('confirm-button');
+  const confirmationMessage = document.getElementById('confirmation-message');
+  const modal = document.getElementById('confirmation-modal');
+  const closeButton = document.querySelector('.close-button');
+
   const searchContainer = document.querySelector('.search-container');
 
-  function expandSearchBar() {
-    searchContainer.classList.add('search-bar-expanded');
-    darkOverlay.classList.add('active');
-  }
-
-  function collapseSearchBar() {
-    searchContainer.classList.remove('search-bar-expanded');
-    darkOverlay.classList.remove('active');
-  }
-
-  searchInput.addEventListener('focus', expandSearchBar);
-  searchInput.addEventListener('blur', collapseSearchBar);
 
   if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
@@ -117,7 +109,51 @@ document.addEventListener("turbo:load", () => {
     console.warn('Speech recognition not supported in this browser.');
   }
   
-  searchIcon.addEventListener('click', () => {
-    searchForm.submit();
+  searchIcon.addEventListener('click', (event) => {
+    event.preventDefault();
+    searchForm.dispatchEvent(new Event('submit'));
+  });
+
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = searchInput.value;
+    console.log('Query:', query);
+    const match = query.match(/(\w+)\s(\w+)\s(\d+)/i); // Capture any command format like "pay Nicole 100" or "give Nicole 100"
+    if (match) {
+      const action = match[1];
+      const name = match[2];
+      const amount = match[3];
+      console.log('Action:', action, 'Name:', name, 'Amount:', amount);
+      confirmationMessage.textContent = `This action will bring you to the paynow page. Are you sure you want to paynow ${name} ${amount} dollars?`;
+      modal.style.display = 'block';
+      darkOverlay.style.display = 'block';
+      console.log('Modal displayed');
+      console.log('Overlay displayed');
+    } else {
+      searchForm.submit();
+    }
+  });
+
+  // Close the modal when the close button is clicked
+  closeButton.onclick = () => {
+    modal.style.display = 'none';
+    darkOverlay.style.display = 'none';
+    console.log('Modal closed');
+  };
+
+  // Close the modal when clicking outside of it
+  window.onclick = (event) => {
+    if (event.target == darkOverlay) {
+      modal.style.display = 'none';
+      darkOverlay.style.display = 'none';
+      console.log('Modal closed by clicking outside');
+    }
+  };
+
+  // Confirm button click event
+  confirmButton.addEventListener('click', () => {
+    console.log('Confirm button clicked');
+    const query = searchInput.value;
+    window.location.href = `/search_suggestions?path=${encodeURIComponent(query)}`;
   });
 });
