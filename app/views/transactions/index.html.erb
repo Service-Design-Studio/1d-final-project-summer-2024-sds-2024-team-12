@@ -425,9 +425,16 @@
     
       // Handle FAB button click
       function handleFabClick() {
-        toggleSuggestionTabs();
-        openSuggestionTab(null, 'suggestion2');
+      toggleSuggestionTabs();
+      // Reorder tabs to move the default tab (suggestion2) to the right
+      reorderTabs();
+      // Show the leftmost tab after reordering
+      const firstTabLink = document.querySelector('.suggestion-tablinks');
+      if (firstTabLink) {
+        const suggestionName = firstTabLink.getAttribute('data-tab');
+        openSuggestionTab(null, suggestionName);
       }
+    }
     
       // Attach event listener to the FAB button
       const fabButton = document.querySelector('.fab');
