@@ -79,7 +79,9 @@ document.addEventListener("turbo:load", () => {
   const confirmButton = document.getElementById('confirm-button');
   const confirmationMessage = document.getElementById('confirmation-message');
   const modal = document.getElementById('confirmation-modal');
-  const closeButton = document.querySelector('.close-button');
+  const noContactModal = document.getElementById('no-contact-modal');
+  const noContactMessage = document.getElementById('no-contact-message');
+  const closeButton = document.querySelectorAll('.search-close-button');
 
   const darkOverlay = document.getElementById('dark-overlay');
   const searchContainer = document.querySelector('.search-container');
@@ -117,13 +119,13 @@ document.addEventListener("turbo:load", () => {
     };
 
     recognition.onerror = (event) => {
-      console.error(event.error);
+      console.error('Speech recognition error:', event.error);
       voiceButton.classList.remove('recording');
     };
   } else {
     console.warn('Speech recognition not supported in this browser.');
   }
-  
+
   searchIcon.addEventListener('click', (event) => {
     event.preventDefault();
     searchForm.dispatchEvent(new Event('submit'));
@@ -150,7 +152,7 @@ document.addEventListener("turbo:load", () => {
       action = match2[1];
       amount = match2[2];
       name = match2[4];
-    }
+    } 
     
     if (action && name && amount) {
       console.log('Action:', action, 'Name:', name, 'Amount:', amount);
@@ -162,12 +164,13 @@ document.addEventListener("turbo:load", () => {
           if (data.exists) {
             confirmationMessage.textContent = `This action will bring you to the paynow page. Are you sure you want to paynow ${name} ${amount} dollars?`;
             redirectPath = `/search_suggestions?path=${encodeURIComponent(query)}`;
+            modal.style.display = 'block';
+            darkOverlay.style.display = 'block';
           } else {
-            confirmationMessage.textContent = `This person is not within your existing paynow recipients, would you like to add a new recipient?`;
-            redirectPath = '/transactions/enter';
+            noContactMessage.textContent = `This person is not within your existing paynow recipients. Please add the recipient.`;
+            noContactModal.style.display = 'block';
+            darkOverlay.style.display = 'block';
           }
-          modal.style.display = 'block';
-          darkOverlay.style.display = 'block';
           console.log('Modal displayed');
           console.log('Overlay displayed');
         })
@@ -181,16 +184,20 @@ document.addEventListener("turbo:load", () => {
   });
 
   // Close the modal when the close button is clicked
-  closeButton.onclick = () => {
-    modal.style.display = 'none';
-    darkOverlay.style.display = 'none';
-    console.log('Modal closed');
-  };
+  closeButton.forEach(button => {
+    button.onclick = () => {
+      modal.style.display = 'none';
+      noContactModal.style.display = 'none';
+      darkOverlay.style.display = 'none';
+      console.log('Modal closed');
+    };
+  });
 
   // Close the modal when clicking outside of it
   window.onclick = (event) => {
     if (event.target == darkOverlay) {
       modal.style.display = 'none';
+      noContactModal.style.display = 'none';
       darkOverlay.style.display = 'none';
       console.log('Modal closed by clicking outside');
     }

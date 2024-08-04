@@ -4128,7 +4128,7 @@ input:focus {
 
 
 /* for search bar modal */
-.modal {
+.search-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1000; /* Sit on top of other elements */
@@ -4141,7 +4141,7 @@ input:focus {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal-content {
+.search-modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 10px 20px 20px 20px; /* Reduced top padding to bring the close button closer */
@@ -4150,11 +4150,11 @@ input:focus {
   position: relative; /* Ensure it is positioned relative to the modal */
 }
 
-.modal-body {
+.search-modal-body {
   margin: 10px 0; /* Reduced margin for the text */
 }
 
-.confirm-button {
+.search-confirm-button {
   background-color: red;
   color: white;
   padding: 10px 20px;
@@ -4164,7 +4164,7 @@ input:focus {
   font-size: 16px; /* Adjust button text size */
 }
 
-.close-button {
+.search-close-button {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -4173,8 +4173,13 @@ input:focus {
   margin-right: -10px; /* Adjusted to bring closer to the edge */
 }
 
-.close-button:hover,
-.close-button:focus {
+.search-close-button:hover,
+.search-close-button:focus {
   color: black;
   text-decoration: none;
+}
+
+
+#no-contact-message {
+  margin-top: 40px; /* Adjust this value to move the text down */
 }

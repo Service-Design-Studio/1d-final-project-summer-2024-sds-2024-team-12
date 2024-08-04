@@ -132,7 +132,7 @@ class TransactionsController < ApplicationController
 
   def process_nlp_command(query)
     openai_service = OpenaiService.new
-    response = openai_service.generate_response("Extract name and amount from: #{query}")
+    response = openai_service.generate_response("Convert any words representing numbers in the sentence into numbers.Give the response in this format:/Name: (\w+)\s+Amount: ([\d\.]+)/i. Extract name and amount from: #{query}")
     
     Rails.logger.info("Response from OpenAI: #{response}")
 
