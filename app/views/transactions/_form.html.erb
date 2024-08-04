@@ -37,6 +37,7 @@
         <div class="account-number">
           <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;">271xxxxxxx0</p>
           <p class="text-right" style="margin-left: 100px;">SGD 29,891</p>
+
         </div>
       </div>
       <div class="horizontal-line"></div>
@@ -54,7 +55,7 @@
       <p class="currency">SGD</p>
     </div>
     <div class='num-right'>
-      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
+      <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00', value: params[:amount] %>
     </div>
   </div>
 

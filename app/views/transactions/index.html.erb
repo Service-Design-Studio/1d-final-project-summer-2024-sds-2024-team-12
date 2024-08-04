@@ -30,13 +30,39 @@
             </div>
             <div class="rightcontainer">
 
-              <% if Current.user %>
-              <%= Current.user.phone %>
+              <div class="search-bar-home">
+              <%= form_with url: search_suggestions_path, method: :get, local: true, id: 'search-form' do |form| %>
+                <div class="search-container" id="search-container">
+                  <%= form.text_field :path, placeholder: "Search for...", value: params[:path], class: 'search-input', id: 'search-input'  %>
+                  <%= image_tag 'voice.png', class: 'voice-icon', id: 'voice-button' %>
+                  <%= image_tag 'search.png', class: 'search-icon', id: 'search-icon' %>
+                </div>
               <% end %>
+              <div id="suggestions-container" class="suggestions-container"></div>
+              <div class="dark-overlay" id="dark-overlay"></div>
+            </div>
 
-              <button class="transparent">
-                <%= image_tag('help.png', class: 'help') %>
-              </button>
+            <!-- Modal HTML -->
+            <div id="confirmation-modal" class="search-modal">
+              <div class="search-modal-content">
+                <span class="search-close-button">&times;</span>
+                <div class="search-modal-body">
+                  <p id="confirmation-message"></p>
+                </div>
+                <button id="confirm-button" class="search-confirm-button">YES</button>
+              </div>
+            </div>
+
+            <div id="no-contact-modal" class="search-modal">
+              <div class="search-modal-content">
+                <span class="search-close-button">&times;</span>
+                <p id="no-contact-message"></p>
+              </div>
+            </div>
+
+
+
+            
               
               <div class="logoutContainer">
                 <%= button_to logout_path, method: :delete, class: "transparent" do %>
@@ -44,7 +70,11 @@
                 <% end %>
               </div>
             </div>
+            
+
           </div>
+
+          
 
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -60,6 +90,7 @@
           </div>
         </div>
         <div class="containertwo">
+          
           <p class="text">Smart Shortcuts</p>
           <%= image_tag('settingicon.jpg', class: 'setting') %>
         </div>
@@ -255,9 +286,11 @@
 
     
   <div class="fab-container">
+
     <div class="fab shadow" onclick="toggleSuggestionTabs()">
       <div class="fab-content">
         <%= image_tag("lightbulb1.png", alt: 'lightbulb1', style: "width: 40px; height: 40px;") %>
+
       </div>
     </div>
   </div>
