@@ -1,57 +1,52 @@
-<%= form_with(model: @transaction, local: true) do |form| %>
-    <% if @transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+<%= form_with(model: @transaction, local: true, html: { id: 'transaction-form' }) do |form| %>
 
-      <ul>
-        <% @transaction.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <!-- HTML for the error_popup/modal -->
+  <div id="error_popup" class="error_popup hidden">
+    <div class="error_popup-content">
+      <p style="font-weight: bold">Enter an amount to pay</p>
+        <p style="font-size: 18px">How much do you want to pay? Let us know.</p>
+        <hr style="height: 1px solid grey;">
+      <button class="error_popup-ok-button" id="error_popup-ok-button">OK</button>
     </div>
-  <% end %>
+  </div>
 
-    <header>
-      <%= link_to '<', enter_transaction_path, class: 'back-button' %>
-      <h1 class = "paynow-header">PayNow to Mobile</h1>
-    </header>
+  <header>
+    <%= link_to '<', enter_transaction_path, class: 'back-button' %>
+    <h1 class="paynow-header">PayNow to Mobile</h1>
+  </header>
 
-  <%# <div class="whitespace" style="background-color: #f1f2f4;"></div> %>
-
-  
   <div class="header-content">
-      <div class="left-container">
-        <div class="circle-container">
-          <div class="circle-icon">
-            <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
-          </div>
-        </div>
-        <div class="arrow-gif-container">
-          <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
-        </div>
-        <div class="circle-container">
-          <div class="circle-icon">
-            <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
-          </div>
+    <div class="left-container">
+      <div class="circle-container">
+        <div class="circle-icon">
+          <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
         </div>
       </div>
-      <div class="right-container">
-        <div class="myaccounttext">
-          <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
-          <div class="account-number">
-            <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;">271xxxxxxx0</p>
-            <p class="text-right" style="margin-left: 100px;">SGD 29,891</p>
-          </div>
-        </div>
-        <div class="horizontal-line"></div>
-        <div class="recipienttext">
-          <%= form.text_field :name, placeholder: 'Recipient Name' %>
+      <div class="arrow-gif-container">
+        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+      </div>
+      <div class="circle-container">
+        <div class="circle-icon">
+          <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
         </div>
       </div>
     </div>
+    <div class="right-container">
+      <div class="myaccounttext">
+        <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
+        <div class="account-number">
+          <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;">271xxxxxxx0</p>
+          <p class="text-right" style="margin-left: 100px;">SGD 29,891</p>
+        </div>
+      </div>
+      <div class="horizontal-line"></div>
+      <div class="recipienttext">
+        <%= form.text_field :name, placeholder: 'Recipient Name' %>
+      </div>
+    </div>
+  </div>
 
-
-  <div class="whitespace"></div>
+  <div class="whitespace1"></div>
 
   <div class="moneybody">
     <div class='num-left'>
@@ -61,10 +56,8 @@
     <div class='num-right'>
       <%= form.number_field :amount, class: 'amount-field', placeholder: '0.00' %>
     </div>
-
   </div>
 
-  <body>
   <div class="grey-box">
     <div class="group">
       <div class='num-left'>Authorised</div>
@@ -79,7 +72,7 @@
       <div class='num-left' style='font-size: 15px; padding-bottom:15px;'>TRANSFER DETAILS</div>
     </div>
     <div class="transfer-details">
-    <div class='num-left' style='font-size: 18px;'>Add comments for Recipient</div>
+      <div class='num-left' style='font-size: 18px;'>Add comments for Recipient</div>
       <%= form.text_field :comments, placeholder: "PayNow Transfer" %>
     </div>
     <div class="terms">
@@ -89,6 +82,4 @@
       <%= form.submit "NEXT", id: "next-button" %>
     </div>
   </div>
-<%end%>
-</body>
-          
+<% end %>
