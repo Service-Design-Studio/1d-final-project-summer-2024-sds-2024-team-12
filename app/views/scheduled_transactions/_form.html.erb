@@ -1,4 +1,4 @@
-<%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path) do |form| %>
+<%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path, id: 'transaction-form') do |form| %>
   
   <div class="header-content">
       <div class="left-container">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
- <div class="whitespace"></div>
+ <div class="whitespace1"></div>
 
  <div class="moneybody">
   <div class='num-left'>
@@ -41,7 +41,7 @@
   <div class='num-right'>
     <%= form.number_field :amount, value: @frequent_transaction&.amount, class: 'amount-field', style: "margin-left: 50px;", placeholder: '0.00' %>
   </div>
-</div>
+ </div>
 
 <div class="grey-box">
     <div class="group">
@@ -81,11 +81,53 @@
     <div class="terms" style='margin-top: -5px;'>
       By tapping "Save", you agree to be bound by the Terms and Conditions.
     </div>
-    <div class="next-button">
-      <%= form.submit "SAVE", id: "next-button" %>
-    </div>
+
+  <div class="next-button">
+    <button type="button" id="submit-button">SAVE</button>
   </div>
-<%end%>
-</body>
 
+</div>
 
+<% end %>
+
+<!-- Popup HTML -->
+<div id="confirmation-popup">
+  <div id ="confirmation-popup-content">
+  <span id="popup-close" aria-label="Close">&times;</span>
+  <p id="reminder">Ensure that you have sufficient funds in your bank account before the scheduled start date!</p>
+  <button id="confirm-yes">YES</button>
+  </div>
+</div>
+
+<script> 
+document.addEventListener('turbo:load', function() {
+  const form = document.getElementById('transaction-form');
+  const saveButton = document.getElementById('submit-button');
+  const popup = document.getElementById('confirmation-popup');
+  const confirmYes = document.getElementById('confirm-yes');
+  const popupClose = document.getElementById('popup-close');
+
+  saveButton.addEventListener('click', function(event) {
+    // Prevent immediate form submission
+    event.preventDefault();
+
+    // Show the confirmation popup
+    popup.style.display = 'block';
+  });
+
+  confirmYes.addEventListener('click', function() {
+    // Hide the popup
+    popup.style.display = 'none';
+    
+    // Submit the form programmatically
+    form.submit();
+  });
+
+  popupClose.addEventListener('click', function() {
+    // Hide the popup
+    popup.style.display = 'none';
+  });
+
+});
+
+</script>

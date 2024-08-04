@@ -42,6 +42,10 @@ document.addEventListener('turbo:load', (event) => {
 });
 
 
+document.addEventListener('turbo:load', (event) => {
+  var stopShowingButtons = document.querySelectorAll('.stopShowingButton');
+});
+
 document.addEventListener("turbo:load", () => {
   const pathInput = document.querySelector('input[name="path"]');
   const suggestionsContainer = document.getElementById('suggestions-container');
@@ -207,5 +211,42 @@ document.addEventListener("turbo:load", () => {
   confirmButton.addEventListener('click', () => {
     console.log('Confirm button clicked');
     window.location.href = redirectPath;
+
   });
+});
+
+document.addEventListener('turbo:load', function() {
+  const form = document.getElementById('transaction-form');
+  const errorPopup = document.getElementById('error_popup');
+  const errorPopupOkButton = document.getElementById('error_popup-ok-button');
+  
+  let okButtonClicked = false; // Flag to track OK button click
+
+  // Show the popup if there are validation errors
+  form.addEventListener('submit', function(event) {
+    const amountField = form.querySelector('input[name="transaction[amount]"]');
+    const amount = parseFloat(amountField.value);
+    
+
+    if (isNaN(amount) || amount <= 0) {
+      event.preventDefault(); // Prevent form submission
+      if (!okButtonClicked) { // Show popup only if OK button hasn't been clicked
+        errorPopup.classList.remove('hidden');
+        console.log('Popup shown:', errorPopup.classList); // Log class list
+      }
+    } else {
+      // If amount is valid and OK button was clicked previously, hide the popup
+      errorPopup.classList.add('hidden');
+      console.log('Popup hidden:', errorPopup.classList); // Log class list
+    }
+  });
+
+  // Hide the popup when the OK button is clicked
+  errorPopupOkButton.addEventListener('click', function() {
+    console.log('OK button clicked');
+    errorPopup.classList.add('hidden');
+    okButtonClicked = true; // Set flag to true when OK button is clicked
+    console.log('Popup hidden:', errorPopup.classList); // Log class list
+    
+      });
 });
