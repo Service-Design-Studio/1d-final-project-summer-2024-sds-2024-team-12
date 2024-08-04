@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<div class="whitespace"></div>
+<div class="whitespace1"></div>
 
 <div class="moneybody">
   <div class='num-left'>
@@ -50,8 +50,8 @@
 </div>
 
 <div class="grey-box">
-  <div class="field" style="margin-left: 20px;">
-    <div class="whitespace"></div>
+  <div class="field" style="margin-left: 20px; padding-top:10px;">
+    <%# <div class="whitespace"></div> %>
     <%= form.label :nickname, "Shortcut Name" %>
     <%= form.text_field :nickname, 
                         value: params.dig(:shortcut, :nickname), 
@@ -100,7 +100,7 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   var nicknameField = document.querySelector('input[name="shortcut[nickname]"]');
   var charCount = document.getElementById('char-count');
   charCount.textContent = nicknameField.value.length;

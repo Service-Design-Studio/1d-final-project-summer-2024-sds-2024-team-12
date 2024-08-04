@@ -9,7 +9,7 @@ import "controllers"
 //= require_tree .
 
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('turbo:load', (event) => {
   
   var setupButtons = document.querySelectorAll('[id^="setupButton"]');
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('turbo:load', (event) => {
   var stopShowingButtons = document.querySelectorAll('.stopShowingButton');
 
   stopShowingButtons.forEach((stopShowingButton, index) => {
@@ -106,7 +106,7 @@ function getInitials(name) {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   const form = document.getElementById('transaction-form');
   const errorPopup = document.getElementById('error_popup');
   const errorPopupOkButton = document.getElementById('error_popup-ok-button');

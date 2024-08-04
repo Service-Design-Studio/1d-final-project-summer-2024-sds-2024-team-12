@@ -14,7 +14,7 @@
           <p><span class="transaction-label">Start Date:</span> <span class="transaction-value"><%= transaction.start_date %></span></p>
           <p><span class="transaction-label">Frequency:</span> <span class="transaction-value"><%= transaction.frequency.capitalize %></span></p>
         </div>
-        <%= button_to "Delete Scheduled Payment", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, id:"next-button", style: "position: absolute; right: 20px; top: 600px;" %>
+        <%= button_to "Delete Scheduled Payment", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     <% end %>
   <% else %>

@@ -82,7 +82,7 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("turbo:load", function() {
     // Check if flash[:suggestion_created] is true and show the popup
     if (<%= flash[:suggestion_created] ? 'true' : 'false' %>) {
       var popup = document.getElementById("popupshow");
@@ -101,6 +101,7 @@
     }
   });
 </script>
+
 
 <% end %>
 

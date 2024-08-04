@@ -372,7 +372,7 @@
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
     
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("turbo:load", function () {
       // Set to keep track of displayed tabs
       const displayedTabs = new Set();
       
