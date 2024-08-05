@@ -22,7 +22,7 @@ COPY . .
 
 RUN chmod +x /app/bin/rails
 
-# Set environment variables
+
 ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
 ENV RAILS_LOG_TO_STDOUT=true
