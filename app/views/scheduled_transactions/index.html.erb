@@ -1,32 +1,32 @@
-<div class="scheduled-transactions">
-  <%= link_to '<', back_button_path, class: 'back-button' %>
-
-
+<header>
+  <%= link_to '<', root_path, class: 'back-button' %>
+  <h1 class="paynow-header">Scheduled Transactions</h1>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</header>
   
-  <h1 class="scheduled-transactions-header">Scheduled Transactions</h1>
-  <%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path(
-                scheduled_transaction: { 
-                  name: "", 
-                  amount: ""
-                }
-              ) %>
 
-  <div>
-    <% if @scheduled_transactions.any? %>
-      <% @scheduled_transactions.each do |transaction| %>
-        <div class="transaction">
-          <p>Name: <%= transaction.name %></p>
-          <p>Amount: <%= number_to_currency(transaction.amount, unit: "SGD ", precision: 2) %></p>
-          <p>Start Date: <%= transaction.start_date %></p>
-          <p>Frequency: <%= transaction.frequency.capitalize %></p>
-          <%= button_to "Terminate", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: "red-button" %>
-
-
+  <% if @scheduled_transactions.any? %>
+    <% @scheduled_transactions.each do |transaction| %>
+      <div class="transaction">
+          <p><span class="transaction-label">Name:</span> <span class="transaction-value"><%= transaction.name %></span></p>
+          <p><span class="transaction-label">Amount:</span> <span class="transaction-value"><%= number_to_currency(transaction.amount, unit: "SGD ", precision: 2) %></span></p>
+          <p><span class="transaction-label">Start Date:</span> <span class="transaction-value"><%= transaction.start_date %></span></p>
+          <p><span class="transaction-label">Frequency:</span> <span class="transaction-value"><%= transaction.frequency.capitalize %></span></p>
         </div>
-        
-      <% end %>
-    <% else %>
-      <p>No scheduled transactions found.</p>
+        <%= button_to "Delete Scheduled Payment", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" } %>
+      </div>
     <% end %>
-  </div>
+  <% else %>
+    <p>No scheduled transactions found.</p>
+  <% end %>
 </div>
+
+<div class="whitespace"></div>
+
+<%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path(
+            scheduled_transaction: { 
+              name: "", 
+              amount: ""
+            }
+          ), style: 'margin-left: 80px;' %>

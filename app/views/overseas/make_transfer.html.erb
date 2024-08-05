@@ -1,50 +1,132 @@
-<h1>Overseas Transfer</h1>
+<%= form_with(model: @transaction, local: true, url: transactions_path) do |form| %>
 
-
-<div class="account-details">
-  <div class="circle-icon">
-    <%= image_tag('dbslogo.png', alt: 'DBS Logo', style: 'width: 24px; height: 24px;') %>
-  </div>
-  <div class="myaccounttext">
-    <p>My Account</p>
-    <p>271xxxxxxx0</p>
-  </div>
+  <header>
+    <%= link_to '<', back_button_path, class: 'back-button' %>
+    <h1 class = "paynow-header">Overseas Transfer</h1>
+  </header>
   
+  <%= form.hidden_field :name, value: @recipient.full_name %>
 
+<%# <div class="whitespace" style="background-color: #f1f2f4;"></div> %>
 
-  <div class="recipient-account">
-    <div class="circle-icon">
-      <span class="initials"><%= @recipient.initials %></span>
+<div class="header-content">
+    <div class="left-container">
+      <div class="circle-container">
+        <div class="circle-icon">
+          <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+        </div>
+      </div>
+      <div class="arrow-gif-container">
+        <%= image_tag('gif.gif', alt: 'Moving Arrow', class: 'arrow-gif', style: 'width: 50px; height: 30px;') %>
+      </div>
+      <div class="circle-container">
+        <div class="circle-icon">
+          <%= image_tag('dbslogoonly.png', alt: 'DBS Logo', class: 'DBSlogo', style: 'width: 22px; height: 20px;') %>
+        </div>
+      </div>
     </div>
-    <div class="recipient-text">
-      <p><%= @recipient.full_name %></p>
-      <p><%= @recipient.account_details %></p>
+    <div class="right-container">
+      <div class="myaccounttext">
+        <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;">My Account</p>
+        <div class="account-number">
+          <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;">271xxxxxxx0</p>
+          <p class="text-right" style="margin-left: 100px;">SGD 29,891</p>
+        </div>
+      </div>
+      <div class="horizontal-line"></div>
+      <div class="recipienttext">
+        <p style="font-weight: 530; color: #505050; margin-top: 10px; margin-bottom: 2px;"><%= @recipient.full_name %></p>
+        <div class="account-number">
+          <p style="font-size: 15px; font-weight: bold; color: #a8abb0; display: inline-block;"><%= @recipient.account_details %></p>
+        </div>
+      </div>
     </div>
   </div>
+
+
+  <div class="moneybody">
+    <div class='num-left'>
+      <p class="amtin">You're Sending</p>
+      <p class="currency">SGD</p>
+    </div>
+    <div class='num-right'>
+      <%= form.number_field :amount, id: "sgdAmount", class: 'amount-field', placeholder: '0.00' %>
+    </div>
+  </div>
+
+
+  <div class="moneybody">
+    <div class='num-left'>
+      <p class="amtin">Recipient Gets</p>
+      <p class="currency">THB</p>
+    </div>
+    <div class='num-right'>
+      <input type="number" id="thbAmount" class='amount-field' placeholder='0.00' readonly>
+    </div>
+  </div>
+
+  <div class="exchange-rate-container">
+    <p class="exchange-rate-text">Exchange Rate:  SGD 1 = THB 22.94</p>
+  </div>
+
+<body>
+<div class="grey-box">
+  <div class="group">
+    <div class='num-left'>FEES & TRANSFER SPEED</div>
+    <%= image_tag('remit.png', alt: 'DBS REMIT', class: 'remit-logo') %>
+  </div>
+  <div class="group">
+    <%= image_tag('no_fee.png', alt: 'DBS REMIT', class: 'nofee-logo') %>
+    <div class='num-left' style="font-size: 17px; padding-bottom: 15px;">No Fee</div>
+    <%= image_tag('same_day.png', alt: 'DBS REMIT', class: 'sameday-logo') %>
+    <div class='overseas-num-right'>Same-day Transfer</div>
+  </div>
+  <div class="group">
+    <div class='num-left' style='font-size: 15px; padding-bottom:15px;'>TRANSFER DETAILS</div>
+  </div>
+  <div class="remit-details">
+    <div class='num-left'>
+      Select purpose of transfer
+      <span class="remit-arrow">&gt;</span> <!-- Using '>' as the arrow -->
+    </div>
+  </div>
+  <div class="remit-details">
+    <div class='num-left'>
+      Enter promo code(optional)
+    </div>
+  </div>
+  <div class="terms" style="margin-top: -10px;">
+    By tapping “Next”, you agree to be bound by the Terms and Conditions.
+  </div>
+  <div class="next-button">
+    <%= form.submit "NEXT", id: "next-button" %>
+  </div>
 </div>
+<%end%>
+</body>
 
 
-<div class="transfer-form">
-    <%= form_with model: @transaction, url: transactions_path, local: true do |form| %>
-    <div class="form-group">
-      <%= form.label :amount, "You're Sending (SGD)" %>
-      <%= form.number_field :amount, step: :any, id: "amount_sgd", class: "form-control" %>
-    </div>
- 
-    <%= form.hidden_field :name, value: @recipient.full_name %>
 
 
-    <div class="form-group">
-      <label for="recipient_gets">Recipient Gets (THB)</label>
-      <input type="text" id="recipient_gets" class="form-control" disabled>
-    </div>
+
+<!-- currency autoconversion -->
+<script>
+document.addEventListener('turbo:load', function() {
+  const exchangeRate = 22.94; // Update this rate as necessary
+
+  const sgdInput = document.getElementById('sgdAmount');
+  const thbInput = document.getElementById('thbAmount');
+
+  if (sgdInput && thbInput) {
+      sgdInput.addEventListener('input', function() {
+      const sgdValue = parseFloat(this.value) || 0;
+      const thbValue = sgdValue * exchangeRate;
+      thbInput.value = thbValue.toFixed(2);
+      });
+  } else {
+      console.error('SGD or THB input fields not found.');
+  }
+});
 
 
-    <div class="form-group">
-      <p>SGD 1 = THB 27.07</p>
-    </div>
-
-
-    <%= form.submit "TRANSFER NOW", class: "btn btn-primary" %>
-  <% end %>
-</div>
+</script>

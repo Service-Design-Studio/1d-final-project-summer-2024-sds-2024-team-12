@@ -11,41 +11,7 @@
   <link rel="manifest" href="/manifest.json">
   <title>ACCOUNTS</title>
   <%# <script defer="" src="/static/js/bundle.js"></script> %>
-  <style>
-    /* Include the updated CSS here */
-    .floating-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
 
-    .floating-button {
-      background-color: #fff;
-      border: none;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      padding: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .floating-button:hover {
-      transform: scale(0.1);
-    }
-
-    .coco-transparent {
-      background-color: transparent;
-    }
-
-    .coco-icons {
-      width: 30px;
-      height: 30px;
-    }
-  </style>
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1185.0" data-gr-ext-installed="">
@@ -64,41 +30,56 @@
             </div>
             <div class="rightcontainer">
 
-              <% if Current.user %>
-              <%= Current.user.phone %>
+              <div class="search-bar-home">
+              <%= form_with url: search_suggestions_path, method: :get, local: true, id: 'search-form' do |form| %>
+                <div class="search-container" id="search-container">
+                  <%= form.text_field :path, placeholder: "Search for...", value: params[:path], class: 'search-input', id: 'search-input'  %>
+                  <%= image_tag 'voice.png', class: 'voice-icon', id: 'voice-button' %>
+                  <%= image_tag 'search.png', class: 'search-icon', id: 'search-icon' %>
+                </div>
               <% end %>
+              <div id="suggestions-container" class="suggestions-container"></div>
+              <div class="dark-overlay" id="dark-overlay"></div>
+            </div>
 
-              <button class="transparent">
-                <%= image_tag('help.png', class: 'help') %>
-              </button>
+            <!-- Modal HTML -->
+            <div id="confirmation-modal" class="search-modal">
+              <div class="search-modal-content">
+                <span class="search-close-button">&times;</span>
+                <div class="search-modal-body">
+                  <p id="confirmation-message"></p>
+                </div>
+                <button id="confirm-button" class="search-confirm-button">YES</button>
+              </div>
+            </div>
+
+            <div id="no-contact-modal" class="search-modal">
+              <div class="search-modal-content">
+                <span class="search-close-button">&times;</span>
+                <p id="no-contact-message"></p>
+              </div>
+            </div>
+
+
+
+            
               
               <div class="logoutContainer">
                 <%= button_to logout_path, method: :delete, class: "transparent" do %>
                   <p class="logoutText">LOG OUT</p>
                 <% end %>
               </div>
-              
-
-
-
             </div>
+            
+
           </div>
 
+          
+
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <% if @suggestions.any? %>
-                <% @suggestions.each_with_index do |suggestion, index| %>
-                  <li data-target="#myCarousel" <%= 'class = "active"' if index == 0 %>></li>
-                <% end %>
-                <% end %>
-                <li data-target="#myCarousel" <%= 'class = "active"' if @suggestions.size == 0 %>></li>
-              
-            </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-
               <div class="item active">
                 <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
@@ -106,74 +87,10 @@
                   <p class="textbody">Enjoy the faster and convenient way to bank on the go</p>
                 </div>
               </div>
-              
-              <% if @frequent_transactions.any? %>
-               <% @frequent_transactions.each_with_index do |transaction, index| %>
-                <div class="item">
-                  <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">Based on your frequent transactions, consider scheduling a payment or creating a shortcut for:</p>
-                    <ul class="textbody">
-                      
-                        <li><%= "#{transaction.name}: #{number_to_currency(transaction.amount, unit: 'SGD ', precision: 2)}" %></li>
-                      
-                    </ul>
-                    <button class="transparent" id="setupButton<%= index %>">
-                      <div class="buttonContainer">
-                        <p class="buttonText">Set up</p>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-                <% end %>
-              <% end %>
-              
-              <% if @close_transactions.any? %>
-                <div class="item">
-                  <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
-                  <div class="carousel-caption">
-                    <p class="textheader">Suggestion:</p>
-                    <p class="textbody">Your card usage is nearing $500. Consider setting up a card limit to manage your spending:</p>
-                    <ul>
-                      <li  class="cardlim" ><%= "Card Limit: $500" %></li>
-                    </ul>
-                    <button class='transparent' id='setupLimitButton'>
-                      <div class='buttonContainer'>
-<%= link_to 'Set up Limit', new_cardlimit_path, class: "buttonText" %>                     
- </div>
-                    </button>
-                  </div>
-                </div>
-              <% end %>
-
-              <div class = "item">
-                <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
-                <div class="carousel-caption">
-                  <p class="textheader">Suggestion:</p>
-                  <p class="textbody">You are in Thailand now, do you want to try our PromptPay feature?</p>
-                  <button class="transparent">
-                    <div class="buttonContainer">
-                      <a href = "/promptpay" class="buttonText">Go Now</a>
-                    </div>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
         </div>
         <div class="containertwo">
+          
           <p class="text">Smart Shortcuts</p>
           <%= image_tag('settingicon.jpg', class: 'setting') %>
         </div>
@@ -272,7 +189,7 @@
 
     </scrollable>
 
-      <div class="bottomnav">
+      <div class="bottomnav" style: 'position: fixed;'>
         <div class="bottomtabnavigatorcontainer">
           <button class="transparent">
             <%= image_tag("home_bottomfilled.png", alt: 'home', class: "navicon") %>
@@ -367,177 +284,251 @@
 
     </div>
 
+    
+  <div class="fab-container">
+
+    <div class="fab shadow" onclick="toggleSuggestionTabs()">
+      <div class="fab-content">
+        <%= image_tag("lightbulb1.png", alt: 'lightbulb1', style: "width: 40px; height: 40px;") %>
+
+      </div>
+    </div>
   </div>
 
-  <div class="fab-container">
-      <div class="fab shadow">
-        <div class="fab-content">
-          <span class="material-icons">+</span>
-        </div>
-      </div>
-
-      <div class="sub-button shadow">
-        <a href = "/promptpay">
-          <span class="material-icons">P</span>
-        </a>
-      </div>
-
-      <% if @suggestions.any? %>
-        <% @suggestions.each_with_index do |suggestion, index| %>
-          <div class="sub-button shadow" id="suggestionButton<%= index %>">
-              <span class="material-icons">S</span>
-          </div>
-        <% end %>
-      <% end %>
-
+  <!-- Suggestion Tabs -->
+  <div class="suggestion-tab-container" id="suggestionTabContainer">
+    <div class="suggestion-tabs">
+      <button class="suggestion-tablinks" onclick="openSuggestionTab(event, 'suggestion2')" data-visible="true" data-tab="suggestion2">
+        <%= image_tag("lightbulbred.png", alt: 'lightbulbred', style: "width: 30px; height: 30px;") %>
+      </button>
+      <button class="suggestion-tablinks" onclick="openSuggestionTab(event, 'suggestion1')" data-visible="<%= @frequent_transactions_with_dates.any? %>" data-tab="suggestion1">
+        <%= image_tag("lightbulbred.png", alt: 'lightbulbred', style: "width: 30px; height: 30px;") %>
+      </button>
+      <button class="suggestion-tablinks" onclick="openSuggestionTab(event, 'suggestion3')" data-visible="<%= @close_transactions.any? %>" data-tab="suggestion3">
+        <%= image_tag("lightbulbred.png", alt: 'lightbulbred', style: "width: 30px; height: 30px;") %>
+      </button>
     </div>
     
+     <div id="suggestion1" class="suggestion-tabcontent">
+      <!-- Suggestion 1 Content -->
+      <div class="suggestion-content" style="text-align: center;">
+        <% if @frequent_transactions_with_dates.any? %>
+          <% @frequent_transactions_with_dates.each_with_index do |transaction, index| %>
+            <h3 style="font-size: 25px;">Hello!</h3>
+            <p style="font-size: 20px;">
+              We noticed you paid 
+              <br>
+              <span style="font-size: 23px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;"><%= transaction[:name] %></span>
+              <span style="font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px;"><%= number_to_currency(transaction[:amount], unit: 'SGD ', precision: 2) %></span>
+              <br>
+              <p>on these dates and times:</p>
+            </p>
+            <ul class="transaction-details-date" style="font-size: 10px;">
+              <% transaction[:dates].each do |date| %>
+                <li><%= date.strftime('%Y-%m-%d %H:%M') %></li>
+              <% end %>
+            </ul>
+            You might be interested in:
+            <div class="buttons-container">
+              <div class="buttons">
+                <%= link_to "Schedule Payment", 
+                    new_scheduled_transaction_path(
+                      scheduled_transaction: { 
+                        name: transaction[:name], 
+                        amount: transaction[:amount] 
+                      }
+                    ), 
+                    class: 'scheduleButton', 
+                    id: "scheduleButton#{index}" %>
+
+                <p style="font-size: 15px;"> OR </p>
+
+                <%= link_to "Make a Quick Shortcut", 
+                    new_shortcut_path(
+                      shortcut: { 
+                        recipient_name: transaction[:name],
+                        amount: transaction[:amount],
+                        nickname: ""
+                      }
+                    ), 
+                    class: 'shortcut', 
+                    id: "shortcut#{index}" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="suggestion2" class="suggestion-tabcontent">
+      <div class="suggestion-content" style="text-align: center;">
+        <h3 style="font-size: 25px;">Hello!</h3>
+        <p style="font-size: 20px;">We noticed that you are in</p>
+        <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">Thailand</p>
+        <p style="font-size: 20px;">Consider using</p>
+        <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">Promptpay</p>
+        <p style="font-size: 20px;">for mobile payments to Thai numbers today:</p>
+        <div class="buttons">
+          <a href="/promptpay" class="scheduleButton" style="font-size: 20px; margin-bottom: 20px;">Proceed to Promptpay</a>
+        </div>
+      </div>
+    </div>
+    
+    <div id="suggestion3" class="suggestion-tabcontent">
+      <div class="suggestion-content" style="text-align: center;">
+        <% if @close_transactions.any? %>
+          <h3 style="font-size: 25px;">Hello!</h3>
+          <p style="font-size: 18px;">You have been making payments nearing your card limit of</p>
+          <p style="font-size: 20px; font-weight: bold; color: red; text-decoration: underline; text-decoration-color: black; text-underline-offset: 10px;  margin-bottom: 20px">SGD 500</p>
+          <p style="font-size: 18px;">Consider increasing your card limit to manage your spending:</p>
+          <div class='buttons'>
+            <a href="/cardlimit/new" class="scheduleButton" style="font-size: 20px; margin-bottom: 20px;">Change my card limit</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
 
-  
-
-  <!-- Inline JavaScript for tab switching and other functionalities -->
-  <script>
-    // Include the existing JavaScript code for the functionality
+    <script>
     function showTab(tabName) {
       var tabContents = document.getElementsByClassName("tab-content");
       for (var i = 0; i < tabContents.length; i++) {
         tabContents[i].style.display = "none";
       }
-
+    
       var tabs = document.getElementsByClassName("tab");
       for (var i = 0; i < tabs.length; i++) {
         tabs[i].classList.remove("active");
       }
-
+    
       document.getElementById("tab-" + tabName).style.display = "block";
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
-
-  </script>
-
-
-<!-- Popup for more details -->
-<% if @frequent_transactions_with_dates.any? %>
-  <% @frequent_transactions_with_dates.each_with_index do |transaction, index| %>
-    <div class="popup" id="popup<%= index %>" data-history-labels="<%= transaction[:dates].map(&:to_s).join(',') %>" data-history-values="<%= Array.new(transaction[:dates].size, transaction[:amount]).join(',') %>">
-      <div class="popup-content">
-        <span class="close" id="closePopup<%= index %>">&times;</span>
-        <p class='textheadersuggest'>Suggestion:</p>
-        <p>We noticed you paid <%= transaction[:name] %> <%= number_to_currency(transaction[:amount], unit: 'SGD ', precision: 2) %> frequently, on these dates and times:</p>
-        <ul class="transaction-details-date">
-          <% transaction[:dates].each do |date| %>
-            <li><%= "#{date.strftime('%Y-%m-%d %H:%M')}" %></li>
-          <% end %>
-        </ul>
-
-        <p>Would you like to: </p>
-        
-        <div class="buttons">
-          <%= link_to "Schedule Payment", 
-              new_scheduled_transaction_path(
-                scheduled_transaction: { 
-                  name: transaction[:name], 
-                  amount: transaction[:amount] 
-                }
-              ), 
-              class: 'scheduleButton', 
-              id: "scheduleButton#{index}" %>
-
-              <p> OR </p>
-
-          <%= link_to "Make a Quick Shortcut", 
-              new_shortcut_path(
-                shortcut: { 
-                  recipient_name: transaction[:name],
-                  amount: transaction[:amount],
-                  nickname: ""
-                }
-              ), 
-              class: 'shortcut', 
-              id: "shortcut#{index}" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-
-
-
-</div>
-</body>
-
-</html>
-
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Function to show the popup
-  const showPopup = (index) => {
-    const popup = document.getElementById(`popup${index}`);
-    if (popup) {
-      popup.style.display = 'block';
-    }
-  };
-
-  // Function to hide the popup
-  const hidePopup = (index) => {
-    const popup = document.getElementById(`popup${index}`);
-    if (popup) {
-      popup.style.display = 'none';
-    }
-  };
-
-  // Attach click event to suggestion buttons
-  <% @suggestions.each_with_index do |suggestion, index| %>
-    const suggestionButton<%= index %> = document.getElementById('suggestionButton<%= index %>');
-    if (suggestionButton<%= index %>) {
-      suggestionButton<%= index %>.addEventListener('click', (event) => {
-        event.preventDefault();
-        showPopup(<%= index %>);
-      });
-    }
-
-    const closePopup<%= index %> = document.getElementById('closePopup<%= index %>');
-    if (closePopup<%= index %>) {
-      closePopup<%= index %>.addEventListener('click', (event) => {
-        event.preventDefault();
-        hidePopup(<%= index %>);
-      });
-    }
-  <% end %>
-
-  // Function to handle tab switching
-  window.showTab = function(tabName) {
-    // Get all tabs
-    var tabs = document.querySelectorAll('.tab');
     
-    // Loop through tabs to remove the 'active' class
-    tabs.forEach(function(tab) {
-      tab.classList.remove('active');
+    document.addEventListener("turbo:load", function () {
+      // Set to keep track of displayed tabs
+      const displayedTabs = new Set();
+      
+      // Function to toggle the visibility of suggestion tabs
+      function toggleSuggestionTabs() {
+        const container = document.getElementById('suggestionTabContainer');
+        if (container) {
+          container.classList.toggle('show');
+        }
+      }
+      
+      // Function to open a specific suggestion tab
+      function openSuggestionTab(event, suggestionName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.suggestion-tabcontent');
+        tabContents.forEach(content => content.classList.remove('active'));
+      
+        // Remove active class from all tab links
+        const tabLinks = document.querySelectorAll('.suggestion-tablinks');
+        tabLinks.forEach(link => link.classList.remove('active'));
+      
+        // Show the selected tab content and add active class to the clicked tab
+        const selectedTab = document.getElementById(suggestionName);
+        if (selectedTab) {
+          selectedTab.classList.add('active');
+        }
+      
+        if (event) {
+          event.currentTarget.classList.add('active');
+        } else {
+          // If event is null, manually add the active class to the first tab link
+          const tabLink = document.querySelector(`.suggestion-tablinks[data-tab="${suggestionName}"]`);
+          if (tabLink) {
+            tabLink.classList.add('active');
+          }
+        }
+    
+        // Trigger the FAB button animation if the tab is new
+        if (!displayedTabs.has(suggestionName)) {
+          displayedTabs.add(suggestionName);
+          triggerFabAnimation();
+        }
+        
+        // Ensure visibility is updated
+        updateTabVisibility();
+      }
+      
+      function triggerFabAnimation() {
+        const fabButton = document.querySelector('.fab');
+        if (fabButton) {
+          console.log('Triggering FAB animation'); // Debugging line
+          fabButton.classList.add('blink-and-shake');
+          setTimeout(() => {
+            fabButton.classList.remove('blink-and-shake');
+          }, 3000); // Duration for the animations
+        }
+      }
+      
+      // Handle FAB button click
+      function handleFabClick() {
+        toggleSuggestionTabs();
+        
+        // Reorder tabs to move the default tab (suggestion2) to the right
+        reorderTabs();
+        
+        // Show the leftmost tab after reordering
+        const firstTabLink = document.querySelector('.suggestion-tablinks:not([style*="display: none"])');
+        if (firstTabLink) {
+          const suggestionName = firstTabLink.getAttribute('data-tab');
+          openSuggestionTab(null, suggestionName);
+        }
+      }
+      
+      // Function to reorder tabs, pushing the default tab (suggestion2) to the right
+      function reorderTabs() {
+        const defaultTabId = 'suggestion2';
+        const tabsContainer = document.querySelector('.suggestion-tabs');
+        
+        // Find the default tab link and move it to the end
+        const defaultTabLink = document.querySelector(`.suggestion-tablinks[data-tab="${defaultTabId}"]`);
+        if (defaultTabLink) {
+          tabsContainer.appendChild(defaultTabLink);
+        }
+      }
+      
+      // Attach event listener to the FAB button
+      const fabButton = document.querySelector('.fab');
+      if (fabButton) {
+        fabButton.addEventListener('click', handleFabClick);
+      }
+      
+      // Handle click on suggestion tab links
+      const tabLinks = document.querySelectorAll('.suggestion-tablinks');
+      tabLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+          const suggestionName = this.getAttribute('data-tab');
+          openSuggestionTab(event, suggestionName);
+        });
+      });
+      
+      // Update visibility of tabs based on data-visible attribute
+      function updateTabVisibility() {
+        const suggestionTabs = document.querySelectorAll('.suggestion-tablinks');
+        suggestionTabs.forEach(tab => {
+          if (tab.getAttribute('data-visible') === "false") {
+            tab.style.display = 'none';
+          } else {
+            tab.style.display = 'block';
+          }
+        });
+      }
+      
+      // Initialize by updating tab visibility and showing the default tab
+      updateTabVisibility();
+      // Show the default tab, if any
+      const defaultTab = document.querySelector('.suggestion-tablinks[data-tab="suggestion2"]');
+      if (defaultTab) {
+        openSuggestionTab(null, 'suggestion2');
+      }
     });
+    
+    
+    </script>
+    
 
-    // Add 'active' class to the clicked tab
-    var activeTab = document.querySelector(`.tab[onclick="showTab('${tabName}')"]`);
-    if (activeTab) {
-      activeTab.classList.add('active');
-    }
-
-    // Hide all tab contents
-    var tabContents = document.querySelectorAll('.tab-content');
-    tabContents.forEach(function(content) {
-      content.style.display = 'none';
-    });
-
-    // Show the selected tab content
-    var selectedContent = document.getElementById(`tab-${tabName}`);
-    if (selectedContent) {
-      selectedContent.style.display = 'block';
-    }
-  };
-
-  // Initialize with the first tab's content visible (optional)
-  showTab('accounts'); // Replace 'accounts' with the default tab name if different
-});
-
-</script>
+    

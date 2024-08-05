@@ -1,86 +1,149 @@
-.fab-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    user-select: none;
-    position: absolute;
-    bottom: 90px;
-    right: 25px;
-  }
-  .fab-container:hover {
-    height: 100%;
-  }
-  .fab-container:hover .sub-button:nth-child(2) {
-    transform: translateY(-80px);
-  }
-  .fab-container:hover .sub-button:nth-child(3) {
-    transform: translateY(-140px);
-  }
-  .fab-container:hover .sub-button:nth-child(4) {
-    transform: translateY(-200px);
-  }
-  .fab-container:hover .sub-button:nth-child(5) {
-    transform: translateY(-260px);
-  }
-  .fab-container:hover .sub-button:nth-child(6) {
-    transform: translateY(-320px);
-  }
-  .fab-container .fab {
-    position: relative;
-    height: 70px;
-    width: 70px;
-    background-color: #e20404;
-    border-radius: 30px;
-    z-index: 1;
-  }
-  .fab-container .fab::before {
-    content: " ";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 35px;
-    width: 35px;
-    background-color: inherit;
-    border-radius: 0 0 30px 0;
-    z-index: -1;
-  }
-  .fab-container .fab .fab-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    border-radius: 10%;
- 
-  }
-  .fab-container .fab .fab-content .material-icons {
-    color: white;
-    font-size: 48px;
-  }
-  .fab-container .sub-button {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: 10px;
-    right: 10px;
-    height: 50px;
-    width: 50px;
-    background-color: #ff3737;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-  }
-  .fab-container .sub-button:hover {
-    cursor: pointer;
-  }
-  .fab-container .sub-button .material-icons {
-    color: white;
-    padding-top: 6px;
-  }
-  .fab-container .sub-button .material-img-icons {
-    color: white;
-    height: 50px;
-  }
+/* General Tab Styles */
+.tab, .suggestion-tab-container {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
 
-  
+.tab .tablinks, .suggestion-tab-container .suggestion-tablinks {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab .tablinks:hover, .suggestion-tab-container .suggestion-tablinks:hover {
+  background-color: #ddd;
+}
+
+.tab .tablinks.active, .suggestion-tab-container .suggestion-tablinks.active {
+  background-color: #e1e1e1;
+  border-bottom: 2px solid #ec3434; /* Horizontal line */
+}
+
+/* Tab Content Styles */
+.tabcontent, .suggestion-tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabcontent.active, .suggestion-tabcontent.active {
+  display: block;
+}
+
+/* FAB Styles */
+.fab-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ec3434;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.fab .fab-content {
+  color: white;
+  font-size: 24px;
+}
+
+.suggestion-tab-container {
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  width: 350px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 999;
+  display: none; /* Hide by default */
+}
+
+.suggestion-tabs {
+  display: flex;
+}
+
+.suggestion-tab {
+  display: flex;
+  align-items: center;
+}
+
+.delete-tab {
+  background-color: transparent;
+  border: none;
+  color: #ec3434;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-tab:hover {
+  color: #ff0000;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center; /* Center the .buttons container horizontally */
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  justify-content: space-between; /* Distributes space between the buttons and "OR" text */
+  width: 100%; /* Ensure the container takes full width */
+  max-width: 600px; /* Optionally set a maximum width to prevent it from stretching too wide */
+}
+
+.buttons .scheduleButton,
+.buttons .shortcut {
+  flex: 1; /* Allow both buttons to grow equally */
+  min-width: 120px; /* Set a minimum width for the buttons */
+  font-size: 14px; /* Font size for the button text */
+  text-align: center; /* Center text inside the buttons */
+  padding: 10px; /* Add padding inside the buttons */
+  margin: 0 10px; /* Space between the buttons and the "OR" text */
+}
+
+.buttons p {
+  margin: 0; /* Removes default margin for better alignment */
+  font-size: 12px; /* Font size for the "OR" text */
+  white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+/* Add these styles to your CSS file */
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, -1px); }
+  50% { transform: translate(1px, 1px); }
+  75% { transform: translate(-1px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Blink Animation */
+@keyframes blink {
+  0% { background-color: #4f0000; color: #000; }
+  50% { background-color: red; color: white; }
+  100% { background-color: #4f0000; color: #000; }
+}
+
+
+.blink-and-shake {
+  animation: blink 1s infinite, shake 1s ease-in-out;
+}
+

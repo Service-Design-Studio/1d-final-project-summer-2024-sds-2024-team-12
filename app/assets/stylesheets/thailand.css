@@ -316,4 +316,8 @@ main.content {
     height: 30px;
   }
   
-  
+
+  /*for overseas confirmation page */
+  .remit-confirmpagebg{
+    background-color: rgb(247, 247, 247);
+}

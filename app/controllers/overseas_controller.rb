@@ -15,6 +15,10 @@ class OverseasController < ApplicationController
       # Handle form submission and save recipient details
       @recipient = Recipient.new(recipient_params)
       if @recipient.save
+        session[:bank_name] = params[:bank_name]
+        session[:account_details] = params[:account_details]
+        session[:country] = params[:country]
+     
         redirect_to overseas_transfer_confirmation_path
       else
         # Handle errors or validation failures
@@ -23,6 +27,9 @@ class OverseasController < ApplicationController
     end
 
     def confirmation
+      @bank_name = session[:bank_name]
+      @account_details = session[:account_details]
+      @country = session[:country]
     end
 
     def make_transfer

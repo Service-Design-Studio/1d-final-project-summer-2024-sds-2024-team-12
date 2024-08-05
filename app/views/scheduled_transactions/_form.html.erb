@@ -1,4 +1,4 @@
-<%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path) do |form| %>
+<%= form_with(model: @scheduled_transaction, url: scheduled_transactions_path, id: 'transaction-form') do |form| %>
   
   <div class="header-content">
       <div class="left-container">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
- <div class="whitespace"></div>
+ <div class="whitespace1"></div>
 
  <div class="moneybody">
   <div class='num-left'>
@@ -41,29 +41,93 @@
   <div class='num-right'>
     <%= form.number_field :amount, value: @frequent_transaction&.amount, class: 'amount-field', style: "margin-left: 50px;", placeholder: '0.00' %>
   </div>
-</div>
-
+ </div>
 
 <div class="grey-box">
-  <div class="schedule-details" style="margin-left: 15px;">
-    <div class="start-date" style="margin-bottom: 40px;"> <!-- Added margin-bottom -->
-      <%= form.label :start_date, 'Start Date', style: 'font-size: 25px;' %>
-      <br>
-      <%= form.date_field :start_date, class: 'start-date-field' %>
+    <div class="group">
+      <div class='num-left'>Authorised</div>
+      <div class='num-right'>SGD 5,000.00</div>
     </div>
-    <div class="frequency">
-      <%= form.label :frequency, 'Frequency', style: 'font-size: 25px;' %>
-      <br>
-      <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field' %>
+    <div class="group">
+      <div class='num-left' style="font-size: 17px; padding-bottom: 15px;">Remaining</div>
+      <div class='num-right'>SGD 4,999.00</div>
     </div>
+    <a href="#" class="change-limit"><u>Change Limit</u></a>
+    <div class="transfer-details">
+    <div class="schedule-details" style="margin-left: 15px;">
+      <div class="start-date" style="display: flex; align-items: center; margin-left: 9px; margin-bottom: 10px;"> <!-- Reduced margin-bottom -->
+        <%= form.label :start_date, 'Start Date', style: 'font-size: 19px; margin-right: 10px; margin-top: 10px;' %>
+        <%= form.date_field :start_date, class: 'start-date-field', style: 'width: 170px; margin-left: 75px;' %>
+      </div>
+      
+      <!-- Horizontal Line -->
+      <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 10px 10px 0;"> <!-- Adjusted margin -->
+    
+      <div class="frequency" style="display: flex; align-items: center; margin-left: 9px; margin-bottom: 20px;">
+        <%= form.label :frequency, 'Frequency', style: 'font-size: 20px; margin-right: 10px; margin-top: 10px;' %>
+        <div style="flex: 1;"></div> <!-- Spacer div -->
+        <%= form.select :frequency, options_for_select([['Daily', 'daily'], ['Weekly', 'weekly'], ['Monthly', 'monthly']]), class: 'frequency-field', style: 'width: 170px;' %> <!-- Adjust margin-left as needed -->
+      </div>
+    </div>
+
+    <!-- Horizontal Line -->
+    <hr style="border: 0; border-top: 1px solid #ccc; width: 100%; margin: -10px 10px 10px 0;"> <!-- Negative margin-top -->
+      
+    
+
+    <div class='num-left' style='font-size: 18px; margin-top: -20px;'>Add comments for Recipient</div>
+      <%= form.text_field :comments, placeholder: "PayNow Transfer" %>
+    </div>
+    <div class="terms" style='margin-top: -5px;'>
+      By tapping "Save", you agree to be bound by the Terms and Conditions.
+    </div>
+
+  <div class="next-button">
+    <button type="button" id="submit-button">SAVE</button>
   </div>
+
 </div>
 
-
-
-
-  <div class="nextbutton">
-    <%= form.submit "SAVE" %>
-  </div>
-</div>
 <% end %>
+
+<!-- Popup HTML -->
+<div id="confirmation-popup">
+  <div id ="confirmation-popup-content">
+  <span id="popup-close" aria-label="Close">&times;</span>
+  <p id="reminder">Ensure that you have sufficient funds in your bank account before the scheduled start date!</p>
+  <button id="confirm-yes">YES</button>
+  </div>
+</div>
+
+<script> 
+document.addEventListener('turbo:load', function() {
+  const form = document.getElementById('transaction-form');
+  const saveButton = document.getElementById('submit-button');
+  const popup = document.getElementById('confirmation-popup');
+  const confirmYes = document.getElementById('confirm-yes');
+  const popupClose = document.getElementById('popup-close');
+
+  saveButton.addEventListener('click', function(event) {
+    // Prevent immediate form submission
+    event.preventDefault();
+
+    // Show the confirmation popup
+    popup.style.display = 'block';
+  });
+
+  confirmYes.addEventListener('click', function() {
+    // Hide the popup
+    popup.style.display = 'none';
+    
+    // Submit the form programmatically
+    form.submit();
+  });
+
+  popupClose.addEventListener('click', function() {
+    // Hide the popup
+    popup.style.display = 'none';
+  });
+
+});
+
+</script>

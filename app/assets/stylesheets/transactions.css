@@ -18,16 +18,17 @@
   min-height: 100vh;
   
 }
+
 .bottomnav {
   position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
   height: 8vh;
-  width: 100vw;
   background-color: #162633;
-  padding: 0;
-  margin: 0;
-  z-index: 100;
+  z-index: 100; /* Ensure this is above other elements */
 }
+
 .header {
   display: flex;
   align-items: center;
@@ -955,15 +956,7 @@ input:focus {
   width: 2.5vw;
 }
 
-.bottomnav {
-  position: fixed;
-  bottom: 0;
-  height: 8vh;
-  width: 100vw;
-  background-color: #162633;
-  padding: 0;
-  margin: 0;
-}
+
 .maincontainer {
     width: 100vw;
     height: 100vh;
@@ -1147,15 +1140,7 @@ input:focus {
     font-size: 15px;
   }
 
-  .bottomnav {
-    position: fixed;
-    bottom: 0;
-    height: 8vh;
-    width: 100vw;
-    background-color: #162633;
-    padding: 0;
-    margin: 0;
-  }
+
 
 
 .textareacontainer{
@@ -3740,6 +3725,34 @@ input:focus {
     color: #fff; /* Change color on hover */
   }
 
+ /* app/assets/stylesheets/application.css */
+.carousel-indicators {
+  display: flex;
+  flex-direction: column; /* Make the indicators vertical */
+  position: absolute;
+  top: 50%; /* Center the indicators vertically */
+  left: 10px; /* Adjust as needed for your layout */
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 15;
+}
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  margin-bottom: 5px; /* Space between indicators */
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.carousel-indicators .active {
+  background-color: #000; /* Active indicator color */
+}
+
+
   .tabs {
     display: flex;
     justify-content: center; /* Centering the tabs container horizontally */
@@ -3877,7 +3890,7 @@ input:focus {
     margin-bottom: 2px;
   }
   
-  .whitespace{
+  .whitespace1{
     background-color: white;
     padding-bottom:15px;
   }
@@ -3986,6 +3999,76 @@ input:focus {
     padding-top: 15px;
     padding-right: 20px;
   }
+
+  /*special styles specifically for overseas make transfer page*/
+  .overseas-num-right{
+    font-size: 17px; 
+    font-weight: bold;
+    color: #999ea2;
+    text-align: right;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding-top: 15px;
+    padding-right: 30px;
+  }
+
+  .remit-logo-text {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+  .remit-logo {
+      margin-left: 10px; /* Adjust this value to add space between the text and the logo */
+      height: 20px; /* Adjust the height to fit your design */
+      position: relative;
+      top: 15px;
+  }
+
+  .nofee-logo {
+    margin-left: 5px; /* Adjust this value to add space between the text and the logo */
+    height: 20px; /* Adjust the height to fit your design */
+    position: relative;
+    top: 15px;
+    left: 13px;
+  }
+
+  .sameday-logo {
+    margin-left: 5px; /* Adjust this value to add space between the text and the logo */
+    height: 20px; /* Adjust the height to fit your design */
+    position: relative;
+    top: 15px;
+    left: 80px;
+  }
+
+  .remit-arrow {
+    font-size: 24px; /* Adjust font size as needed */
+    color: hwb(0 66% 34%); /* Match the color of the text */
+    margin-left: 10px; /* Adjust space between text and arrow */
+    position: relative;
+    top: 2px; /* Adjust vertical alignment */
+    left: 100px
+}
+
+.remit-details {
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 70px; /* Make the box vertically longer */
+    padding: 10px; /* Adjust padding for better appearance */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    color: #555; /* Text color */
+    background-color: white; /* Ensure the background is white */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*overseas make transfer page end*/
 
   .change-limit{
     font-size: 2px; 
@@ -4098,3 +4181,60 @@ input:focus {
       margin-left: 20px;
     }
 
+
+/* for search bar modal */
+.search-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top of other elements */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.search-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 10px 20px 20px 20px; /* Reduced top padding to bring the close button closer */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  position: relative; /* Ensure it is positioned relative to the modal */
+}
+
+.search-modal-body {
+  margin: 10px 0; /* Reduced margin for the text */
+}
+
+.search-confirm-button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Span horizontally */
+  font-size: 16px; /* Adjust button text size */
+}
+
+.search-close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: -10px; /* Adjusted to bring closer to the edge */
+}
+
+.search-close-button:hover,
+.search-close-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+
+#no-contact-message {
+  margin-top: 40px; /* Adjust this value to move the text down */
+}

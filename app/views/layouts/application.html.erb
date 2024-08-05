@@ -25,16 +25,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <%= javascript_importmap_tags %>
 
-    <!-- Flash messages -->
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
+  <!-- Flash messages -->
+  <% if flash[:notice] %>
+    <div class="alert alert-success hidden-flash">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class="alert alert-danger hidden-flash">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
   </head>
 
   <body>
@@ -43,7 +44,7 @@
     <!-- Additional JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("turbo:load", function() {
       if (<%= flash[:suggestion_created] ? 'true' : 'false' %>) {
         var popup = document.getElementById("popup");
         popup.style.display = "block";
