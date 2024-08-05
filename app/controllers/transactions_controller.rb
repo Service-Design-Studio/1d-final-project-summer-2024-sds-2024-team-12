@@ -1,4 +1,3 @@
-require_dependency 'openai_service'
 class TransactionsController < ApplicationController
   before_action :set_current_user
   before_action :check_if_user
