@@ -62,7 +62,8 @@ Then("I should see the message that {string}") do |success_message|
 end
 
 Then("I should see an error that says {string}") do |error|
-  expect(page).to have_content(error)
+  popup = find('#error_popup')
+  expect(popup).to have_content(error)
 end
 
 
@@ -99,4 +100,9 @@ end
 
 Then("I should see a {string} message at the top") do |success_message|
   expect(page).to have_content(success_message)
+end
+
+Then('I should see a success page with {string}') do |expected_message|
+  expect(page).to have_selector('.succes')
+  expect(page).to have_selector('.bigT', text: expected_message)
 end

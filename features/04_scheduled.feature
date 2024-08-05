@@ -17,16 +17,17 @@ Feature: Scheduled Transaction
 
     Scenario: Set a scheduled transaction at the start of every month
         Given that I am on the transactions page
-        When I see suggestions in the carousel
-        And I click the "Set up" button
-        When I click on "Schedule Payment" button in the popup
+        When I click on the Quick Action button
+        Then I should see the suggestion "We noticed you paid 12345678"
+        When I click the "Schedule Payment" button
         Then I should see the new "Scheduled Payment" page
         When I fill in the recipient name
         And fill in the amount to be transferred in SGD
         And I fill in the start date with "2024-07-25"
         And I can choose the frequency of the scheduled transaction to be "Monthly"
         And I click the button "Save" at the bottom
-        Then I should see the message that "Scheduled transaction was successfully created."
+        Then I should see a reminder saying "Ensure that you have sufficient funds"
+        When I click Yes on the reminder
 
 
     Scenario: Checking for scheduled transactions under Scheduled Transacations
@@ -38,6 +39,6 @@ Feature: Scheduled Transaction
         Given that I am on the transactions page 
         When I click on transfers scheduled button
         Then I should see the scheduled payment that I made with the correct name "12345678"
-        And I click the "Terminate" button
-        Then I should see the message that "Scheduled transaction was successfully destroyed."
+        And I click the "Delete Scheduled Payment" button
+        Then I should no longer see the scheduled transaction with the name "12345678"
 

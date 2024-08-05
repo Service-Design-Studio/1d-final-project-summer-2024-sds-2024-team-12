@@ -17,7 +17,7 @@ Feature: Managing Transactions
     Then I should be on the new transaction page
     When I fill in the amount to be transferred in SGD with "50.00"
     And press the "NEXT" button
-    Then I should see the message that "Transaction was successfully created"
+    Then I should see a success page with "Successful"
 
   Scenario: Checking Transaction History
     Given I am on the transactions page 
@@ -32,6 +32,6 @@ Feature: Managing Transactions
     And press the "NEXT" button
     Then I should be on the new transaction page
     And press the "NEXT" button
-    Then I should see an error that says "Amount is not a number"
+    Then I should see an error that says "How much do you want to pay?"
 
   

@@ -57,7 +57,7 @@ Then("I should see that I have added a recipient") do
 end
 
 When("I click on the back button") do
-  click_link "Back"
+  click_link "BACK"
 end
 
 Then("I should see the new recipient {string} that I added") do |name|
@@ -89,11 +89,11 @@ Then("I should see the overseas Transfer page") do
 end
 
 When("I fill in the amount to be transferred with {string}") do |money|
-  fill_in "amount_sgd", with: money  # Adjust the selector ("amount_sgd") based on your actual HTML structure
+  fill_in "sgdAmount", with: money  # Adjust the selector ("amount_sgd") based on your actual HTML structure
 end
 
 And("click on {string} button below") do |button_name|
-  click_button button_name
+  click_button(button_name)
 end
 
 Then("I should be able to see that a new transaction was created") do
@@ -117,34 +117,10 @@ Then("I should see a message saying {string}") do |success_message|
 end
 
 Then("I should see an error message: {string}") do |message|
-  puts page.html
   expect(page).to have_content(message)
 end
 
 
-
-When("I should see a suggestion for the {string} in the quick action") do |suggestion_text|
-  within('.carousel-inner') do
-    # Find all items in the carousel
-    carousel_items = all('.item')
-
-    # Look for the carousel item with the specific suggestion text
-    suggestions_item = carousel_items.find do |item|
-      item.has_css?('.carousel-caption p.textheader', text: 'Suggestion:') &&
-        item.has_css?('.carousel-caption p.textbody', text: suggestion_text)
-    end
-
-    # If the suggestion item is found, perform the assertions
-    if suggestions_item
-      within(suggestions_item) do
-        expect(page).to have_css('.carousel-caption p.textheader', text: 'Suggestion:')
-        expect(page).to have_css('.carousel-caption p.textbody', text: suggestion_text)
-      end
-    else
-      raise "No carousel item with suggestion found"
-    end
-  end
-end
 
 Then("I should be on the {string} transaction page") do |pp|
   expected_path = "/#{pp}"

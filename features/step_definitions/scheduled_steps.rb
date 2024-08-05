@@ -71,24 +71,12 @@ When("I see suggestions in the carousel") do
   end
 end
 
-When("I click on the suggestion button 0") do
-  # Click on the parent span class container first
-  find('.fab-container .fab-content .material-icons').click
 
-  # Then click on the suggestion button 0
-  find('#suggestionButton0').click
-end
 
 And("I click the {string} button") do |button_name|
   click_on(button_name)
 end
 
-When("I click on {string} button in the popup") do |button|
-  find('#popup0',  :visible => false)
-  within('#popup0') do
-    click_link(button)
-  end
-end
 
 Then("I should see the new {string} page") do |pay|
   expect(page).to have_content(pay)
@@ -115,10 +103,26 @@ Then('I click the button "Save" at the bottom') do
   click_on('SAVE') # Adjust based on your UI
 end
 
+Then('I should see a reminder saying {string}') do |reminder_text|
+  expect(page).to have_content(reminder_text)
+end
+
+When('I click Yes on the reminder') do
+  find('#confirm-yes').click
+end
+
 When("I click on transfers scheduled button") do
   find('button.transparent a[href="/scheduled_transactions"]').click
 end
 
 Then("I should see the scheduled payment that I made with the correct name {string}") do |expected_name|
   expect(page).to have_content("Name: #{expected_name}")
+end
+
+Then('I should be redirected to the homepage') do
+  expect(page).to have_current_path('/transactions', ignore_query: true)
+end
+
+Then('I should no longer see the scheduled transaction with the name {string}') do |expected_name|
+  expect(page).not_to have_content("Name: #{expected_name}")
 end

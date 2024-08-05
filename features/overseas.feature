@@ -11,7 +11,7 @@ Feature: Overseas Transfer
     When I click on Overseas Transfer button
     And I click the Add Overseas Recipient button
     Then I click on "Thailand"
-    When I click on "Proceed without PromptPay" button
+    When I click on "Proceed with DBS Remit instead" button
     Then I should see a page to "Enter Recipient's Details"
     When I fill in "bank" under recipient's bank
     Then I fill in the recipient's account number "123456"
@@ -28,7 +28,7 @@ Feature: Overseas Transfer
     When I click on the recipient "Jane"
     Then I should see the overseas Transfer page
     And I fill in the amount to be transferred with "500"
-    And click on "TRANSFER NOW" button below
+    And click on "NEXT" button below
     Then I should be able to see that a new transaction was created
 
   Scenario: Transferring through PromptPay
@@ -39,7 +39,7 @@ Feature: Overseas Transfer
     When I click on "Use PromptPay" button
     And I fill in the recipient number "123456789"
     And I fill in the amount to be transferred in SGD "500"
-    Then I press the "NEXT" button
+    And click on "NEXT" button below
     Then I should see a message saying "Transaction was successfully created."
   
   Scenario: Wrong number of digits for recipient from Thailand
@@ -51,10 +51,11 @@ Feature: Overseas Transfer
     And I fill in the recipient number "02213"
     And I fill in the amount to be transferred in SGD "500"
     Then I press the "NEXT" button
-    Then I should see an error message: "Phone number must be exactly 9 digits."
+    Then I should see an error message: "Please enter exactly 9 digits."
 
   Scenario: PromptPay suggestion when in Thailand
     Given that I am on the transactions page
-    Then I should see a suggestion for the "PromptPay feature" in the quick action
-    And I click a button that says "Go Now" 
+    When I click on the Quick Action button
+    Then I should see the suggestion "Consider using Promptpay"
+    When I click the "Proceed to Promptpay" button
     Then I should be on the "promptpay" transaction page
