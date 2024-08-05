@@ -42,7 +42,7 @@
       </div>
       <div class="horizontal-line"></div>
       <div class="recipienttext">
-        <%= form.text_field :name, placeholder: 'Recipient Name', value: params[:name] %>
+        <%= form.text_field :name, placeholder: 'Recipient Name', value: (params[:name] || params[:mobile_number]) %>
       </div>
     </div>
   </div>
