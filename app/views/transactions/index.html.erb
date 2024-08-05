@@ -286,11 +286,9 @@
 
     
   <div class="fab-container">
-
     <div class="fab shadow" onclick="toggleSuggestionTabs()">
       <div class="fab-content">
         <%= image_tag("lightbulb1.png", alt: 'lightbulb1', style: "width: 40px; height: 40px;") %>
-
       </div>
     </div>
   </div>
@@ -387,7 +385,7 @@
         <% end %>
       </div>
     </div>
-
+  </div>
 
     <script>
     function showTab(tabName) {
@@ -406,13 +404,17 @@
     }
     
     document.addEventListener("turbo:load", function () {
+      console.log('turbo:load event fired');
       // Set to keep track of displayed tabs
       const displayedTabs = new Set();
+      let fabAnimated = false; // Flag to track FAB animation
       
       // Function to toggle the visibility of suggestion tabs
       function toggleSuggestionTabs() {
+
         const container = document.getElementById('suggestionTabContainer');
         if (container) {
+          console.log('im responding');
           container.classList.toggle('show');
         }
       }
@@ -444,7 +446,7 @@
         }
     
         // Trigger the FAB button animation if the tab is new
-        if (!displayedTabs.has(suggestionName)) {
+        if (!displayedTabs.has(suggestionName) && !fabAnimated) {
           displayedTabs.add(suggestionName);
           triggerFabAnimation();
         }
@@ -461,6 +463,7 @@
           setTimeout(() => {
             fabButton.classList.remove('blink-and-shake');
           }, 3000); // Duration for the animations
+          fabAnimated = true; // Set the flag to true after animation
         }
       }
       
@@ -494,6 +497,8 @@
       // Attach event listener to the FAB button
       const fabButton = document.querySelector('.fab');
       if (fabButton) {
+        console.log(fabButton);
+        console.log("ive added the event!");
         fabButton.addEventListener('click', handleFabClick);
       }
       
