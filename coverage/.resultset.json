@@ -37,9 +37,9 @@
           1,
           null,
           1,
-          340,
+          339,
           null,
-          230,
+          226,
           0,
           0,
           0,
@@ -56,13 +56,13 @@
           1,
           null,
           1,
-          340,
+          339,
           null,
-          131,
-          131,
-          131,
-          131,
-          131,
+          127,
+          127,
+          127,
+          127,
+          127,
           null,
           null
         ]
@@ -817,25 +817,25 @@
       "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/controllers/locations_controller.rb": {
         "lines": [
           null,
-          0,
-          0,
           null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ],
@@ -961,13 +961,13 @@
       },
       "C:/Users/Tan Zi Hui/1d-final-project-summer-2024-sds-2024-team-12/app/jobs/application_job.rb": {
         "lines": [
-          0,
           null,
           null,
           null,
           null,
           null,
-          0
+          null,
+          null
         ],
         "branches": {
         }
@@ -983,6 +983,6 @@
         }
       }
     },
-    "timestamp": 1722948631
+    "timestamp": 1722949272
   }
 }
