@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+.add-recipient {
+  width: 300px; /* Set the desired width */
+  padding: 10px; /* Optional: add padding for better appearance */
+  text-align: center; /* Center the text */
+  background-color: #f0f0f0; /* Optional: add a background color */
+  border: 1px solid #ccc; /* Optional: add a border */
+  cursor: pointer; /* Add a pointer cursor */
+  margin-left: 45px;
+  margin-top: 20px;
+}
+
+</style>
 <head>
     <title>Pay & Transfer</title>
 </head>
 <body>
     <header>
-        
         <div class="search-bar">
             <input type="text" placeholder="Search for a recipient">
         </div>
     </header>
-
     <main>
         <div class="scrollable">
         <section class="services">
@@ -49,7 +61,7 @@
                 
             </div>
             <button class="add-recipient">
-                <%= link_to "Make a Quick Shortcut", 
+                <%= link_to "Make a Quick Shortcut +", 
                     new_shortcut_path(
                         shortcut: { 
                         nickname: ""
@@ -60,10 +72,12 @@
             </button>
             
             <% @shortcut.each do |button| %>
-            <div class="recipient">
+            <div class="recipient" style="width: 95%; margin-left: 10px;">
                 <%= link_to new_transaction_path(scheduled_transaction: { name: button.recipient_name, amount: button.amount }) do %>
                 <div class="recipient-info">
-                    <div class="avatar" style="background-color: #ff8a80;"><%= button.nickname %></div>
+                 <div class="avatar" style="padding-left: 50px;">
+                    <%= image_tag("pay&transfer_bottom.png", alt: 'pay', class: "avatar") %>
+                    <%= button.nickname %></div>
                     <div>
                         <p><%= button.nickname %></p>
                     </div>

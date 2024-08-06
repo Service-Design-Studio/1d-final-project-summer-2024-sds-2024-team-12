@@ -4,7 +4,45 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
   <link rel="stylesheet" href="styles.css">
 </header>
-  
+
+<style>
+.delete-button1 {
+  background-color: #ff4d4d; /* Red background color */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Add padding */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Add a pointer cursor */
+  font-size: 16px; /* Set font size */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove text underline */
+  display: inline-block; /* Ensure the button is inline-block */
+  margin-left: 60px;
+  margin-top: 30px;
+}
+
+.delete-button1:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
+}
+
+.add-scheduled-payment-link1 {
+  background-color: lightgrey; /* Grey background color */
+  color: blue; /* Light blue text color */
+  padding: 10px 20px; /* Add padding */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Ensure the link is inline-block */
+  font-size: 16px; /* Set font size */
+  text-align: center; /* Center the text */
+  width: 58%;
+}
+
+.add-scheduled-payment-link1:hover {
+  background-color: darkgrey; /* Darker grey on hover */
+  color: skyblue; /* Slightly brighter light blue on hover */
+}
+
+</style>
 
   <% if @scheduled_transactions.any? %>
     <% @scheduled_transactions.each do |transaction| %>
@@ -13,8 +51,7 @@
           <p><span class="transaction-label">Amount:</span> <span class="transaction-value"><%= number_to_currency(transaction.amount, unit: "SGD ", precision: 2) %></span></p>
           <p><span class="transaction-label">Start Date:</span> <span class="transaction-value"><%= transaction.start_date %></span></p>
           <p><span class="transaction-label">Frequency:</span> <span class="transaction-value"><%= transaction.frequency.capitalize %></span></p>
-        </div>
-        <%= button_to "Delete Scheduled Payment", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= button_to "Delete Scheduled Payment", scheduled_transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-button1" %>
       </div>
     <% end %>
   <% else %>
@@ -24,9 +61,10 @@
 
 <div class="whitespace"></div>
 
-<%= link_to "Add a Scheduled Payment", new_scheduled_transaction_path(
+<%= link_to "Add a Scheduled Payment +", new_scheduled_transaction_path(
             scheduled_transaction: { 
               name: "", 
               amount: ""
             }
-          ), style: 'margin-left: 80px;' %>
+          ), class: "add-scheduled-payment-link1", style: 'margin-left: 80px;' %>
+
