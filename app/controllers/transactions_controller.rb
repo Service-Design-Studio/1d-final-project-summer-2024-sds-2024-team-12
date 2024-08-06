@@ -32,9 +32,9 @@ class TransactionsController < ApplicationController
     @frequent_transactions = Current.user.transactions.group(:name, :amount).having('COUNT(*) >= ?', 3)
   end
 
-  def suggestions
-    @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
-  end
+  # def suggestions
+  #   @suggestions = Current.user.suggestions.where(user_dismissed: false).order(created_at: :desc)
+  # end
 
   # GET /transactions/1 or /transactions/1.json
   def show
@@ -45,8 +45,8 @@ class TransactionsController < ApplicationController
     @transaction = Current.user.transactions.new
     @transaction.name = params[:mobile_number] if params[:mobile_number].present?
     if params[:scheduled_transaction].present?
-      @transaction.name = params[:scheduled_transaction][:name]
-      @transaction.amount = params[:scheduled_transaction][:amount]
+      # @transaction.name = params[:scheduled_transaction][:name]
+      # @transaction.amount = params[:scheduled_transaction][:amount]
     end
   end
 
@@ -66,34 +66,34 @@ class TransactionsController < ApplicationController
         format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+        # format.html { render :new, status: :unprocessable_entity }
+        # format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /transactions/1 or /transactions/1.json
-  def update
-    respond_to do |format|
-      if @transaction.update(transaction_params)
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully updated." }
-        format.json { render :show, status: :ok, location: @transaction }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # # PATCH/PUT /transactions/1 or /transactions/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @transaction.update(transaction_params)
+  #       format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @transaction }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @transaction.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /transactions/1 or /transactions/1.json
-  def destroy
-    @transaction.destroy
+  # # DELETE /transactions/1 or /transactions/1.json
+  # def destroy
+  #   @transaction.destroy
 
-    respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   # GET /transactions/enter
   def enter
@@ -155,13 +155,7 @@ class TransactionsController < ApplicationController
           Rails.logger.debug "Contact not found: #{extracted_name.strip}"
           redirect_to root_path, alert: "Contact not found"
         end
-      else
-        Rails.logger.debug "Failed to extract name or amount from tokens"
-        redirect_to root_path, alert: "Failed to process the command"
       end
-    else
-      Rails.logger.debug "Failed to process the command: #{query}"
-      redirect_to root_path, alert: "Failed to process the command"
     end
   end
 
@@ -188,24 +182,24 @@ class TransactionsController < ApplicationController
     params.require(:transaction).permit(:name, :amount)
   end
 
-  def check_transactions
-    # Define your card limit
-    card_limit = 500.00
+  # def check_transactions
+  #   # Define your card limit
+  #   card_limit = 500.00
 
-    # Retrieve transactions close to the card limit
-    @close_transactions = Current.user.transactions.where("amount > ? AND amount <= ?", card_limit - 50, card_limit)
+  #   # Retrieve transactions close to the card limit
+  #   @close_transactions = Current.user.transactions.where("amount > ? AND amount <= ?", card_limit - 50, card_limit)
 
-    if @close_transactions.count >= 3
-      # Notify or take action for transactions close to the card limit
-      @close_transactions.each do |transaction|
-        puts "#{transaction.name} is close to the card limit. Amount: #{transaction.amount}"
-        # You can perform additional actions here, like sending notifications or logging
-      end
-      render plain: "Notifications sent for transactions close to the card limit."
-    else
-      render plain: "No transactions are close to the card limit."
-    end
-  end
+  #   if @close_transactions.count >= 3
+  #     # Notify or take action for transactions close to the card limit
+  #     @close_transactions.each do |transaction|
+  #       puts "#{transaction.name} is close to the card limit. Amount: #{transaction.amount}"
+  #       # You can perform additional actions here, like sending notifications or logging
+  #     end
+  #     render plain: "Notifications sent for transactions close to the card limit."
+  #   else
+  #     render plain: "No transactions are close to the card limit."
+  #   end
+  # end
 
   def create_suggestion_if_frequent(transaction)
     @frequent_transactions = Current.user.transactions

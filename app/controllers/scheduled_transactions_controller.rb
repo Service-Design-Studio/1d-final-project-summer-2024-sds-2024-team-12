@@ -13,8 +13,6 @@ class ScheduledTransactionsController < ApplicationController
 
     if @scheduled_transaction.save
       redirect_to root_path, notice: 'Scheduled transaction was successfully created.'
-    else
-      render :new
     end
   end
 

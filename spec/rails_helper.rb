@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'rails_helper'
+require 'capybara/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -51,6 +52,12 @@ end
 #factory bot
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+end
+
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
+  end
 end
 
 RSpec.configure do |config|

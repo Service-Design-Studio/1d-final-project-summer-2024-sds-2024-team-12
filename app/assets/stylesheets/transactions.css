@@ -4244,7 +4244,7 @@ input:focus {
 }
 
 #search-button {
-  margin-top: -20px; /* Adjust this value to move the button up or down */
+  margin-top: -10px; /* Adjust this value to move the button up or down */
   border: none;
   background: none;
   padding: 0; /* Ensure no extra padding */
