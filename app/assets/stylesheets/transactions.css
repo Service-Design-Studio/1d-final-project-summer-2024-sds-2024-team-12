@@ -4242,3 +4242,11 @@ input:focus {
 #no-contact-message {
   margin-top: 40px; /* Adjust this value to move the text down */
 }
+
+#search-button {
+  margin-top: -20px; /* Adjust this value to move the button up or down */
+  border: none;
+  background: none;
+  padding: 0; /* Ensure no extra padding */
+  cursor: pointer; /* Ensure the cursor shows it's clickable */
+}
