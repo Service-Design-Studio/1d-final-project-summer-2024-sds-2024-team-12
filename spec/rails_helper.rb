@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'rails_helper'
-require 'capybara/rspec'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -18,6 +18,11 @@ SimpleCov.start 'rails' do
 end
 
 # The rest of your file...
+
+
+# Require all support files
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -43,6 +48,12 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+#factory bot
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+end
+
 RSpec.configure do |config|
 
   config.before(:suite) do
@@ -89,3 +100,4 @@ end
 
 # In spec/rails_helper.rb or spec_helper.rb
 Capybara.javascript_driver = :selenium_chrome_headless
+
