@@ -17,6 +17,11 @@ RSpec.feature "search", type: :feature, js: true do
 
   scenario "search limit" do
     visit root_path
+    # Click on the search input container to activate the search input
+    find('.search-container').click
+    
+    # Ensure the search input field is present and then fill it in
+    expect(page).to have_selector('input#search-input', wait: 10)
     fill_in 'search-input', with: 'How to find limit?'
     # Click the search button to submit the form
     find('button#search-button').click
