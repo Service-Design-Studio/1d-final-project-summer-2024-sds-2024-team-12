@@ -34,6 +34,7 @@
   display: inline-block; /* Ensure the link is inline-block */
   font-size: 16px; /* Set font size */
   text-align: center; /* Center the text */
+  margin-top: -100px;
   width: 58%;
 }
 
@@ -41,6 +42,18 @@
   background-color: darkgrey; /* Darker grey on hover */
   color: skyblue; /* Slightly brighter light blue on hover */
 }
+
+.no-transactions1 {
+  font-size: 16px; /* Set font size */
+  color: #555555; /* Set text color */
+  background-color: #f9f9f9; /* Set background color */
+  padding: 10px 20px; /* Add padding */
+  border: 1px solid #dddddd; /* Add border */
+  border-radius: 5px; /* Add rounded corners */
+  text-align: center; /* Center the text */
+  margin: 20px 0; /* Add margin for spacing */
+}
+
 
 </style>
 
@@ -55,7 +68,7 @@
       </div>
     <% end %>
   <% else %>
-    <p>No scheduled transactions found.</p>
+   <p class="no-transactions1">No scheduled transactions found.</p>
   <% end %>
 </div>
 
