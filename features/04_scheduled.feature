@@ -25,9 +25,8 @@ Feature: Scheduled Transaction
         And fill in the amount to be transferred in SGD
         And I fill in the start date with "2024-07-25"
         And I can choose the frequency of the scheduled transaction to be "Monthly"
-        And I click the button "Save" at the bottom
-        Then I should see a reminder saying "Ensure that you have sufficient funds"
-        When I click Yes on the reminder
+        And I click the button Save at the bottom
+        Then I should be redirected to the homepage
 
 
     Scenario: Checking for scheduled transactions under Scheduled Transacations

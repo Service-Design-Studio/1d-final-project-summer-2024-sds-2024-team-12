@@ -4,7 +4,6 @@ Feature: Card Limit
         |   name   | amount |
         | 12345678 | 500.00 |
 
-
     Scenario: Prompt to change card limit 
         Given that I am on the transactions page
         When I click on the Quick Action button

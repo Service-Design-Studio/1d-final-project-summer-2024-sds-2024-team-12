@@ -99,8 +99,8 @@ And("I can choose the frequency of the scheduled transaction to be {string}") do
   select(option, from: 'scheduled_transaction_frequency')
 end
 
-Then('I click the button "Save" at the bottom') do
-  click_on('SAVE') # Adjust based on your UI
+Then('I click the button Save at the bottom') do
+  find('#submit-button').click
 end
 
 Then('I should see a reminder saying {string}') do |reminder_text|
@@ -108,7 +108,12 @@ Then('I should see a reminder saying {string}') do |reminder_text|
 end
 
 When('I click Yes on the reminder') do
-  find('#confirm-yes').click
+  expect(page).to have_selector('#confirmation-popup', visible: true)
+  find('#confirm-yes', visible: true).click
+  button = find('#confirm-yes', visible: true)
+  button.click
+  sleep 10
+  puts page.html
 end
 
 When("I click on transfers scheduled button") do

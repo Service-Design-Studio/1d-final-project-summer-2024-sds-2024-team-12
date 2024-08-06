@@ -42,6 +42,10 @@ Then('I should see the transactions page') do
   expect(current_path).to eq(transactions_path)
 end
 
+Then('I should be on the sign in page') do
+  expect(current_path).to eq(sign_in_path)
+end
+
 Given('a user exists with phone {string} and password {string}') do |phone, password|
   # Create the user if it doesn't already exist
   User.find_or_create_by(phone: phone) do |user|

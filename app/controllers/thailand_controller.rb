@@ -6,22 +6,22 @@ class ThailandController < ApplicationController
   end
 
   # GET /promptpays or /promptpays.json
-  def index
-    @promptpays = Promptpay.all
-  end
+  # def index
+  #   @promptpays = Promptpay.all
+  # end
 
-  def history
-    @promptpays = Promptpay.all
-  end
+  # def history
+  #   @promptpays = Promptpay.all
+  # end
 
   # GET /promptpays/1 or /promptpays/1.json
   def show
   end
 
   # GET /promptpays/new
-  def new
-    @promptpay = Promptpay.new
-  end
+  # def new
+  #   @promptpay = Promptpay.new
+  # end
 
   # GET /promptpays/1/edit
   def edit

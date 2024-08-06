@@ -402,6 +402,8 @@
       document.getElementById("tab-" + tabName).style.display = "block";
       document.querySelector(".tab[onclick='showTab(\"" + tabName + "\")']").classList.add("active");
     }
+
+
     
     document.addEventListener("turbo:load", function () {
       console.log('turbo:load event fired');

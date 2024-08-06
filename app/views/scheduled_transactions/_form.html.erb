@@ -83,7 +83,8 @@
     </div>
 
   <div class="next-button">
-    <button type="button" id="submit-button">SAVE</button>
+    <%# <button type="button" id="submit-button">SAVE</button> %>
+    <%= form.submit "SAVE", id: "submit-button" %>
   </div>
 
 </div>
@@ -107,25 +108,32 @@ document.addEventListener('turbo:load', function() {
   const confirmYes = document.getElementById('confirm-yes');
   const popupClose = document.getElementById('popup-close');
 
-  saveButton.addEventListener('click', function(event) {
-    // Prevent immediate form submission
-    event.preventDefault();
+  let formIsSubmitting = false; 
 
-    // Show the confirmation popup
-    popup.style.display = 'block';
+  saveButton.addEventListener('click', function(event) {
+    if (!formIsSubmitting) {
+      if (popup.style.display === 'none' || popup.style.display === '') {
+        // If popup is not shown, display it and prevent form submission
+        event.preventDefault();
+        popup.style.display = 'block';
+      }
+    }
   });
 
   confirmYes.addEventListener('click', function() {
     // Hide the popup
     popup.style.display = 'none';
     
-    // Submit the form programmatically
-    form.submit();
+    formIsSubmitting = true;
   });
 
   popupClose.addEventListener('click', function() {
     // Hide the popup
     popup.style.display = 'none';
+  });
+  
+  document.addEventListener('turbo:load', function() {
+    formIsSubmitting = false;
   });
 
 });

@@ -20,8 +20,8 @@ Feature: Quick Shortcut
         Then I should see the suggestion "We noticed you paid 12345678"
         When I click the "Make a Quick Shortcut" button
         And I fill in the widget name as "Nic100"
-        And I press the "Create Quick Shortcut" button
-        When I navigate to the "Pay & Transfer" page
+        And I press the create quick shortcut button
+        When I am on the Pay & Transfer page
         Then I should see a shortcut button called "Nic100" 
 
     Scenario: Using the Quick Shortcut

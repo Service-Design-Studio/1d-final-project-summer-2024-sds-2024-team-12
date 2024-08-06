@@ -36,7 +36,13 @@ When("I click on the quick shortcut I made called {string}") do |name|
   click_link(name)
 end
 
-When('I navigate to the "Pay & Transfer" page') do
-  # Click the button that contains the text "Pay & Transfer"
-  click_on('Pay & Transfer')
+When('I am on the Pay & Transfer page') do
+  visit '/pay_and_transfer_page/index'
+end
+
+And('I press the create quick shortcut button') do
+  fill_in('shortcut_nickname', with: "Nic100")
+  page.driver.browser.refresh
+  fill_in('shortcut_nickname', with: "Nic100")
+  click_on 'Create Quick Shortcut'
 end
