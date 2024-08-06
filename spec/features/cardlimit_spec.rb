@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Shortcuts", type: :feature, js: true do
+RSpec.feature "limit", type: :feature, js: true do
   let(:valid_phone_number) { '1234567890' }
   let(:valid_pin) { '123456' }
 
