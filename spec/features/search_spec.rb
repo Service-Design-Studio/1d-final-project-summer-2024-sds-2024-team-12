@@ -40,7 +40,21 @@ RSpec.feature "search", type: :feature, js: true do
     # Click the search button to submit the form
     find('button#search-button').click
     expect(page).to have_current_path(/\/transactions\/new\?amount=\d+&name=\d+/, wait: 10)
-    #expect(page).to have_content('Local Transfer Limit')
+    expect(page).to have_field('Recipient Name', with: '87654321')
+    expect(page).to have_field('PayNowAmount', with: '100')
+  end
+
+  scenario "pay user successfully through searchbar" do
+    visit root_path
+    # Click on the search input container to activate the search input
+    find('.search-container').click
+    
+    # Ensure the search input field is present and then fill it in
+    expect(page).to have_selector('input#search-input', wait: 10)
+    fill_in 'search-input', with: 'Pay Kyle 100 dollars'
+    # Click the search button to submit the form
+    find('button#search-button').click
+    expect(page).to have_current_path(transactions_path, wait: 10)
   end
   
 
