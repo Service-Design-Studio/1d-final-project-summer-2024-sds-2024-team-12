@@ -34,7 +34,7 @@ Feature: Scheduled Transaction
         When I click on transfers scheduled button
         Then I should see the scheduled payment that I made with the correct name "12345678"
 
-    Scenario: Checking for scheduled transactions under Scheduled Transacations
+    Scenario: Deleting scheduled transactions under Scheduled Transacations
         Given that I am on the transactions page 
         When I click on transfers scheduled button
         Then I should see the scheduled payment that I made with the correct name "12345678"

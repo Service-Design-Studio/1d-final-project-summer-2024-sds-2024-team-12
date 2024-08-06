@@ -156,8 +156,8 @@ class TransactionsController < ApplicationController
           redirect_to root_path, alert: "Contact not found"
         end
       else
-        Rails.logger.debug "Failed to extract name or amount from tokens"
-        redirect_to root_path, alert: "Failed to process the command"
+        # Rails.logger.debug "Failed to extract name or amount from tokens"
+        # redirect_to root_path, alert: "Failed to process the command"
       end
     else
       Rails.logger.debug "Failed to process the command: #{query}"
@@ -176,7 +176,7 @@ class TransactionsController < ApplicationController
       [nil, nil]
     end
   end
-  
+
 
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction

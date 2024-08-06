@@ -10,10 +10,4 @@ class CardlimitController < ApplicationController
     # Action logic for paynow
   end
 
-  def adjusting
-    # Action logic for adjusting
-    # Optionally, set up instance variables or any logic needed
-    # to render adjusting.html.erb
-    render 'adjusting'
-  end
 end

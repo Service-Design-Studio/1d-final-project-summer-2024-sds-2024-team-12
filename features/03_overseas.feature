@@ -6,6 +6,24 @@ Feature: Overseas Transfer
   Background:
   Given I am logged into user with phone "12345678" and password "224466"
 
+  Scenario: PromptPay suggestion when in Thailand
+    Given that I am on the transactions page
+    When I click on the Quick Action button
+    Then I should see the suggestion "Consider using Promptpay"
+    When I click the "Proceed to Promptpay" button
+    Then I should be on the "promptpay" transaction page
+
+  Scenario: Transferring through PromptPay
+    Given that I am on the transactions page in overseas steps
+    When I click on Overseas Transfer button
+    And I click the Add Overseas Recipient button
+    Then I click on "Thailand"
+    When I click on "Use PromptPay" button
+    And I fill in the recipient number "123456789"
+    And I fill in the amount to be transferred in SGD "500"
+    And click on "NEXT" button below
+    Then I should see a message saying "Transaction was successfully created."
+
   Scenario: Adding a new recipient, Jane for non-Prompt Pay transaction
     Given that I am on the transactions page in overseas steps
     When I click on Overseas Transfer button
@@ -30,17 +48,6 @@ Feature: Overseas Transfer
     And I fill in the amount to be transferred with "500"
     And click on "NEXT" button below
     Then I should be able to see that a new transaction was created
-
-  Scenario: Transferring through PromptPay
-    Given that I am on the transactions page in overseas steps
-    When I click on Overseas Transfer button
-    And I click the Add Overseas Recipient button
-    Then I click on "Thailand"
-    When I click on "Use PromptPay" button
-    And I fill in the recipient number "123456789"
-    And I fill in the amount to be transferred in SGD "500"
-    And click on "NEXT" button below
-    Then I should see a message saying "Transaction was successfully created."
   
   Scenario: Wrong number of digits for recipient from Thailand
     Given that I am on the transactions page in overseas steps
@@ -53,9 +60,4 @@ Feature: Overseas Transfer
     Then I press the "NEXT" button
     Then I should see an error message: "Please enter exactly 9 digits."
 
-  Scenario: PromptPay suggestion when in Thailand
-    Given that I am on the transactions page
-    When I click on the Quick Action button
-    Then I should see the suggestion "Consider using Promptpay"
-    When I click the "Proceed to Promptpay" button
-    Then I should be on the "promptpay" transaction page
+

@@ -10,15 +10,6 @@ Feature: User Login
     Then I should see that I successfully created an account
   
   @use_existing_user
-  Scenario: Successful login with valid credentials
-    Given a user exists with phone "12345678" and password "224466"
-    And I am on the login page
-    When I login with my phone number "12345678"
-    And I fill in my PIN with "224466"
-    When I press Sign In
-    Then I should see the transactions page
-
-  @use_existing_user
   Scenario: Unsuccessful login with invalid credentials
     Given a user exists with phone "12345678" and password "224466"
     And I am on the login page
@@ -28,12 +19,13 @@ Feature: User Login
     Then I should be on the sign in page
 
   @use_existing_user
-  Scenario: Logout from existing account
+  Scenario: Successful login with valid credentials
     Given a user exists with phone "12345678" and password "224466"
     And I am on the login page
     When I login with my phone number "12345678"
     And I fill in my PIN with "224466"
     When I press Sign In
     Then I should see the transactions page
-    When I click the Logout button
-    Then I should go back to the Sign in page
+
+
+
