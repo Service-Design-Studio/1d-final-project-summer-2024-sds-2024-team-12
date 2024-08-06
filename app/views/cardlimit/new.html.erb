@@ -1,35 +1,24 @@
-    <div class="limitcontainer">
-      <%= link_to('<', back_button_path, class: 'back-button') %>
-      <div class="limit-text">
-        Local Transfer Limit
+<div class="limit-container">
+  <a href="<%= back_button_path %>" class="back-button1">&lt;</a>
+  <div class="limit-text">Local Transfer Limit</div>
+</div>
+
+<div class="changing-container">
+  <div class="select-card-container">
+    <a href="<%= transactions_index_path %>" class="link-container">
+      <div class="text">To DBS/POSB Accounts</div>
+      <div class="limit-right">
+      <div class="arrow">&gt;</div>
       </div>
-    </div>
+    </a>
+  </div>
+</div>
 
-  
-    <div class="changingcontainer">
-      <div class="select-card-container">
-        <div class='left'>
-          To DBS/POSB Accounts
-        </div>
-        <div class='right'>
-          <%= link_to('>', transactions_index_path, class: 'next-button') %>
-        </div>
-      </div>
-    </div>
-  
-    <div class="changingcontainer">
-      <div class="select-card-container">
-        <div class='left'>
-          Paynow or Scan and Trsf
-        </div>
-        <div class='right'>
-          <%= link_to('>', cardlimit_paynow_path, class: 'next-button') %>
-        </div>
-      </div>
-    </div>
-
-  
-
-
-
-
+<div class="changing-container">
+  <div class="select-card-container">
+    <a href="<%= cardlimit_paynow_path %>" class="link-container">
+      <div class="text">To Other Banks</div>
+      <div class="arrow">&gt;</div>
+    </a>
+  </div>
+</div>
