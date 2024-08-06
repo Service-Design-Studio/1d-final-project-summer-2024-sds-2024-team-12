@@ -114,9 +114,11 @@
 }
 
 .logoutText {
-  padding: 0.5vw 4vw;
+  padding: 0.5vw 2vw;
   color: #ffffff;
-  font-size: 10px;
+  font-size: 7px;
+  margin-top: 10px;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
   
 .alertbody {
@@ -3797,6 +3799,7 @@ input:focus {
   font-weight: 600;
   text-align: center; /* Center text */
   flex-grow: 1; /* Allows header to take available space */
+  margin-right: 10px;
 }
 
   
@@ -3811,6 +3814,7 @@ input:focus {
 .left-container {
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
+  margin-top: 20px;
 }
 
 .circle-container {
@@ -3855,9 +3859,9 @@ input:focus {
   }
 
   .account-number {
-    display: flex; /* Use flexbox to position items */
+    display: flex;
     align-items: center; /* Align items vertically */
-    padding-bottom: 10px;
+    margin-top: 10px;
   }
 
   .text-right{

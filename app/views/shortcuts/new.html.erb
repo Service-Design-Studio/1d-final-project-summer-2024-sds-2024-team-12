@@ -45,7 +45,7 @@
     <p class="currency">SGD</p>
   </div>
   <div class='num-right'>
-    <%= form.number_field :amount, value: params.dig(:shortcut, :amount), step: 0.01, class: 'amount-field' %>
+    <%= form.number_field :amount, value: params.dig(:shortcut, :amount), step: 0.01, class: 'amount-field', placeholder: '0.00' %>
   </div>
 </div>
 
@@ -54,7 +54,7 @@
     <%# <div class="whitespace"></div> %>
     <%= form.label :nickname, "Shortcut Name" %>
     <%= form.text_field :nickname, 
-                        value: params.dig(:shortcut, :nickname), 
+                        # value: params.dig(:shortcut, :nickname), 
                         class: 'form-control white-textbox', 
                         maxlength: 10, 
                         style: 'width: 90%; border: 2px solid #ccc;',
@@ -103,7 +103,7 @@
 document.addEventListener('turbo:load', function() {
   var nicknameField = document.querySelector('input[name="shortcut[nickname]"]');
   var charCount = document.getElementById('char-count');
-  charCount.textContent = nicknameField.value.length;
+  // charCount.textContent = nicknameField.value.length;
   updateWidgetIcons();
 });
 

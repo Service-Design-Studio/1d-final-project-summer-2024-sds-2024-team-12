@@ -43,6 +43,7 @@
   margin-right: 10px; /* Adjust color as needed */
   margin-top: 10px;
   margin-left: 10px;
+  font-size: 30px;
 }
 
 .back-icon {
@@ -72,7 +73,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  position: relative;
   padding-left: 10px;
   letter-spacing: 0.5px;
 }
@@ -215,9 +215,6 @@
     font-size: 14px; /* Adjust font size for smaller screens */
   }
 
-  .back-button {
-    margin-right: 5px; /* Adjust margin for smaller screens */
-  }
 
   .myaccount {
     padding-left: 10px;

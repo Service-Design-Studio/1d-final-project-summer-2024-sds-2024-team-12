@@ -1,4 +1,4 @@
-require_dependency 'openai_service'
+require_dependency 'googleai_service'
 class TransactionsController < ApplicationController
   before_action :set_current_user
   before_action :check_if_user
@@ -131,31 +131,36 @@ class TransactionsController < ApplicationController
   private
 
   def process_nlp_command(query)
-    openai_service = OpenaiService.new
-    response = openai_service.generate_response("Convert any words representing numbers in the sentence into numbers.Give the response in this format:/Name: (\w+)\s+Amount: ([\d\.]+)/i. Extract name and amount from: #{query}")
-    
-    Rails.logger.info("Response from OpenAI: #{response}")
+    google_ai_service = GoogleaiService.new
+    tokens = google_ai_service.analyze_text(query)
 
-    if response
-      name, amount = parse_response(response)
-      Rails.logger.info("Parsed name: #{name}, Parsed amount: #{amount}")
+    Rails.logger.debug "Tokens: #{tokens.inspect}"
 
-      if name && amount
-        contact = Contact.find_by(name: name.strip)
-        Rails.logger.info("Contact found: #{contact.inspect}")
+    if tokens
+      # Extract name and amount using part of speech tags
+      name = tokens.find { |token| token[:part_of_speech] == :NOUN || token[:part_of_speech] == :PROPER }
+      amount = tokens.find { |token| token[:part_of_speech] == :NUM }
 
+      extracted_name = name ? name[:text] : nil
+      extracted_amount = amount ? amount[:text] : nil
+
+      Rails.logger.debug "Extracted Name: #{extracted_name}, Extracted Amount: #{extracted_amount}"
+
+      if extracted_name && extracted_amount
+        contact = Contact.find_by(name: extracted_name.strip)
         if contact
-          redirect_to new_transaction_path(name: contact.phone_number, amount: amount.strip)
+          redirect_to new_transaction_path(name: contact.phone_number, amount: extracted_amount.strip)
         else
-          Rails.logger.error("Contact not found for name: #{name.strip}")
+          # If no contact found, handle it appropriately
+          Rails.logger.debug "Contact not found: #{extracted_name.strip}"
           redirect_to root_path, alert: "Contact not found"
         end
       else
-        Rails.logger.error("Failed to parse name and amount from response: #{response}")
+        Rails.logger.debug "Failed to extract name or amount from tokens"
         redirect_to root_path, alert: "Failed to process the command"
       end
     else
-      Rails.logger.error("Failed to process the command: #{query}")
+      Rails.logger.debug "Failed to process the command: #{query}"
       redirect_to root_path, alert: "Failed to process the command"
     end
   end
