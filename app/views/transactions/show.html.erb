@@ -12,8 +12,6 @@
 </div> 
 <div class="displaysucc">
  <div class="moneybody2">
-
-
     <div class='moneyleft'>
       <p class="amtin">Amount in</p>
       <p class="currency">SGD</p>
@@ -46,7 +44,7 @@
   </div>
 
   <% if flash[:suggestion_created] %>
-  <div class="popupshow" id="popupshow">
+  <div class="popupshow" id="popupshow" style="border-radius:10px;">
   <div class="popup-content">
     <span class="close" id="closePopupshow">&times;</span>
     <p class='textheadersuggest'>Suggestion:</p>
@@ -54,7 +52,7 @@
 
     <p>Would you like to: </p>
     
-    <div class="buttons">
+    <div class="buttons1">
       <%= link_to "Schedule Payment", 
           new_scheduled_transaction_path(
             scheduled_transaction: { 

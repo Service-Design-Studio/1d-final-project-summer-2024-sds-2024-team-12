@@ -46,10 +46,10 @@
             <div id="confirmation-modal" class="search-modal">
               <div class="search-modal-content">
                 <span class="search-close-button">&times;</span>
-                <div class="search-modal-body">
+                <div class="search-modal-body" style="margin-top: 30px;">
                   <p id="confirmation-message"></p>
                 </div>
-                <button id="confirm-button" class="search-confirm-button">YES</button>
+                <button id="confirm-button" class="search-confirm-button" style="border-radius: 6px;">YES</button>
               </div>
             </div>
 
@@ -80,7 +80,7 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-              <div class="item active">
+              <div class="item active" style="margin-bottom: -60px;">
                 <%= image_tag('background.png', alt: 'DBS background', class: 'carouselImage') %>
                 <div class="carousel-caption">
                   <p class="textheader">Welcome to DBS Digibank</p>
@@ -89,10 +89,9 @@
               </div>
           </div>
         </div>
-        <div class="containertwo">
-          
-          <p class="text">Smart Shortcuts</p>
-          <%= image_tag('settingicon.jpg', class: 'setting') %>
+        <div class="containertwo" style="margin-bottom: -60px;"> 
+          <p class="text" style="margin-bottom: 140px;">Smart Shortcuts</p>
+          <%= image_tag('settingicon.jpg', class: 'setting', style: 'margin-bottom: 130px;') %>
         </div>
         
         <div class="containerthree">
