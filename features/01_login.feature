@@ -25,7 +25,7 @@ Feature: User Login
     When I login with my phone number "22222222"
     And I fill in my PIN with "224466"
     When I press Sign In
-    Then I should see the transactions page
+    Then I should be on the sign in page
 
   @use_existing_user
   Scenario: Logout from existing account

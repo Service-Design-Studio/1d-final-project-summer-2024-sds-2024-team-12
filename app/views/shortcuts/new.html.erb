@@ -1,3 +1,4 @@
+<%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
 <header>
   <%= link_to '<', root_path, class: 'back-button' %>
   <h1 class="paynow-header">Create Quick Shortcut</h1>
@@ -30,7 +31,6 @@
       </div>
     </div>
     <div class="horizontal-line"></div>
-    <%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
       <div class="recipienttext">
         <%= form.text_field :recipient_name, value: params.dig(:shortcut, :recipient_name), class: 'form-control grey-textbox' %>
       </div>
@@ -58,19 +58,16 @@
                         class: 'form-control white-textbox', 
                         maxlength: 10, 
                         style: 'width: 90%; border: 2px solid #ccc;',
-                        oninput: "this.value = this.value.slice(0, 10); document.getElementById('char-count').textContent = this.value.length; updateWidgetIcons();" %>
+                        oninput: "this.value = this.value.slice(0, 10); document.getElementById('char-count').textContent = this.value.length;" %>
     <span id="char-count" class="small-text" style="font-size: 12px; margin-left: 5px;">0</span><span class="small-text" style="font-size: 12px;">/10 characters</span>
   </div>
 
-
-
-
-<!-- Other form fields... -->
-<div class="next-button" style="margin-top: 250px;">
-  <%= form.submit "Create Quick Shortcut", id: "next-button" %>
+  <div class="next-button" style="margin-top: 250px;">
+    <%= form.submit "Create Quick Shortcut", id: "next-button" %>
+  </div>
 </div>
 <% end %>
-</div>
+
 
 <style>
   .grey-textbox {
