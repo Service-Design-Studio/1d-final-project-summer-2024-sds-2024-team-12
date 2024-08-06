@@ -14,7 +14,7 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
     login(phone_number: valid_phone_number, pin: valid_pin)
   end
 
-  scenario "three transactions got pop up show" do 
+  scenario "three transactions got pop up show, then choose shortcut option" do 
       3.times do |i|
         visit root_path
         find('button#paynowbutton').click
@@ -58,8 +58,6 @@ RSpec.feature "Shortcuts", type: :feature, js: true do
       fill_in 'Shortcut Name', with: 'Amy'
       click_button 'Create Quick Shortcut'
       expect(page).to have_current_path(pay_and_transfer_page_index_path, wait: 10)
-
-
 
   end
 
