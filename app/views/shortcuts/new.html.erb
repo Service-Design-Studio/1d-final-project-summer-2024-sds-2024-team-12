@@ -1,3 +1,4 @@
+<%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
 <header>
   <%= link_to '<', root_path, class: 'back-button' %>
   <h1 class="paynow-header">Create Quick Shortcut</h1>
@@ -30,7 +31,6 @@
       </div>
     </div>
     <div class="horizontal-line"></div>
-    <%= form_with(model: @shortcut, url: shortcuts_path, method: :post) do |form| %>
       <div class="recipienttext">
         <%= form.text_field :recipient_name, value: params.dig(:shortcut, :recipient_name), class: 'form-control grey-textbox' %>
       </div>
