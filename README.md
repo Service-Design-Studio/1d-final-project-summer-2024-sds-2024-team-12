@@ -23,11 +23,12 @@ This project aims to develop an Auto-Prompt system for the DBS Digibank app. The
 
 ## Features
 
-1. Suggestive Button
-1.1. Overseas Payment Detection
-1.2. Frequent Transactions
-1.3.Nearing Card Limit
-2. AI-powered Help Bar
+- Suggestive Button
+	- Overseas Payment Detection
+	- Frequent Transactions
+	- Nearing Card Limit
+- AI-powered Help Bar
+
 
 [You may find a detailed guide to each feature in this link here]()
 
