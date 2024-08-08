@@ -1,99 +1,42 @@
 # Auto-Prompt System for DBS Digibank App
 
+## Useful Links
+1. [digiBank Web App deployed on Google Cloud](https://rubyzzz-service-cgwd7rnv2a-as.a.run.app/transactions)
+2. [Figma Board](https://www.figma.com/design/Ve6XbnFGwtQ9oGGPp9Bsvg/SDS-rubyzzz-team?node-id=0-1&t=Ylea60eWnoTyhlbo-1)
+3. [Design Workbook](https://docs.google.com/document/d/12I-R5VYSPyd1tPfIRUWjohhWQozxBFMkTlyyWF3IPe8/edit?usp=sharing)
+4. [Google Site](https://sites.google.com/view/rubyzzz/design-journey)
+
 ## Overview
 
 This project aims to develop an Auto-Prompt system for the DBS Digibank app. The system tracks user transactions and actions within the app and suggests shortcuts based on frequently performed tasks, allowing users to schedule payments or create shortcuts with a single click.
 
-## Getting Started
+## Technology Stack
 
-Follow these instructions to get the project up and running on your local machine for development and testing purposes.
+- Frontend: The application's frontend is built using HTML and CSS
+- Backend: The backend is developed using [Ruby on Rails](https://rubyonrails.org/)
+- Deployment: The application is deployed on [Google Cloud](https://cloud.google.com/)
 
-### Prerequisites
+## Testing overview
 
-Ensure you have the following installed on your system:
-- Ruby (version X.X.X)
-- Rails (version X.X.X)
-- PostgreSQL
-- Node.js
-- Yarn
+- Cucumber for System testing
+- Rspec for Backend Unit testing
 
-### Installation
+## Features
 
-1. **Clone the repository:**
-   ```sh
-   git clone -b master --single-branch https://github.com/Service-Design-Studio/1d-final-project-summer-2024-sds-2024-team-12.git
-   cd 1d-final-project-summer-2024-sds-2024-team-12
-   ```
+1. Suggestive Button
+	a. Overseas Payment Detection
+	b. Frequent Transactions
+	c. Nearing Card Limit
+2. AI-powered Help Bar
 
-2. **Install dependencies:**
-   ```sh
-   bundle install
-   yarn install
-   ```
-
-3. **Set up the database:**
-   ```sh
-   rails db:create
-   rails db:migrate
-   ```
-
-4. **Start the Rails server:**
-   ```sh
-   rails s
-   ```
-
-   Visit `http://localhost:3000/` in your browser.
-
-## zq's Notes
-
-### Repository Cloning
-```sh
-git clone -b master --single-branch https://github.com/Service-Design-Studio/1d-final-project-summer-2024-sds-2024-team-12.git
-```
-
-### Start the Server
-```sh
-rails s
-```
-
-Access the app at: [http://localhost:3000/](http://localhost:3000/)
-
-### Commands
-
-- **Generate a new Rails app with React and PostgreSQL:**
-  ```sh
-  rails new try2 --webpack=react
-  rails new try1 --webpack=react --database=postgresql -T
-  ```
-
-- **Install Webpacker and React:**
-  ```sh
-  rails webpacker:install
-  rails webpacker:install:react
-  ```
-
-- **Add necessary gems in Gemfile:**
-  ```ruby
-  gem "webpacker"
-  gem "react-rails"
-  ```
-
-- **Generate a new controller and views:**
-  ```sh
-  rails g controller home index
-  ```
-
-- **Generate a scaffold for transactions:**
-  ```sh
-  rails g scaffold transactions name:string amount:decimal
-  rails db:migrate
-  ```
-
-### Routing
-
-Edit `config/routes.rb` to set the root route:
-```ruby
-root 'home#index'
-```
+[You may find a detailed guide to each feature in this link here]()
 
 ---
+# Contributions
+
+**Jeslyn Jingxi Wang**
+**Nicole Cheah Ching Suan**
+**Nikhil Aaron Mani** (rip)
+**Tan Zi Hui**
+**Turrag Dewan**
+**Khoo Zi Qi**
