@@ -35,9 +35,9 @@ This project aims to develop an Auto-Prompt system for the DBS Digibank app. The
 ---
 # Contributions
 
-**Jeslyn Jingxi Wang**
-**Nicole Cheah Ching Suan**
-**Nikhil Aaron Mani** (rip)
-**Tan Zi Hui**
-**Turrag Dewan**
-**Khoo Zi Qi**
+- **Jeslyn Jingxi Wang**
+- **Nicole Cheah Ching Suan**
+- **Nikhil Aaron Mani** (rip)
+- **Tan Zi Hui**
+- **Turrag Dewan**
+- **Khoo Zi Qi**
