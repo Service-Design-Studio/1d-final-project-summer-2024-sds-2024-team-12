@@ -30,7 +30,7 @@ This project aims to develop an Auto-Prompt system for the DBS Digibank app. The
 - AI-powered Help Bar
 
 
-[You may find a detailed guide to each feature in this link here]()
+[You may find a detailed guide to each feature in this link here](https://github.com/Service-Design-Studio/1d-final-project-summer-2024-sds-2024-team-12/blob/newmain/READMEdbs)
 
 ---
 # Contributions
