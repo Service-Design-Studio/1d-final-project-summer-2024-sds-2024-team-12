@@ -186,9 +186,9 @@ bundle exec cucumber
 
 # Contributions
 
-**Jeslyn Jingxi Wang**
-**Nicole Cheah Ching Suan**
-**Nikhil Aaron Mani** (rip)
-**Tan Zi Hui**
-**Turrag Dewan**
-**Khoo Zi Qi**
+- Jeslyn Jingxi Wang
+- Nicole Cheah Ching Suan
+- Nikhil Aaron Mani (rip)
+- Tan Zi Hui
+- Turrag Dewan
+- Khoo Zi Qi
