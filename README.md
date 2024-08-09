@@ -4,7 +4,7 @@
 1. [digiBank Web App deployed on Google Cloud](https://rubyzzz-service-cgwd7rnv2a-as.a.run.app/transactions)
 2. [Figma Board](https://www.figma.com/design/Ve6XbnFGwtQ9oGGPp9Bsvg/SDS-rubyzzz-team?node-id=0-1&t=Ylea60eWnoTyhlbo-1)
 3. [Design Workbook](https://docs.google.com/document/d/12I-R5VYSPyd1tPfIRUWjohhWQozxBFMkTlyyWF3IPe8/edit?usp=sharing)
-4. [Google Site](https://sites.google.com/view/rubyzzz/design-journey)
+4. [Google Site](https://sites.google.com/view/sds-team12-rubyzzz/home)
 
 ## Overview
 
@@ -35,9 +35,9 @@ This project aims to develop an Auto-Prompt system for the DBS Digibank app. The
 ---
 # Contributions
 
-- Jeslyn Jingxi Wang
+- Wang Jingxi, Jeslyn
 - Nicole Cheah Ching Suan
-- Nikhil Aaron Mani (rip)
 - Tan Zi Hui
 - Turrag Dewan
 - Khoo Zi Qi
+- Nikhil Aaron Mani 
